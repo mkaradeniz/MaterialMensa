@@ -11,10 +11,17 @@ import org.joda.time.LocalDate;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
+import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.model.Meal;
 
 import static de.prttstft.materialmensa.extras.Constants.LOGTAG;
+import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_LACTOSE_FREE;
+import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_NONFAT;
+import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGAN;
+import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGETARIAN;
 import static de.prttstft.materialmensa.extras.Constants.TODAY;
 import static de.prttstft.materialmensa.extras.Constants.YESTERDAY;
 
@@ -95,4 +102,31 @@ public class Utilities {
 
         return outputString;
     }
+
+    public static Integer getBadge(Meal meal) {
+        List<String> badges = meal.getBadges();
+        if (badges.size() > 0) {
+            switch (badges.get(0)) {
+                case MEAL_BADGE_VEGETARIAN:
+                    return R.drawable.ic_vegetarian;
+                case MEAL_BADGE_VEGAN:
+                    return R.drawable.ic_vegan;
+                case MEAL_BADGE_NONFAT:
+                    return R.drawable.ic_low_calorie;
+                case MEAL_BADGE_LACTOSE_FREE:
+                    return R.drawable.ic_lactose_free;
+                default:
+                    return null;
+            }
+        } else {
+            return null;
+        }
+    }
+
+    /*
+    String MEAL_BADGE_VEGETARIAN = "vegetarian";
+        String MEAL_BADGE_VEGAN = "vegan";
+        String MEAL_BADGE_LACTOSE_FREE = "lactose-free";
+        String MEAL_BADGE_NONFAT = "nonfat";
+     */
 }

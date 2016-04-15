@@ -38,5 +38,13 @@ public interface Constants {
         String API_RESTAURANT_BISTRO_HOTSPOT = "bistro-hotspot";
 
         String API_BASIC_GET_ACADEMICA = API_ACCESS + API_QUERY + API_PARAM_ID + API_IDENTITY + API_AMPERSAND + API_PARAM_RESTAURANT + API_RESTAURANT_ACADEMICA;
+
+    }
+
+    interface MealBadgeConstants {
+        String MEAL_BADGE_VEGETARIAN = "vegetarian";
+        String MEAL_BADGE_VEGAN = "vegan";
+        String MEAL_BADGE_LACTOSE_FREE = "lactose-free";
+        String MEAL_BADGE_NONFAT = "nonfat";
     }
 }

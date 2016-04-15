@@ -18,6 +18,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
@@ -31,7 +32,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     @Override
     public MainViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
-        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_restaurant_meal, parent, false);
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_restaurant, parent, false);
         return new MainViewHolder(v);
     }
 
@@ -39,7 +40,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     public void onBindViewHolder(MainViewHolder holder, int position) {
         Meal meal = meals.get(position);
 
-        Glide.with(context).load(meal.getThumbnail()).into(holder.picture);
+        Glide.with(context).load(Utilities.getBadge(meal)).into(holder.picture);
         holder.text_primary.setText(meal.getNameEn());
         holder.text_secondary.setText(meal.getPriceString(""));
     }

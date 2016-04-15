@@ -2,6 +2,7 @@ package de.prttstft.materialmensa.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,11 +30,11 @@ public class Meal {
     @SerializedName("subcategory_en")
     private String subcategoryEn;
     @SerializedName("priceStudents")
-    private double priceStudents;
+    private float priceStudents;
     @SerializedName("priceWorkers")
-    private double priceWorkers;
+    private float priceWorkers;
     @SerializedName("priceGuests")
-    private double priceGuests;
+    private float priceGuests;
     @SerializedName("allergens")
     private List<String> allergens = new ArrayList<String>();
     @SerializedName("order_info")
@@ -51,6 +52,10 @@ public class Meal {
 
 
     // Getters
+
+    private static float round(float d, int decimalPlace) {
+        return BigDecimal.valueOf(d).setScale(decimalPlace, BigDecimal.ROUND_HALF_UP).floatValue();
+    }
 
     public String getDate() {
         return date;
@@ -88,15 +93,15 @@ public class Meal {
         return subcategoryEn;
     }
 
-    public double getPriceStudents() {
+    public float getPriceStudents() {
         return priceStudents;
     }
 
-    public double getPriceWorkers() {
+    public float getPriceWorkers() {
         return priceWorkers;
     }
 
-    public double getPriceGuests() {
+    public float getPriceGuests() {
         return priceGuests;
     }
 
@@ -124,22 +129,27 @@ public class Meal {
         return image;
     }
 
+
+    // Public Methods
+
     public String getThumbnail() {
         return thumbnail;
     }
 
 
-    // Public Methods
+    // Private Methods
+
     public String getPriceString(String user_type) {
         switch (user_type) {
             case USER_TYPE_STUDENT:
-                return getPriceStudents() + "€";
+                return round(getPriceStudents(), 2) + "€";
             case USER_TYPE_STAFF:
                 return getPriceWorkers() + "€";
             case USER_TYPE_GUEST:
-                return getPriceGuests() + "€";
+                return round(getPriceGuests(), 2) + "€";
             default:
-                return getPriceStudents() + "€" + " / " + getPriceWorkers() + "€" + " / " + getPriceGuests() + "€";
+                return round(getPriceStudents(), 2) + "€" + " / " + getPriceWorkers() + "€" + " / " + getPriceGuests() + "€";
         }
     }
+
 }
