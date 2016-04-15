@@ -15,12 +15,14 @@ public interface Constants {
     interface APIConstants {
         // General
 
-        String API_BASE_URL = "http://www.studentenwerk-pb.de/fileadmin/shareddata/access2.php?";
+        String API_BASE_URL = "http://www.studentenwerk-pb.de/fileadmin/shareddata/";
+        String API_ACCESS = "access2.php";
         String API_QUERY = "?";
         String API_IDENTITY = BuildConfig.API_KEY;
         String API_AMPERSAND = "&";
-        String URL_PARAM_RESTAURANT = "restaurant=";
-        String URL_PARAM_DATE = "date=";
+        String API_PARAM_RESTAURANT = "restaurant=";
+        String API_PARAM_DATE = "date=";
+        String API_PARAM_ID = "id=";
 
         // Restaurants
 
@@ -34,5 +36,7 @@ public interface Constants {
         String API_RESTAURANT_HAMM = "mensa-hamm";
         String API_RESTAURANT_LIPPSTADT = "mensa-lippstadt";
         String API_RESTAURANT_BISTRO_HOTSPOT = "bistro-hotspot";
+
+        String API_BASIC_GET_ACADEMICA = API_ACCESS + API_QUERY + API_PARAM_ID + API_IDENTITY + API_AMPERSAND + API_PARAM_RESTAURANT + API_RESTAURANT_ACADEMICA;
     }
 }

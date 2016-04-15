@@ -1,9 +1,9 @@
 package de.prttstft.materialmensa.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.google.gson.annotations.SerializedName;
 
 import static de.prttstft.materialmensa.extras.Constants.USER_TYPE_GUEST;
 import static de.prttstft.materialmensa.extras.Constants.USER_TYPE_STAFF;
@@ -54,10 +54,6 @@ public class Meal {
 
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     public String getName() {
