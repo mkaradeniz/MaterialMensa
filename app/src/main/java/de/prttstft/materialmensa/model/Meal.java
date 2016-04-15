@@ -53,9 +53,7 @@ public class Meal {
 
     // Getters
 
-    private static float round(float d, int decimalPlace) {
-        return BigDecimal.valueOf(d).setScale(decimalPlace, BigDecimal.ROUND_HALF_UP).floatValue();
-    }
+
 
     public String getDate() {
         return date;
@@ -129,27 +127,34 @@ public class Meal {
         return image;
     }
 
-
-    // Public Methods
-
     public String getThumbnail() {
         return thumbnail;
     }
 
-
-    // Private Methods
+    // Public Methods
 
     public String getPriceString(String user_type) {
+        String priceGuest = round(getPriceGuests(), 2);
+        String priceStaff = round(getPriceWorkers(), 2);
+        String priceStudents = round(getPriceStudents(), 2);
+
         switch (user_type) {
             case USER_TYPE_STUDENT:
-                return round(getPriceStudents(), 2) + "€";
+                return priceStudents + "€";
             case USER_TYPE_STAFF:
-                return getPriceWorkers() + "€";
+                return priceStaff + "€";
             case USER_TYPE_GUEST:
-                return round(getPriceGuests(), 2) + "€";
+                return priceGuest + "€";
             default:
-                return round(getPriceStudents(), 2) + "€" + " / " + getPriceWorkers() + "€" + " / " + getPriceGuests() + "€";
+                return priceStudents + "€" + " / " + priceStaff + "€" + " / " + priceGuest + "€";
         }
     }
 
+    // Private Methods
+
+    private String round(float d, int decimalPlace) {
+        BigDecimal bd = new BigDecimal(Float.toString(d));
+        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        return bd.toString();
+    }
 }

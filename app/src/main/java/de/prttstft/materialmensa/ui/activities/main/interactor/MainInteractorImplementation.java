@@ -27,7 +27,6 @@ public class MainInteractorImplementation implements MainInteractor {
         observable.subscribe(new Observer<Meal>() {
             @Override
             public void onCompleted() {
-                L("Completed.");
             }
 
             @Override

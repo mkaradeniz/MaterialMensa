@@ -16,10 +16,6 @@ import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenter;
 import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenterImplementation;
 import de.prttstft.materialmensa.ui.activities.main.view.MainView;
 
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_BASE_URL;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_BASIC_GET_ACADEMICA;
-import static de.prttstft.materialmensa.extras.Utilities.L;
-
 public class MainActivity extends AppCompatActivity implements MainView {
     @Bind(R.id.activity_main_progress_container) RelativeLayout progressBar;
     @Bind(R.id.activity_main_recycler_view) RecyclerView recyclerView;
@@ -32,8 +28,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        L(API_BASE_URL + API_BASIC_GET_ACADEMICA);
 
         setSupportActionBar(toolbar);
 
