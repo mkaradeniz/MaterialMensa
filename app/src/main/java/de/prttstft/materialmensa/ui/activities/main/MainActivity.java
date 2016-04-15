@@ -17,8 +17,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Bind(R.id.activity_main_toolbar) Toolbar toolbar;
     @Bind(R.id.activity_main_view_pager) ViewPager viewPager;
     @Bind(R.id.activity_main_tab_layout) TabLayout tabLayout;
-    //private MainAdapter adapter;
-    //private MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +26,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         setSupportActionBar(toolbar);
 
-        viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), this));
+        viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
+
+        // SharedPref
+        /*if (tabCount > 5) {
+            tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        }*/
     }
 }

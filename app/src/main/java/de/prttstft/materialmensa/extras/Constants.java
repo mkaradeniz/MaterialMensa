@@ -50,6 +50,4 @@ public interface Constants {
         String MEAL_BADGE_LACTOSE_FREE = "lactose-free";
         String MEAL_BADGE_NONFAT = "nonfat";
     }
-
-
 }

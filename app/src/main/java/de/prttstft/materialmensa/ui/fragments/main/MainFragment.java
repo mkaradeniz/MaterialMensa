@@ -25,8 +25,6 @@ public class MainFragment extends Fragment implements MainFragmentView {
     private MainFragmentAdapter adapter;
     private MainFragmentPresenter presenter;
 
-    private int page;
-
     public static MainFragment newInstance(int page) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
@@ -38,7 +36,6 @@ public class MainFragment extends Fragment implements MainFragmentView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        page = getArguments().getInt(ARG_PAGE);
     }
 
     @Override
