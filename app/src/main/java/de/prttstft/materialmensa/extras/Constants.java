@@ -9,6 +9,7 @@ public interface Constants {
     String YESTERDAY = "Yesterday";
 
     String ARG_PAGE = "ARG_PAGE";
+    String ARG_RESTAURANT = "ARG_RESTAURANT";
 
     String USER_TYPE_STUDENT = "user_type_student";
     String USER_TYPE_STAFF = "user_type_staff";
@@ -41,7 +42,7 @@ public interface Constants {
         String API_RESTAURANT_LIPPSTADT = "mensa-lippstadt";
         String API_RESTAURANT_BISTRO_HOTSPOT = "bistro-hotspot";
 
-        String API_GET = API_ACCESS + API_QUERY + API_PARAM_ID + API_IDENTITY + API_AMPERSAND + API_PARAM_RESTAURANT + API_RESTAURANT_ACADEMICA + API_AMPERSAND + API_PARAM_DATE;
+        String API_GET = API_ACCESS + API_QUERY + API_PARAM_ID + API_IDENTITY + API_AMPERSAND + API_PARAM_DATE + API_AMPERSAND + API_PARAM_RESTAURANT;
     }
 
     interface MealBadgeConstants {
@@ -49,5 +50,15 @@ public interface Constants {
         String MEAL_BADGE_VEGAN = "vegan";
         String MEAL_BADGE_LACTOSE_FREE = "lactose-free";
         String MEAL_BADGE_NONFAT = "nonfat";
+    }
+
+    interface NavigationDrawerConstants {
+        int NAVIGATION_DRAWER_RESTAURANT_ACADEMICA = 0;
+        int NAVIGATION_DRAWER_RESTAURANT_FORUM = 1;
+        int NAVIGATION_DRAWER_RESTAURANT_CAFETE = 2;
+        int NAVIGATION_DRAWER_RESTAURANT_MENSULA = 3;
+        int NAVIGATION_DRAWER_RESTAURANT_ONE_WAY_SNACK = 4;
+        int NAVIGATION_DRAWER_RESTAURANT_GRILL_CAFE = 5;
+        int NAVIGATION_DRAWER_RESTAURANT_CAMPUS_DOENER = 6;
     }
 }

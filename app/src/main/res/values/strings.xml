@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">MaterialMensa</string>
+
+    // Restaurants
+
+    <string name="restaurant_mensa_academica_paderborn">Mensa Academica</string>
+    <string name="restaurant_mensa_forum_paderborn">Mensa Forum</string>
+    <string name="restaurant_cafete">Caféte</string>
+    <string name="restaurant_mensula">Mensula</string>
+    <string name="restaurant_one_way_snack">One Way Snack</string>
+    <string name="restaurant_bistro_hotspot">Bistro Hotspot</string>
+    <string name="restaurant_mensa_hamm">Mensa Basilica</string>
+    <string name="restaurant_mensa_lippstadt">Mensa Atrium</string>
+    <string name="restaurant_grill_cafe">Grill | Café</string>
+    <string name="restaurant_campus_doener">Campus Döner</string>
+
+    // Navigation Drawer
+    <string name="drawer_main_about">About</string>
+    <string name="drawer_main_settings">Settings</string>
+
 </resources>

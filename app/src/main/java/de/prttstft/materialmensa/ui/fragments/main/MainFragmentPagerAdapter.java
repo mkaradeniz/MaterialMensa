@@ -2,16 +2,18 @@ package de.prttstft.materialmensa.ui.fragments.main;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import de.prttstft.materialmensa.extras.Utilities;
 
-public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
+public class MainFragmentPagerAdapter extends FragmentStatePagerAdapter {
     // SharedPref
     final int PAGE_COUNT = 8;
+    private int restaurant;
 
-    public MainFragmentPagerAdapter(FragmentManager fm) {
+    public MainFragmentPagerAdapter(FragmentManager fm, int restaurant) {
         super(fm);
+        this.restaurant = restaurant;
     }
 
     @Override
@@ -21,7 +23,7 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return MainFragment.newInstance(position);
+        return MainFragment.newInstance(position, restaurant);
     }
 
     @Override

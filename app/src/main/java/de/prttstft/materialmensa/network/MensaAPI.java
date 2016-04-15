@@ -23,5 +23,5 @@ public interface MensaAPI {
     MensaAPI mensaAPI = retrofit.create(MensaAPI.class);
 
     @GET(API_GET)
-    Observable<List<Meal>> getAcademica(@Query("date") String page);
+    Observable<List<Meal>> getAcademica(@Query("date") String page, @Query("restaurant") String restaurant);
 }

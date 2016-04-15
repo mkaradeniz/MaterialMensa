@@ -18,6 +18,7 @@ import de.prttstft.materialmensa.ui.fragments.main.presenter.MainFragmentPresent
 import de.prttstft.materialmensa.ui.fragments.main.view.MainFragmentView;
 
 import static de.prttstft.materialmensa.extras.Constants.ARG_PAGE;
+import static de.prttstft.materialmensa.extras.Constants.ARG_RESTAURANT;
 
 public class MainFragment extends Fragment implements MainFragmentView {
     @Bind(R.id.fragment_main_progress_container) RelativeLayout progressBar;
@@ -25,9 +26,10 @@ public class MainFragment extends Fragment implements MainFragmentView {
     private MainFragmentAdapter adapter;
     private MainFragmentPresenter presenter;
 
-    public static MainFragment newInstance(int page) {
+    public static MainFragment newInstance(int page, int restaurant) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
+        args.putInt(ARG_RESTAURANT, restaurant);
         MainFragment fragment = new MainFragment();
         fragment.setArguments(args);
         return fragment;
@@ -47,7 +49,7 @@ public class MainFragment extends Fragment implements MainFragmentView {
 
         setUpRecyclerView(recyclerView);
 
-        presenter.onCreate(getArguments().getInt(ARG_PAGE));
+        presenter.onCreate(getArguments().getInt(ARG_PAGE), getArguments().getInt(ARG_RESTAURANT));
 
         return view;
     }

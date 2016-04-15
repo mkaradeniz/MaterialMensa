@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/drawer_main_header"
+                android:layout_width="match_parent"
+                android:layout_height="172dp"
+                android:background="@drawable/drawer_background_temp"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+    <ImageView
+        android:id="@+id/drawer_main_header_avatar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:contentDescription="sads"
+        android:elevation="4dp"
+        android:visibility="visible"
+        tools:src="@drawable/ic_academica"/>
+
+    <TextView
+        android:id="@+id/drawer_main_header_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/drawer_main_header_avatar"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:text="MaterialMensa"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+
+    <TextView
+        android:id="@+id/drawer_main_header_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/drawer_main_header_username"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:text="Lifestyle"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+</RelativeLayout>

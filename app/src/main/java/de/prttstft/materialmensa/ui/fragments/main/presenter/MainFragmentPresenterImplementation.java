@@ -16,12 +16,12 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     }
 
     @Override
-    public void onCreate(int page) {
+    public void onCreate(int page, int restaurant) {
         if (view != null) {
             view.showProgress();
         }
 
-        interactor.onCreate(this, page);
+        interactor.onCreate(this, page, restaurant);
     }
 
     @Override

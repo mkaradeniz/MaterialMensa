@@ -1,0 +1,56 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/drawer_main_group1"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_main_drawer_restaurant_mensa_academica_paderborn"
+            android:checked="true"
+            android:icon="@drawable/ic_academica"
+            android:title="@string/restaurant_mensa_academica_paderborn"/>
+
+        <item
+            android:id="@+id/menu_main_drawer_restaurant_mensa_forum_paderborn"
+            android:icon="@drawable/ic_forum"
+            android:title="@string/restaurant_mensa_forum_paderborn"/>
+
+        <item
+            android:id="@+id/menu_main_drawer_restaurant_cafete"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="@string/restaurant_cafete"/>
+
+        <item
+            android:id="@+id/menu_main_drawer_restaurant_mensula"
+            android:icon="@drawable/ic_mensula"
+            android:title="@string/restaurant_mensula"/>
+
+        <item
+            android:id="@+id/menu_main_drawer_restaurant_one_way_snack"
+            android:icon="@drawable/ic_one_way_snack"
+            android:title="@string/restaurant_one_way_snack"/>
+
+        <item
+            android:id="@+id/menu_main_drawer_restaurant_grill_cafe"
+            android:icon="@drawable/ic_grill_cafe"
+            android:title="@string/restaurant_grill_cafe"/>
+
+        <item
+            android:id="@+id/menu_main_drawer_restaurant_campus_doener"
+            android:icon="@drawable/ic_campus_doener"
+            android:title="@string/restaurant_campus_doener"/>
+    </group>
+
+    <group
+        android:id="@+id/drawer_main_group2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_main_drawer_settings"
+            android:icon="@drawable/ic_settings_white"
+            android:title="@string/drawer_main_settings"/>
+        <item
+            android:id="@+id/menu_main_drawer_about"
+            android:icon="@drawable/ic_info_white"
+            android:title="@string/drawer_main_about"/>
+
+    </group>
+</menu>
