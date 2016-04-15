@@ -8,9 +8,13 @@ public interface Constants {
     String TODAY = "Today";
     String YESTERDAY = "Yesterday";
 
+    String ARG_PAGE = "ARG_PAGE";
+
     String USER_TYPE_STUDENT = "user_type_student";
     String USER_TYPE_STAFF = "user_type_staff";
     String USER_TYPE_GUEST = "user_type_guest";
+    String PRICE_TYPE_FIXED = "fixed";
+    String PRICE_TYPE_WEIGHTED = "weighted";
 
     interface APIConstants {
         // General
@@ -37,8 +41,7 @@ public interface Constants {
         String API_RESTAURANT_LIPPSTADT = "mensa-lippstadt";
         String API_RESTAURANT_BISTRO_HOTSPOT = "bistro-hotspot";
 
-        String API_BASIC_GET_ACADEMICA = API_ACCESS + API_QUERY + API_PARAM_ID + API_IDENTITY + API_AMPERSAND + API_PARAM_RESTAURANT + API_RESTAURANT_ACADEMICA;
-
+        String API_GET = API_ACCESS + API_QUERY + API_PARAM_ID + API_IDENTITY + API_AMPERSAND + API_PARAM_RESTAURANT + API_RESTAURANT_ACADEMICA + API_AMPERSAND + API_PARAM_DATE;
     }
 
     interface MealBadgeConstants {
@@ -47,4 +50,6 @@ public interface Constants {
         String MEAL_BADGE_LACTOSE_FREE = "lactose-free";
         String MEAL_BADGE_NONFAT = "nonfat";
     }
+
+
 }

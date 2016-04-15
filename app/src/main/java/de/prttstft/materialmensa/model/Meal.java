@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static de.prttstft.materialmensa.extras.Constants.PRICE_TYPE_WEIGHTED;
 import static de.prttstft.materialmensa.extras.Constants.USER_TYPE_GUEST;
 import static de.prttstft.materialmensa.extras.Constants.USER_TYPE_STAFF;
 import static de.prttstft.materialmensa.extras.Constants.USER_TYPE_STUDENT;
@@ -52,8 +53,6 @@ public class Meal {
 
 
     // Getters
-
-
 
     public String getDate() {
         return date;
@@ -140,13 +139,29 @@ public class Meal {
 
         switch (user_type) {
             case USER_TYPE_STUDENT:
-                return priceStudents + "€";
+                if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
+                    return "Price per 100gr: " + priceStudents + "€";
+                } else {
+                    return priceStudents + "€";
+                }
             case USER_TYPE_STAFF:
-                return priceStaff + "€";
+                if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
+                    return "Price per 100gr: " + priceStaff + "€";
+                } else {
+                    return priceStaff + "€";
+                }
             case USER_TYPE_GUEST:
-                return priceGuest + "€";
+                if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
+                    return "Price per 100gr: " + priceGuest + "€";
+                } else {
+                    return priceGuest + "€";
+                }
             default:
-                return priceStudents + "€" + " / " + priceStaff + "€" + " / " + priceGuest + "€";
+                if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
+                    return "Price per 100gr: " + priceStudents + "€" + " / " + priceStaff + "€" + " / " + priceGuest + "€";
+                } else {
+                    return priceStudents + "€" + " / " + priceStaff + "€" + " / " + priceGuest + "€";
+                }
         }
     }
 

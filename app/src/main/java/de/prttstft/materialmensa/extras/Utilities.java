@@ -103,6 +103,29 @@ public class Utilities {
         return outputString;
     }
 
+    public static String getDateTabTitle(int page) {
+        DateTime date = new DateTime().plusDays(page);
+        return getDayString(date);
+    }
+
+    public static String getDateString(int page) {
+        String pattern = "yyyy-MM-dd";
+        DateTime date = new DateTime();
+
+        switch (page) {
+            case 0:
+                break;
+            case 1:
+                date = date.plusDays(1);
+                break;
+            case 2:
+                date = date.plusDays(2);
+                break;
+        }
+
+        return date.toString(pattern);
+    }
+
     public static Integer getBadge(Meal meal) {
         List<String> badges = meal.getBadges();
         if (badges.size() > 0) {
@@ -122,11 +145,4 @@ public class Utilities {
             return null;
         }
     }
-
-    /*
-    String MEAL_BADGE_VEGETARIAN = "vegetarian";
-        String MEAL_BADGE_VEGAN = "vegan";
-        String MEAL_BADGE_LACTOSE_FREE = "lactose-free";
-        String MEAL_BADGE_NONFAT = "nonfat";
-     */
 }

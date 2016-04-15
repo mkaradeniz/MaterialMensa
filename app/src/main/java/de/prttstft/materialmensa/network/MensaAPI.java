@@ -7,10 +7,11 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 import rx.Observable;
 
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_BASE_URL;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_BASIC_GET_ACADEMICA;
+import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_GET;
 
 public interface MensaAPI {
 
@@ -21,6 +22,6 @@ public interface MensaAPI {
             .build();
     MensaAPI mensaAPI = retrofit.create(MensaAPI.class);
 
-    @GET(API_BASIC_GET_ACADEMICA)
-    Observable<List<Meal>> getAcademica();
+    @GET(API_GET)
+    Observable<List<Meal>> getAcademica(@Query("date") String page);
 }
