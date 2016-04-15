@@ -17,11 +17,14 @@ import de.prttstft.materialmensa.ui.fragments.main.presenter.MainFragmentPresent
 import de.prttstft.materialmensa.ui.fragments.main.presenter.MainFragmentPresenterImplementation;
 import de.prttstft.materialmensa.ui.fragments.main.view.MainFragmentView;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 import static de.prttstft.materialmensa.extras.Constants.ARG_PAGE;
 import static de.prttstft.materialmensa.extras.Constants.ARG_RESTAURANT;
 
 public class MainFragment extends Fragment implements MainFragmentView {
     @Bind(R.id.fragment_main_progress_container) RelativeLayout progressBar;
+    @Bind(R.id.fragment_main_empty_container) RelativeLayout empty;
     @Bind(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
     private MainFragmentAdapter adapter;
     private MainFragmentPresenter presenter;
@@ -69,12 +72,22 @@ public class MainFragment extends Fragment implements MainFragmentView {
     }
 
     @Override
-    public void showProgress() {
-        progressBar.setVisibility(View.VISIBLE);
+    public void hideEmpty() {
+        empty.setVisibility(GONE);
     }
 
     @Override
     public void hideProgress() {
-        progressBar.setVisibility(View.GONE);
+        progressBar.setVisibility(GONE);
+    }
+
+    @Override
+    public void restaurantClosed(int restaurant) {
+
+    }
+
+    @Override
+    public void showProgress() {
+        progressBar.setVisibility(VISIBLE);
     }
 }

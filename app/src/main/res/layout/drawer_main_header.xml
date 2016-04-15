@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/drawer_main_header"
-                android:layout_width="match_parent"
-                android:layout_height="172dp"
-                android:background="@drawable/drawer_background_temp"
-                android:orientation="vertical"
-                android:paddingTop="@dimen/activity_horizontal_margin"
-                android:theme="@style/ThemeOverlay.AppCompat.Light">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_main_header"
+    android:layout_width="match_parent"
+    android:layout_height="172dp"
+    android:background="@drawable/drawer_background_temp"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/activity_horizontal_margin">
 
     <ImageView
         android:id="@+id/drawer_main_header_avatar"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:contentDescription="sads"
-        android:elevation="4dp"
-        android:visibility="visible"
-        tools:src="@drawable/ic_academica"/>
+        android:contentDescription="@string/placeholder"
+        android:elevation="10dp"
+        tools:src="@drawable/drawer_background_temp"/>
 
     <TextView
         android:id="@+id/drawer_main_header_username"
@@ -25,8 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/drawer_main_header_avatar"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="MaterialMensa"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+        android:text="@string/app_name"
+        android:textAppearance="?android:textAppearanceMedium"/>
 
     <TextView
         android:id="@+id/drawer_main_header_email"
@@ -36,6 +35,7 @@
         android:layout_below="@+id/drawer_main_header_username"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="Lifestyle"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:text="@string/lifestyle"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@android:color/white"/>
 </RelativeLayout>

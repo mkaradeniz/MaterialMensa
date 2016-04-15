@@ -5,7 +5,11 @@ import de.prttstft.materialmensa.model.Meal;
 public interface MainFragmentView {
     void addMeal(Meal meal);
 
-    void showProgress();
+    void hideEmpty();
 
     void hideProgress();
+
+    void restaurantClosed(int restaurant);
+
+    void showProgress();
 }

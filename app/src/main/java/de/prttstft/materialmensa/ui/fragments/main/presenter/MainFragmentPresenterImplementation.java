@@ -28,7 +28,18 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     public void addMeal(Meal meal) {
         if (view != null) {
             view.addMeal(meal);
+            view.hideEmpty();
             view.hideProgress();
         }
+    }
+
+    @Override
+    public void onComplete() {
+        view.hideProgress();
+    }
+
+    @Override
+    public void restaurantClosed(int restaurant) {
+        view.restaurantClosed(restaurant);
     }
 }

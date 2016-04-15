@@ -23,7 +23,7 @@ import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL
 import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGAN;
 import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGETARIAN;
 import static de.prttstft.materialmensa.extras.Constants.TODAY;
-import static de.prttstft.materialmensa.extras.Constants.YESTERDAY;
+import static de.prttstft.materialmensa.extras.Constants.TOMORROW;
 
 public class Utilities {
 
@@ -70,13 +70,19 @@ public class Utilities {
         return yesterday.equals(dateTime.toLocalDate());
     }
 
-    // Get day of week if date is not today nor yesterday.
+    // Check whether date was yesterday.
+    private static boolean isTomorrow(DateTime dateTime) {
+        LocalDate tomorrow = new LocalDate().plusDays(1);
+        return tomorrow.equals(dateTime.toLocalDate());
+    }
+
+    // Get day of week if date is not today nor tomorrow.
     public static String getDayString(DateTime dateTime) {
         String outputString;
         if (isToday(dateTime)) {
             outputString = TODAY;
-        } else if (isYesterday(dateTime)) {
-            outputString = YESTERDAY;
+        } else if (isTomorrow(dateTime)) {
+            outputString = TOMORROW;
         } else {
             outputString = dateTime.dayOfWeek().getAsShortText();
         }

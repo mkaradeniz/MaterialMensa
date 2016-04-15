@@ -6,7 +6,7 @@ public interface Constants {
     // General.
     String LOGTAG = "LOGTAG";
     String TODAY = "Today";
-    String YESTERDAY = "Yesterday";
+    String TOMORROW = "Tomorrow";
 
     String ARG_PAGE = "ARG_PAGE";
     String ARG_RESTAURANT = "ARG_RESTAURANT";

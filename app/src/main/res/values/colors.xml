@@ -10,7 +10,7 @@
     <color name="text_primaryLight">#D9FFFFFF</color>
     <color name="text_secondaryLight">#8CFFFFFF</color>
     <color name="text_hintLight">#59FFFFFF</color>
-    <color name="background_channel_options">#F8BBD0</color>
+    <color name="progress_bar_background">#F8BBD0</color>
     <color name="color_negative">#F44336</color>
     <color name="color_positive">#4CAF50</color>
 

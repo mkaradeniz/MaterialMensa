@@ -1,7 +1,6 @@
 package de.prttstft.materialmensa.ui.activities.main;
 
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -27,7 +26,6 @@ import static de.prttstft.materialmensa.extras.Utilities.L;
 
 
 public class MainActivity extends AppCompatActivity implements MainView {
-    @Bind(R.id.activity_main_coordinator_layout) CoordinatorLayout coordinatorLayout;
     @Bind(R.id.activity_main_drawer_layout) DrawerLayout drawerLayout;
     @Bind(R.id.activity_main_navigation_view) NavigationView navigationView;
     @Bind(R.id.activity_main_tab_layout) TabLayout tabLayout;
@@ -41,18 +39,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
-
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+        setUpToolbar();
 
         setupDrawerLayout();
-
-        viewPager.setAdapter(adapter);
-
-        tabLayout.setupWithViewPager(viewPager);
 
         // SharedPref
         /*if (tabCount > 5) {
@@ -60,7 +49,20 @@ public class MainActivity extends AppCompatActivity implements MainView {
         }*/
     }
 
+    private void setUpToolbar() {
+        setSupportActionBar(toolbar);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
+        }
+    }
+
     private void setupDrawerLayout() {
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -78,26 +80,32 @@ public class MainActivity extends AppCompatActivity implements MainView {
                     case R.id.menu_main_drawer_restaurant_mensa_academica_paderborn:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), NAVIGATION_DRAWER_RESTAURANT_ACADEMICA));
                         adapter.notifyDataSetChanged();
+                        toolbar.setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
                         break;
                     case R.id.menu_main_drawer_restaurant_mensa_forum_paderborn:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), NAVIGATION_DRAWER_RESTAURANT_FORUM));
                         adapter.notifyDataSetChanged();
+                        toolbar.setTitle(getString(R.string.restaurant_mensa_forum_paderborn));
                         break;
                     case R.id.menu_main_drawer_restaurant_cafete:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), NAVIGATION_DRAWER_RESTAURANT_CAFETE));
                         adapter.notifyDataSetChanged();
+                        toolbar.setTitle(getString(R.string.restaurant_cafete));
                         break;
                     case R.id.menu_main_drawer_restaurant_mensula:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), NAVIGATION_DRAWER_RESTAURANT_MENSULA));
                         adapter.notifyDataSetChanged();
+                        toolbar.setTitle(getString(R.string.restaurant_mensula));
                         break;
                     case R.id.menu_main_drawer_restaurant_one_way_snack:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), NAVIGATION_DRAWER_RESTAURANT_ONE_WAY_SNACK));
                         adapter.notifyDataSetChanged();
+                        toolbar.setTitle(getString(R.string.restaurant_one_way_snack));
                         break;
                     case R.id.menu_main_drawer_restaurant_grill_cafe:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), NAVIGATION_DRAWER_RESTAURANT_GRILL_CAFE));
                         adapter.notifyDataSetChanged();
+                        toolbar.setTitle(getString(R.string.restaurant_grill_cafe));
                         break;
                     case R.id.menu_main_drawer_settings:
                         L("Settings.");
