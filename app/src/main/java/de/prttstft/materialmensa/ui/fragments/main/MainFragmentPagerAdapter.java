@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import org.joda.time.DateTime;
+
 import de.prttstft.materialmensa.extras.Utilities;
 
 public class MainFragmentPagerAdapter extends FragmentStatePagerAdapter {
@@ -28,6 +30,11 @@ public class MainFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return Utilities.getDateTabTitle(position);
+        return getDateTabTitle(position);
+    }
+
+    private String getDateTabTitle(int page) {
+        DateTime date = new DateTime().plusDays(page);
+        return Utilities.getDayString(date);
     }
 }

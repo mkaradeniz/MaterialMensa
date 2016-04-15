@@ -19,7 +19,6 @@ import de.prttstft.materialmensa.ui.fragments.main.MainFragmentPagerAdapter;
 
 import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_ACADEMICA;
 import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_CAFETE;
-import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_CAMPUS_DOENER;
 import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_FORUM;
 import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_GRILL_CAFE;
 import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_MENSULA;
@@ -98,10 +97,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
                         break;
                     case R.id.menu_main_drawer_restaurant_grill_cafe:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), NAVIGATION_DRAWER_RESTAURANT_GRILL_CAFE));
-                        adapter.notifyDataSetChanged();
-                        break;
-                    case R.id.menu_main_drawer_restaurant_campus_doener:
-                        viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), NAVIGATION_DRAWER_RESTAURANT_CAMPUS_DOENER));
                         adapter.notifyDataSetChanged();
                         break;
                     case R.id.menu_main_drawer_settings:

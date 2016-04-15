@@ -56,7 +56,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
         Collections.sort(meals, new Comparator<Meal>() {
             @Override
             public int compare(Meal meal1, Meal meal2) {
-                return (meal1.getOrderInfo() - meal2.getOrderInfo()); // Descending
+                return (meal1.getOrderNumber() - meal2.getOrderNumber());
             }
         });
 

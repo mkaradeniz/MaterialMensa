@@ -71,7 +71,7 @@ public class Utilities {
     }
 
     // Get day of week if date is not today nor yesterday.
-    private static String getDayString(DateTime dateTime) {
+    public static String getDayString(DateTime dateTime) {
         String outputString;
         if (isToday(dateTime)) {
             outputString = TODAY;
@@ -101,29 +101,6 @@ public class Utilities {
         }
 
         return outputString;
-    }
-
-    public static String getDateTabTitle(int page) {
-        DateTime date = new DateTime().plusDays(page);
-        return getDayString(date);
-    }
-
-    public static String getDateString(int page) {
-        String pattern = "yyyy-MM-dd";
-        DateTime date = new DateTime();
-
-        switch (page) {
-            case 0:
-                break;
-            case 1:
-                date = date.plusDays(1);
-                break;
-            case 2:
-                date = date.plusDays(2);
-                break;
-        }
-
-        return date.toString(pattern);
     }
 
     public static Integer getBadge(Meal meal) {

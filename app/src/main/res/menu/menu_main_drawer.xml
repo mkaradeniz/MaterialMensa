@@ -16,7 +16,7 @@
 
         <item
             android:id="@+id/menu_main_drawer_restaurant_cafete"
-            android:icon="@drawable/ic_android_black_24dp"
+            android:icon="@drawable/ic_cafete"
             android:title="@string/restaurant_cafete"/>
 
         <item
@@ -33,11 +33,6 @@
             android:id="@+id/menu_main_drawer_restaurant_grill_cafe"
             android:icon="@drawable/ic_grill_cafe"
             android:title="@string/restaurant_grill_cafe"/>
-
-        <item
-            android:id="@+id/menu_main_drawer_restaurant_campus_doener"
-            android:icon="@drawable/ic_campus_doener"
-            android:title="@string/restaurant_campus_doener"/>
     </group>
 
     <group

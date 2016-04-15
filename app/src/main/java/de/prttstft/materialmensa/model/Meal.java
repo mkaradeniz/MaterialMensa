@@ -130,6 +130,7 @@ public class Meal {
         return thumbnail;
     }
 
+
     // Public Methods
 
     public String getPriceString(String user_type) {
@@ -164,6 +165,76 @@ public class Meal {
                 }
         }
     }
+
+    public int getOrderNumber() {
+        switch (getRestaurant()) {
+            case "mensa-academica-paderborn":
+                switch (getSubcategoryEn()) {
+                    case "Default Menu":
+                        return 0;
+                    case "Dish":
+                        return 1;
+                    case "Pasta":
+                        return 2;
+                    case "Wok":
+                        return 3;
+                    case "Grill":
+                        return 4;
+                    case "Default Dessert":
+                        return 7;
+                    case "Counter Dessert":
+                        return 8;
+                    default:
+                        switch (getCategoryEn()) {
+                            case "Side Dish":
+                                return 6;
+                            case "Soups":
+                                return 5;
+                        }
+                }
+                break;
+            case "mensa-forum-paderborn":
+                switch (getCategory()) {
+                    case "dish-default":
+                        return 0;
+                    case "dish":
+                        return 1;
+                    case "dish-grill":
+                        return 2;
+                    case "sidedish":
+                        return 3;
+                    case "dessert-counter":
+                        return 4;
+                }
+                break;
+            default:
+                switch (getCategory()) {
+                    case "classic":
+                        return 0;
+                    case "dish":
+                        return 0;
+                    case "wrap":
+                        return 0;
+                    case "offer":
+                        return 0;
+                    case "dessert-counter":
+                        return 4;
+                    case "sandwich":
+                        return 1;
+                    case "appetizer":
+                        return 1;
+                    case "lahmacun":
+                        return 2;
+                    case "maincourses":
+                        return 2;
+                    case "dessert":
+                        return 3;
+                }
+                break;
+        }
+        return 99;
+    }
+
 
     // Private Methods
 
