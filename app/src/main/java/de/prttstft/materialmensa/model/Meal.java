@@ -6,11 +6,15 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.prttstft.materialmensa.R;
+
+import static de.prttstft.materialmensa.MyApplication.getAppContext;
 import static de.prttstft.materialmensa.extras.Constants.PRICE_TYPE_WEIGHTED;
 import static de.prttstft.materialmensa.extras.Constants.USER_TYPE_GUEST;
 import static de.prttstft.materialmensa.extras.Constants.USER_TYPE_STAFF;
 import static de.prttstft.materialmensa.extras.Constants.USER_TYPE_STUDENT;
 
+@SuppressWarnings("unused")
 public class Meal {
     @SerializedName("date")
     private String date;
@@ -134,34 +138,34 @@ public class Meal {
     // Public Methods
 
     public String getPriceString(String user_type) {
-        String priceGuest = round(getPriceGuests(), 2);
-        String priceStaff = round(getPriceWorkers(), 2);
-        String priceStudents = round(getPriceStudents(), 2);
+        String priceGuests = round(getPriceGuests());
+        String priceStaff = round(getPriceWorkers());
+        String priceStudents = round(getPriceStudents());
 
         switch (user_type) {
             case USER_TYPE_STUDENT:
                 if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
-                    return "Price per 100gr: " + priceStudents + "€";
+                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_weighted), priceStudents);
                 } else {
-                    return priceStudents + "€";
+                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_fixed), priceStudents);
                 }
             case USER_TYPE_STAFF:
                 if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
-                    return "Price per 100gr: " + priceStaff + "€";
+                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_weighted), priceStaff);
                 } else {
-                    return priceStaff + "€";
+                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_fixed), priceStaff);
                 }
             case USER_TYPE_GUEST:
                 if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
-                    return "Price per 100gr: " + priceGuest + "€";
+                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_weighted), priceGuests);
                 } else {
-                    return priceGuest + "€";
+                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_fixed), priceGuests);
                 }
             default:
                 if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
-                    return "Price per 100gr: " + priceStudents + "€" + " / " + priceStaff + "€" + " / " + priceGuest + "€";
+                    return getAppContext().getResources().getString(R.string.price_string_all, getAppContext().getString(R.string.price_string_weighted), priceStudents, priceStaff, priceGuests);
                 } else {
-                    return priceStudents + "€" + " / " + priceStaff + "€" + " / " + priceGuest + "€";
+                    return getAppContext().getResources().getString(R.string.price_string_all, getAppContext().getString(R.string.price_string_fixed), priceStudents, priceStaff, priceGuests);
                 }
         }
     }
@@ -238,9 +242,9 @@ public class Meal {
 
     // Private Methods
 
-    private String round(float d, int decimalPlace) {
+    private String round(float d) {
         BigDecimal bd = new BigDecimal(Float.toString(d));
-        bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
         return bd.toString();
     }
 }

@@ -41,11 +41,11 @@
         <item
             android:id="@+id/menu_main_drawer_settings"
             android:icon="@drawable/ic_settings_white"
-            android:title="@string/drawer_main_settings"/>
+            android:title="@string/activity_settings_name"/>
         <item
             android:id="@+id/menu_main_drawer_about"
             android:icon="@drawable/ic_info_white"
-            android:title="@string/drawer_main_about"/>
+            android:title="@string/activity_about_name"/>
 
     </group>
 </menu>

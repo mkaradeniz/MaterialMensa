@@ -26,39 +26,46 @@ public interface Constants {
         String API_IDENTITY = BuildConfig.API_KEY;
         String API_AMPERSAND = "&";
         String API_PARAM_RESTAURANT = "restaurant=";
+        String API_PARAM_OPENING_STATUS = "getopeningstatus=1";
         String API_PARAM_DATE = "date=";
         String API_PARAM_ID = "id=";
 
         // Restaurants
 
         String API_RESTAURANT_ACADEMICA = "mensa-academica-paderborn";
-        String API_RESTAURANT_FORUM = "mensa-forum-paderborn";
+        String API_RESTAURANT_BISTRO_HOTSPOT = "bistro-hotspot";
         String API_RESTAURANT_CAFETE = "cafete";
-        String API_RESTAURANT_MENSULA = "mensula";
-        String API_RESTAURANT_ONE_WAY_SNACK = "one-way-snack";
-        String API_RESTAURANT_GRILL_CAFE = "grill-cafe";
         String API_RESTAURANT_CAMPUS_DOENER = "campus-doener";
+        String API_RESTAURANT_FORUM = "mensa-forum-paderborn";
+        String API_RESTAURANT_GRILL_CAFE = "grill-cafe";
         String API_RESTAURANT_HAMM = "mensa-hamm";
         String API_RESTAURANT_LIPPSTADT = "mensa-lippstadt";
-        String API_RESTAURANT_BISTRO_HOTSPOT = "bistro-hotspot";
+        String API_RESTAURANT_MENSULA = "mensula";
+        String API_RESTAURANT_ONE_WAY_SNACK = "one-way-snack";
 
-        String API_GET = API_ACCESS + API_QUERY + API_PARAM_ID + API_IDENTITY + API_AMPERSAND + API_PARAM_DATE + API_AMPERSAND + API_PARAM_RESTAURANT;
+        String API_GET_MEALS = API_ACCESS + API_QUERY + API_PARAM_ID + API_IDENTITY + API_AMPERSAND + API_PARAM_DATE + API_AMPERSAND + API_PARAM_RESTAURANT;
+        String API_GET_RESTAURANT_STATUS = API_ACCESS + API_QUERY + API_PARAM_ID + API_IDENTITY + API_AMPERSAND + API_PARAM_OPENING_STATUS + API_AMPERSAND + API_PARAM_RESTAURANT;
     }
 
     interface MealBadgeConstants {
-        String MEAL_BADGE_VEGETARIAN = "vegetarian";
-        String MEAL_BADGE_VEGAN = "vegan";
         String MEAL_BADGE_LACTOSE_FREE = "lactose-free";
+        String MEAL_BADGE_LOW_CALORIE = "low-calorie";
         String MEAL_BADGE_NONFAT = "nonfat";
+        String MEAL_BADGE_VEGAN = "vegan";
+        String MEAL_BADGE_VEGETARIAN = "vegetarian";
+        String MEAL_BADGE_VITAL_FOOD = "vital-food";
     }
 
-    interface NavigationDrawerConstants {
-        int NAVIGATION_DRAWER_RESTAURANT_ACADEMICA = 0;
-        int NAVIGATION_DRAWER_RESTAURANT_FORUM = 1;
-        int NAVIGATION_DRAWER_RESTAURANT_CAFETE = 2;
-        int NAVIGATION_DRAWER_RESTAURANT_MENSULA = 3;
-        int NAVIGATION_DRAWER_RESTAURANT_ONE_WAY_SNACK = 4;
-        int NAVIGATION_DRAWER_RESTAURANT_GRILL_CAFE = 5;
-        int NAVIGATION_DRAWER_RESTAURANT_CAMPUS_DOENER = 6;
+    interface RestaurantIdConstants {
+        int RESTAURANT_ID_ACADEMICA = 0;
+        int RESTAURANT_ID_FORUM = 1;
+        int RESTAURANT_ID_CAFETE = 2;
+        int RESTAURANT_ID_MENSULA = 3;
+        int RESTAURANT_ID_ONE_WAY_SNACK = 4;
+        int RESTAURANT_ID_GRILL_CAFE = 5;
+        int RESTAURANT_ID_CAMPUS_DOENER = 6;
+        int RESTAURANT_ID_HAMM = 7;
+        int RESTAURANT_ID_LIPPSTADT = 8;
+        int RESTAURANT_ID_HOTSPOT = 9;
     }
 }

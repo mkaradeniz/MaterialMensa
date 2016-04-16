@@ -21,21 +21,21 @@ import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAU
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_GRILL_CAFE;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_MENSULA;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ONE_WAY_SNACK;
-import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_ACADEMICA;
-import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_CAFETE;
-import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_CAMPUS_DOENER;
-import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_FORUM;
-import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_GRILL_CAFE;
-import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_MENSULA;
-import static de.prttstft.materialmensa.extras.Constants.NavigationDrawerConstants.NAVIGATION_DRAWER_RESTAURANT_ONE_WAY_SNACK;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ACADEMICA;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_CAFETE;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_CAMPUS_DOENER;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_FORUM;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_GRILL_CAFE;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_MENSULA;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ONE_WAY_SNACK;
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainFragmentInteractorImplementation implements MainFragmentInteractor {
     @Override
     public void onCreate(final MainFragmentListener listener, final int page, final int restaurant) {
-        test(listener, restaurant);
+        checkIfRestaurantIsOpen(listener, restaurant);
 
-        Observable<Meal> observable = MensaAPI.mensaAPI.getAcademica(getDateString(page), getRestaurantString(restaurant)).flatMap(new Func1<List<Meal>, Observable<Meal>>() {
+        Observable<Meal> observable = MensaAPI.mensaAPI.getMeals(getDateString(page), getRestaurantString(restaurant)).flatMap(new Func1<List<Meal>, Observable<Meal>>() {
             @Override
             public Observable<Meal> call(List<Meal> iterable) {
                 return Observable.from(iterable);
@@ -61,7 +61,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
         });
     }
 
-    private void test(final MainFragmentListener listener, int restaurant) {
+    private void checkIfRestaurantIsOpen(final MainFragmentListener listener, int restaurant) {
         Observable<Restaurant> restaurantObservable = MensaAPI.mensaAPI.getRestaurantStatus(getRestaurantString(restaurant))
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -80,27 +80,27 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
             public void onNext(Restaurant restaurant) {
                 if (restaurant.getMensaAcademicaPaderborn() != null) {
                     if (restaurant.getMensaAcademicaPaderborn().getStatus().equals("Zurzeit geschlossen")) {
-                        listener.restaurantClosed(NAVIGATION_DRAWER_RESTAURANT_ACADEMICA);
+                        listener.restaurantClosed(RESTAURANT_ID_ACADEMICA);
                     }
                 } else if (restaurant.getMensaForumPaderborn() != null) {
                     if (restaurant.getMensaForumPaderborn().getStatus().equals("Zurzeit geschlossen")) {
-                        listener.restaurantClosed(NAVIGATION_DRAWER_RESTAURANT_FORUM);
+                        listener.restaurantClosed(RESTAURANT_ID_FORUM);
                     }
                 } else if (restaurant.getCafete() != null) {
                     if (restaurant.getCafete().getStatus().equals("Zurzeit geschlossen")) {
-                        listener.restaurantClosed(NAVIGATION_DRAWER_RESTAURANT_CAFETE);
+                        listener.restaurantClosed(RESTAURANT_ID_CAFETE);
                     }
                 } else if (restaurant.getMensula() != null) {
                     if (restaurant.getMensula().getStatus().equals("Zurzeit geschlossen")) {
-                        listener.restaurantClosed(NAVIGATION_DRAWER_RESTAURANT_MENSULA);
+                        listener.restaurantClosed(RESTAURANT_ID_MENSULA);
                     }
                 } else if (restaurant.getOneWaySnack() != null) {
                     if (restaurant.getOneWaySnack().getStatus().equals("Zurzeit geschlossen")) {
-                        listener.restaurantClosed(NAVIGATION_DRAWER_RESTAURANT_ONE_WAY_SNACK);
+                        listener.restaurantClosed(RESTAURANT_ID_ONE_WAY_SNACK);
                     }
                 } else if (restaurant.getGrillCafe() != null) {
                     if (restaurant.getGrillCafe().getStatus().equals("Zurzeit geschlossen")) {
-                        listener.restaurantClosed(NAVIGATION_DRAWER_RESTAURANT_GRILL_CAFE);
+                        listener.restaurantClosed(RESTAURANT_ID_GRILL_CAFE);
                     }
                 }
             }
@@ -116,19 +116,19 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     private String getRestaurantString(int restaurant) {
         switch (restaurant) {
-            case NAVIGATION_DRAWER_RESTAURANT_ACADEMICA:
+            case RESTAURANT_ID_ACADEMICA:
                 return API_RESTAURANT_ACADEMICA;
-            case NAVIGATION_DRAWER_RESTAURANT_FORUM:
+            case RESTAURANT_ID_FORUM:
                 return API_RESTAURANT_FORUM;
-            case NAVIGATION_DRAWER_RESTAURANT_CAFETE:
+            case RESTAURANT_ID_CAFETE:
                 return API_RESTAURANT_CAFETE;
-            case NAVIGATION_DRAWER_RESTAURANT_MENSULA:
+            case RESTAURANT_ID_MENSULA:
                 return API_RESTAURANT_MENSULA;
-            case NAVIGATION_DRAWER_RESTAURANT_ONE_WAY_SNACK:
+            case RESTAURANT_ID_ONE_WAY_SNACK:
                 return API_RESTAURANT_ONE_WAY_SNACK;
-            case NAVIGATION_DRAWER_RESTAURANT_GRILL_CAFE:
+            case RESTAURANT_ID_GRILL_CAFE:
                 return API_RESTAURANT_GRILL_CAFE;
-            case NAVIGATION_DRAWER_RESTAURANT_CAMPUS_DOENER:
+            case RESTAURANT_ID_CAMPUS_DOENER:
                 return API_RESTAURANT_CAMPUS_DOENER;
             default:
                 return API_RESTAURANT_ACADEMICA;
