@@ -45,15 +45,16 @@
 
     <group
         android:id="@+id/drawer_main_group2"
-        android:checkableBehavior="single">
+        android:checkableBehavior="none">
         <item
             android:id="@+id/menu_main_drawer_settings"
+            android:checkable="false"
             android:icon="@drawable/ic_settings_white"
-            android:title="@string/activity_settings_name"/>
+            android:title="@string/activity_settings_title"/>
         <item
             android:id="@+id/menu_main_drawer_about"
+            android:checkable="false"
             android:icon="@drawable/ic_info_white"
             android:title="@string/activity_about_name"/>
-
     </group>
 </menu>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="prefGeneral"
+        android:title="@string/CategoryGeneral">
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/listPersonCategory"
+            android:entryValues="@array/listPersonCategoryValues"
+            android:key="prefPersonCategory"
+            android:summary="@string/PersonCategorySummary"
+            android:title="@string/PersonCategory"/>
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/listLifestyle"
+            android:entryValues="@array/listLifestyleValues"
+            android:key="prefLifestyle"
+            android:summary="@string/LifestyleSummary"
+            android:title="@string/Lifestyle"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="prefAllergensAdditives"
+        android:title="@string/CategoryAllergensAdditives">
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/empty_array"
+            android:entries="@array/listAllergens"
+            android:entryValues="@array/listAllergensValues"
+            android:key="prefAllergens"
+            android:summary="@string/AllergensSummary"
+            android:title="@string/Allergens"/>
+
+        <MultiSelectListPreference
+            android:defaultValue="@array/empty_array"
+            android:entries="@array/listAdditives"
+            android:entryValues="@array/listAdditivesValues"
+            android:key="prefAdditives"
+            android:summary="@string/AdditivesSummary"
+            android:title="@string/Additives"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

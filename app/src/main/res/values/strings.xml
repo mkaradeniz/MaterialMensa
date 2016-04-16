@@ -29,7 +29,7 @@
 
     // Settings Activity
 
-    <string name="activity_settings_name">Settings</string>
+    <string name="activity_settings_title">Settings</string>
     <string name="activity_settings_preference_lifestyle">Lifestyle</string>
     <string name="activity_settings_preference_user_type">Position</string>
 
@@ -40,4 +40,63 @@
     <string name="restaurant_closed_de">Zurzeit geschlossen</string>
     <string name="restaurant_closed_en">Currently closed</string>
 
+
+    <!-- AllergensAdditives & Additives -->
+    <!-- Allergens -->
+    <string name="gluten">Gluten [A1]</string>
+    <string name="crab">Crustaceans and/or products thereof [A2]</string>
+    <string name="egg">Eggs and/or products thereof [A3]</string>
+    <string name="fish">Fish [A4]</string>
+    <string name="peanuts">Peanuts and/or products thereof [A5]</string>
+    <string name="soy">Soy and/or products thereof [A6]</string>
+    <string name="milk">Milk and/or products thereof (including Lactose) [A7] </string>
+    <string name="nuts">Nuts and/or products thereof [A8]</string>
+    <string name="celery">Celery and/or products thereof [A9]</string>
+    <string name="mustard">Mustard and/or products thereof [A10]</string>
+    <string name="sesame">Sesame and/or products thereof [A11]</string>
+    <string name="sulphites">Sulphur dioxide and Sulphites [A12]</string>
+    <string name="lupins">Lupins and/or products thereof [A13]</string>
+    <string name="molluscs">Molluscs and/or products thereof [A14]</string>
+
+    <!-- Additives -->
+    <string name="dyes">Colorings [1]</string>
+    <string name="preservatives">Preservatives [2]</string>
+    <string name="antioxidant">Antioxidants [3]</string>
+    <string name="flavorenhancers">Flavor enhancers [4]</string>
+    <string name="phosphate">Phosphate [5]</string>
+    <string name="sulphurised">Sulphurised [6]</string>
+    <string name="waxed">Waxed [7]</string>
+    <string name="blackend">Blackend [8]</string>
+    <string name="sweeteners">Sweeteners [9]</string>
+    <string name="phenylalanine">Phenylalanine [10]</string>
+    <string name="taurine">Taurin [11]</string>
+    <string name="nitratesaltingmix">Nitrate Salting Mix [12]</string>
+    <string name="caffeine">Caffeine [13]</string>
+    <string name="quinine">Quinine [14]</string>
+    <string name="milkprotein">Milk protein [15]</string>
+
+    // Preferences
+    // Strings
+    <string name="Additives">Additives</string>
+    <string name="AdditivesSummary">Fuck gluten amiright?</string>
+    <string name="Allergens">Allergens</string>
+    <string name="AllergensSummary">Select you kryptonite.</string>
+    <string name="CategoryAllergensAdditives">Allergens &amp; Additives</string>
+    <string name="CategoryGeneral">General</string>
+    <string name="DefaultLifestyle">Set your Lifestyle in the preferences</string>
+    <string name="DefaultPersonCategory">Set your position in the preferences</string>
+    <string name="DontSet">Not set</string>
+    <string name="GlutenFree">Gluten Free</string>
+    <string name="Guest">Guest</string>
+    <string name="Lifestyle">Lifestyle</string>
+    <string name="LifestyleSummary">Whats your lifestyle?</string>
+    <string name="NoPreference">No Meal Preference</string>
+    <string name="PersonCategory">Position</string>
+    <string name="PersonCategorySummary">What would you say you do here?</string>
+    <string name="ReducedCalories">Reduced Calories</string>
+    <string name="ReducedFat">Reduced Fat</string>
+    <string name="Staff">Staff</string>
+    <string name="Student">Student</string>
+    <string name="Vegan">Vegan</string>
+    <string name="Vegetarian">Vegetarian</string>
 </resources>

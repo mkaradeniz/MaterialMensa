@@ -1,5 +1,6 @@
 package de.prttstft.materialmensa.ui.activities.main;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
@@ -22,6 +23,7 @@ import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenter;
 import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenterImplementation;
 import de.prttstft.materialmensa.ui.activities.main.view.MainView;
+import de.prttstft.materialmensa.ui.activities.settings.SettingsActivity;
 import de.prttstft.materialmensa.ui.fragments.main.MainFragmentPagerAdapter;
 
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ACADEMICA;
@@ -78,49 +80,48 @@ public class MainActivity extends AppCompatActivity implements MainView {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-                if (menuItem.getGroupId() == R.id.drawer_main_group2) {
-                    navigationView.getMenu().setGroupCheckable(R.id.drawer_main_group1, false, true);
-                    navigationView.getMenu().setGroupCheckable(R.id.drawer_main_group2, true, true);
-                } else {
-                    navigationView.getMenu().setGroupCheckable(R.id.drawer_main_group1, true, true);
-                    navigationView.getMenu().setGroupCheckable(R.id.drawer_main_group2, false, true);
-                }
 
-                menuItem.setChecked(true);
 
                 switch (menuItem.getItemId()) {
                     case R.id.menu_main_drawer_restaurant_mensa_academica_paderborn:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_ACADEMICA));
                         adapter.notifyDataSetChanged();
                         toolbar.setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
+                        menuItem.setChecked(true);
                         break;
                     case R.id.menu_main_drawer_restaurant_mensa_forum_paderborn:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_FORUM));
                         adapter.notifyDataSetChanged();
                         toolbar.setTitle(getString(R.string.restaurant_mensa_forum_paderborn));
+                        menuItem.setChecked(true);
                         break;
                     case R.id.menu_main_drawer_restaurant_cafete:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_CAFETE));
                         adapter.notifyDataSetChanged();
                         toolbar.setTitle(getString(R.string.restaurant_cafete));
+                        menuItem.setChecked(true);
                         break;
                     case R.id.menu_main_drawer_restaurant_mensula:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_MENSULA));
                         adapter.notifyDataSetChanged();
                         toolbar.setTitle(getString(R.string.restaurant_mensula));
+                        menuItem.setChecked(true);
                         break;
                     case R.id.menu_main_drawer_restaurant_one_way_snack:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_ONE_WAY_SNACK));
                         adapter.notifyDataSetChanged();
                         toolbar.setTitle(getString(R.string.restaurant_one_way_snack));
+                        menuItem.setChecked(true);
                         break;
                     case R.id.menu_main_drawer_restaurant_grill_cafe:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_GRILL_CAFE));
                         adapter.notifyDataSetChanged();
                         toolbar.setTitle(getString(R.string.restaurant_grill_cafe));
+                        menuItem.setChecked(true);
                         break;
                     case R.id.menu_main_drawer_settings:
-                        L("Settings.");
+                        Intent startSettingsActivityIntent = new Intent(getApplicationContext(), SettingsActivity.class);
+                        startActivity(startSettingsActivityIntent);
                         break;
                     case R.id.menu_main_drawer_about:
                         L("About.");

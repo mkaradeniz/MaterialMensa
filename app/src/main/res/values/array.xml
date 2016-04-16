@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    // Settings
+    <string-array name="empty_array">
+
+    </string-array>
+
+    <string-array name="listPersonCategory">
+        <item>@string/DontSet</item>
+        <item>@string/Student</item>
+        <item>@string/Staff</item>
+        <item>@string/Guest</item>
+    </string-array>
+
+    <string-array name="listPersonCategoryValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="listLifestyle">
+        <item>@string/NoPreference</item>
+        <item>@string/Vegetarian</item>
+        <item>@string/Vegan</item>
+    </string-array>
+
+    <string-array name="listLifestyleValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="listAllergens">
+        <item>@string/gluten</item>
+        <item>@string/crab</item>
+        <item>@string/egg</item>
+        <item>@string/fish</item>
+        <item>@string/peanuts</item>
+        <item>@string/soy</item>
+        <item>@string/milk</item>
+        <item>@string/nuts</item>
+        <item>@string/celery</item>
+        <item>@string/mustard</item>
+        <item>@string/sesame</item>
+        <item>@string/sulphites</item>
+        <item>@string/lupins</item>
+        <item>@string/molluscs</item>
+    </string-array>
+
+    <string-array name="listAllergensValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+    </string-array>
+
+    <string-array name="listAdditives">
+        <item>@string/dyes</item>
+        <item>@string/preservatives</item>
+        <item>@string/antioxidant</item>
+        <item>@string/flavorenhancers</item>
+        <item>@string/phosphate</item>
+        <item>@string/sulphurised</item>
+        <item>@string/waxed</item>
+        <item>@string/blackend</item>
+        <item>@string/sweeteners</item>
+        <item>@string/phenylalanine</item>
+        <item>@string/taurine</item>
+        <item>@string/nitratesaltingmix</item>
+        <item>@string/caffeine</item>
+        <item>@string/quinine</item>
+        <item>@string/milkprotein</item>
+    </string-array>
+
+    <string-array name="listAdditivesValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+    </string-array>
+</resources>
