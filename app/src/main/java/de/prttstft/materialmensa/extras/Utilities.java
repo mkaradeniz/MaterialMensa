@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.model.Meal;
@@ -126,6 +127,28 @@ public class Utilities {
             }
         } else {
             return null;
+        }
+    }
+
+    public static int getRandomEmoji() {
+        Random random = new Random();
+        int index = random.nextInt(6);
+
+        switch (index) {
+            case 0:
+                return R.drawable.emoji_1f622;
+            case 1:
+                return R.drawable.emoji_1f625;
+            case 2:
+                return R.drawable.emoji_1f627;
+            case 3:
+                return R.drawable.emoji_1f62d;
+            case 4:
+                return R.drawable.emoji_1f630;
+            case 5:
+                return R.drawable.emoji_1f64a;
+            default:
+                return R.drawable.emoji_1f622;
         }
     }
 }

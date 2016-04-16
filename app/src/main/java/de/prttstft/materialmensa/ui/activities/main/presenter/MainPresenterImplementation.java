@@ -5,6 +5,13 @@ import de.prttstft.materialmensa.ui.activities.main.interactor.MainInteractorImp
 import de.prttstft.materialmensa.ui.activities.main.listener.MainListener;
 import de.prttstft.materialmensa.ui.activities.main.view.MainView;
 
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ACADEMICA;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_CAFETE;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_FORUM;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_GRILL_CAFE;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_MENSULA;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ONE_WAY_SNACK;
+
 public class MainPresenterImplementation implements MainPresenter, MainListener {
     private MainInteractor interactor;
     private MainView view;
@@ -14,5 +21,24 @@ public class MainPresenterImplementation implements MainPresenter, MainListener 
         interactor = new MainInteractorImplementation();
     }
 
+    @Override
+    public void getRestaurantStatus() {
+        // There has to be a better way.
+        interactor.getRestaurantStatus(this, RESTAURANT_ID_ACADEMICA);
+        interactor.getRestaurantStatus(this, RESTAURANT_ID_FORUM);
+        interactor.getRestaurantStatus(this, RESTAURANT_ID_CAFETE);
+        interactor.getRestaurantStatus(this, RESTAURANT_ID_MENSULA);
+        interactor.getRestaurantStatus(this, RESTAURANT_ID_ONE_WAY_SNACK);
+        interactor.getRestaurantStatus(this, RESTAURANT_ID_GRILL_CAFE);
+    }
 
+    @Override
+    public void restaurantOpen(int restaurant) {
+        view.restaurantOpen(restaurant);
+    }
+
+    @Override
+    public void restaurantClosed(int restaurant) {
+        view.restaurantClosed(restaurant);
+    }
 }

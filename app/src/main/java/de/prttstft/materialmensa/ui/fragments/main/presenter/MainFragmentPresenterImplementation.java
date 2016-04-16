@@ -16,15 +16,6 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     }
 
     @Override
-    public void onCreate(int page, int restaurant) {
-        if (view != null) {
-            view.showProgress();
-        }
-
-        interactor.onCreate(this, page, restaurant);
-    }
-
-    @Override
     public void addMeal(Meal meal) {
         if (view != null) {
             view.addMeal(meal);
@@ -34,12 +25,15 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     }
 
     @Override
-    public void onComplete() {
-        view.hideProgress();
+    public void getMeals(int page, int restaurant) {
+        if (view != null) {
+            view.showProgress();
+        }
+        interactor.getMeals(this, page, restaurant);
     }
 
     @Override
-    public void restaurantClosed(int restaurant) {
-        view.restaurantClosed(restaurant);
+    public void onComplete() {
+        view.hideProgress();
     }
 }

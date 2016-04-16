@@ -7,11 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.ui.fragments.main.presenter.MainFragmentPresenter;
 import de.prttstft.materialmensa.ui.fragments.main.presenter.MainFragmentPresenterImplementation;
@@ -25,6 +27,7 @@ import static de.prttstft.materialmensa.extras.Constants.ARG_RESTAURANT;
 public class MainFragment extends Fragment implements MainFragmentView {
     @Bind(R.id.fragment_main_progress_container) RelativeLayout progressBar;
     @Bind(R.id.fragment_main_empty_container) RelativeLayout empty;
+    @Bind(R.id.fragment_main_empty_emoji) ImageView emptyEmoji;
     @Bind(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
     private MainFragmentAdapter adapter;
     private MainFragmentPresenter presenter;
@@ -52,7 +55,9 @@ public class MainFragment extends Fragment implements MainFragmentView {
 
         setUpRecyclerView(recyclerView);
 
-        presenter.onCreate(getArguments().getInt(ARG_PAGE), getArguments().getInt(ARG_RESTAURANT));
+        emptyEmoji.setImageResource(Utilities.getRandomEmoji());
+
+        presenter.getMeals(getArguments().getInt(ARG_PAGE), getArguments().getInt(ARG_RESTAURANT));
 
         return view;
     }
@@ -79,11 +84,6 @@ public class MainFragment extends Fragment implements MainFragmentView {
     @Override
     public void hideProgress() {
         progressBar.setVisibility(GONE);
-    }
-
-    @Override
-    public void restaurantClosed(int restaurant) {
-
     }
 
     @Override

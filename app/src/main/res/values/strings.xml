@@ -37,5 +37,7 @@
     <string name="price_string_fixed"/>
     <string name="price_string_single">%1$s%2$s€</string>
     <string name="price_string_weighted">Price per 100gr:\u0020</string>
+    <string name="restaurant_closed_de">Zurzeit geschlossen</string>
+    <string name="restaurant_closed_en">Currently closed</string>
 
 </resources>

@@ -1,18 +1,26 @@
 package de.prttstft.materialmensa.ui.activities.main;
 
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenter;
+import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenterImplementation;
 import de.prttstft.materialmensa.ui.activities.main.view.MainView;
 import de.prttstft.materialmensa.ui.fragments.main.MainFragmentPagerAdapter;
 
@@ -31,13 +39,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Bind(R.id.activity_main_tab_layout) TabLayout tabLayout;
     @Bind(R.id.activity_main_toolbar) Toolbar toolbar;
     @Bind(R.id.activity_main_view_pager) ViewPager viewPager;
-    MainFragmentPagerAdapter adapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_ACADEMICA);
+    private MainFragmentPagerAdapter adapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_ACADEMICA);
+    private MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        presenter = new MainPresenterImplementation(this);
 
         setUpToolbar();
 
@@ -62,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private void setupDrawerLayout() {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+        presenter.getRestaurantStatus();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -129,5 +141,29 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void restaurantClosed(int restaurant) {
+        ImageView circle = (ImageView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(0);
+        Drawable circleColor = circle.getDrawable();
+
+        if (circleColor instanceof ShapeDrawable) {
+            ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.color_negative));
+        } else if (circleColor instanceof GradientDrawable) {
+            ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.color_negative));
+        }
+    }
+
+    @Override
+    public void restaurantOpen(int restaurant) {
+        ImageView circle = (ImageView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(0);
+        Drawable circleColor = circle.getDrawable();
+
+        if (circleColor instanceof ShapeDrawable) {
+            ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.color_positive));
+        } else if (circleColor instanceof GradientDrawable) {
+            ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.color_positive));
+        }
     }
 }

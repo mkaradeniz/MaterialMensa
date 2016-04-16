@@ -35,7 +35,7 @@
         android:layout_below="@+id/drawer_main_header_username"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/lifestyle"
+        android:text="@string/activity_settings_preference_lifestyle"
         android:textAppearance="?android:textAppearanceSmall"
         android:textColor="@android:color/white"/>
 </RelativeLayout>

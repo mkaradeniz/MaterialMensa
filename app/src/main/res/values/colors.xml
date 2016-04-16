@@ -13,6 +13,7 @@
     <color name="progress_bar_background">#F8BBD0</color>
     <color name="color_negative">#F44336</color>
     <color name="color_positive">#4CAF50</color>
+    <color name="transparent">#00000000</color>
 
     <!-- Timeline Colors -->
     <color name="material_red">#F44336</color>

@@ -9,7 +9,5 @@ public interface MainFragmentView {
 
     void hideProgress();
 
-    void restaurantClosed(int restaurant);
-
     void showProgress();
 }
