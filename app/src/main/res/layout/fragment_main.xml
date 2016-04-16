@@ -14,7 +14,8 @@
     <RelativeLayout
         android:id="@+id/fragment_main_empty_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/fragment_main_empty_emoji"
@@ -33,6 +34,34 @@
             android:text="@string/restaurant_closed_sorry"
             android:textAppearance="?android:textAppearanceLarge"
             android:textColor="@color/progress_bar_background"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_main_filtered_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:colorBackground"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/fragment_main_filtered_emoji"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/placeholder"
+            android:src="@drawable/emoji_1f622"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_below="@+id/fragment_main_filtered_emoji"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/nothing_that_fits_your_lifestyle_sorry"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/progress_bar_background"/>
+
     </RelativeLayout>
 
     <RelativeLayout

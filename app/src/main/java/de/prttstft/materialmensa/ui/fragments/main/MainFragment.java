@@ -28,9 +28,11 @@ public class MainFragment extends Fragment implements MainFragmentView {
     @Bind(R.id.fragment_main_progress_container) RelativeLayout progressBar;
     @Bind(R.id.fragment_main_empty_container) RelativeLayout empty;
     @Bind(R.id.fragment_main_empty_emoji) ImageView emptyEmoji;
+    @Bind(R.id.fragment_main_filtered_container) RelativeLayout filtered;
+    @Bind(R.id.fragment_main_filtered_emoji) ImageView filteredEmoji;
     @Bind(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
     private MainFragmentAdapter adapter;
-    private MainFragmentPresenter presenter;
+    @SuppressWarnings("FieldCanBeLocal") private MainFragmentPresenter presenter;
 
     public static MainFragment newInstance(int page, int restaurant) {
         Bundle args = new Bundle();
@@ -56,6 +58,7 @@ public class MainFragment extends Fragment implements MainFragmentView {
         setUpRecyclerView(recyclerView);
 
         emptyEmoji.setImageResource(Utilities.getRandomEmoji());
+        filteredEmoji.setImageResource(Utilities.getRandomEmoji());
 
         presenter.getMeals(getArguments().getInt(ARG_PAGE), getArguments().getInt(ARG_RESTAURANT));
 
@@ -77,13 +80,39 @@ public class MainFragment extends Fragment implements MainFragmentView {
     }
 
     @Override
+    public void onComplete() {
+        if (adapter.getItemCount() == 0) {
+            showEmpty();
+        } else {
+            hideEmpty();
+            hideFiltered();
+        }
+        hideProgress();
+    }
+
+    @Override
     public void hideEmpty() {
         empty.setVisibility(GONE);
     }
 
     @Override
+    public void hideFiltered() {
+        filtered.setVisibility(GONE);
+    }
+
+    @Override
     public void hideProgress() {
         progressBar.setVisibility(GONE);
+    }
+
+    @Override
+    public void showEmpty() {
+        empty.setVisibility(VISIBLE);
+    }
+
+    @Override
+    public void showFiltered() {
+        filtered.setVisibility(VISIBLE);
     }
 
     @Override

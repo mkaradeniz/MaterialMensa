@@ -11,6 +11,7 @@
       <w>getopeningstatus</w>
       <w>hamm</w>
       <w>karadeniz</w>
+      <w>kryptonite</w>
       <w>lahmacun</w>
       <w>lippstadt</w>
       <w>maincourses</w>
@@ -20,6 +21,8 @@
       <w>pricetype</w>
       <w>prttstft</w>
       <w>sidedish</w>
+      <w>zurzeit</w>
+      <w>öffnet</w>
     </words>
   </dictionary>
 </component>

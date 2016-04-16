@@ -42,7 +42,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
 
         Glide.with(context).load(Utilities.getBadge(meal)).into(holder.picture);
         holder.text_primary.setText(meal.getNameEn());
-        holder.text_secondary.setText(meal.getPriceString(""));
+        holder.text_secondary.setText(meal.getPriceString());
     }
 
     @Override

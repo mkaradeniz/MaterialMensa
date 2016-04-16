@@ -6,7 +6,7 @@
     </string-array>
 
     <string-array name="listPersonCategory">
-        <item>@string/DontSet</item>
+        <item>@string/not_set</item>
         <item>@string/Student</item>
         <item>@string/Staff</item>
         <item>@string/Guest</item>

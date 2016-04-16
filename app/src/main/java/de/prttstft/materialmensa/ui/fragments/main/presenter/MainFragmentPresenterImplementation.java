@@ -19,8 +19,13 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     public void addMeal(Meal meal) {
         if (view != null) {
             view.addMeal(meal);
-            view.hideEmpty();
-            view.hideProgress();
+        }
+    }
+
+    @Override
+    public void filteredMeal() {
+        if (view != null) {
+            view.showFiltered();
         }
     }
 
@@ -34,6 +39,8 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
 
     @Override
     public void onComplete() {
-        view.hideProgress();
+        if (view != null) {
+            view.onComplete();
+        }
     }
 }

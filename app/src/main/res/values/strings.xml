@@ -78,14 +78,14 @@
     // Preferences
     // Strings
     <string name="Additives">Additives</string>
-    <string name="AdditivesSummary">Fuck gluten amiright?</string>
+    <string name="AdditivesSummary">Fuck phosphates amiright?</string>
     <string name="Allergens">Allergens</string>
-    <string name="AllergensSummary">Select you kryptonite.</string>
+    <string name="AllergensSummary">Select your kryptonite.</string>
     <string name="CategoryAllergensAdditives">Allergens &amp; Additives</string>
     <string name="CategoryGeneral">General</string>
     <string name="DefaultLifestyle">Set your Lifestyle in the preferences</string>
     <string name="DefaultPersonCategory">Set your position in the preferences</string>
-    <string name="DontSet">Not set</string>
+    <string name="not_set">Not set</string>
     <string name="GlutenFree">Gluten Free</string>
     <string name="Guest">Guest</string>
     <string name="Lifestyle">Lifestyle</string>
@@ -99,4 +99,11 @@
     <string name="Student">Student</string>
     <string name="Vegan">Vegan</string>
     <string name="Vegetarian">Vegetarian</string>
+    <string name="TabsSummary">Wanna look into the future?</string>
+    <string name="TabsTitle">Maximum Day Tabs</string>
+    <string name="key_pref_tabs">prefTabs</string>
+    <string name="sp_pref_lifestyle">prefLifestyle</string>
+    <string name="sp_pref_allergens">prefAllergens</string>
+    <string name="sp_pref_additives">prefAdditives</string>
+    <string name="nothing_that_fits_your_lifestyle_sorry">Nothing that fits your lifestyle. Sorry.</string>
 </resources>

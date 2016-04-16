@@ -1,10 +1,12 @@
 package de.prttstft.materialmensa.ui.activities.main;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
@@ -56,10 +58,13 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         setupDrawerLayout();
 
-        // SharedPref
-        /*if (tabCount > 5) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        int tabCount = Integer.valueOf(sharedPreferences.getString(getString(R.string.key_pref_tabs), "8"));
+
+        if (tabCount > 4) {
             tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        }*/
+        }
     }
 
     private void setUpToolbar() {

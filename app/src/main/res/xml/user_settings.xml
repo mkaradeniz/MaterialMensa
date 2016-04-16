@@ -4,11 +4,12 @@
     <PreferenceCategory
         android:key="prefGeneral"
         android:title="@string/CategoryGeneral">
+
         <ListPreference
             android:defaultValue="1"
             android:entries="@array/listPersonCategory"
             android:entryValues="@array/listPersonCategoryValues"
-            android:key="prefPersonCategory"
+            android:key="prefPosition"
             android:summary="@string/PersonCategorySummary"
             android:title="@string/PersonCategory"/>
 
@@ -19,6 +20,15 @@
             android:key="prefLifestyle"
             android:summary="@string/LifestyleSummary"
             android:title="@string/Lifestyle"/>
+
+        <EditTextPreference
+            android:defaultValue="8"
+            android:inputType="number"
+            android:key="@string/key_pref_tabs"
+            android:selectAllOnFocus="true"
+            android:summary="@string/TabsSummary"
+            android:title="@string/TabsTitle"/>
+
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -42,5 +52,4 @@
             android:title="@string/Additives"/>
 
     </PreferenceCategory>
-
 </PreferenceScreen>

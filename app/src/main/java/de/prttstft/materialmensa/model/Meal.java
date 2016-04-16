@@ -54,6 +54,7 @@ public class Meal {
     private String image;
     @SerializedName("thumbnail")
     private String thumbnail;
+    private String position;
 
 
     // Getters
@@ -134,39 +135,45 @@ public class Meal {
         return thumbnail;
     }
 
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
 
     // Public Methods
 
-    public String getPriceString(String user_type) {
+    public String getPriceString() {
         String priceGuests = round(getPriceGuests());
         String priceStaff = round(getPriceWorkers());
         String priceStudents = round(getPriceStudents());
 
-        switch (user_type) {
-            case USER_TYPE_STUDENT:
-                if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
-                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_weighted), priceStudents);
-                } else {
-                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_fixed), priceStudents);
-                }
-            case USER_TYPE_STAFF:
-                if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
-                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_weighted), priceStaff);
-                } else {
-                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_fixed), priceStaff);
-                }
-            case USER_TYPE_GUEST:
-                if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
-                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_weighted), priceGuests);
-                } else {
-                    return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_fixed), priceGuests);
-                }
-            default:
-                if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
-                    return getAppContext().getResources().getString(R.string.price_string_all, getAppContext().getString(R.string.price_string_weighted), priceStudents, priceStaff, priceGuests);
-                } else {
-                    return getAppContext().getResources().getString(R.string.price_string_all, getAppContext().getString(R.string.price_string_fixed), priceStudents, priceStaff, priceGuests);
-                }
+        if (position != null) {
+            switch (position) {
+                case USER_TYPE_STUDENT:
+                    if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
+                        return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_weighted), priceStudents);
+                    } else {
+                        return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_fixed), priceStudents);
+                    }
+                case USER_TYPE_STAFF:
+                    if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
+                        return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_weighted), priceStaff);
+                    } else {
+                        return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_fixed), priceStaff);
+                    }
+                case USER_TYPE_GUEST:
+                    if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
+                        return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_weighted), priceGuests);
+                    } else {
+                        return getAppContext().getResources().getString(R.string.price_string_single, getAppContext().getString(R.string.price_string_fixed), priceGuests);
+                    }
+            }
+        }
+
+        if (pricetype.equals(PRICE_TYPE_WEIGHTED)) {
+            return getAppContext().getResources().getString(R.string.price_string_all, getAppContext().getString(R.string.price_string_weighted), priceStudents, priceStaff, priceGuests);
+        } else {
+            return getAppContext().getResources().getString(R.string.price_string_all, getAppContext().getString(R.string.price_string_fixed), priceStudents, priceStaff, priceGuests);
         }
     }
 

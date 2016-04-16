@@ -68,4 +68,10 @@ public interface Constants {
         int RESTAURANT_ID_LIPPSTADT = 8;
         int RESTAURANT_ID_HOTSPOT = 9;
     }
+
+    interface PreferencesConstants {
+        String PREFERENCE_VALUE_LIFESTYLE_NOT_SET = "1";
+        String PREFERENCE_VALUE_LIFESTYLE_VEGETARIAN = "2";
+        String PREFERENCE_VALUE_LIFESTYLE_VEGAN = "3";
+    }
 }

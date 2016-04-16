@@ -109,3 +109,10 @@ public class MainInteractorImplementation implements MainInteractor {
     }
 }
 
+/*
+Currently closed
+Closes in X minutes
+Zurzeit geschlossen
+Opens at ??
+Öffnet um ??
+ */
