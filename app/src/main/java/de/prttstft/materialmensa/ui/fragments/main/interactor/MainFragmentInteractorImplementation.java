@@ -76,6 +76,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
         });
     }
 
+
     // Private Methods
 
     private Meal prepareMeal(Meal meal) {
@@ -110,8 +111,6 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
                 return API_RESTAURANT_ACADEMICA;
         }
     }
-
-    //position
 
     private int getOrderNumber(Meal meal) {
         switch (meal.getRestaurant()) {
