@@ -5,14 +5,14 @@
 
     </string-array>
 
-    <string-array name="listPersonCategory">
+    <string-array name="listRole">
         <item>@string/not_set</item>
         <item>@string/Student</item>
         <item>@string/Staff</item>
         <item>@string/Guest</item>
     </string-array>
 
-    <string-array name="listPersonCategoryValues">
+    <string-array name="listRoleValues">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -69,7 +69,7 @@
         <item>@string/dyes</item>
         <item>@string/preservatives</item>
         <item>@string/antioxidant</item>
-        <item>@string/flavorenhancers</item>
+        <item>@string/flavor_enhancers</item>
         <item>@string/phosphate</item>
         <item>@string/sulphurised</item>
         <item>@string/waxed</item>
@@ -77,10 +77,10 @@
         <item>@string/sweeteners</item>
         <item>@string/phenylalanine</item>
         <item>@string/taurine</item>
-        <item>@string/nitratesaltingmix</item>
+        <item>@string/nitrate_salting_mix</item>
         <item>@string/caffeine</item>
         <item>@string/quinine</item>
-        <item>@string/milkprotein</item>
+        <item>@string/milk_protein</item>
     </string-array>
 
     <string-array name="listAdditivesValues">

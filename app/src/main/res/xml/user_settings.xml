@@ -7,11 +7,11 @@
 
         <ListPreference
             android:defaultValue="1"
-            android:entries="@array/listPersonCategory"
-            android:entryValues="@array/listPersonCategoryValues"
-            android:key="prefPosition"
-            android:summary="@string/PersonCategorySummary"
-            android:title="@string/PersonCategory"/>
+            android:entries="@array/listRole"
+            android:entryValues="@array/listRoleValues"
+            android:key="prefRole"
+            android:summary="@string/RoleSummary"
+            android:title="@string/Role"/>
 
         <ListPreference
             android:defaultValue="1"

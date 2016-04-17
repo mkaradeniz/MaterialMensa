@@ -34,12 +34,13 @@
     <string name="activity_settings_preference_user_type">Position</string>
 
     <string name="price_string_all">%1$s%2$s€ / %3$s€ / %4$s€</string>
+    <string name="price_string_all_weighted">Price per 100gr:\u0020</string>
     <string name="price_string_fixed"/>
-    <string name="price_string_single">%1$s%2$s€</string>
+    <string name="price_string_single">%1$s€%2$s</string>
+    <string name="price_string_single_weighted">/per 100gr</string>
     <string name="price_string_weighted">Price per 100gr:\u0020</string>
     <string name="restaurant_closed_de">Zurzeit geschlossen</string>
     <string name="restaurant_closed_en">Currently closed</string>
-
 
     <!-- AllergensAdditives & Additives -->
     <!-- Allergens -->
@@ -62,18 +63,18 @@
     <string name="dyes">Colorings [1]</string>
     <string name="preservatives">Preservatives [2]</string>
     <string name="antioxidant">Antioxidants [3]</string>
-    <string name="flavorenhancers">Flavor enhancers [4]</string>
+    <string name="flavor_enhancers">Flavor enhancers [4]</string>
     <string name="phosphate">Phosphate [5]</string>
     <string name="sulphurised">Sulphurised [6]</string>
     <string name="waxed">Waxed [7]</string>
     <string name="blackend">Blackend [8]</string>
     <string name="sweeteners">Sweeteners [9]</string>
     <string name="phenylalanine">Phenylalanine [10]</string>
-    <string name="taurine">Taurin [11]</string>
-    <string name="nitratesaltingmix">Nitrate Salting Mix [12]</string>
+    <string name="taurine">Taurine [11]</string>
+    <string name="nitrate_salting_mix">Nitrate Salting Mix [12]</string>
     <string name="caffeine">Caffeine [13]</string>
     <string name="quinine">Quinine [14]</string>
-    <string name="milkprotein">Milk protein [15]</string>
+    <string name="milk_protein">Milk protein [15]</string>
 
     // Preferences
     // Strings
@@ -91,8 +92,8 @@
     <string name="Lifestyle">Lifestyle</string>
     <string name="LifestyleSummary">Whats your lifestyle?</string>
     <string name="NoPreference">No Meal Preference</string>
-    <string name="PersonCategory">Position</string>
-    <string name="PersonCategorySummary">What would you say you do here?</string>
+    <string name="Role">Position</string>
+    <string name="RoleSummary">What would you say you do here?</string>
     <string name="ReducedCalories">Reduced Calories</string>
     <string name="ReducedFat">Reduced Fat</string>
     <string name="Staff">Staff</string>
