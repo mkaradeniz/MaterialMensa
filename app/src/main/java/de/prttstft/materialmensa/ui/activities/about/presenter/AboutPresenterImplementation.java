@@ -1,6 +1,6 @@
 package de.prttstft.materialmensa.ui.activities.about.presenter;
 
-import de.prttstft.materialmensa.model.Library;
+import de.prttstft.materialmensa.items.LibraryItem;
 import de.prttstft.materialmensa.ui.activities.about.interactor.AboutInteractor;
 import de.prttstft.materialmensa.ui.activities.about.interactor.AboutInteractorImplementation;
 import de.prttstft.materialmensa.ui.activities.about.listener.AboutListener;
@@ -21,7 +21,7 @@ public class AboutPresenterImplementation implements AboutPresenter, AboutListen
     }
 
     @Override
-    public void addLibrary(Library library) {
-        view.addLibrary(library);
+    public void addLibrary(LibraryItem libraryItem) {
+        view.addLibrary(libraryItem);
     }
 }

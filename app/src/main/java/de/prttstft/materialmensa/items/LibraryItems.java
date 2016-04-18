@@ -3,29 +3,27 @@ package de.prttstft.materialmensa.items;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.prttstft.materialmensa.model.Library;
-
 public class LibraryItems {
-    static public List<Library> getLibs() {
-        List<Library> libraries = new ArrayList<>();
+    static public List<LibraryItem> getLibs() {
+        List<LibraryItem> libraries = new ArrayList<>();
 
-        Library testLibrary1 = new Library("Author", "Description", "License", "Name");
-        libraries.add(testLibrary1);
+        LibraryItem testLibraryItem1 = new LibraryItem("Author", "Description", "License", "Name");
+        libraries.add(testLibraryItem1);
 
-        Library testLibrary2 = new Library("Author", "Description", "License", "Name");
-        libraries.add(testLibrary2);
+        LibraryItem testLibraryItem2 = new LibraryItem("Author", "Description", "License", "Name");
+        libraries.add(testLibraryItem2);
 
-        Library testLibrary3 = new Library("Author", "Description", "License", "Name");
-        libraries.add(testLibrary3);
+        LibraryItem testLibraryItem3 = new LibraryItem("Author", "Description", "License", "Name");
+        libraries.add(testLibraryItem3);
 
-        Library testLibrary4 = new Library("Author", "Description", "License", "Name");
-        libraries.add(testLibrary4);
+        LibraryItem testLibraryItem4 = new LibraryItem("Author", "Description", "License", "Name");
+        libraries.add(testLibraryItem4);
 
-        Library testLibrary5 = new Library("Author", "Description", "License", "Name");
-        libraries.add(testLibrary5);
+        LibraryItem testLibraryItem5 = new LibraryItem("Author", "Description", "License", "Name");
+        libraries.add(testLibraryItem5);
 
-        Library testLibrary6 = new Library("Author", "Description", "License", "Name");
-        libraries.add(testLibrary6);
+        LibraryItem testLibraryItem6 = new LibraryItem("Author", "Description", "License", "Name");
+        libraries.add(testLibraryItem6);
 
         return libraries;
     }

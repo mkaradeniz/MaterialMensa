@@ -11,7 +11,7 @@ import com.mikepenz.fastadapter.adapters.FastItemAdapter;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
-import de.prttstft.materialmensa.model.Library;
+import de.prttstft.materialmensa.items.LibraryItem;
 import de.prttstft.materialmensa.ui.activities.about.presenter.AboutPresenter;
 import de.prttstft.materialmensa.ui.activities.about.presenter.AboutPresenterImplementation;
 import de.prttstft.materialmensa.ui.activities.about.view.AboutView;
@@ -50,8 +50,8 @@ public class AboutActivity extends AppCompatActivity implements AboutView {
     }
 
     @Override
-    public void addLibrary(Library library) {
+    public void addLibrary(LibraryItem libraryItem) {
         //noinspection unchecked
-        adapter.add(library);
+        adapter.add(libraryItem);
     }
 }

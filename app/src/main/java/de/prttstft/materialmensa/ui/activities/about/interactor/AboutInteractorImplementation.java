@@ -1,7 +1,7 @@
 package de.prttstft.materialmensa.ui.activities.about.interactor;
 
+import de.prttstft.materialmensa.items.LibraryItem;
 import de.prttstft.materialmensa.items.LibraryItems;
-import de.prttstft.materialmensa.model.Library;
 import de.prttstft.materialmensa.ui.activities.about.listener.AboutListener;
 import rx.Observable;
 import rx.Observer;
@@ -14,11 +14,11 @@ public class AboutInteractorImplementation implements AboutInteractor {
 
     @Override
     public void getLibraries(final AboutListener listener) {
-        Observable<Library> observable = Observable.from(LibraryItems.getLibs())
+        Observable<LibraryItem> observable = Observable.from(LibraryItems.getLibs())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
 
-        observable.subscribe(new Observer<Library>() {
+        observable.subscribe(new Observer<LibraryItem>() {
             @Override
             public void onCompleted() {
 
@@ -30,8 +30,8 @@ public class AboutInteractorImplementation implements AboutInteractor {
             }
 
             @Override
-            public void onNext(Library library) {
-                listener.addLibrary(library);
+            public void onNext(LibraryItem libraryItem) {
+                listener.addLibrary(libraryItem);
             }
         });
     }

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="activity_about_library_id" type="id"/>
+    <item name="fast_adapter_item_library" type="id"/>
 </resources>
