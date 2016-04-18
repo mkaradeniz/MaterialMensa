@@ -17,7 +17,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -67,6 +69,13 @@ public class MainActivity extends AppCompatActivity implements MainView {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        presenter.getRestaurantStatus();
+    }
+
     private void setUpToolbar() {
         setSupportActionBar(toolbar);
 
@@ -81,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        presenter.getRestaurantStatus();
+
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -150,26 +159,59 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     @Override
-    public void restaurantClosed(int restaurant) {
-        ImageView circle = (ImageView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(0);
-        Drawable circleColor = circle.getDrawable();
+    public void restaurantClosed(int restaurant, String openingTime) {
 
-        if (circleColor instanceof ShapeDrawable) {
-            ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.color_negative));
-        } else if (circleColor instanceof GradientDrawable) {
-            ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.color_negative));
+        ImageView circle = (ImageView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(0);
+        TextView statusTextView = (TextView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(1);
+
+        if (openingTime != null) {
+            statusTextView.setText(openingTime);
+            statusTextView.setTextColor(ContextCompat.getColor(this, R.color.color_negative));
+
+            circle.setVisibility(View.GONE);
+            statusTextView.setVisibility(View.VISIBLE);
+        } else {
+            Drawable circleColor = circle.getDrawable();
+
+            if (circleColor instanceof ShapeDrawable) {
+                ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.color_negative));
+
+                circle.setVisibility(View.VISIBLE);
+                statusTextView.setVisibility(View.GONE);
+            } else if (circleColor instanceof GradientDrawable) {
+                ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.color_negative));
+
+                circle.setVisibility(View.VISIBLE);
+                statusTextView.setVisibility(View.GONE);
+            }
         }
     }
 
     @Override
-    public void restaurantOpen(int restaurant) {
+    public void restaurantOpen(int restaurant, String closingTime) {
         ImageView circle = (ImageView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(0);
-        Drawable circleColor = circle.getDrawable();
+        TextView statusTextView = (TextView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(1);
 
-        if (circleColor instanceof ShapeDrawable) {
-            ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.color_positive));
-        } else if (circleColor instanceof GradientDrawable) {
-            ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.color_positive));
+        if (closingTime != null) {
+            statusTextView.setText(closingTime);
+            statusTextView.setTextColor(ContextCompat.getColor(this, R.color.color_positive));
+
+            circle.setVisibility(View.GONE);
+            statusTextView.setVisibility(View.VISIBLE);
+        } else {
+            Drawable circleColor = circle.getDrawable();
+
+            if (circleColor instanceof ShapeDrawable) {
+                ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.color_positive));
+
+                circle.setVisibility(View.VISIBLE);
+                statusTextView.setVisibility(View.GONE);
+            } else if (circleColor instanceof GradientDrawable) {
+                ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.color_positive));
+
+                circle.setVisibility(View.VISIBLE);
+                statusTextView.setVisibility(View.GONE);
+            }
         }
     }
 }

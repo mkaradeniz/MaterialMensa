@@ -126,4 +126,6 @@
     <string name="item_meal_price_string_single">%1$s€%2$s</string>
     <string name="item_meal_price_string_single_weighted">/per 100gr</string>
     <string name="item_meal_price_string_weighted">Price per 100gr:\u0020</string>
+    <string name="drawer_main_restaurant_status_closing_time">%1$s:%2$sh</string>
+    <string name="drawer_main_restaurant_status_opening_time">at %1$s:%2$s</string>
 </resources>

@@ -21,8 +21,7 @@
             android:id="@+id/menu_main_drawer_restaurant_cafete"
             android:icon="@drawable/ic_cafete"
             android:title="@string/restaurant_cafete"
-            app:actionLayout="@layout/drawer_main_restaurant_status"
-            app:showAsAction="ifRoom"/>
+            app:actionLayout="@layout/drawer_main_restaurant_status"/>
 
         <item
             android:id="@+id/menu_main_drawer_restaurant_mensula"

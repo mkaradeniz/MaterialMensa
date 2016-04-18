@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_main_header"
     android:layout_width="match_parent"
     android:layout_height="172dp"
-    android:background="@drawable/drawer_background_temp"
+    android:background="@drawable/drawer_background_blurred"
     android:orientation="vertical"
     android:paddingTop="@dimen/activity_horizontal_margin">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/drawer_main_header_avatar"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:contentDescription="@string/placeholder"
-        android:elevation="10dp"
-        tools:src="@drawable/drawer_background_temp"/>
+        android:elevation="6dp"
+        android:src="@color/material_blue"/>
 
     <TextView
-        android:id="@+id/drawer_main_header_username"
+        android:id="@+id/drawer_main_header_role"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/drawer_main_header_avatar"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/app_name"
-        android:textAppearance="?android:textAppearanceMedium"/>
+        android:text="Student"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/text_primary"/>
 
     <TextView
-        android:id="@+id/drawer_main_header_email"
+        android:id="@+id/drawer_main_header_lifestyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/drawer_main_header_username"
+        android:layout_below="@+id/drawer_main_header_role"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="@string/activity_settings_preference_lifestyle"
+        android:text="Vegetarian"
         android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="@android:color/white"/>
+        android:textColor="@color/text_secondary"/>
 </RelativeLayout>

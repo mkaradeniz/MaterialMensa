@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="10dp"
+    android:layout_width="wrap_content"
     android:layout_height="48dp">
 
     <ImageView
-        android:id="@+id/drawer_main_restaurant_status"
+        android:id="@+id/drawer_main_restaurant_status_circle"
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:layout_gravity="center"
         android:contentDescription="@string/activity_main_drawer_restaurant_status_description"
-        android:src="@drawable/circle"/>
+        android:src="@drawable/circle"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/drawer_main_restaurant_status_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="6dp"
+        android:layout_toEndOf="@+id/drawer_main_restaurant_status_circle"
+        android:text="02:56"
+        android:textColor="@color/color_negative"
+        android:textSize="12sp"
+        android:visibility="gone"/>
 </android.support.v7.widget.LinearLayoutCompat>

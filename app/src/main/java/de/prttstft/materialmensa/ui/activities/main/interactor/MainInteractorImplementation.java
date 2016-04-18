@@ -1,5 +1,10 @@
 package de.prttstft.materialmensa.ui.activities.main.interactor;
 
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.model.Restaurant;
 import de.prttstft.materialmensa.network.MensaAPI;
 import de.prttstft.materialmensa.ui.activities.main.listener.MainListener;
@@ -8,6 +13,7 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+import static de.prttstft.materialmensa.MyApplication.getAppContext;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ACADEMICA;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAFETE;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAMPUS_DOENER;
@@ -43,7 +49,7 @@ public class MainInteractorImplementation implements MainInteractor {
 
             @Override
             public void onError(Throwable e) {
-                L("Error: " + e);
+                L("Error getting restaurant status: " + e);
             }
 
             @Override
@@ -76,45 +82,107 @@ public class MainInteractorImplementation implements MainInteractor {
 
     private void sendRestaurantStatus(MainListener listener, Restaurant restaurant) {
         if (restaurant.getMensaAcademicaPaderborn() != null) {
-            if (restaurantOpen(restaurant.getMensaAcademicaPaderborn().getStatus())) {
-                listener.restaurantOpen(RESTAURANT_ID_ACADEMICA);
+            String status = restaurant.getMensaAcademicaPaderborn().getStatus();
+
+            if (restaurantOpen(status)) {
+                listener.restaurantOpen(RESTAURANT_ID_ACADEMICA, getClosingTime(status));
             } else {
-                listener.restaurantClosed(RESTAURANT_ID_ACADEMICA);
+                listener.restaurantClosed(RESTAURANT_ID_ACADEMICA, getOpeningTime(status));
             }
         } else if (restaurant.getMensaForumPaderborn() != null) {
-            if (restaurantOpen(restaurant.getMensaForumPaderborn().getStatus())) {
-                listener.restaurantOpen(RESTAURANT_ID_FORUM);
+
+            String status = restaurant.getMensaForumPaderborn().getStatus();
+            if (restaurantOpen(status)) {
+                listener.restaurantOpen(RESTAURANT_ID_FORUM, getClosingTime(status));
             } else {
-                listener.restaurantClosed(RESTAURANT_ID_FORUM);
+                listener.restaurantClosed(RESTAURANT_ID_FORUM, getOpeningTime(status));
             }
         } else if (restaurant.getCafete() != null) {
-            if (restaurantOpen(restaurant.getCafete().getStatus())) {
-                listener.restaurantOpen(RESTAURANT_ID_CAFETE);
+            String status = restaurant.getCafete().getStatus();
+
+            if (restaurantOpen(status)) {
+                listener.restaurantOpen(RESTAURANT_ID_CAFETE, getClosingTime(status));
             } else {
-                listener.restaurantClosed(RESTAURANT_ID_CAFETE);
+                listener.restaurantClosed(RESTAURANT_ID_CAFETE, getOpeningTime(status));
             }
         } else if (restaurant.getMensula() != null) {
-            if (restaurantOpen(restaurant.getMensula().getStatus())) {
-                listener.restaurantOpen(RESTAURANT_ID_MENSULA);
+            String status = restaurant.getMensula().getStatus();
+
+            if (restaurantOpen(status)) {
+                listener.restaurantOpen(RESTAURANT_ID_MENSULA, getClosingTime(status));
             } else {
-                listener.restaurantClosed(RESTAURANT_ID_MENSULA);
+                listener.restaurantClosed(RESTAURANT_ID_MENSULA, getOpeningTime(status));
             }
         } else if (restaurant.getOneWaySnack() != null) {
-            if (restaurantOpen(restaurant.getOneWaySnack().getStatus())) {
-                listener.restaurantOpen(RESTAURANT_ID_ONE_WAY_SNACK);
+            String status = restaurant.getOneWaySnack().getStatus();
+
+            if (restaurantOpen(status)) {
+                listener.restaurantOpen(RESTAURANT_ID_ONE_WAY_SNACK, getClosingTime(status));
             } else {
-                listener.restaurantClosed(RESTAURANT_ID_ONE_WAY_SNACK);
+                listener.restaurantClosed(RESTAURANT_ID_ONE_WAY_SNACK, getOpeningTime(status));
             }
         } else if (restaurant.getGrillCafe() != null) {
-            if (restaurantOpen(restaurant.getGrillCafe().getStatus())) {
-                listener.restaurantOpen(RESTAURANT_ID_GRILL_CAFE);
+            String status = restaurant.getGrillCafe().getStatus();
+
+            if (restaurantOpen(status)) {
+                listener.restaurantOpen(RESTAURANT_ID_GRILL_CAFE, getClosingTime(status));
             } else {
-                listener.restaurantClosed(RESTAURANT_ID_GRILL_CAFE);
+                listener.restaurantClosed(RESTAURANT_ID_GRILL_CAFE, getOpeningTime(status));
             }
         }
     }
 
     private boolean restaurantOpen(String status) {
         return !(status.startsWith(RESTAURANT_STATUS_CLOSED) || status.startsWith(RESTAURANT_STATUS_CLOSED_DE) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS_DE));
+    }
+
+    private String getClosingTime(String status) {
+        Pattern pattern = Pattern.compile("(\\D*)(\\d{1,2})(\\D*)(\\d{0,2})(\\D*)");
+        Matcher matcher = pattern.matcher(status);
+
+        if (matcher.find()) {
+            int hours = 0;
+            int minutes;
+
+            if (matcher.group(4).equals("")) {
+                try {
+                    minutes = Integer.parseInt(matcher.group(2));
+                    return getAppContext().getString(R.string.drawer_main_restaurant_status_closing_time, addLeadingZero(hours), addLeadingZero(minutes));
+                } catch (NumberFormatException ignored) {
+                }
+            } else {
+                try {
+                    hours = Integer.parseInt(matcher.group(2));
+                    minutes = Integer.parseInt(matcher.group(4));
+                    return getAppContext().getString(R.string.drawer_main_restaurant_status_closing_time, addLeadingZero(hours), addLeadingZero(minutes));
+                } catch (NumberFormatException ignored) {
+
+                }
+            }
+        }
+        return null;
+    }
+
+    private String getOpeningTime(String status) {
+        Pattern pattern = Pattern.compile("(\\D*)(\\d{1,2})(\\D*)(\\d{0,2})(\\D*)");
+        Matcher matcher = pattern.matcher(status);
+
+        if (matcher.find()) {
+            int hours;
+            int minutes;
+
+            try {
+                hours = Integer.parseInt(matcher.group(2));
+                minutes = Integer.parseInt(matcher.group(4));
+                return getAppContext().getString(R.string.drawer_main_restaurant_status_opening_time, addLeadingZero(hours), addLeadingZero(minutes));
+            } catch (NumberFormatException ignored) {
+
+            }
+        }
+        return null;
+    }
+
+    private String addLeadingZero(int time) {
+        return String.format(Locale.GERMAN, "%02d", time);
     }
 }

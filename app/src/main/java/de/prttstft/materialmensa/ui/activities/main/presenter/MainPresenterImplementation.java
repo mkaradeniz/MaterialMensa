@@ -33,12 +33,12 @@ public class MainPresenterImplementation implements MainPresenter, MainListener 
     }
 
     @Override
-    public void restaurantOpen(int restaurant) {
-        view.restaurantOpen(restaurant);
+    public void restaurantOpen(int restaurant, String closingTime) {
+        view.restaurantOpen(restaurant, closingTime);
     }
 
     @Override
-    public void restaurantClosed(int restaurant) {
-        view.restaurantClosed(restaurant);
+    public void restaurantClosed(int restaurant, String openingTime) {
+        view.restaurantClosed(restaurant, openingTime);
     }
 }
