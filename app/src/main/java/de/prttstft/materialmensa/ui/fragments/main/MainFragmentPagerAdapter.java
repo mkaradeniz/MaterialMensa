@@ -14,7 +14,7 @@ import de.prttstft.materialmensa.extras.Utilities;
 
 public class MainFragmentPagerAdapter extends FragmentStatePagerAdapter {
     SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.getAppContext());
-    final int PAGE_COUNT = Integer.valueOf(sharedPreferences.getString(MyApplication.getAppContext().getString(R.string.key_pref_tabs), "8"));
+    final int PAGE_COUNT = Integer.valueOf(sharedPreferences.getString(MyApplication.getAppContext().getString(R.string.activity_settings_preferences_tabs_key), "8"));
 
     private int restaurant;
 

@@ -21,10 +21,11 @@ import de.prttstft.materialmensa.ui.fragments.main.view.MainFragmentView;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
-import static de.prttstft.materialmensa.extras.Constants.ARG_PAGE;
-import static de.prttstft.materialmensa.extras.Constants.ARG_RESTAURANT;
 
 public class MainFragment extends Fragment implements MainFragmentView {
+    public static final String ARG_PAGE = "ARG_PAGE";
+    public static final String ARG_RESTAURANT = "ARG_RESTAURANT";
+
     @Bind(R.id.fragment_main_progress_container) RelativeLayout progressBar;
     @Bind(R.id.fragment_main_empty_container) RelativeLayout empty;
     @Bind(R.id.fragment_main_empty_emoji) ImageView emptyEmoji;

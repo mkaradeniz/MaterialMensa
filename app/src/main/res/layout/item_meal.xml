@@ -9,7 +9,7 @@
     android:gravity="center_vertical">
 
     <TextView
-        android:id="@+id/item_restaurant_meal_text_primary"
+        android:id="@+id/item_restaurant_meal_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -18,28 +18,28 @@
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:ellipsize="end"
         android:maxLines="2"
-        android:text="@string/placeholder_meal_text_primary"
+        android:text="@string/item_meal_name_placeholder"
         android:textAppearance="?android:textAppearanceSmall"
         android:textColor="@color/text_primary"/>
 
     <TextView
-        android:id="@+id/item_restaurant_meal_text_secondary"
+        android:id="@+id/item_restaurant_meal_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/item_restaurant_meal_text_primary"
+        android:layout_below="@+id/item_restaurant_meal_name"
         android:layout_marginEnd="@dimen/activity_vertical_margin"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="@string/placeholder_price"
+        android:text="@string/item_meal_price_placeholder"
         android:textAppearance="?android:textAppearanceSmall"
         android:textColor="@color/text_secondary"/>
 
     <ImageView
-        android:id="@+id/item_restaurant_icon"
+        android:id="@+id/item_restaurant_badge"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:contentDescription="@string/badge"/>
+        android:contentDescription="@string/item_meal_badge_description"/>
 </RelativeLayout>

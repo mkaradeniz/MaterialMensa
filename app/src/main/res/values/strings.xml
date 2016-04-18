@@ -1,17 +1,15 @@
 <resources>
-    // General
+    <!-- General -->
 
     <string name="app_name">MaterialMensa</string>
-    <string name="empty_string"/>
-
     <string name="placeholder">placeholder</string>
 
-    // Restaurants
+
+    <!-- Restaurants -->
 
     <string name="restaurant_bistro_hotspot">Bistro Hotspot</string>
     <string name="restaurant_cafete">Caféte</string>
     <string name="restaurant_campus_doener">Campus Döner</string>
-    <string name="restaurant_closed_sorry">Restaurant closed. Sorry.</string>
     <string name="restaurant_grill_cafe">Grill | Café</string>
     <string name="restaurant_mensa_academica_paderborn">Mensa Academica</string>
     <string name="restaurant_mensa_forum_paderborn">Mensa Forum</string>
@@ -21,104 +19,111 @@
     <string name="restaurant_one_way_snack">One Way Snack</string>
 
 
-    // Activities
+    <!-- Errors -->
 
-    // About Activity
+    <string name="error_all_meals_filtered">Nothing that fits your lifestyle. Sorry.</string>
+    <string name="error_restaurant_closed">Restaurant closed. Sorry.</string>
 
-    <string name="activity_about_name">About</string>
 
-    // Settings Activity
+    <!-- Activities -->
+
+    <!-- About Activity -->
+
+    <string name="activity_about_attributions">Attributions</string>
+    <string name="activity_about_button_git_hub">GitHub</string>
+    <string name="activity_about_button_rate">Rate</string>
+    <string name="activity_about_button_wish_list">Wish List</string>
+    <string name="activity_about_credits">Max Karadeniz\n prttstft@gmail.com</string>
+    <string name="activity_about_title">About</string>
+    <string name="activity_about_version">Version 0.1 (001)</string>
+    <string name="activity_main_drawer_restaurant_status_description">Restaurant Status</string>
+
+    <string name="item_attributions_text_author_placeholder">Author</string>
+    <string name="item_attributions_text_description_placeholder">Lorem ipsum dolor sit amet.</string>
+    <string name="item_attributions_text_license_placeholder">License</string>
+    <string name="item_attributions_text_name_placeholder">Library</string>
+
+
+    <!--  Settings Activity -->
 
     <string name="activity_settings_title">Settings</string>
+    <string name="activity_settings_default_lifestyle">Set your Lifestyle in the preferences</string>
+    <string name="activity_settings_default_role">Set your position in the preferences</string>
+
+    <!-- Preferences -->
+
+    <string name="activity_settings_preference_additives">Additives</string>
+    <string name="activity_settings_preference_additives_summary">Who cares for nitrate salting mix amiright?</string>
+    <string name="activity_settings_preference_allergens">Allergens</string>
+    <string name="activity_settings_preference_allergens_summary">Select your personal kryptonite.</string>
+    <string name="activity_settings_preference_category_allergens_additives">Allergens &amp; Additives</string>
+    <string name="activity_settings_preference_category_general">General</string>
     <string name="activity_settings_preference_lifestyle">Lifestyle</string>
+    <string name="activity_settings_preference_not_set">Not set</string>
     <string name="activity_settings_preference_user_type">Position</string>
-
-    <string name="price_string_all">%1$s%2$s€ / %3$s€ / %4$s€</string>
-    <string name="price_string_all_weighted">Price per 100gr:\u0020</string>
-    <string name="price_string_fixed"/>
-    <string name="price_string_single">%1$s€%2$s</string>
-    <string name="price_string_single_weighted">/per 100gr</string>
-    <string name="price_string_weighted">Price per 100gr:\u0020</string>
-    <string name="restaurant_closed_de">Zurzeit geschlossen</string>
-    <string name="restaurant_closed_en">Currently closed</string>
-
-    <!-- AllergensAdditives & Additives -->
-    <!-- Allergens -->
-    <string name="gluten">Gluten [A1]</string>
-    <string name="crab">Crustaceans and/or products thereof [A2]</string>
-    <string name="egg">Eggs and/or products thereof [A3]</string>
-    <string name="fish">Fish [A4]</string>
-    <string name="peanuts">Peanuts and/or products thereof [A5]</string>
-    <string name="soy">Soy and/or products thereof [A6]</string>
-    <string name="milk">Milk and/or products thereof (including Lactose) [A7] </string>
-    <string name="nuts">Nuts and/or products thereof [A8]</string>
-    <string name="celery">Celery and/or products thereof [A9]</string>
-    <string name="mustard">Mustard and/or products thereof [A10]</string>
-    <string name="sesame">Sesame and/or products thereof [A11]</string>
-    <string name="sulphites">Sulphur dioxide and Sulphites [A12]</string>
-    <string name="lupins">Lupins and/or products thereof [A13]</string>
-    <string name="molluscs">Molluscs and/or products thereof [A14]</string>
+    <string name="activity_settings_preferences_additives_key">prefAdditives</string>
+    <string name="activity_settings_preferences_allergens_key">prefAllergens</string>
+    <string name="activity_settings_preferences_lifestyle">Lifestyle</string>
+    <string name="activity_settings_preferences_lifestyle_key">prefLifestyle</string>
+    <string name="activity_settings_preferences_lifestyle_not_set">Super Meat Girl</string>
+    <string name="activity_settings_preferences_lifestyle_summary">Whats your lifestyle?</string>
+    <string name="activity_settings_preferences_lifestyle_vegan">Vegan McGegan</string>
+    <string name="activity_settings_preferences_lifestyle_vegetarian">Vegetarian Stallion</string>
+    <string name="activity_settings_preferences_role">Role</string>
+    <string name="activity_settings_preferences_role_guest">Guest</string>
+    <string name="activity_settings_preferences_role_key">prefRole</string>
+    <string name="activity_settings_preferences_role_student">Student</string>
+    <string name="activity_settings_preferences_role_summary">What would you say you do here?</string>
+    <string name="activity_settings_preferences_role_staff">Staff</string>
+    <string name="activity_settings_preferences_tabs">Maximum Day Tabs</string>
+    <string name="activity_settings_preferences_tabs_key">prefTabs</string>
+    <string name="activity_settings_preferences_tabs_summary">Wanna look into the future?</string>
 
     <!-- Additives -->
-    <string name="dyes">Colorings [1]</string>
-    <string name="preservatives">Preservatives [2]</string>
-    <string name="antioxidant">Antioxidants [3]</string>
-    <string name="flavor_enhancers">Flavor enhancers [4]</string>
-    <string name="phosphate">Phosphate [5]</string>
-    <string name="sulphurised">Sulphurised [6]</string>
-    <string name="waxed">Waxed [7]</string>
-    <string name="blackend">Blackend [8]</string>
-    <string name="sweeteners">Sweeteners [9]</string>
-    <string name="phenylalanine">Phenylalanine [10]</string>
-    <string name="taurine">Taurine [11]</string>
-    <string name="nitrate_salting_mix">Nitrate Salting Mix [12]</string>
-    <string name="caffeine">Caffeine [13]</string>
-    <string name="quinine">Quinine [14]</string>
-    <string name="milk_protein">Milk protein [15]</string>
 
-    // Preferences
-    // Strings
-    <string name="Additives">Additives</string>
-    <string name="AdditivesSummary">Fuck phosphates amiright?</string>
-    <string name="Allergens">Allergens</string>
-    <string name="AllergensSummary">Select your kryptonite.</string>
-    <string name="CategoryAllergensAdditives">Allergens &amp; Additives</string>
-    <string name="CategoryGeneral">General</string>
-    <string name="DefaultLifestyle">Set your Lifestyle in the preferences</string>
-    <string name="DefaultPersonCategory">Set your position in the preferences</string>
-    <string name="not_set">Not set</string>
-    <string name="GlutenFree">Gluten Free</string>
-    <string name="Guest">Guest</string>
-    <string name="Lifestyle">Lifestyle</string>
-    <string name="LifestyleSummary">Whats your lifestyle?</string>
-    <string name="NoPreference">No Meal Preference</string>
-    <string name="Role">Role</string>
-    <string name="RoleSummary">What would you say you do here?</string>
-    <string name="ReducedCalories">Reduced Calories</string>
-    <string name="ReducedFat">Reduced Fat</string>
-    <string name="Staff">Staff</string>
-    <string name="Student">Student</string>
-    <string name="Vegan">Vegan</string>
-    <string name="Vegetarian">Vegetarian</string>
-    <string name="TabsSummary">Wanna look into the future?</string>
-    <string name="TabsTitle">Maximum Day Tabs</string>
-    <string name="key_pref_tabs">prefTabs</string>
-    <string name="sp_pref_lifestyle">prefLifestyle</string>
-    <string name="sp_pref_allergens">prefAllergens</string>
-    <string name="sp_pref_additives">prefAdditives</string>
-    <string name="nothing_that_fits_your_lifestyle_sorry">Nothing that fits your lifestyle. Sorry.</string>
-    <string name="description_restaurant_status">Restaurant Status</string>
-    <string name="amazon_wish_list">Wish List</string>
-    <string name="git_hub">GitHub</string>
-    <string name="activity_about_version">Version 0.1 (001)</string>
-    <string name="placeholder_meal_text_primary">Meal Name</string>
-    <string name="badge">Badge</string>
-    <string name="placeholder_item_attributions_text_name">Library</string>
-    <string name="placeholder_item_attributions_text_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis convallis posuere. Phasellus rhoncus pulvinar molestie. Vivamus luctus gravida imperdiet. Duis gravida volutpat hendrerit. Fusce sed nunc sagittis, efficitur ex nec, tristique justo. Sed ut sem et odio semper finibus. Nam at fringilla ligula. Nam euismod fermentum sodales.</string>
-    <string name="placeholder_item_attributions_text_author">Author</string>
-    <string name="placeholder_item_attributions_text_license">License</string>
-    <string name="attributions">Attributions</string>
-    <string name="activity_about_credits">Max Karadeniz\n prttstft@gmail.com</string>
-    <string name="rate">Rate</string>
-    <string name="placeholder_price">Price</string>
+    <string name="additive_1_dyes">Colorings [1]</string>
+    <string name="additive_2_preservatives">Preservatives [2]</string>
+    <string name="additive_3_antioxidant">Antioxidants [3]</string>
+    <string name="additive_4_flavor_enhancers">Flavor enhancers [4]</string>
+    <string name="additive_5_phosphate">Phosphate [5]</string>
+    <string name="additive_6_sulphurised">Sulphurised [6]</string>
+    <string name="additive_7_waxed">Waxed [7]</string>
+    <string name="additive_8_blackend">Blackend [8]</string>
+    <string name="additive_9_sweeteners">Sweeteners [9]</string>
+    <string name="additive_10_phenylalanine">Phenylalanine [10]</string>
+    <string name="additive_11_taurine">Taurine [11]</string>
+    <string name="additive_12_nitrate_salting_mix">Nitrate Salting Mix [12]</string>
+    <string name="additive_13_caffeine">Caffeine [13]</string>
+    <string name="additive_14_quinine">Quinine [14]</string>
+    <string name="additive_15_milk_protein">Milk protein [15]</string>
+
+    <!-- Allergens -->
+
+    <string name="allergen_1_gluten">Gluten [A1]</string>
+    <string name="allergen_2_crab">Crustaceans and/or products thereof [A2]</string>
+    <string name="allergen_3_egg">Eggs and/or products thereof [A3]</string>
+    <string name="allergen_4_fish">Fish [A4]</string>
+    <string name="allergen_5_peanuts">Peanuts and/or products thereof [A5]</string>
+    <string name="allergen_6_soy">Soy and/or products thereof [A6]</string>
+    <string name="allergen_7_milk">Milk and/or products thereof (including Lactose) [A7] </string>
+    <string name="allergen_8_nuts">Nuts and/or products thereof [A8]</string>
+    <string name="allergen_9_celery">Celery and/or products thereof [A9]</string>
+    <string name="allergen_10_mustard">Mustard and/or products thereof [A10]</string>
+    <string name="allergen_11_sesame">Sesame and/or products thereof [A11]</string>
+    <string name="allergen_12_sulphites">Sulphur dioxide and Sulphites [A12]</string>
+    <string name="allergen_13_lupins">Lupins and/or products thereof [A13]</string>
+    <string name="allergen_14_molluscs">Molluscs and/or products thereof [A14]</string>
+
+
+    <!-- Main Activity -->
+
+    <string name="item_meal_badge_description">Badge</string>
+    <string name="item_meal_name_placeholder">Meal Name</string>
+    <string name="item_meal_price_placeholder">Price</string>
+    <string name="item_meal_price_string_all">%1$s%2$s€ / %3$s€ / %4$s€</string>
+    <string name="item_meal_price_string_all_weighted">Price per 100gr:\u0020</string>
+    <string name="item_meal_price_string_fixed"/>
+    <string name="item_meal_price_string_single">%1$s€%2$s</string>
+    <string name="item_meal_price_string_single_weighted">/per 100gr</string>
+    <string name="item_meal_price_string_weighted">Price per 100gr:\u0020</string>
 </resources>

@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-        int tabCount = Integer.valueOf(sharedPreferences.getString(getString(R.string.key_pref_tabs), "8"));
+        int tabCount = Integer.valueOf(sharedPreferences.getString(getString(R.string.activity_settings_preferences_tabs_key), "8"));
 
         if (tabCount > 4) {
             tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
@@ -80,13 +80,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private void setupDrawerLayout() {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
         presenter.getRestaurantStatus();
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-
                 switch (menuItem.getItemId()) {
                     case R.id.menu_main_drawer_restaurant_mensa_academica_paderborn:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_ACADEMICA));

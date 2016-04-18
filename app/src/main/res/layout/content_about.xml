@@ -58,21 +58,21 @@
             android:id="@+id/activity_about_button_git_hub"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:text="@string/git_hub"/>
+            android:text="@string/activity_about_button_git_hub"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/activity_about_button_two"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_toEndOf="@+id/activity_about_button_git_hub"
-            android:text="@string/rate"/>
+            android:text="@string/activity_about_button_rate"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/activity_about_button_three"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_toEndOf="@+id/activity_about_button_two"
-            android:text="@string/amazon_wish_list"/>
+            android:text="@string/activity_about_button_wish_list"/>
     </RelativeLayout>
 
     <TextView
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/activity_about_button_bar"
         android:layout_centerHorizontal="true"
-        android:text="@string/attributions"
+        android:text="@string/activity_about_attributions"
         android:textAppearance="?android:textAppearanceMedium"/>
 
     <android.support.v7.widget.RecyclerView

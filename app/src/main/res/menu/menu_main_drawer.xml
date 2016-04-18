@@ -55,6 +55,6 @@
             android:id="@+id/menu_main_drawer_about"
             android:checkable="false"
             android:icon="@drawable/ic_info_white"
-            android:title="@string/activity_about_name"/>
+            android:title="@string/activity_about_title"/>
     </group>
 </menu>

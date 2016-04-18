@@ -1,5 +1,6 @@
 package de.prttstft.materialmensa.ui.activities.settings;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +22,19 @@ public class SettingsActivity extends AppCompatActivity {
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent upIntent = getSupportParentActivityIntent();
+
+        if (upIntent != null) {
+            supportNavigateUpTo(upIntent);
+        } else {
+            finish();
         }
     }
 }

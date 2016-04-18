@@ -5,11 +5,10 @@ import de.prttstft.materialmensa.BuildConfig;
 public interface Constants {
     // General.
     String LOGTAG = "LOGTAG";
+
+    // Date
     String TODAY = "Today";
     String TOMORROW = "Tomorrow";
-
-    String ARG_PAGE = "ARG_PAGE";
-    String ARG_RESTAURANT = "ARG_RESTAURANT";
 
     String USER_TYPE_STUDENT = "user_type_student";
     String USER_TYPE_STAFF = "user_type_staff";
@@ -70,9 +69,9 @@ public interface Constants {
     }
 
     interface PreferencesConstants {
-        String PREFERENCE_VALUE_LIFESTYLE_NOT_SET = "1";
-        String PREFERENCE_VALUE_LIFESTYLE_VEGETARIAN = "2";
-        String PREFERENCE_VALUE_LIFESTYLE_VEGAN = "3";
+        String PREFERENCE_VALUE_LIFESTYLE_NOT_SET = "not_set";
+        String PREFERENCE_VALUE_LIFESTYLE_VEGETARIAN = "vegetarian";
+        String PREFERENCE_VALUE_LIFESTYLE_VEGAN = "vegan";
     }
 
     interface RestaurantStatusConstants {

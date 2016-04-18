@@ -40,9 +40,9 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     public void onBindViewHolder(MainFragmentViewHolder holder, int position) {
         Meal meal = meals.get(position);
 
-        Glide.with(context).load(Utilities.getBadge(meal)).into(holder.picture);
-        holder.text_primary.setText(meal.getNameEn());
-        holder.text_secondary.setText(meal.getPriceString());
+        Glide.with(context).load(Utilities.getBadge(meal)).into(holder.badge);
+        holder.name.setText(meal.getNameEn());
+        holder.price.setText(meal.getPriceString());
     }
 
     @Override
@@ -64,9 +64,9 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     }
 
     public class MainFragmentViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.item_restaurant_icon) ImageView picture;
-        @Bind(R.id.item_restaurant_meal_text_primary) TextView text_primary;
-        @Bind(R.id.item_restaurant_meal_text_secondary) TextView text_secondary;
+        @Bind(R.id.item_restaurant_badge) ImageView badge;
+        @Bind(R.id.item_restaurant_meal_name) TextView name;
+        @Bind(R.id.item_restaurant_meal_price) TextView price;
         private View view;
 
         public MainFragmentViewHolder(View itemView) {

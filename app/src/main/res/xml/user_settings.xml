@@ -2,54 +2,52 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
-        android:key="prefGeneral"
-        android:title="@string/CategoryGeneral">
+        android:title="@string/activity_settings_preference_category_general">
 
         <ListPreference
-            android:defaultValue="1"
-            android:entries="@array/listRole"
-            android:entryValues="@array/listRoleValues"
-            android:key="prefRole"
-            android:summary="@string/RoleSummary"
-            android:title="@string/Role"/>
+            android:defaultValue="not_set"
+            android:entries="@array/activity_settings_preferences_role_array"
+            android:entryValues="@array/activity_settings_preferences_role_array_values"
+            android:key="@string/activity_settings_preferences_role_key"
+            android:summary="@string/activity_settings_preferences_role_summary"
+            android:title="@string/activity_settings_preferences_role"/>
 
         <ListPreference
-            android:defaultValue="1"
-            android:entries="@array/listLifestyle"
-            android:entryValues="@array/listLifestyleValues"
-            android:key="prefLifestyle"
-            android:summary="@string/LifestyleSummary"
-            android:title="@string/Lifestyle"/>
+            android:defaultValue="not_set"
+            android:entries="@array/activity_settings_preferences_lifestyle_array"
+            android:entryValues="@array/activity_settings_preferences_lifestyle_array_values"
+            android:key="@string/activity_settings_preferences_lifestyle_key"
+            android:summary="@string/activity_settings_preferences_lifestyle_summary"
+            android:title="@string/activity_settings_preferences_lifestyle"/>
 
         <EditTextPreference
             android:defaultValue="8"
             android:inputType="number"
-            android:key="@string/key_pref_tabs"
+            android:key="@string/activity_settings_preferences_tabs_key"
             android:selectAllOnFocus="true"
-            android:summary="@string/TabsSummary"
-            android:title="@string/TabsTitle"/>
+            android:summary="@string/activity_settings_preferences_tabs_summary"
+            android:title="@string/activity_settings_preferences_tabs"/>
 
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="prefAllergensAdditives"
-        android:title="@string/CategoryAllergensAdditives">
+        android:title="@string/activity_settings_preference_category_allergens_additives">
 
         <MultiSelectListPreference
             android:defaultValue="@array/empty_array"
-            android:entries="@array/listAllergens"
-            android:entryValues="@array/listAllergensValues"
+            android:entries="@array/activity_settings_preferences_allergens_array"
+            android:entryValues="@array/activity_settings_preferences_allergens_array_values"
             android:key="prefAllergens"
-            android:summary="@string/AllergensSummary"
-            android:title="@string/Allergens"/>
+            android:summary="@string/activity_settings_preference_allergens_summary"
+            android:title="@string/activity_settings_preference_allergens"/>
 
         <MultiSelectListPreference
             android:defaultValue="@array/empty_array"
-            android:entries="@array/listAdditives"
-            android:entryValues="@array/listAdditivesValues"
+            android:entries="@array/activity_settings_preferences_additives_array"
+            android:entryValues="@array/activity_settings_preferences_additives_array_values"
             android:key="prefAdditives"
-            android:summary="@string/AdditivesSummary"
-            android:title="@string/Additives"/>
+            android:summary="@string/activity_settings_preference_additives_summary"
+            android:title="@string/activity_settings_preference_additives"/>
 
     </PreferenceCategory>
 </PreferenceScreen>

@@ -1,89 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    // Settings
-    <string-array name="empty_array">
+    <!-- General -->
 
+    <string-array name="empty_array"/>
+
+
+    <!-- Activities -->
+
+    <!-- Settings Activity -->
+
+    <string-array name="activity_settings_preferences_role_array">
+        <item>@string/activity_settings_preference_not_set</item>
+        <item>@string/activity_settings_preferences_role_student</item>
+        <item>@string/activity_settings_preferences_role_staff</item>
+        <item>@string/activity_settings_preferences_role_guest</item>
     </string-array>
 
-    <string-array name="listRole">
-        <item>@string/not_set</item>
-        <item>@string/Student</item>
-        <item>@string/Staff</item>
-        <item>@string/Guest</item>
+    <string-array name="activity_settings_preferences_role_array_values">
+        <item>not_set</item>
+        <item>student</item>
+        <item>staff</item>
+        <item>guest</item>
     </string-array>
 
-    <string-array name="listRoleValues">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
+    <string-array name="activity_settings_preferences_lifestyle_array">
+        <item>@string/activity_settings_preferences_lifestyle_not_set</item>
+        <item>@string/activity_settings_preferences_lifestyle_vegetarian</item>
+        <item>@string/activity_settings_preferences_lifestyle_vegan</item>
     </string-array>
 
-    <string-array name="listLifestyle">
-        <item>@string/NoPreference</item>
-        <item>@string/Vegetarian</item>
-        <item>@string/Vegan</item>
+    <string-array name="activity_settings_preferences_lifestyle_array_values">
+        <item>not_set</item>
+        <item>vegetarian</item>
+        <item>vegan</item>
     </string-array>
 
-    <string-array name="listLifestyleValues">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
+    <string-array name="activity_settings_preferences_additives_array">
+        <item>@string/additive_1_dyes</item>
+        <item>@string/additive_2_preservatives</item>
+        <item>@string/additive_3_antioxidant</item>
+        <item>@string/additive_4_flavor_enhancers</item>
+        <item>@string/additive_5_phosphate</item>
+        <item>@string/additive_6_sulphurised</item>
+        <item>@string/additive_7_waxed</item>
+        <item>@string/additive_8_blackend</item>
+        <item>@string/additive_9_sweeteners</item>
+        <item>@string/additive_10_phenylalanine</item>
+        <item>@string/additive_11_taurine</item>
+        <item>@string/additive_12_nitrate_salting_mix</item>
+        <item>@string/additive_13_caffeine</item>
+        <item>@string/additive_14_quinine</item>
+        <item>@string/additive_15_milk_protein</item>
     </string-array>
 
-    <string-array name="listAllergens">
-        <item>@string/gluten</item>
-        <item>@string/crab</item>
-        <item>@string/egg</item>
-        <item>@string/fish</item>
-        <item>@string/peanuts</item>
-        <item>@string/soy</item>
-        <item>@string/milk</item>
-        <item>@string/nuts</item>
-        <item>@string/celery</item>
-        <item>@string/mustard</item>
-        <item>@string/sesame</item>
-        <item>@string/sulphites</item>
-        <item>@string/lupins</item>
-        <item>@string/molluscs</item>
-    </string-array>
-
-    <string-array name="listAllergensValues">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-        <item>13</item>
-        <item>14</item>
-    </string-array>
-
-    <string-array name="listAdditives">
-        <item>@string/dyes</item>
-        <item>@string/preservatives</item>
-        <item>@string/antioxidant</item>
-        <item>@string/flavor_enhancers</item>
-        <item>@string/phosphate</item>
-        <item>@string/sulphurised</item>
-        <item>@string/waxed</item>
-        <item>@string/blackend</item>
-        <item>@string/sweeteners</item>
-        <item>@string/phenylalanine</item>
-        <item>@string/taurine</item>
-        <item>@string/nitrate_salting_mix</item>
-        <item>@string/caffeine</item>
-        <item>@string/quinine</item>
-        <item>@string/milk_protein</item>
-    </string-array>
-
-    <string-array name="listAdditivesValues">
+    <string-array name="activity_settings_preferences_additives_array_values">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -99,5 +69,39 @@
         <item>13</item>
         <item>14</item>
         <item>15</item>
+    </string-array>
+
+    <string-array name="activity_settings_preferences_allergens_array">
+        <item>@string/allergen_1_gluten</item>
+        <item>@string/allergen_2_crab</item>
+        <item>@string/allergen_3_egg</item>
+        <item>@string/allergen_4_fish</item>
+        <item>@string/allergen_5_peanuts</item>
+        <item>@string/allergen_6_soy</item>
+        <item>@string/allergen_7_milk</item>
+        <item>@string/allergen_8_nuts</item>
+        <item>@string/allergen_9_celery</item>
+        <item>@string/allergen_10_mustard</item>
+        <item>@string/allergen_11_sesame</item>
+        <item>@string/allergen_12_sulphites</item>
+        <item>@string/allergen_13_lupins</item>
+        <item>@string/allergen_14_molluscs</item>
+    </string-array>
+
+    <string-array name="activity_settings_preferences_allergens_array_values">
+        <item>A1</item>
+        <item>A2</item>
+        <item>A3</item>
+        <item>A4</item>
+        <item>A5</item>
+        <item>A6</item>
+        <item>A7</item>
+        <item>A8</item>
+        <item>A9</item>
+        <item>A10</item>
+        <item>A11</item>
+        <item>A12</item>
+        <item>A13</item>
+        <item>A14</item>
     </string-array>
 </resources>

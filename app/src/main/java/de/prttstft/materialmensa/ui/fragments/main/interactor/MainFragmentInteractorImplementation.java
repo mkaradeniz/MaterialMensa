@@ -21,6 +21,8 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
+import static de.prttstft.materialmensa.R.string.activity_settings_preferences_lifestyle_key;
+import static de.prttstft.materialmensa.R.string.activity_settings_preferences_lifestyle_not_set;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ACADEMICA;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAFETE;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAMPUS_DOENER;
@@ -30,7 +32,6 @@ import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAU
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ONE_WAY_SNACK;
 import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGAN;
 import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGETARIAN;
-import static de.prttstft.materialmensa.extras.Constants.PRICE_TYPE_WEIGHTED;
 import static de.prttstft.materialmensa.extras.Constants.PreferencesConstants.PREFERENCE_VALUE_LIFESTYLE_NOT_SET;
 import static de.prttstft.materialmensa.extras.Constants.PreferencesConstants.PREFERENCE_VALUE_LIFESTYLE_VEGAN;
 import static de.prttstft.materialmensa.extras.Constants.PreferencesConstants.PREFERENCE_VALUE_LIFESTYLE_VEGETARIAN;
@@ -44,6 +45,8 @@ import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.R
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainFragmentInteractorImplementation implements MainFragmentInteractor {
+    public static final String PRICE_TYPE_WEIGHTED = "weighted";
+
     @Override
     public void getMeals(final MainFragmentListener listener, final int page, final int restaurant) {
         Observable<Meal> observable = MensaAPI.mensaAPI.getMeals(getDateString(page), getRestaurantString(restaurant)).flatMap(new Func1<List<Meal>, Observable<Meal>>() {
@@ -192,28 +195,28 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
         switch (role) {
             case "2":
                 if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
-                    return getAppContext().getResources().getString(R.string.price_string_single, priceStudents, getAppContext().getString(R.string.price_string_single_weighted));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStudents, getAppContext().getString(R.string.item_meal_price_string_single_weighted));
                 } else {
-                    return getAppContext().getResources().getString(R.string.price_string_single, priceStudents, getAppContext().getString(R.string.price_string_fixed));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStudents, getAppContext().getString(R.string.item_meal_price_string_fixed));
                 }
             case "3":
                 if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
-                    return getAppContext().getResources().getString(R.string.price_string_single, priceStaff, getAppContext().getString(R.string.price_string_single_weighted));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStaff, getAppContext().getString(R.string.item_meal_price_string_single_weighted));
                 } else {
-                    return getAppContext().getResources().getString(R.string.price_string_single, priceStaff, getAppContext().getString(R.string.price_string_fixed));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStaff, getAppContext().getString(R.string.item_meal_price_string_fixed));
                 }
             case "4":
                 if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
-                    return getAppContext().getResources().getString(R.string.price_string_single, priceGuests, getAppContext().getString(R.string.price_string_single_weighted));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceGuests, getAppContext().getString(R.string.item_meal_price_string_single_weighted));
                 } else {
-                    return getAppContext().getResources().getString(R.string.price_string_single, priceGuests, getAppContext().getString(R.string.price_string_fixed));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceGuests, getAppContext().getString(R.string.item_meal_price_string_fixed));
                 }
         }
 
         if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
-            return getAppContext().getResources().getString(R.string.price_string_all, getAppContext().getString(R.string.price_string_weighted), priceStudents, priceStaff, priceGuests);
+            return getAppContext().getResources().getString(R.string.item_meal_price_string_all, getAppContext().getString(R.string.item_meal_price_string_weighted), priceStudents, priceStaff, priceGuests);
         } else {
-            return getAppContext().getResources().getString(R.string.price_string_all, getAppContext().getString(R.string.price_string_fixed), priceStudents, priceStaff, priceGuests);
+            return getAppContext().getResources().getString(R.string.item_meal_price_string_all, getAppContext().getString(R.string.item_meal_price_string_fixed), priceStudents, priceStaff, priceGuests);
         }
     }
 
@@ -223,7 +226,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     private boolean filterAdditives(Meal meal) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        Set<String> additives = sharedPreferences.getStringSet(getAppContext().getString(R.string.sp_pref_additives), new HashSet<String>());
+        Set<String> additives = sharedPreferences.getStringSet(getAppContext().getString(R.string.activity_settings_preferences_additives_key), new HashSet<String>());
 
         for (int i = 0; i < meal.getAllergens().size(); i++) {
             if (additives.contains(meal.getAllergens().get(i))) {
@@ -235,10 +238,10 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     private boolean filterAllergens(Meal meal) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        Set<String> allergens = sharedPreferences.getStringSet(getAppContext().getString(R.string.sp_pref_allergens), new HashSet<String>());
+        Set<String> allergens = sharedPreferences.getStringSet(getAppContext().getString(R.string.activity_settings_preferences_allergens_key), new HashSet<String>());
 
         for (int i = 0; i < meal.getAllergens().size(); i++) {
-            if (allergens.contains(meal.getAllergens().get(i).substring(1))) {
+            if (allergens.contains(meal.getAllergens().get(i))) {
                 return true;
             }
         }
@@ -247,7 +250,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     private boolean filterLifestyle(Meal meal) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        String lifestyle = sharedPreferences.getString(getAppContext().getString(R.string.sp_pref_lifestyle), "0");
+        String lifestyle = sharedPreferences.getString(getAppContext().getString(activity_settings_preferences_lifestyle_key), getAppContext().getString(activity_settings_preferences_lifestyle_not_set));
 
         if (!lifestyle.equals(PREFERENCE_VALUE_LIFESTYLE_NOT_SET)) {
             switch (lifestyle) {

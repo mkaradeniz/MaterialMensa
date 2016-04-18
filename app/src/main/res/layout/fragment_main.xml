@@ -31,7 +31,7 @@
             android:layout_below="@+id/fragment_main_empty_emoji"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/restaurant_closed_sorry"
+            android:text="@string/error_restaurant_closed"
             android:textAppearance="?android:textAppearanceLarge"
             android:textColor="@color/progress_bar_background"/>
 
@@ -58,7 +58,7 @@
             android:layout_below="@+id/fragment_main_filtered_emoji"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="@string/nothing_that_fits_your_lifestyle_sorry"
+            android:text="@string/error_all_meals_filtered"
             android:textAppearance="?android:textAppearanceLarge"
             android:textColor="@color/progress_bar_background"/>
 
