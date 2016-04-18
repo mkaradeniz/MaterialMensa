@@ -59,23 +59,23 @@
     <string name="activity_settings_preference_category_allergens_additives">Allergens &amp; Additives</string>
     <string name="activity_settings_preference_category_general">General</string>
     <string name="activity_settings_preference_lifestyle">Lifestyle</string>
-    <string name="activity_settings_preference_not_set">Not set</string>
-    <string name="activity_settings_preference_user_type">Position</string>
     <string name="activity_settings_preferences_additives_key">prefAdditives</string>
     <string name="activity_settings_preferences_allergens_key">prefAllergens</string>
     <string name="activity_settings_preferences_lifestyle">Lifestyle</string>
+    <string name="activity_settings_preferences_lifestyle_default">Super Meat Girl</string>
     <string name="activity_settings_preferences_lifestyle_key">prefLifestyle</string>
-    <string name="activity_settings_preferences_lifestyle_not_set">Super Meat Girl</string>
     <string name="activity_settings_preferences_lifestyle_summary">Whats your lifestyle?</string>
     <string name="activity_settings_preferences_lifestyle_vegan">Vegan McGegan</string>
     <string name="activity_settings_preferences_lifestyle_vegetarian">Vegetarian Stallion</string>
     <string name="activity_settings_preferences_role">Role</string>
+    <string name="activity_settings_preferences_role_default">Not set</string>
     <string name="activity_settings_preferences_role_guest">Guest</string>
     <string name="activity_settings_preferences_role_key">prefRole</string>
+    <string name="activity_settings_preferences_role_staff">Staff</string>
     <string name="activity_settings_preferences_role_student">Student</string>
     <string name="activity_settings_preferences_role_summary">What would you say you do here?</string>
-    <string name="activity_settings_preferences_role_staff">Staff</string>
     <string name="activity_settings_preferences_tabs">Maximum Day Tabs</string>
+    <string name="activity_settings_preferences_tabs_default">8</string>
     <string name="activity_settings_preferences_tabs_key">prefTabs</string>
     <string name="activity_settings_preferences_tabs_summary">Wanna look into the future?</string>
 
@@ -128,4 +128,5 @@
     <string name="item_meal_price_string_weighted">Price per 100gr:\u0020</string>
     <string name="drawer_main_restaurant_status_closing_time">%1$s:%2$sh</string>
     <string name="drawer_main_restaurant_status_opening_time">at %1$s:%2$s</string>
+
 </resources>

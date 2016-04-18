@@ -5,7 +5,7 @@
         android:title="@string/activity_settings_preference_category_general">
 
         <ListPreference
-            android:defaultValue="not_set"
+            android:defaultValue="@string/activity_settings_preferences_role_default"
             android:entries="@array/activity_settings_preferences_role_array"
             android:entryValues="@array/activity_settings_preferences_role_array_values"
             android:key="@string/activity_settings_preferences_role_key"
@@ -13,7 +13,7 @@
             android:title="@string/activity_settings_preferences_role"/>
 
         <ListPreference
-            android:defaultValue="not_set"
+            android:defaultValue="@string/activity_settings_preferences_role_default"
             android:entries="@array/activity_settings_preferences_lifestyle_array"
             android:entryValues="@array/activity_settings_preferences_lifestyle_array_values"
             android:key="@string/activity_settings_preferences_lifestyle_key"
@@ -21,7 +21,7 @@
             android:title="@string/activity_settings_preferences_lifestyle"/>
 
         <EditTextPreference
-            android:defaultValue="8"
+            android:defaultValue="@string/activity_settings_preferences_tabs_default"
             android:inputType="number"
             android:key="@string/activity_settings_preferences_tabs_key"
             android:selectAllOnFocus="true"

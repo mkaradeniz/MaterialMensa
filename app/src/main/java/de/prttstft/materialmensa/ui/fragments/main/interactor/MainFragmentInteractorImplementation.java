@@ -21,8 +21,8 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
+import static de.prttstft.materialmensa.R.string.activity_settings_preferences_lifestyle_default;
 import static de.prttstft.materialmensa.R.string.activity_settings_preferences_lifestyle_key;
-import static de.prttstft.materialmensa.R.string.activity_settings_preferences_lifestyle_not_set;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ACADEMICA;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAFETE;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAMPUS_DOENER;
@@ -46,6 +46,11 @@ import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainFragmentInteractorImplementation implements MainFragmentInteractor {
     public static final String PRICE_TYPE_WEIGHTED = "weighted";
+    public static final String ROLE_DEFAULT = "not_set";
+    public static final String ROLE_GUEST = "guest";
+    public static final String ROLE_PREF = "prefRole";
+    public static final String ROLE_STAFF = "staff";
+    public static final String ROLE_STUDENT = "student";
 
     @Override
     public void getMeals(final MainFragmentListener listener, final int page, final int restaurant) {
@@ -186,26 +191,26 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     private String getPriceString(Meal meal) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        String role = sharedPreferences.getString("prefRole", "1");
+        String role = sharedPreferences.getString(ROLE_PREF, ROLE_DEFAULT);
 
         String priceGuests = round(meal.getPriceGuests());
         String priceStaff = round(meal.getPriceWorkers());
         String priceStudents = round(meal.getPriceStudents());
 
         switch (role) {
-            case "2":
+            case ROLE_STUDENT:
                 if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
                     return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStudents, getAppContext().getString(R.string.item_meal_price_string_single_weighted));
                 } else {
                     return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStudents, getAppContext().getString(R.string.item_meal_price_string_fixed));
                 }
-            case "3":
+            case ROLE_STAFF:
                 if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
                     return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStaff, getAppContext().getString(R.string.item_meal_price_string_single_weighted));
                 } else {
                     return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStaff, getAppContext().getString(R.string.item_meal_price_string_fixed));
                 }
-            case "4":
+            case ROLE_GUEST:
                 if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
                     return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceGuests, getAppContext().getString(R.string.item_meal_price_string_single_weighted));
                 } else {
@@ -250,7 +255,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     private boolean filterLifestyle(Meal meal) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        String lifestyle = sharedPreferences.getString(getAppContext().getString(activity_settings_preferences_lifestyle_key), getAppContext().getString(activity_settings_preferences_lifestyle_not_set));
+        String lifestyle = sharedPreferences.getString(getAppContext().getString(activity_settings_preferences_lifestyle_key), getAppContext().getString(activity_settings_preferences_lifestyle_default));
 
         if (!lifestyle.equals(PREFERENCE_VALUE_LIFESTYLE_NOT_SET)) {
             switch (lifestyle) {
