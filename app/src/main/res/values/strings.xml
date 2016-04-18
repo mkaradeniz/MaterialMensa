@@ -128,5 +128,7 @@
     <string name="item_meal_price_string_weighted">Price per 100gr:\u0020</string>
     <string name="drawer_main_restaurant_status_closing_time">%1$s:%2$sh</string>
     <string name="drawer_main_restaurant_status_opening_time">at %1$s:%2$s</string>
-
+    <string name="activity_about_button_libraries">Open Source</string>
+    <string name="activity_about_email_subject">[MaterialMensa] Ahoi!</string>
+    <string name="activity_about_libraries_title">Libraries</string>
 </resources>
