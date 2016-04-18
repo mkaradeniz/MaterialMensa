@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.ui.activities.about.AboutActivity;
 import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenter;
 import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenterImplementation;
 import de.prttstft.materialmensa.ui.activities.main.view.MainView;
@@ -34,7 +35,6 @@ import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.R
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_GRILL_CAFE;
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_MENSULA;
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ONE_WAY_SNACK;
-import static de.prttstft.materialmensa.extras.Utilities.L;
 
 
 public class MainActivity extends AppCompatActivity implements MainView {
@@ -129,7 +129,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
                         startActivity(startSettingsActivityIntent);
                         break;
                     case R.id.menu_main_drawer_about:
-                        L("About.");
+                        Intent startAboutActivityIntent = new Intent(getApplicationContext(), AboutActivity.class);
+                        startActivity(startAboutActivityIntent);
                         break;
                 }
 

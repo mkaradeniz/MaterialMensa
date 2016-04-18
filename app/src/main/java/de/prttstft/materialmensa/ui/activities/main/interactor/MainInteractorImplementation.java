@@ -1,6 +1,5 @@
 package de.prttstft.materialmensa.ui.activities.main.interactor;
 
-import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.model.Restaurant;
 import de.prttstft.materialmensa.network.MensaAPI;
 import de.prttstft.materialmensa.ui.activities.main.listener.MainListener;
@@ -9,7 +8,6 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-import static de.prttstft.materialmensa.MyApplication.getAppContext;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ACADEMICA;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAFETE;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAMPUS_DOENER;
@@ -24,6 +22,10 @@ import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.R
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_GRILL_CAFE;
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_MENSULA;
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ONE_WAY_SNACK;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantStatusConstants.RESTAURANT_STATUS_CLOSED;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantStatusConstants.RESTAURANT_STATUS_CLOSED_DE;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantStatusConstants.RESTAURANT_STATUS_STARTS_WITH_OPENS;
+import static de.prttstft.materialmensa.extras.Constants.RestaurantStatusConstants.RESTAURANT_STATUS_STARTS_WITH_OPENS_DE;
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainInteractorImplementation implements MainInteractor {
@@ -46,43 +48,7 @@ public class MainInteractorImplementation implements MainInteractor {
 
             @Override
             public void onNext(Restaurant restaurant) {
-                if (restaurant.getMensaAcademicaPaderborn() != null) {
-                    if ((restaurant.getMensaAcademicaPaderborn().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_en))) || (restaurant.getMensaAcademicaPaderborn().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_de)))) {
-                        listener.restaurantClosed(RESTAURANT_ID_ACADEMICA);
-                    } else {
-                        listener.restaurantOpen(RESTAURANT_ID_ACADEMICA);
-                    }//
-                } else if (restaurant.getMensaForumPaderborn() != null) {
-                    if ((restaurant.getMensaForumPaderborn().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_en))) || restaurant.getMensaForumPaderborn().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_de))) {
-                        listener.restaurantClosed(RESTAURANT_ID_FORUM);
-                    } else {
-                        listener.restaurantOpen(RESTAURANT_ID_FORUM);
-                    }
-                } else if (restaurant.getCafete() != null) {
-                    if ((restaurant.getCafete().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_en))) || restaurant.getCafete().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_de))) {
-                        listener.restaurantClosed(RESTAURANT_ID_CAFETE);
-                    } else {
-                        listener.restaurantOpen(RESTAURANT_ID_CAFETE);
-                    }
-                } else if (restaurant.getMensula() != null) {
-                    if ((restaurant.getMensula().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_en))) || restaurant.getMensula().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_de))) {
-                        listener.restaurantClosed(RESTAURANT_ID_MENSULA);
-                    } else {
-                        listener.restaurantOpen(RESTAURANT_ID_MENSULA);
-                    }
-                } else if (restaurant.getOneWaySnack() != null) {
-                    if ((restaurant.getOneWaySnack().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_en))) || restaurant.getOneWaySnack().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_de))) {
-                        listener.restaurantClosed(RESTAURANT_ID_ONE_WAY_SNACK);
-                    } else {
-                        listener.restaurantOpen(RESTAURANT_ID_ONE_WAY_SNACK);
-                    }
-                } else if (restaurant.getGrillCafe() != null) {
-                    if ((restaurant.getGrillCafe().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_en))) || restaurant.getGrillCafe().getStatus().equals(getAppContext().getString(R.string.restaurant_closed_de))) {
-                        listener.restaurantClosed(RESTAURANT_ID_GRILL_CAFE);
-                    } else {
-                        listener.restaurantOpen(RESTAURANT_ID_GRILL_CAFE);
-                    }
-                }
+                sendRestaurantStatus(listener, restaurant);
             }
         });
     }
@@ -107,12 +73,48 @@ public class MainInteractorImplementation implements MainInteractor {
                 return API_RESTAURANT_ACADEMICA;
         }
     }
-}
 
-/*
-Currently closed
-Closes in X minutes
-Zurzeit geschlossen
-Opens at ??
-Öffnet um ??
- */
+    private void sendRestaurantStatus(MainListener listener, Restaurant restaurant) {
+        if (restaurant.getMensaAcademicaPaderborn() != null) {
+            if (restaurantOpen(restaurant.getMensaAcademicaPaderborn().getStatus())) {
+                listener.restaurantOpen(RESTAURANT_ID_ACADEMICA);
+            } else {
+                listener.restaurantClosed(RESTAURANT_ID_ACADEMICA);
+            }
+        } else if (restaurant.getMensaForumPaderborn() != null) {
+            if (restaurantOpen(restaurant.getMensaForumPaderborn().getStatus())) {
+                listener.restaurantOpen(RESTAURANT_ID_FORUM);
+            } else {
+                listener.restaurantClosed(RESTAURANT_ID_FORUM);
+            }
+        } else if (restaurant.getCafete() != null) {
+            if (restaurantOpen(restaurant.getCafete().getStatus())) {
+                listener.restaurantOpen(RESTAURANT_ID_CAFETE);
+            } else {
+                listener.restaurantClosed(RESTAURANT_ID_CAFETE);
+            }
+        } else if (restaurant.getMensula() != null) {
+            if (restaurantOpen(restaurant.getMensula().getStatus())) {
+                listener.restaurantOpen(RESTAURANT_ID_MENSULA);
+            } else {
+                listener.restaurantClosed(RESTAURANT_ID_MENSULA);
+            }
+        } else if (restaurant.getOneWaySnack() != null) {
+            if (restaurantOpen(restaurant.getOneWaySnack().getStatus())) {
+                listener.restaurantOpen(RESTAURANT_ID_ONE_WAY_SNACK);
+            } else {
+                listener.restaurantClosed(RESTAURANT_ID_ONE_WAY_SNACK);
+            }
+        } else if (restaurant.getGrillCafe() != null) {
+            if (restaurantOpen(restaurant.getGrillCafe().getStatus())) {
+                listener.restaurantOpen(RESTAURANT_ID_GRILL_CAFE);
+            } else {
+                listener.restaurantClosed(RESTAURANT_ID_GRILL_CAFE);
+            }
+        }
+    }
+
+    private boolean restaurantOpen(String status) {
+        return !(status.startsWith(RESTAURANT_STATUS_CLOSED) || status.startsWith(RESTAURANT_STATUS_CLOSED_DE) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS_DE));
+    }
+}

@@ -107,4 +107,18 @@
     <string name="sp_pref_allergens">prefAllergens</string>
     <string name="sp_pref_additives">prefAdditives</string>
     <string name="nothing_that_fits_your_lifestyle_sorry">Nothing that fits your lifestyle. Sorry.</string>
+    <string name="description_restaurant_status">Restaurant Status</string>
+    <string name="amazon_wish_list">Wish List</string>
+    <string name="git_hub">GitHub</string>
+    <string name="activity_about_version">Version 0.1 (001)</string>
+    <string name="placeholder_meal_text_primary">Meal Name</string>
+    <string name="badge">Badge</string>
+    <string name="placeholder_item_attributions_text_name">Library</string>
+    <string name="placeholder_item_attributions_text_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis convallis posuere. Phasellus rhoncus pulvinar molestie. Vivamus luctus gravida imperdiet. Duis gravida volutpat hendrerit. Fusce sed nunc sagittis, efficitur ex nec, tristique justo. Sed ut sem et odio semper finibus. Nam at fringilla ligula. Nam euismod fermentum sodales.</string>
+    <string name="placeholder_item_attributions_text_author">Author</string>
+    <string name="placeholder_item_attributions_text_license">License</string>
+    <string name="attributions">Attributions</string>
+    <string name="activity_about_credits">Max Karadeniz\n prttstft@gmail.com</string>
+    <string name="rate">Rate</string>
+    <string name="placeholder_price">Price</string>
 </resources>

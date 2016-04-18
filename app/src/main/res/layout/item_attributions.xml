@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_attributions"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/activity_horizontal_margin"
+    android:layout_marginTop="@dimen/activity_horizontal_margin"
+    android:background="?attr/selectableItemBackground"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/item_attributions_text_name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="66dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="@string/placeholder_item_attributions_text_name"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/text_primary"/>
+
+    <TextView
+        android:id="@+id/item_attributions_text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_attributions_text_name"
+        android:layout_marginEnd="@dimen/activity_vertical_margin"
+        android:text="@string/placeholder_item_attributions_text_description"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@color/text_secondary"/>
+
+    <TextView
+        android:id="@+id/item_attributions_text_author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/item_attributions_text_name"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_toEndOf="@+id/item_attributions_text_name"
+        android:ellipsize="end"
+        android:gravity="end"
+        android:maxLines="1"
+        android:text="@string/placeholder_item_attributions_text_author"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/item_attributions_text_license"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_attributions_text_description"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:ellipsize="end"
+        android:gravity="end"
+        android:maxLines="1"
+        android:text="@string/placeholder_item_attributions_text_license"
+        android:textAppearance="?android:textAppearanceSmall"/>
+</RelativeLayout>

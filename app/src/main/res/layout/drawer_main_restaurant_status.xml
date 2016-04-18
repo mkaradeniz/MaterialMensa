@@ -9,5 +9,6 @@
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:layout_gravity="center"
+        android:contentDescription="@string/description_restaurant_status"
         android:src="@drawable/circle"/>
 </android.support.v7.widget.LinearLayoutCompat>

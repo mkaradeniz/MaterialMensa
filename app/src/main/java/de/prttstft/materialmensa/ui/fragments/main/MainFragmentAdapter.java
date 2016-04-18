@@ -32,7 +32,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     @Override
     public MainFragmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v;
-        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_restaurant, parent, false);
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_meal, parent, false);
         return new MainFragmentViewHolder(v);
     }
 

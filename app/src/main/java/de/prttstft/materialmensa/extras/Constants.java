@@ -74,4 +74,23 @@ public interface Constants {
         String PREFERENCE_VALUE_LIFESTYLE_VEGETARIAN = "2";
         String PREFERENCE_VALUE_LIFESTYLE_VEGAN = "3";
     }
+
+    interface RestaurantStatusConstants {
+        String RESTAURANT_STATUS_CLOSED = "Currently closed";
+        String RESTAURANT_STATUS_STARTS_WITH_CLOSES = "Closes";
+        String RESTAURANT_STATUS_STARTS_WITH_OPENS = "Opens at";
+        String RESTAURANT_STATUS_CLOSED_DE = "Zurzeit";
+        String RESTAURANT_STATUS_STARTS_WITH_CLOSES_DE = "Closes";
+        String RESTAURANT_STATUS_STARTS_WITH_OPENS_DE = "Geöffnet";
+    }
+
+    /*
+Currently closed
+Closes in X minutes
+Zurzeit geschlossen
+Opens at ??
+Öffnet um ??
+Opens at 08:00 clock
+Geöffnet ab 08:00 Uhr
+ */
 }

@@ -110,6 +110,7 @@ public class Utilities {
         return outputString;
     }
 
+    // Get the badge resource id.
     public static Integer getBadge(Meal meal) {
         List<String> badges = meal.getBadges();
         if (badges.size() > 0) {
@@ -130,6 +131,7 @@ public class Utilities {
         }
     }
 
+    // Get a random emoji resource id.
     public static int getRandomEmoji() {
         Random random = new Random();
         int index = random.nextInt(6);

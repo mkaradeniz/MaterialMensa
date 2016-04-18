@@ -13,6 +13,13 @@
         android:theme="@style/AppTheme.NoActionBar">
 
         <activity
+            android:name=".ui.activities.about.AboutActivity"
+            android:label="@string/activity_about_name"
+            android:parentActivityName=".ui.activities.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
             android:name=".ui.activities.main.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
