@@ -4,28 +4,49 @@
     android:id="@+id/drawer_main_header"
     android:layout_width="match_parent"
     android:layout_height="172dp"
-    android:background="@drawable/drawer_background_blurred"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
     android:paddingTop="@dimen/activity_horizontal_margin">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/drawer_main_header_avatar"
+    <FrameLayout
+        android:id="@+id/drawer_main_header_avatar_container"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:contentDescription="@string/placeholder"
-        android:elevation="6dp"
-        android:src="@color/materialBlue500"/>
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="25dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/drawer_main_header_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:contentDescription="@string/placeholder"
+            android:elevation="6dp"
+            android:src="@color/colorAccent"/>
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/drawer_main_header_role_image_description"
+            android:elevation="6dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:src="@drawable/ic_staff_black"/>
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/drawer_main_header_role"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/drawer_main_header_avatar"
+        android:layout_below="@id/drawer_main_header_avatar_container"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="Student"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/textPrimary"/>
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/drawer_main_header_role_placeholder"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@color/textPrimary"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/drawer_main_header_lifestyle"
@@ -33,9 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/drawer_main_header_role"
-        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:text="Vegetarian"
+        android:text="@string/drawer_main_header_lifestyle_placeholder"
         android:textAppearance="?android:textAppearanceSmall"
         android:textColor="@color/textSecondary"/>
 </RelativeLayout>

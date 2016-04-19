@@ -1,10 +1,10 @@
 package de.prttstft.materialmensa.ui.activities.main.interactor;
 
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Restaurant;
 import de.prttstft.materialmensa.network.MensaAPI;
 import de.prttstft.materialmensa.ui.activities.main.listener.MainListener;
@@ -35,7 +35,6 @@ import static de.prttstft.materialmensa.extras.Constants.RestaurantStatusConstan
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainInteractorImplementation implements MainInteractor {
-
     @Override
     public void getRestaurantStatus(final MainListener listener, int restaurant) {
         Observable<Restaurant> restaurantObservable = MensaAPI.mensaAPI.getRestaurantStatus(getRestaurantString(restaurant))
@@ -147,14 +146,14 @@ public class MainInteractorImplementation implements MainInteractor {
             if (matcher.group(4).equals("")) {
                 try {
                     minutes = Integer.parseInt(matcher.group(2));
-                    return getAppContext().getString(R.string.drawer_main_restaurant_status_closing_time, addLeadingZero(hours), addLeadingZero(minutes));
+                    return getAppContext().getString(R.string.drawer_main_restaurant_status_closing_time, Utilities.addLeadingZero(hours, 2), Utilities.addLeadingZero(minutes, 2));
                 } catch (NumberFormatException ignored) {
                 }
             } else {
                 try {
                     hours = Integer.parseInt(matcher.group(2));
                     minutes = Integer.parseInt(matcher.group(4));
-                    return getAppContext().getString(R.string.drawer_main_restaurant_status_closing_time, addLeadingZero(hours), addLeadingZero(minutes));
+                    return getAppContext().getString(R.string.drawer_main_restaurant_status_closing_time, Utilities.addLeadingZero(hours, 2), Utilities.addLeadingZero(minutes, 2));
                 } catch (NumberFormatException ignored) {
 
                 }
@@ -174,15 +173,11 @@ public class MainInteractorImplementation implements MainInteractor {
             try {
                 hours = Integer.parseInt(matcher.group(2));
                 minutes = Integer.parseInt(matcher.group(4));
-                return getAppContext().getString(R.string.drawer_main_restaurant_status_opening_time, addLeadingZero(hours), addLeadingZero(minutes));
+                return getAppContext().getString(R.string.drawer_main_restaurant_status_opening_time, Utilities.addLeadingZero(hours, 2), Utilities.addLeadingZero(minutes, 2));
             } catch (NumberFormatException ignored) {
 
             }
         }
         return null;
-    }
-
-    private String addLeadingZero(int time) {
-        return String.format(Locale.GERMAN, "%02d", time);
     }
 }

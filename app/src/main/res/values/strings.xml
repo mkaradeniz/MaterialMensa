@@ -33,7 +33,8 @@
     <string name="activity_about_email_subject">[MaterialMensa] Ahoi!</string>
     <string name="activity_about_libraries_title">Libraries</string>
     <string name="activity_about_title">About</string>
-    <string name="activity_about_version">Version 0.1 (001)</string>
+    <string name="activity_about_button_icons">Icons</string>
+    <string name="activity_about_version">Version %1$s (%2$s)</string>
     <string name="item_attributions_text_author_placeholder">Author</string>
     <string name="item_attributions_text_description_placeholder">Lorem ipsum dolor sit amet.</string>
     <string name="item_attributions_text_license_placeholder">License</string>
@@ -58,13 +59,18 @@
     <string name="activity_settings_preferences_lifestyle">Lifestyle</string>
     <string name="activity_settings_preferences_lifestyle_default">Super Meat Girl</string>
     <string name="activity_settings_preferences_lifestyle_key">prefLifestyle</string>
+    <string name="activity_settings_preferences_lifestyle_pref_default">not_set</string>
+    <string name="activity_settings_preferences_lifestyle_pref_vegan">vegan</string>
+    <string name="activity_settings_preferences_lifestyle_pref_vegetarian">vegetarian</string>
     <string name="activity_settings_preferences_lifestyle_summary">Whats your lifestyle?</string>
     <string name="activity_settings_preferences_lifestyle_vegan">Vegan McGegan</string>
     <string name="activity_settings_preferences_lifestyle_vegetarian">Vegetarian Stallion</string>
     <string name="activity_settings_preferences_role">Role</string>
-    <string name="activity_settings_preferences_role_default">Not set</string>
     <string name="activity_settings_preferences_role_guest">Guest</string>
     <string name="activity_settings_preferences_role_key">prefRole</string>
+    <string name="activity_settings_preferences_role_pref_guest">Guest</string>
+    <string name="activity_settings_preferences_role_pref_staff">staff</string>
+    <string name="activity_settings_preferences_role_pref_student">student</string>
     <string name="activity_settings_preferences_role_staff">Staff</string>
     <string name="activity_settings_preferences_role_student">Student</string>
     <string name="activity_settings_preferences_role_summary">What would you say you do here?</string>
@@ -139,5 +145,9 @@
     <string name="item_meal_price_string_single_weighted">/100gr</string>
     <string name="item_meal_price_string_weighted">Price per 100gr:\u0020</string>
     <string name="item_meal_star_description">Star Meal</string>
+    <string name="drawer_main_header_role_placeholder">Student</string>
+    <string name="drawer_main_header_lifestyle_placeholder">Vegetarian</string>
+    <string name="drawer_main_header_role_image_description">Role</string>
+
 
 </resources>

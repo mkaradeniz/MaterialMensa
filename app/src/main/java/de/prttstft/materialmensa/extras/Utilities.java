@@ -153,4 +153,10 @@ public class Utilities {
                 return R.drawable.emoji_1f622;
         }
     }
+
+    // Get leading Zero
+    public static String addLeadingZero(int n, int places) {
+        String placesPattern = "%0" + places + "d";
+        return String.format(Locale.GERMAN, placesPattern, n);
+    }
 }

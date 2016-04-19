@@ -21,8 +21,6 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
-import static de.prttstft.materialmensa.R.string.activity_settings_preferences_lifestyle_default;
-import static de.prttstft.materialmensa.R.string.activity_settings_preferences_lifestyle_key;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ACADEMICA;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAFETE;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAMPUS_DOENER;
@@ -36,9 +34,6 @@ import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL
 import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGAN;
 import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGETARIAN;
 import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VITAL_FOOD;
-import static de.prttstft.materialmensa.extras.Constants.PreferencesConstants.PREFERENCE_VALUE_LIFESTYLE_NOT_SET;
-import static de.prttstft.materialmensa.extras.Constants.PreferencesConstants.PREFERENCE_VALUE_LIFESTYLE_VEGAN;
-import static de.prttstft.materialmensa.extras.Constants.PreferencesConstants.PREFERENCE_VALUE_LIFESTYLE_VEGETARIAN;
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ACADEMICA;
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_CAFETE;
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_CAMPUS_DOENER;
@@ -49,36 +44,39 @@ import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.R
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainFragmentInteractorImplementation implements MainFragmentInteractor {
-    public static final String ACADEMICA_COUNTER_DESSERT = "Counter Dessert";
-    public static final String ACADEMICA_DEFAULT_DESSERT = "Default Dessert";
-    public static final String ACADEMICA_DEFAULT_MENU = "Default Menu";
-    public static final String ACADEMICA_DISH = "Dish";
-    public static final String ACADEMICA_GRILL = "Grill";
-    public static final String ACADEMICA_PASTA = "Pasta";
-    public static final String ACADEMICA_SIDE_DISH = "Side Dish";
-    public static final String ACADEMICA_SOUPS = "Soups";
-    public static final String ACADEMICA_WOK = "Wok";
-    public static final String FORUM_DESSERT_COUNTER = "dessert-counter";
-    public static final String FORUM_DISH = "dish";
-    public static final String FORUM_DISH_DEFAULT = "dish-default";
-    public static final String FORUM_DISH_GRILL = "dish-grill";
-    public static final String FORUM_SIDE_DISH = "sidedish";
-    public static final String OTHER_APPETIZER = "appetizer";
-    public static final String OTHER_CLASSIC = "classic";
-    public static final String OTHER_DESSERT = "dessert";
-    public static final String OTHER_DESSERT_COUNTER = "dessert-counter";
-    public static final String OTHER_DISH = "dish";
-    public static final String OTHER_LAHMACUN = "lahmacun";
-    public static final String OTHER_MAIN_COURSES = "maincourses";
-    public static final String OTHER_OFFER = "offer";
-    public static final String OTHER_SANDWICH = "sandwich";
-    public static final String OTHER_WRAP = "wrap";
-    public static final String PRICE_TYPE_WEIGHTED = "weighted";
-    public static final String ROLE_DEFAULT = "not_set";
+    public static final String LIFESTYLE_NOT_SET = "not_set";
+    public static final String LIFESTYLE_PREF = "prefLifestyle";
+    public static final String LIFESTYLE_VEGAN = "vegan";
+    public static final String LIFESTYLE_VEGETARIAN = "vegetarian";
     public static final String ROLE_GUEST = "guest";
     public static final String ROLE_PREF = "prefRole";
     public static final String ROLE_STAFF = "staff";
     public static final String ROLE_STUDENT = "student";
+    private static final String ACADEMICA_COUNTER_DESSERT = "Counter Dessert";
+    private static final String ACADEMICA_DEFAULT_DESSERT = "Default Dessert";
+    private static final String ACADEMICA_DEFAULT_MENU = "Default Menu";
+    private static final String ACADEMICA_DISH = "Dish";
+    private static final String ACADEMICA_GRILL = "Grill";
+    private static final String ACADEMICA_PASTA = "Pasta";
+    private static final String ACADEMICA_SIDE_DISH = "Side Dish";
+    private static final String ACADEMICA_SOUPS = "Soups";
+    private static final String ACADEMICA_WOK = "Wok";
+    private static final String FORUM_DESSERT_COUNTER = "dessert-counter";
+    private static final String FORUM_DISH = "dish";
+    private static final String FORUM_DISH_DEFAULT = "dish-default";
+    private static final String FORUM_DISH_GRILL = "dish-grill";
+    private static final String FORUM_SIDE_DISH = "sidedish";
+    private static final String OTHER_APPETIZER = "appetizer";
+    private static final String OTHER_CLASSIC = "classic";
+    private static final String OTHER_DESSERT = "dessert";
+    private static final String OTHER_DESSERT_COUNTER = "dessert-counter";
+    private static final String OTHER_DISH = "dish";
+    private static final String OTHER_LAHMACUN = "lahmacun";
+    private static final String OTHER_MAIN_COURSES = "maincourses";
+    private static final String OTHER_OFFER = "offer";
+    private static final String OTHER_SANDWICH = "sandwich";
+    private static final String OTHER_WRAP = "wrap";
+    private static final String PRICE_TYPE_WEIGHTED = "weighted";
 
     @Override
     public void getMeals(final MainFragmentListener listener, final int page, final int restaurant) {
@@ -334,7 +332,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     private String getPriceString(Meal meal) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        String role = sharedPreferences.getString(ROLE_PREF, ROLE_DEFAULT);
+        String role = sharedPreferences.getString(ROLE_PREF, ROLE_STUDENT);
 
         String priceGuests = round(meal.getPriceGuests());
         String priceStaff = round(meal.getPriceWorkers());
@@ -398,16 +396,16 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     private boolean filterLifestyle(Meal meal) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        String lifestyle = sharedPreferences.getString(getAppContext().getString(activity_settings_preferences_lifestyle_key), getAppContext().getString(activity_settings_preferences_lifestyle_default));
+        String lifestyle = sharedPreferences.getString(LIFESTYLE_PREF, LIFESTYLE_NOT_SET);
 
-        if (!lifestyle.equals(PREFERENCE_VALUE_LIFESTYLE_NOT_SET)) {
+        if (!lifestyle.equals(LIFESTYLE_PREF)) {
             switch (lifestyle) {
-                case PREFERENCE_VALUE_LIFESTYLE_VEGETARIAN:
+                case LIFESTYLE_VEGETARIAN:
                     if ((!meal.getBadges().contains(MEAL_BADGE_VEGETARIAN)) && (!meal.getBadges().contains(MEAL_BADGE_VEGAN))) {
                         return true;
                     }
                     break;
-                case PREFERENCE_VALUE_LIFESTYLE_VEGAN:
+                case LIFESTYLE_VEGAN:
                     if (!meal.getBadges().contains(MEAL_BADGE_VEGAN)) {
                         return true;
                     }

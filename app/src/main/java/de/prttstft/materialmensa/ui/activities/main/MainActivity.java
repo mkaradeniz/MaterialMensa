@@ -18,11 +18,14 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.prttstft.materialmensa.MyApplication;
 import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.ui.activities.about.AboutActivity;
 import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenter;
@@ -37,9 +40,20 @@ import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.R
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_GRILL_CAFE;
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_MENSULA;
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ONE_WAY_SNACK;
+import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_NOT_SET;
+import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_PREF;
+import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_VEGAN;
+import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_VEGETARIAN;
+import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.ROLE_GUEST;
+import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.ROLE_PREF;
+import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.ROLE_STAFF;
+import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.ROLE_STUDENT;
 
 
 public class MainActivity extends AppCompatActivity implements MainView {
+    private static final Drawable DRAWER_HEADER_AVATAR_GUEST = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_guest_black);
+    private static final Drawable DRAWER_HEADER_AVATAR_STAFF = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_staff_black);
+    private static final Drawable DRAWER_HEADER_AVATAR_STUDENT = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_school_black);
     @Bind(R.id.activity_main_drawer_layout) DrawerLayout drawerLayout;
     @Bind(R.id.activity_main_navigation_view) NavigationView navigationView;
     @Bind(R.id.activity_main_tab_layout) TabLayout tabLayout;
@@ -57,16 +71,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         presenter = new MainPresenterImplementation(this);
 
         setUpToolbar();
-
-        setupDrawerLayout();
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-        int tabCount = Integer.valueOf(sharedPreferences.getString(getString(R.string.activity_settings_preferences_tabs_key), "8"));
-
-        if (tabCount > 4) {
-            tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-        }
+        setUpDrawerLayout();
+        setUpDrawerHeader();
+        setUpTabs();
     }
 
     @Override
@@ -86,11 +93,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         }
     }
 
-    private void setupDrawerLayout() {
+    private void setUpDrawerLayout() {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-
-
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -148,6 +153,60 @@ public class MainActivity extends AppCompatActivity implements MainView {
         });
     }
 
+    private void setUpDrawerHeader() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String role = sharedPreferences.getString(ROLE_PREF, ROLE_STUDENT);
+        String lifestyle = sharedPreferences.getString(LIFESTYLE_PREF, LIFESTYLE_NOT_SET);
+
+        RelativeLayout header = (RelativeLayout) navigationView.getHeaderView(0);
+        FrameLayout frameLayout = (FrameLayout) header.getChildAt(0);
+        ImageView avatar = (ImageView) frameLayout.getChildAt(1);
+        TextView roleTextView = (TextView) header.getChildAt(1);
+        TextView lifestyleTextView = (TextView) header.getChildAt(2);
+
+        switch (role) {
+            case ROLE_GUEST:
+                roleTextView.setText(getString(R.string.activity_settings_preferences_role_guest));
+                avatar.setImageDrawable(DRAWER_HEADER_AVATAR_GUEST);
+                avatar.setScaleX(1.5f);
+                avatar.setScaleY(1.5f);
+                break;
+            case ROLE_STAFF:
+                roleTextView.setText(getString(R.string.activity_settings_preferences_role_staff));
+                avatar.setImageDrawable(DRAWER_HEADER_AVATAR_STAFF);
+                avatar.setScaleX(1.5f);
+                avatar.setScaleY(1.5f);
+                break;
+            case ROLE_STUDENT:
+                roleTextView.setText(getString(R.string.activity_settings_preferences_role_student));
+                avatar.setImageDrawable(DRAWER_HEADER_AVATAR_STUDENT);
+                avatar.setScaleX(1f);
+                avatar.setScaleY(1f);
+                break;
+        }
+
+        switch (lifestyle) {
+            case LIFESTYLE_VEGAN:
+                lifestyleTextView.setText(getString(R.string.activity_settings_preferences_lifestyle_vegan));
+                break;
+            case LIFESTYLE_VEGETARIAN:
+                lifestyleTextView.setText(getString(R.string.activity_settings_preferences_lifestyle_vegetarian));
+                break;
+            case LIFESTYLE_NOT_SET:
+                lifestyleTextView.setText(getString(R.string.activity_settings_preferences_lifestyle_default));
+                break;
+        }
+    }
+
+    private void setUpTabs() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        int tabCount = Integer.valueOf(sharedPreferences.getString(getString(R.string.activity_settings_preferences_tabs_key), "8"));
+
+        if (tabCount > 4) {
+            tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -160,7 +219,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void restaurantClosed(int restaurant, String openingTime) {
-
         ImageView circle = (ImageView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(0);
         TextView statusTextView = (TextView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(1);
 

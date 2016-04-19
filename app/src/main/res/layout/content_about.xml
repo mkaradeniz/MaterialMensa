@@ -78,6 +78,7 @@
             android:layout_toEndOf="@+id/activity_about_button_git_hub"
             android:text="@string/activity_about_button_libraries"/>
 
+
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/activity_about_button_wish_list"
             android:layout_width="120dp"
@@ -85,5 +86,13 @@
             android:layout_toEndOf="@+id/activity_about_button_libraries"
             android:text="@string/activity_about_button_wish_list"/>
     </RelativeLayout>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/activity_about_button_icons"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/activity_about_button_bar"
+        android:layout_centerInParent="true"
+        android:text="@string/activity_about_button_icons"/>
 
 </RelativeLayout>
