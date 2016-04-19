@@ -5,10 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +15,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
-import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
 
 public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapter.MainFragmentViewHolder> {
@@ -31,8 +27,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
 
     @Override
     public MainFragmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v;
-        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_meal, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_meal, parent, false);
         return new MainFragmentViewHolder(v);
     }
 
@@ -40,7 +35,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     public void onBindViewHolder(MainFragmentViewHolder holder, int position) {
         Meal meal = meals.get(position);
 
-        Glide.with(context).load(Utilities.getBadge(meal)).into(holder.badge);
+        holder.description.setText(meal.getCustomDescription());
         holder.name.setText(meal.getNameEn());
         holder.price.setText(meal.getPriceString());
     }
@@ -64,7 +59,7 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     }
 
     public class MainFragmentViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.item_restaurant_badge) ImageView badge;
+        @Bind(R.id.item_restaurant_meal_description) TextView description;
         @Bind(R.id.item_restaurant_meal_name) TextView name;
         @Bind(R.id.item_restaurant_meal_price) TextView price;
         private View view;

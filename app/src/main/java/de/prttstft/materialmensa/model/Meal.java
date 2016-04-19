@@ -45,10 +45,9 @@ public class Meal {
     private String image;
     @SerializedName("thumbnail")
     private String thumbnail;
-    private String position;
     private String priceString;
     private int orderNumber;
-
+    private String customDescription;
 
     // Getters & Setters
 
@@ -142,5 +141,24 @@ public class Meal {
 
     public void setOrderNumber(int orderNumber) {
         this.orderNumber = orderNumber;
+    }
+
+    public String getCustomDescription() {
+        return customDescription;
+    }
+
+    public void setCustomDescription(String customDescription) {
+        this.customDescription = customDescription;
+    }
+
+
+    // Helpers
+
+    public String getBadge() {
+        if (badges != null && badges.size() > 0) {
+            return badges.get(0);
+        } else {
+            return "";
+        }
     }
 }

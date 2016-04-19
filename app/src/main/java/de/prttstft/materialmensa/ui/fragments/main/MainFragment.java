@@ -72,6 +72,7 @@ public class MainFragment extends Fragment implements MainFragmentView {
 
         adapter = new MainFragmentAdapter(getContext());
         adapter.hasStableIds();
+        //recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), null));
         recyclerView.setAdapter(adapter);
     }
 

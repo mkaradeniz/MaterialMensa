@@ -3,43 +3,63 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_restaurant_meal_text_container"
     android:layout_width="match_parent"
-    android:layout_height="72dp"
-    android:layout_marginStart="@dimen/activity_horizontal_margin"
-    android:background="?attr/selectableItemBackground"
+    android:layout_height="90dp"
+    android:background="@android:color/white"
+    android:backgroundTint="@color/material_green"
+    android:backgroundTintMode="screen"
     android:gravity="center_vertical">
 
     <TextView
         android:id="@+id/item_restaurant_meal_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="66dp"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_toStartOf="@+id/item_restaurant_meal_price"
         android:ellipsize="end"
         android:maxLines="2"
         android:text="@string/item_meal_name_placeholder"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/color_accent"/>
+
+    <TextView
+        android:id="@+id/item_restaurant_meal_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/item_restaurant_meal_name"
+        android:layout_toStartOf="@+id/item_restaurant_meal_price"
+        android:ellipsize="end"
+        android:gravity="bottom"
+        android:maxLines="1"
+        android:text="@string/item_meal_description_placeholder"
         android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="@color/text_primary"/>
+        android:textColor="@color/text_secondary"/>
 
     <TextView
         android:id="@+id/item_restaurant_meal_price"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/item_restaurant_meal_name"
-        android:layout_marginEnd="@dimen/activity_vertical_margin"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/item_restaurant_meal_description"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:ellipsize="end"
+        android:gravity="end"
         android:maxLines="1"
         android:text="@string/item_meal_price_placeholder"
         android:textAppearance="?android:textAppearanceSmall"
         android:textColor="@color/text_secondary"/>
 
     <ImageView
-        android:id="@+id/item_restaurant_badge"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:id="@+id/item_restaurant_star"
+        android:layout_width="24dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:contentDescription="@string/item_meal_badge_description"/>
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:contentDescription="@string/item_meal_badge_description"
+        android:src="@drawable/ic_star_border_black"
+        android:tint="@color/text_secondaryLight"/>
+
 </RelativeLayout>

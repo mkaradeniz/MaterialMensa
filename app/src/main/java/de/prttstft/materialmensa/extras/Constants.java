@@ -82,14 +82,4 @@ public interface Constants {
         String RESTAURANT_STATUS_STARTS_WITH_CLOSES_DE = "Closes";
         String RESTAURANT_STATUS_STARTS_WITH_OPENS_DE = "Geöffnet";
     }
-
-    /*
-Currently closed
-Closes in X minutes
-Zurzeit geschlossen
-Opens at ??
-Öffnet um ??
-Opens at 08:00 clock
-Geöffnet ab 08:00 Uhr
- */
 }

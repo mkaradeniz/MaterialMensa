@@ -30,8 +30,12 @@ import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAU
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_GRILL_CAFE;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_MENSULA;
 import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ONE_WAY_SNACK;
+import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_LACTOSE_FREE;
+import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_LOW_CALORIE;
+import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_NONFAT;
 import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGAN;
 import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGETARIAN;
+import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VITAL_FOOD;
 import static de.prttstft.materialmensa.extras.Constants.PreferencesConstants.PREFERENCE_VALUE_LIFESTYLE_NOT_SET;
 import static de.prttstft.materialmensa.extras.Constants.PreferencesConstants.PREFERENCE_VALUE_LIFESTYLE_VEGAN;
 import static de.prttstft.materialmensa.extras.Constants.PreferencesConstants.PREFERENCE_VALUE_LIFESTYLE_VEGETARIAN;
@@ -45,6 +49,30 @@ import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.R
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainFragmentInteractorImplementation implements MainFragmentInteractor {
+    public static final String ACADEMICA_COUNTER_DESSERT = "Counter Dessert";
+    public static final String ACADEMICA_DEFAULT_DESSERT = "Default Dessert";
+    public static final String ACADEMICA_DEFAULT_MENU = "Default Menu";
+    public static final String ACADEMICA_DISH = "Dish";
+    public static final String ACADEMICA_GRILL = "Grill";
+    public static final String ACADEMICA_PASTA = "Pasta";
+    public static final String ACADEMICA_SIDE_DISH = "Side Dish";
+    public static final String ACADEMICA_SOUPS = "Soups";
+    public static final String ACADEMICA_WOK = "Wok";
+    public static final String FORUM_DESSERT_COUNTER = "dessert-counter";
+    public static final String FORUM_DISH = "dish";
+    public static final String FORUM_DISH_DEFAULT = "dish-default";
+    public static final String FORUM_DISH_GRILL = "dish-grill";
+    public static final String FORUM_SIDE_DISH = "sidedish";
+    public static final String OTHER_APPETIZER = "appetizer";
+    public static final String OTHER_CLASSIC = "classic";
+    public static final String OTHER_DESSERT = "dessert";
+    public static final String OTHER_DESSERT_COUNTER = "dessert-counter";
+    public static final String OTHER_DISH = "dish";
+    public static final String OTHER_LAHMACUN = "lahmacun";
+    public static final String OTHER_MAIN_COURSES = "maincourses";
+    public static final String OTHER_OFFER = "offer";
+    public static final String OTHER_SANDWICH = "sandwich";
+    public static final String OTHER_WRAP = "wrap";
     public static final String PRICE_TYPE_WEIGHTED = "weighted";
     public static final String ROLE_DEFAULT = "not_set";
     public static final String ROLE_GUEST = "guest";
@@ -70,7 +98,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
             @Override
             public void onError(Throwable e) {
-                L("Error: " + e.toString());
+                L("Error adding meal: " + e.toString());
             }
 
             @Override
@@ -90,6 +118,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     private Meal prepareMeal(Meal meal) {
         meal.setPriceString(getPriceString(meal));
         meal.setOrderNumber(getOrderNumber(meal));
+        meal.setCustomDescription(getDescription(meal));
 
         return meal;
     }
@@ -122,71 +151,185 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     private int getOrderNumber(Meal meal) {
         switch (meal.getRestaurant()) {
-            case "mensa-academica-paderborn":
+            case API_RESTAURANT_ACADEMICA:
                 switch (meal.getSubcategoryEn()) {
-                    case "Default Menu":
+                    case ACADEMICA_DEFAULT_MENU:
                         return 0;
-                    case "Dish":
+                    case ACADEMICA_DISH:
                         return 1;
-                    case "Pasta":
+                    case ACADEMICA_PASTA:
                         return 2;
-                    case "Wok":
+                    case ACADEMICA_WOK:
                         return 3;
-                    case "Grill":
+                    case ACADEMICA_GRILL:
                         return 4;
-                    case "Default Dessert":
+                    case ACADEMICA_DEFAULT_DESSERT:
                         return 7;
-                    case "Counter Dessert":
+                    case ACADEMICA_COUNTER_DESSERT:
                         return 8;
                     default:
                         switch (meal.getCategoryEn()) {
-                            case "Side Dish":
+                            case ACADEMICA_SIDE_DISH:
                                 return 6;
-                            case "Soups":
+                            case ACADEMICA_SOUPS:
                                 return 5;
                         }
                 }
                 break;
-            case "mensa-forum-paderborn":
+            case API_RESTAURANT_FORUM:
                 switch (meal.getCategory()) {
-                    case "dish-default":
+                    case FORUM_DISH_DEFAULT:
                         return 0;
-                    case "dish":
+                    case FORUM_DISH:
                         return 1;
-                    case "dish-grill":
+                    case FORUM_DISH_GRILL:
                         return 2;
-                    case "sidedish":
+                    case FORUM_SIDE_DISH:
                         return 3;
-                    case "dessert-counter":
+                    case FORUM_DESSERT_COUNTER:
                         return 4;
                 }
                 break;
             default:
                 switch (meal.getCategory()) {
-                    case "classic":
+                    case OTHER_CLASSIC:
                         return 0;
-                    case "dish":
+                    case OTHER_DISH:
                         return 0;
-                    case "wrap":
+                    case OTHER_WRAP:
                         return 0;
-                    case "offer":
+                    case OTHER_OFFER:
                         return 0;
-                    case "dessert-counter":
+                    case OTHER_DESSERT_COUNTER:
                         return 4;
-                    case "sandwich":
+                    case OTHER_SANDWICH:
                         return 1;
-                    case "appetizer":
+                    case OTHER_APPETIZER:
                         return 1;
-                    case "lahmacun":
+                    case OTHER_LAHMACUN:
                         return 2;
-                    case "maincourses":
+                    case OTHER_MAIN_COURSES:
                         return 2;
-                    case "dessert":
+                    case OTHER_DESSERT:
                         return 3;
                 }
                 break;
         }
         return 99;
+    }
+
+    private String getDescription(Meal meal) {
+        String category = getAppContext().getString(R.string.item_meal_description_category_meal);
+        String badge = getBadge(meal);
+        switch (meal.getRestaurant()) {
+            case API_RESTAURANT_ACADEMICA:
+                switch (meal.getSubcategoryEn()) {
+                    case ACADEMICA_COUNTER_DESSERT:
+                        category = getAppContext().getString(R.string.item_meal_description_category_dessert);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case ACADEMICA_DEFAULT_DESSERT:
+                        category = getAppContext().getString(R.string.item_meal_description_category_dessert);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case ACADEMICA_DEFAULT_MENU:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case ACADEMICA_DISH:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case ACADEMICA_GRILL:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case ACADEMICA_PASTA:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case ACADEMICA_WOK:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    default:
+                        switch (meal.getCategoryEn()) {
+                            case ACADEMICA_SIDE_DISH:
+                                category = getAppContext().getString(R.string.item_meal_description_category_side_dish);
+                                return getAppContext().getString(R.string.item_meal_description, badge, category);
+                            case ACADEMICA_SOUPS:
+                                category = getAppContext().getString(R.string.item_meal_description_category_soup);
+                                return getAppContext().getString(R.string.item_meal_description, badge, category);
+                        }
+                }
+                break;
+            case API_RESTAURANT_FORUM:
+                switch (meal.getCategory()) {
+                    case FORUM_DESSERT_COUNTER:
+                        category = getAppContext().getString(R.string.item_meal_description_category_dessert);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case FORUM_DISH:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case FORUM_DISH_DEFAULT:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case FORUM_DISH_GRILL:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case FORUM_SIDE_DISH:
+                        category = getAppContext().getString(R.string.item_meal_description_category_side_dish);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                }
+                break;
+            default:
+                switch (meal.getCategory()) {
+                    case OTHER_APPETIZER:
+                        category = getAppContext().getString(R.string.item_meal_description_category_appetizer);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case OTHER_CLASSIC:
+                        category = getAppContext().getString(R.string.item_meal_description_category_classic);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case OTHER_DESSERT:
+                        category = getAppContext().getString(R.string.item_meal_description_category_dessert);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case OTHER_DESSERT_COUNTER:
+                        category = getAppContext().getString(R.string.item_meal_description_category_dessert);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case OTHER_DISH:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case OTHER_LAHMACUN:
+                        category = getAppContext().getString(R.string.item_meal_description_category_lahmacun);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case OTHER_MAIN_COURSES:
+                        category = getAppContext().getString(R.string.item_meal_description_category_main_course);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case OTHER_OFFER:
+                        category = getAppContext().getString(R.string.item_meal_description_category_offer);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case OTHER_SANDWICH:
+                        category = getAppContext().getString(R.string.item_meal_description_category_sandwich);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                    case OTHER_WRAP:
+                        category = getAppContext().getString(R.string.item_meal_description_category_wrap);
+                        return getAppContext().getString(R.string.item_meal_description, badge, category);
+                }
+                break;
+        }
+        return getAppContext().getString(R.string.item_meal_description, badge, category);
+    }
+
+    private String getBadge(Meal meal) {
+        switch (meal.getBadge()) {
+            case MEAL_BADGE_LACTOSE_FREE:
+                return getAppContext().getString(R.string.item_meal_description_badge_lactose_free);
+            case MEAL_BADGE_LOW_CALORIE:
+                return getAppContext().getString(R.string.item_meal_description_badge_low_calorie);
+            case MEAL_BADGE_NONFAT:
+                return getAppContext().getString(R.string.item_meal_description_badge_non_fat);
+            case MEAL_BADGE_VEGAN:
+                return getAppContext().getString(R.string.item_meal_description_badge_vegan);
+            case MEAL_BADGE_VEGETARIAN:
+                return getAppContext().getString(R.string.item_meal_description_badge_vegetarian);
+            case MEAL_BADGE_VITAL_FOOD:
+                return getAppContext().getString(R.string.item_meal_description_badge_vital_food);
+            default:
+                return getAppContext().getString(R.string.empty_string);
+        }
     }
 
     private String getPriceString(Meal meal) {

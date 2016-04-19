@@ -1,12 +1,11 @@
 <resources>
     <!-- General -->
-
     <string name="app_name">MaterialMensa</string>
+    <string name="empty_string"/>
     <string name="placeholder">placeholder</string>
 
 
     <!-- Restaurants -->
-
     <string name="restaurant_bistro_hotspot">Bistro Hotspot</string>
     <string name="restaurant_cafete">Caféte</string>
     <string name="restaurant_campus_doener">Campus Döner</string>
@@ -20,24 +19,21 @@
 
 
     <!-- Errors -->
-
     <string name="error_all_meals_filtered">Nothing that fits your lifestyle. Sorry.</string>
     <string name="error_restaurant_closed">Restaurant closed. Sorry.</string>
 
 
-    <!-- Activities -->
-
     <!-- About Activity -->
-
     <string name="activity_about_attributions">Attributions</string>
     <string name="activity_about_button_git_hub">GitHub</string>
+    <string name="activity_about_button_libraries">Open Source</string>
     <string name="activity_about_button_rate">Rate</string>
     <string name="activity_about_button_wish_list">Wish List</string>
     <string name="activity_about_credits">Max Karadeniz\n prttstft@gmail.com</string>
+    <string name="activity_about_email_subject">[MaterialMensa] Ahoi!</string>
+    <string name="activity_about_libraries_title">Libraries</string>
     <string name="activity_about_title">About</string>
     <string name="activity_about_version">Version 0.1 (001)</string>
-    <string name="activity_main_drawer_restaurant_status_description">Restaurant Status</string>
-
     <string name="item_attributions_text_author_placeholder">Author</string>
     <string name="item_attributions_text_description_placeholder">Lorem ipsum dolor sit amet.</string>
     <string name="item_attributions_text_license_placeholder">License</string>
@@ -45,13 +41,11 @@
 
 
     <!--  Settings Activity -->
-
     <string name="activity_settings_title">Settings</string>
     <string name="activity_settings_default_lifestyle">Set your Lifestyle in the preferences</string>
     <string name="activity_settings_default_role">Set your position in the preferences</string>
 
     <!-- Preferences -->
-
     <string name="activity_settings_preference_additives">Additives</string>
     <string name="activity_settings_preference_additives_summary">Who cares for nitrate salting mix amiright?</string>
     <string name="activity_settings_preference_allergens">Allergens</string>
@@ -80,7 +74,6 @@
     <string name="activity_settings_preferences_tabs_summary">Wanna look into the future?</string>
 
     <!-- Additives -->
-
     <string name="additive_1_dyes">Colorings [1]</string>
     <string name="additive_2_preservatives">Preservatives [2]</string>
     <string name="additive_3_antioxidant">Antioxidants [3]</string>
@@ -98,7 +91,6 @@
     <string name="additive_15_milk_protein">Milk protein [15]</string>
 
     <!-- Allergens -->
-
     <string name="allergen_1_gluten">Gluten [A1]</string>
     <string name="allergen_2_crab">Crustaceans and/or products thereof [A2]</string>
     <string name="allergen_3_egg">Eggs and/or products thereof [A3]</string>
@@ -116,19 +108,34 @@
 
 
     <!-- Main Activity -->
-
-    <string name="item_meal_badge_description">Badge</string>
+    <string name="drawer_main_restaurant_status_closing_time">%1$s:%2$sh</string>
+    <string name="drawer_main_restaurant_status_description">Restaurant Status</string>
+    <string name="drawer_main_restaurant_status_opening_time">at %1$s:%2$s</string>
+    <string name="item_meal_description">%1$s%2$s</string>
+    <string name="item_meal_description_badge_lactose_free">Lactose-free\u0020</string>
+    <string name="item_meal_description_badge_low_calorie">Low Calorie\u0020</string>
+    <string name="item_meal_description_badge_non_fat">Low Fat\u0020</string>
+    <string name="item_meal_description_badge_vegan">Vegan\u0020</string>
+    <string name="item_meal_description_badge_vegetarian">Vegetarian\u0020</string>
+    <string name="item_meal_description_badge_vital_food">Vital\u0020</string>
+    <string name="item_meal_description_category_appetizer">Appetizer</string>
+    <string name="item_meal_description_category_classic">classic</string>
+    <string name="item_meal_description_category_dessert">Dessert</string>
+    <string name="item_meal_description_category_lahmacun">Lahmacun</string>
+    <string name="item_meal_description_category_main_course">Main Course</string>
+    <string name="item_meal_description_category_meal">Meal</string>
+    <string name="item_meal_description_category_offer">Offer</string>
+    <string name="item_meal_description_category_sandwich">Sandwich</string>
+    <string name="item_meal_description_category_side_dish">Side Dish</string>
+    <string name="item_meal_description_category_soup">Soup</string>
+    <string name="item_meal_description_category_wrap">Wrap</string>
+    <string name="item_meal_description_placeholder">Vegan Soup</string>
     <string name="item_meal_name_placeholder">Meal Name</string>
     <string name="item_meal_price_placeholder">Price</string>
     <string name="item_meal_price_string_all">%1$s%2$s€ / %3$s€ / %4$s€</string>
     <string name="item_meal_price_string_all_weighted">Price per 100gr:\u0020</string>
     <string name="item_meal_price_string_fixed"/>
     <string name="item_meal_price_string_single">%1$s€%2$s</string>
-    <string name="item_meal_price_string_single_weighted">/per 100gr</string>
+    <string name="item_meal_price_string_single_weighted">/100gr</string>
     <string name="item_meal_price_string_weighted">Price per 100gr:\u0020</string>
-    <string name="drawer_main_restaurant_status_closing_time">%1$s:%2$sh</string>
-    <string name="drawer_main_restaurant_status_opening_time">at %1$s:%2$s</string>
-    <string name="activity_about_button_libraries">Open Source</string>
-    <string name="activity_about_email_subject">[MaterialMensa] Ahoi!</string>
-    <string name="activity_about_libraries_title">Libraries</string>
 </resources>
