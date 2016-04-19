@@ -41,6 +41,11 @@
     <string name="item_attributions_text_name_placeholder">Library</string>
 
 
+    <!-- Details Activity -->
+    <string name="activity_details_image_description">Meal Picture</string>
+    <string name="activity_details_information">Please contact cafeteria staff for detailed information about additives and allergens. Don\'t rely on this information being correct if you have any allergies.</string>
+
+
     <!--  Settings Activity -->
     <string name="activity_settings_title">Settings</string>
     <string name="activity_settings_default_lifestyle">Set your Lifestyle in the preferences</string>
@@ -135,7 +140,7 @@
     <string name="item_meal_description_category_side_dish">Side Dish</string>
     <string name="item_meal_description_category_soup">Soup</string>
     <string name="item_meal_description_category_wrap">Wrap</string>
-    <string name="item_meal_description_placeholder">Vegan Soup</string>
+    <string name="item_meal_description_placeholder">Vegetarian Classic</string>
     <string name="item_meal_name_placeholder">Meal Name</string>
     <string name="item_meal_price_placeholder">Price</string>
     <string name="item_meal_price_string_all">%1$s%2$s€ / %3$s€ / %4$s€</string>

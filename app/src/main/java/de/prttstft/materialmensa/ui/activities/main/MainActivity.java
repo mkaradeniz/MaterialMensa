@@ -144,6 +144,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
                     case R.id.menu_main_drawer_about:
                         Intent startAboutActivityIntent = new Intent(getApplicationContext(), AboutActivity.class);
                         startActivity(startAboutActivityIntent);
+                        /*Intent startAboutActivityIntent = new Intent(getApplicationContext(), DetailsActivity.class);
+                        startActivity(startAboutActivityIntent);*/
                         break;
                 }
 
