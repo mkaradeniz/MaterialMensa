@@ -25,7 +25,7 @@
         android:layout_centerHorizontal="true"
         android:text="@string/app_name"
         android:textAppearance="?android:textAppearanceLarge"
-        android:textColor="@color/color_accent"/>
+        android:textColor="@color/colorAccent"/>
 
     <TextView
         android:id="@+id/activity_about_version"

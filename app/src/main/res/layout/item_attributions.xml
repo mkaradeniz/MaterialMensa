@@ -21,7 +21,7 @@
         android:maxLines="2"
         android:text="@string/item_attributions_text_name_placeholder"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/text_primary"/>
+        android:textColor="@color/textPrimary"/>
 
     <TextView
         android:id="@+id/item_attributions_text_description"
@@ -31,7 +31,7 @@
         android:layout_marginEnd="@dimen/activity_vertical_margin"
         android:text="@string/item_attributions_text_description_placeholder"
         android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="@color/text_secondary"/>
+        android:textColor="@color/textSecondary"/>
 
     <TextView
         android:id="@+id/item_attributions_text_author"

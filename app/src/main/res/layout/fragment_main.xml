@@ -33,7 +33,7 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:text="@string/error_restaurant_closed"
             android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@color/progress_bar_background"/>
+            android:textColor="@color/progressBarBackground"/>
 
     </RelativeLayout>
 
@@ -60,7 +60,7 @@
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:text="@string/error_all_meals_filtered"
             android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@color/progress_bar_background"/>
+            android:textColor="@color/progressBarBackground"/>
 
     </RelativeLayout>
 

@@ -59,9 +59,9 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     }
 
     public class MainFragmentViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.item_restaurant_meal_description) TextView description;
-        @Bind(R.id.item_restaurant_meal_name) TextView name;
-        @Bind(R.id.item_restaurant_meal_price) TextView price;
+        @Bind(R.id.item_meal_description) TextView description;
+        @Bind(R.id.item_meal_name) TextView name;
+        @Bind(R.id.item_meal_price) TextView price;
         private View view;
 
         public MainFragmentViewHolder(View itemView) {

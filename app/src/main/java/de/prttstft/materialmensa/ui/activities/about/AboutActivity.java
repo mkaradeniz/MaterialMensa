@@ -13,18 +13,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.mikepenz.aboutlibraries.LibsBuilder;
-import com.mikepenz.fastadapter.adapters.FastItemAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.BuildConfig;
 import de.prttstft.materialmensa.R;
-import de.prttstft.materialmensa.items.LibraryItem;
-import de.prttstft.materialmensa.ui.activities.about.presenter.AboutPresenter;
-import de.prttstft.materialmensa.ui.activities.about.presenter.AboutPresenterImplementation;
-import de.prttstft.materialmensa.ui.activities.about.view.AboutView;
 
-public class AboutActivity extends AppCompatActivity implements AboutView {
+public class AboutActivity extends AppCompatActivity {
     @SuppressWarnings("SpellCheckingInspection") private static final String CHROME_PACKAGE = "com.android.chrome";
     @SuppressWarnings("SpellCheckingInspection") private static final Uri EMAIL = Uri.parse("mailto:prttstft@gmail.com");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri GIT_HUB_REPO_URL = Uri.parse("https://github.com/prttstft/MaterialMensa");
@@ -37,8 +32,6 @@ public class AboutActivity extends AppCompatActivity implements AboutView {
     @Bind(R.id.activity_about_credits) TextView credits;
     @Bind(R.id.activity_about_toolbar) Toolbar toolbar;
     @Bind(R.id.activity_about_version) TextView version;
-    AboutPresenter presenter;
-    FastItemAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +46,6 @@ public class AboutActivity extends AppCompatActivity implements AboutView {
         }
 
         version.setText(BuildConfig.VERSION_NAME);
-
-        presenter = new AboutPresenterImplementation(this);
 
         setUpOnClickListeners();
     }
@@ -105,17 +96,11 @@ public class AboutActivity extends AppCompatActivity implements AboutView {
         });
     }
 
-    @Override
-    public void addLibrary(LibraryItem libraryItem) {
-        //noinspection unchecked
-        adapter.add(libraryItem);
-    }
-
     private void startCustomTab(Uri url) {
         CustomTabsIntent.Builder startCustomTabIntent = new CustomTabsIntent.Builder();
-        startCustomTabIntent.setToolbarColor(ContextCompat.getColor(AboutActivity.this, R.color.color_primary));
+        startCustomTabIntent.setToolbarColor(ContextCompat.getColor(AboutActivity.this, R.color.colorPrimary));
         startCustomTabIntent.setShowTitle(true);
-        startCustomTabIntent.setSecondaryToolbarColor(ContextCompat.getColor(AboutActivity.this, R.color.color_accent));
+        startCustomTabIntent.setSecondaryToolbarColor(ContextCompat.getColor(AboutActivity.this, R.color.colorAccent));
 
         if (chromeInstalled()) {
             startCustomTabIntent.build().intent.setPackage(CHROME_PACKAGE);

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- General -->
-
     <string-array name="empty_array"/>
 
 
     <!-- Activities -->
 
     <!-- Settings Activity -->
-
     <string-array name="activity_settings_preferences_role_array">
         <item>@string/activity_settings_preferences_role_default</item>
         <item>@string/activity_settings_preferences_role_student</item>
@@ -104,4 +102,5 @@
         <item>A13</item>
         <item>A14</item>
     </string-array>
+
 </resources>

@@ -15,7 +15,7 @@
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:contentDescription="@string/placeholder"
         android:elevation="6dp"
-        android:src="@color/material_blue"/>
+        android:src="@color/materialBlue500"/>
 
     <TextView
         android:id="@+id/drawer_main_header_role"
@@ -25,7 +25,7 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:text="Student"
         android:textAppearance="?android:textAppearanceMedium"
-        android:textColor="@color/text_primary"/>
+        android:textColor="@color/textPrimary"/>
 
     <TextView
         android:id="@+id/drawer_main_header_lifestyle"
@@ -37,5 +37,5 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:text="Vegetarian"
         android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="@color/text_secondary"/>
+        android:textColor="@color/textSecondary"/>
 </RelativeLayout>

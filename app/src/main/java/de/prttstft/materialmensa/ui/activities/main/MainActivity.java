@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         if (openingTime != null) {
             statusTextView.setText(openingTime);
-            statusTextView.setTextColor(ContextCompat.getColor(this, R.color.color_negative));
+            statusTextView.setTextColor(ContextCompat.getColor(this, R.color.colorNegative));
 
             circle.setVisibility(View.GONE);
             statusTextView.setVisibility(View.VISIBLE);
@@ -174,12 +174,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
             Drawable circleColor = circle.getDrawable();
 
             if (circleColor instanceof ShapeDrawable) {
-                ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.color_negative));
+                ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.colorNegative));
 
                 circle.setVisibility(View.VISIBLE);
                 statusTextView.setVisibility(View.GONE);
             } else if (circleColor instanceof GradientDrawable) {
-                ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.color_negative));
+                ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.colorNegative));
 
                 circle.setVisibility(View.VISIBLE);
                 statusTextView.setVisibility(View.GONE);
@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         if (closingTime != null) {
             statusTextView.setText(closingTime);
-            statusTextView.setTextColor(ContextCompat.getColor(this, R.color.color_positive));
+            statusTextView.setTextColor(ContextCompat.getColor(this, R.color.colorPositive));
 
             circle.setVisibility(View.GONE);
             statusTextView.setVisibility(View.VISIBLE);
@@ -202,12 +202,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
             Drawable circleColor = circle.getDrawable();
 
             if (circleColor instanceof ShapeDrawable) {
-                ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.color_positive));
+                ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.colorPositive));
 
                 circle.setVisibility(View.VISIBLE);
                 statusTextView.setVisibility(View.GONE);
             } else if (circleColor instanceof GradientDrawable) {
-                ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.color_positive));
+                ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.colorPositive));
 
                 circle.setVisibility(View.VISIBLE);
                 statusTextView.setVisibility(View.GONE);

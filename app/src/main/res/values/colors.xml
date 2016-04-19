@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App Colors -->
-    <color name="color_primary">#CDDC39</color>
-    <color name="color_primary_dark">#AFB42B</color>
-    <color name="color_accent">#03A9F4</color>
-    <color name="text_primary">#D9000000</color>
-    <color name="text_secondary">#8C000000</color>
-    <color name="text_hint">#59000000</color>
-    <color name="text_primaryLight">#D9FFFFFF</color>
-    <color name="text_secondaryLight">#8CFFFFFF</color>
-    <color name="text_hintLight">#59FFFFFF</color>
-    <color name="progress_bar_background">#F8BBD0</color>
-    <color name="color_negative">#F44336</color>
-    <color name="color_positive">#4CAF50</color>
+    <color name="colorAccent">#03A9F4</color>
+    <color name="colorNegative">#F44336</color>
+    <color name="colorPositive">#4CAF50</color>
+    <color name="colorPrimary">#CDDC39</color>
+    <color name="colorPrimaryDark">#AFB42B</color>
+    <color name="defaultBackground">#fffafafa</color>
+    <color name="progressBarBackground">#F8BBD0</color>
+    <color name="textHint">#59000000</color>
+    <color name="textHintLight">#59FFFFFF</color>
+    <color name="textPrimary">#D9000000</color>
+    <color name="textPrimaryLight">#D9FFFFFF</color>
+    <color name="textSecondary">#8C000000</color>
+    <color name="textSecondaryLight">#8CFFFFFF</color>
     <color name="transparent">#00000000</color>
-    <color name="default_background">#fffafafa</color>
 
-    <!-- Timeline Colors -->
-    <color name="material_red">#F44336</color>
-    <color name="material_purple">#9C27B0</color>
-    <color name="material_deep_purple">#673AB7</color>
-    <color name="material_blue">#2196F3</color>
-    <color name="material_light_blue">#03A9F4</color>
-    <color name="material_cyan">#00BCD4</color>
-    <color name="material_teal">#009688</color>
-    <color name="material_green">#4CAF50</color>
-    <color name="material_light_green">#8BC34A</color>
-    <color name="material_lime">#CDDC39</color>
-    <color name="material_yellow">#FFEB3B</color>
-    <color name="material_amber">#FFC107</color>
-    <color name="material_orange">#FF9800</color>
-    <color name="material_deep_orange">#FF5722</color>
-    <color name="material_blue_grey">#607D8B</color>
+    <!-- Material Colors -->
+    <color name="materialAmber500">#FFC107</color>
+    <color name="materialBlue500">#2196F3</color>
+    <color name="materialBlueGrey500">#607D8B</color>
+    <color name="materialCyan500">#00BCD4</color>
+    <color name="materialDeepOrange500">#FF5722</color>
+    <color name="materialDeepPurple500">#673AB7</color>
+    <color name="materialGreen500">#4CAF50</color>
+    <color name="materialLightBlue500">#03A9F4</color>
+    <color name="materialLightGreen500">#8BC34A</color>
+    <color name="materialLime500">#CDDC39</color>
+    <color name="materialOrange500">#FF9800</color>
+    <color name="materialPurple500">#9C27B0</color>
+    <color name="materialRed500">#F44336</color>
+    <color name="materialTeal500">#009688</color>
+    <color name="materialYellow500">#FFEB3B</color>
+
 </resources>
