@@ -43,7 +43,8 @@
 
     <!-- Details Activity -->
     <string name="activity_details_image_description">Meal Picture</string>
-    <string name="activity_details_information">Please contact cafeteria staff for detailed information about additives and allergens. Don\'t rely on this information being correct if you have any allergies.</string>
+    <string name="activity_details_information">Please contact cafeteria staff for detailed information about additives and allergens. Don\'t rely on this information being correct if you have any allergies or want to avoid any additives.</string>
+    <string name="activity_details_title">Details</string>
 
 
     <!--  Settings Activity -->

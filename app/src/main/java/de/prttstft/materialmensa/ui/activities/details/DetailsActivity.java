@@ -13,14 +13,18 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.model.Meal;
 
+import static de.prttstft.materialmensa.extras.Constants.MEAL;
+import static de.prttstft.materialmensa.extras.Utilities.L;
+
 public class DetailsActivity extends AppCompatActivity {
-    @Bind(R.id.activity_details_additives) TextView additives;
-    @Bind(R.id.activity_details_allergens) TextView allergens;
+    @Bind(R.id.activity_details_additives_allergens) TextView additivesAllergens;
     @Bind(R.id.activity_details_description) TextView mealDescription;
     @Bind(R.id.activity_details_description_no_image) TextView mealDescriptionNoImage;
     @Bind(R.id.activity_details_image) ImageView mealImage;
@@ -38,8 +42,9 @@ public class DetailsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         if (getIntent().getExtras() != null) {
-            String test = getIntent().getStringExtra("test");
-            meal = new Gson().fromJson(test, Meal.class);
+            if (getIntent().getExtras().getString(MEAL) != null) {
+                meal = new Gson().fromJson(getIntent().getStringExtra(MEAL), Meal.class);
+            }
         } else {
             finish();
         }
@@ -54,8 +59,8 @@ public class DetailsActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-            if (meal.getImage() == null) {
-                getSupportActionBar().setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
+            if (meal.getImage().isEmpty()) {
+                getSupportActionBar().setTitle(getString(R.string.activity_details_title));
                 getSupportActionBar().setBackgroundDrawable(ContextCompat.getDrawable(this, R.color.colorPrimary));
             } else {
                 getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -65,10 +70,11 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     private void setUpView() {
-        if (meal.getImage() == null) {
+        if (meal.getImage().isEmpty()) {
             noImageContainer.setVisibility(View.VISIBLE);
             mealDescriptionNoImage.setText(meal.getCustomDescription());
             mealNameNoImage.setText(meal.getNameEn());
+
         } else {
             imageContainer.setVisibility(View.VISIBLE);
             mealDescription.setText(meal.getCustomDescription());
@@ -76,7 +82,84 @@ public class DetailsActivity extends AppCompatActivity {
             Glide.with(this).load(meal.getImage()).into(mealImage);
         }
 
-        allergens.setText(meal.getAllergens().toString());
-        additives.setText(meal.getAllergens().toString());
+        additivesAllergens.setText(buildAdditiveAllergenString(meal.getAllergens()));
+    }
+
+    private String buildAdditiveAllergenString(List<String> additivesAllergens) {
+        String builder = "";
+        for (int i = 0; i < additivesAllergens.size(); i++) {
+            builder = builder + getAdditiveAllergenString(additivesAllergens.get(i)) + "\n";
+        }
+
+        return builder;
+    }
+
+    private String getAdditiveAllergenString(String additiveAllergen) {
+        String[] additives = getResources().getStringArray(R.array.activity_settings_preferences_additives_array);
+        String[] allergens = getResources().getStringArray(R.array.activity_settings_preferences_allergens_array);
+
+        switch (additiveAllergen) {
+            case "1":
+                return additives[0];
+            case "2":
+                return additives[1];
+            case "3":
+                return additives[2];
+            case "4":
+                return additives[3];
+            case "5":
+                return additives[4];
+            case "6":
+                return additives[5];
+            case "7":
+                return additives[6];
+            case "8":
+                return additives[7];
+            case "9":
+                return additives[8];
+            case "10":
+                return additives[9];
+            case "11":
+                return additives[10];
+            case "12":
+                return additives[11];
+            case "13":
+                return additives[12];
+            case "14":
+                return additives[13];
+            case "15":
+                return additives[14];
+            case "A1":
+                return allergens[0];
+            case "A2":
+                return allergens[1];
+            case "A3":
+                return allergens[2];
+            case "A4":
+                return allergens[3];
+            case "A5":
+                return allergens[4];
+            case "A6":
+                return allergens[5];
+            case "A7":
+                return allergens[6];
+            case "A8":
+                return allergens[7];
+            case "A9":
+                return allergens[8];
+            case "A10":
+                return allergens[9];
+            case "A11":
+                return allergens[10];
+            case "A12":
+                return allergens[11];
+            case "A13":
+                return allergens[12];
+            case "A14":
+                return allergens[13];
+            default:
+                L(additiveAllergen);
+                return "";
+        }
     }
 }

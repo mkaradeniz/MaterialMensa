@@ -9,16 +9,16 @@ import java.util.List;
 public class Meal {
     @SerializedName("date")
     private String date;
-    @SerializedName("name")
-    private String name;
+    @SerializedName("name_de")
+    private String nameDe;
     @SerializedName("name_en")
     private String nameEn;
-    @SerializedName("description")
-    private String description;
+    @SerializedName("description_de")
+    private String descriptionDe;
     @SerializedName("description_en")
     private String descriptionEn;
-    @SerializedName("category")
-    private String category;
+    @SerializedName("category_de")
+    private String categoryDe;
     @SerializedName("category_en")
     private String categoryEn;
     @SerializedName("subcategory")
@@ -55,24 +55,24 @@ public class Meal {
         return date;
     }
 
-    public String getName() {
-        return name;
+    public String getNameDe() {
+        return nameDe;
     }
 
     public String getNameEn() {
         return nameEn;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescriptionDe() {
+        return descriptionDe;
     }
 
     public String getDescriptionEn() {
         return descriptionEn;
     }
 
-    public String getCategory() {
-        return category;
+    public String getCategoryDe() {
+        return categoryDe;
     }
 
     public String getCategoryEn() {

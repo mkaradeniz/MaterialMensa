@@ -13,9 +13,10 @@
         android:id="@+id/activity_details_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/background_toolbar_transparent"
         android:elevation="4dp"
-        app:popupTheme="@style/AppTheme.PopupOverlay"/>
+        android:theme="@style/AppTheme.WhiteToolbarIcons"
+        app:popupTheme="@style/AppTheme.NoActionBar"/>
 
     <include layout="@layout/content_details"/>
 

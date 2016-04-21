@@ -20,6 +20,12 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark"/>
 
+    <style name="AppTheme.WhiteToolbarIcons" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+    </style>
+
     <style name="AboutLibraries" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

@@ -16,19 +16,22 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.model.Meal;
+import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentViewHolderListener;
 
 public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapter.MainFragmentViewHolder> {
+    public List<Meal> meals = new ArrayList<>();
     private Context context;
-    private List<Meal> meals = new ArrayList<>();
+    private MainFragmentViewHolderListener listener;
 
-    public MainFragmentAdapter(Context context) {
+    public MainFragmentAdapter(Context context, MainFragmentViewHolderListener listener) {
         this.context = context;
+        this.listener = listener;
     }
 
     @Override
     public MainFragmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_meal, parent, false);
-        return new MainFragmentViewHolder(v);
+        return new MainFragmentViewHolder(v, listener);
     }
 
     @Override
@@ -62,12 +65,22 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
         @Bind(R.id.activity_details_description) TextView description;
         @Bind(R.id.item_meal_name) TextView name;
         @Bind(R.id.item_meal_price) TextView price;
+        private MainFragmentViewHolderListener listener;
         private View view;
 
-        public MainFragmentViewHolder(View itemView) {
+        public MainFragmentViewHolder(View itemView, final MainFragmentViewHolderListener listener) {
             super(itemView);
             this.view = itemView;
+            this.listener = listener;
             ButterKnife.bind(this, itemView);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onClick(getAdapterPosition());
+
+                }
+            });
         }
     }
 }

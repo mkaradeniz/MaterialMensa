@@ -175,7 +175,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
                 }
                 break;
             case API_RESTAURANT_FORUM:
-                switch (meal.getCategory()) {
+                switch (meal.getCategoryDe()) {
                     case FORUM_DISH_DEFAULT:
                         return 0;
                     case FORUM_DISH:
@@ -189,7 +189,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
                 }
                 break;
             default:
-                switch (meal.getCategory()) {
+                switch (meal.getCategoryDe()) {
                     case OTHER_CLASSIC:
                         return 0;
                     case OTHER_DISH:
@@ -255,7 +255,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
                 }
                 break;
             case API_RESTAURANT_FORUM:
-                switch (meal.getCategory()) {
+                switch (meal.getCategoryDe()) {
                     case FORUM_DESSERT_COUNTER:
                         category = getAppContext().getString(R.string.item_meal_description_category_dessert);
                         return getAppContext().getString(R.string.item_meal_description, badge, category);
@@ -274,7 +274,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
                 }
                 break;
             default:
-                switch (meal.getCategory()) {
+                switch (meal.getCategoryDe()) {
                     case OTHER_APPETIZER:
                         category = getAppContext().getString(R.string.item_meal_description_category_appetizer);
                         return getAppContext().getString(R.string.item_meal_description, badge, category);

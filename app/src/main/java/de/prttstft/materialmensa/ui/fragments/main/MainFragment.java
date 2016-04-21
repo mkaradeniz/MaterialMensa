@@ -1,5 +1,6 @@
 package de.prttstft.materialmensa.ui.fragments.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,11 +11,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.google.gson.Gson;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Constants;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
+import de.prttstft.materialmensa.ui.activities.details.DetailsActivity;
+import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentViewHolderListener;
 import de.prttstft.materialmensa.ui.fragments.main.presenter.MainFragmentPresenter;
 import de.prttstft.materialmensa.ui.fragments.main.presenter.MainFragmentPresenterImplementation;
 import de.prttstft.materialmensa.ui.fragments.main.view.MainFragmentView;
@@ -22,7 +28,7 @@ import de.prttstft.materialmensa.ui.fragments.main.view.MainFragmentView;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
-public class MainFragment extends Fragment implements MainFragmentView {
+public class MainFragment extends Fragment implements MainFragmentView, MainFragmentViewHolderListener {
     public static final String ARG_PAGE = "ARG_PAGE";
     public static final String ARG_RESTAURANT = "ARG_RESTAURANT";
 
@@ -70,9 +76,16 @@ public class MainFragment extends Fragment implements MainFragmentView {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.hasFixedSize();
 
-        adapter = new MainFragmentAdapter(getContext());
+        adapter = new MainFragmentAdapter(getContext(), this);
         adapter.hasStableIds();
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(int position) {
+        Intent test = new Intent(getActivity(), DetailsActivity.class);
+        test.putExtra(Constants.MEAL, new Gson().toJson(adapter.meals.get(position)));
+        startActivity(test);
     }
 
     @Override

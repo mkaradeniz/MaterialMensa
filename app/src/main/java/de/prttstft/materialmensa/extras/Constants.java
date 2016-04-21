@@ -10,6 +10,9 @@ public interface Constants {
     String TODAY = "Today";
     String TOMORROW = "Tomorrow";
 
+    // Intents
+    String MEAL = "meal";
+
     String USER_TYPE_STUDENT = "user_type_student";
     String USER_TYPE_STAFF = "user_type_staff";
     String USER_TYPE_GUEST = "user_type_guest";
