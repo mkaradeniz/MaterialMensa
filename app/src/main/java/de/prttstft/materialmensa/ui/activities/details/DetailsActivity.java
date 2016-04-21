@@ -87,8 +87,12 @@ public class DetailsActivity extends AppCompatActivity {
 
     private String buildAdditiveAllergenString(List<String> additivesAllergens) {
         String builder = "";
+
         for (int i = 0; i < additivesAllergens.size(); i++) {
-            builder = builder + getAdditiveAllergenString(additivesAllergens.get(i)) + "\n";
+            String additiveAllergenString = getAdditiveAllergenString(additivesAllergens.get(i));
+            if (!additiveAllergenString.isEmpty()) {
+                builder = builder + additiveAllergenString + "\n";
+            }
         }
 
         return builder;

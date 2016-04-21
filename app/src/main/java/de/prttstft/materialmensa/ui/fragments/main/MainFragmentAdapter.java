@@ -78,7 +78,6 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
                 @Override
                 public void onClick(View v) {
                     listener.onClick(getAdapterPosition());
-
                 }
             });
         }
