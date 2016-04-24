@@ -10,12 +10,11 @@ import org.joda.time.DateTime;
 
 import de.prttstft.materialmensa.MyApplication;
 import de.prttstft.materialmensa.R;
-import de.prttstft.materialmensa.extras.Utilities;
+import de.prttstft.materialmensa.extras.DateTimeUtilities;
 
 public class MainFragmentPagerAdapter extends FragmentStatePagerAdapter {
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.getAppContext());
-    final int PAGE_COUNT = Integer.valueOf(sharedPreferences.getString(MyApplication.getAppContext().getString(R.string.activity_settings_preferences_tabs_key), "8"));
-
+    private SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.getAppContext());
+    private final int PAGE_COUNT = Integer.valueOf(sharedPreferences.getString(MyApplication.getAppContext().getString(R.string.activity_settings_preferences_tabs_key), "8"));
     private int restaurant;
 
     public MainFragmentPagerAdapter(FragmentManager fm, int restaurant) {
@@ -40,6 +39,6 @@ public class MainFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     private String getDateTabTitle(int page) {
         DateTime date = new DateTime().plusDays(page);
-        return Utilities.getDayString(date);
+        return DateTimeUtilities.getDayString(date);
     }
 }

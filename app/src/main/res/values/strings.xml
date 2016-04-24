@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- General -->
     <string name="app_name">MaterialMensa</string>
     <string name="empty_string"/>
@@ -24,7 +24,6 @@
 
 
     <!-- About Activity -->
-    <string name="activity_about_attributions">Attributions</string>
     <string name="activity_about_button_git_hub">GitHub</string>
     <string name="activity_about_button_libraries">Open Source</string>
     <string name="activity_about_button_rate">Rate</string>
@@ -35,10 +34,6 @@
     <string name="activity_about_title">About</string>
     <string name="activity_about_button_icons">Icons</string>
     <string name="activity_about_version">Version %1$s (%2$s)</string>
-    <string name="item_attributions_text_author_placeholder">Author</string>
-    <string name="item_attributions_text_description_placeholder">Lorem ipsum dolor sit amet.</string>
-    <string name="item_attributions_text_license_placeholder">License</string>
-    <string name="item_attributions_text_name_placeholder">Library</string>
 
 
     <!-- Details Activity -->
@@ -49,8 +44,6 @@
 
     <!--  Settings Activity -->
     <string name="activity_settings_title">Settings</string>
-    <string name="activity_settings_default_lifestyle">Set your Lifestyle in the preferences</string>
-    <string name="activity_settings_default_role">Set your position in the preferences</string>
 
     <!-- Preferences -->
     <string name="activity_settings_preference_additives">Additives</string>
@@ -59,23 +52,19 @@
     <string name="activity_settings_preference_allergens_summary">Select your personal kryptonite.</string>
     <string name="activity_settings_preference_category_allergens_additives">Allergens &amp; Additives</string>
     <string name="activity_settings_preference_category_general">General</string>
-    <string name="activity_settings_preference_lifestyle">Lifestyle</string>
     <string name="activity_settings_preferences_additives_key">prefAdditives</string>
     <string name="activity_settings_preferences_allergens_key">prefAllergens</string>
     <string name="activity_settings_preferences_lifestyle">Lifestyle</string>
     <string name="activity_settings_preferences_lifestyle_default">Super Meat Girl</string>
     <string name="activity_settings_preferences_lifestyle_key">prefLifestyle</string>
-    <string name="activity_settings_preferences_lifestyle_pref_default">not_set</string>
-    <string name="activity_settings_preferences_lifestyle_pref_vegan">vegan</string>
-    <string name="activity_settings_preferences_lifestyle_pref_vegetarian">vegetarian</string>
+    <string name="activity_settings_preferences_lifestyle_level_five_vegan">Nothing that casts a shadow.</string>
+    <string name="activity_settings_preferences_lifestyle_level_five_vegan_drawer">Level 5 Vegan</string>
     <string name="activity_settings_preferences_lifestyle_summary">Whats your lifestyle?</string>
     <string name="activity_settings_preferences_lifestyle_vegan">Vegan McGegan</string>
     <string name="activity_settings_preferences_lifestyle_vegetarian">Vegetarian Stallion</string>
     <string name="activity_settings_preferences_role">Role</string>
     <string name="activity_settings_preferences_role_guest">Guest</string>
     <string name="activity_settings_preferences_role_key">prefRole</string>
-    <string name="activity_settings_preferences_role_pref_guest">Guest</string>
-    <string name="activity_settings_preferences_role_pref_staff">staff</string>
     <string name="activity_settings_preferences_role_pref_student">student</string>
     <string name="activity_settings_preferences_role_staff">Staff</string>
     <string name="activity_settings_preferences_role_student">Student</string>
@@ -83,7 +72,7 @@
     <string name="activity_settings_preferences_tabs">Maximum Day Tabs</string>
     <string name="activity_settings_preferences_tabs_default">8</string>
     <string name="activity_settings_preferences_tabs_key">prefTabs</string>
-    <string name="activity_settings_preferences_tabs_summary">Wanna look into the future?</string>
+    <string name="activity_settings_preferences_tabs_summary" tools:ignore="Typos">Wanna look into the future?</string>
 
     <!-- Additives -->
     <string name="additive_1_dyes">Colorings [1]</string>
@@ -120,6 +109,10 @@
 
 
     <!-- Main Activity -->
+    <string name="drawer_main_header_lifestyle_placeholder">Vegetarian</string>
+    <string name="drawer_main_header_role_image_description">Role</string>
+    <string name="drawer_main_header_role_placeholder">Student</string>
+    <string name="drawer_main_header_time_placeholder">02:56</string>
     <string name="drawer_main_restaurant_status_closing_time">%1$s:%2$sh</string>
     <string name="drawer_main_restaurant_status_description">Restaurant Status</string>
     <string name="drawer_main_restaurant_status_opening_time">at %1$s:%2$s</string>
@@ -144,16 +137,9 @@
     <string name="item_meal_description_placeholder">Vegetarian Classic</string>
     <string name="item_meal_name_placeholder">Meal Name</string>
     <string name="item_meal_price_placeholder">Price</string>
-    <string name="item_meal_price_string_all">%1$s%2$s€ / %3$s€ / %4$s€</string>
-    <string name="item_meal_price_string_all_weighted">Price per 100gr:\u0020</string>
+    <string name="item_meal_price_string">%1$s€%2$s</string>
     <string name="item_meal_price_string_fixed"/>
-    <string name="item_meal_price_string_single">%1$s€%2$s</string>
-    <string name="item_meal_price_string_single_weighted">/100gr</string>
-    <string name="item_meal_price_string_weighted">Price per 100gr:\u0020</string>
+    <string name="item_meal_price_string_weighted">/100gr</string>
     <string name="item_meal_star_description">Star Meal</string>
-    <string name="drawer_main_header_role_placeholder">Student</string>
-    <string name="drawer_main_header_lifestyle_placeholder">Vegetarian</string>
-    <string name="drawer_main_header_role_image_description">Role</string>
-
 
 </resources>

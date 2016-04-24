@@ -10,7 +10,7 @@ import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
 
 public class SettingsActivity extends AppCompatActivity {
-    @Bind(R.id.activity_settings_toolbar) Toolbar toolbar;
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_settings_toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

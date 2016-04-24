@@ -3,14 +3,13 @@ package de.prttstft.materialmensa.ui.fragments.main.interactor;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import org.joda.time.DateTime;
-
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.network.MensaAPI;
 import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentListener;
@@ -44,6 +43,7 @@ import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.R
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainFragmentInteractorImplementation implements MainFragmentInteractor {
+    public static final String LIFESTYLE_LEVEL_FIVE_VEGAN = "level_five_vegan";
     public static final String LIFESTYLE_NOT_SET = "not_set";
     public static final String LIFESTYLE_PREF = "prefLifestyle";
     public static final String LIFESTYLE_VEGAN = "vegan";
@@ -80,7 +80,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     @Override
     public void getMeals(final MainFragmentListener listener, final int page, final int restaurant) {
-        Observable<Meal> observable = MensaAPI.mensaAPI.getMeals(getDateString(page), getRestaurantString(restaurant)).flatMap(new Func1<List<Meal>, Observable<Meal>>() {
+        Observable<Meal> observable = MensaAPI.mensaAPI.getMeals(DateTimeUtilities.getDateString(page), getRestaurantString(restaurant)).flatMap(new Func1<List<Meal>, Observable<Meal>>() {
             @Override
             public Observable<Meal> call(List<Meal> iterable) {
                 return Observable.from(iterable);
@@ -101,10 +101,10 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
             @Override
             public void onNext(Meal meal) {
-                if (!filterMeal(meal)) {
-                    listener.addMeal(prepareMeal(meal));
-                } else {
+                if (filterMeal(meal)) {
                     listener.filteredMeal();
+                } else {
+                    listener.addMeal(prepareMeal(meal));
                 }
             }
         });
@@ -119,11 +119,6 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
         meal.setCustomDescription(getDescription(meal));
 
         return meal;
-    }
-
-    private String getDateString(int page) {
-        String pattern = "yyyy-MM-dd";
-        return new DateTime().plusDays(page).toString(pattern);
     }
 
     private String getRestaurantString(int restaurant) {
@@ -341,28 +336,28 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
         switch (role) {
             case ROLE_STUDENT:
                 if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
-                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStudents, getAppContext().getString(R.string.item_meal_price_string_single_weighted));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string, priceStudents, getAppContext().getString(R.string.item_meal_price_string_weighted));
                 } else {
-                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStudents, getAppContext().getString(R.string.item_meal_price_string_fixed));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string, priceStudents, getAppContext().getString(R.string.item_meal_price_string_fixed));
                 }
             case ROLE_STAFF:
                 if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
-                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStaff, getAppContext().getString(R.string.item_meal_price_string_single_weighted));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string, priceStaff, getAppContext().getString(R.string.item_meal_price_string_weighted));
                 } else {
-                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceStaff, getAppContext().getString(R.string.item_meal_price_string_fixed));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string, priceStaff, getAppContext().getString(R.string.item_meal_price_string_fixed));
                 }
             case ROLE_GUEST:
                 if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
-                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceGuests, getAppContext().getString(R.string.item_meal_price_string_single_weighted));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string, priceGuests, getAppContext().getString(R.string.item_meal_price_string_weighted));
                 } else {
-                    return getAppContext().getResources().getString(R.string.item_meal_price_string_single, priceGuests, getAppContext().getString(R.string.item_meal_price_string_fixed));
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string, priceGuests, getAppContext().getString(R.string.item_meal_price_string_fixed));
                 }
-        }
-
-        if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
-            return getAppContext().getResources().getString(R.string.item_meal_price_string_all, getAppContext().getString(R.string.item_meal_price_string_weighted), priceStudents, priceStaff, priceGuests);
-        } else {
-            return getAppContext().getResources().getString(R.string.item_meal_price_string_all, getAppContext().getString(R.string.item_meal_price_string_fixed), priceStudents, priceStaff, priceGuests);
+            default:
+                if (meal.getPricetype().equals(PRICE_TYPE_WEIGHTED)) {
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string, priceStudents, getAppContext().getString(R.string.item_meal_price_string_weighted));
+                } else {
+                    return getAppContext().getResources().getString(R.string.item_meal_price_string, priceStudents, getAppContext().getString(R.string.item_meal_price_string_fixed));
+                }
         }
     }
 
@@ -410,6 +405,8 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
                         return true;
                     }
                     break;
+                case LIFESTYLE_LEVEL_FIVE_VEGAN:
+                    return true;
             }
         }
         return false;

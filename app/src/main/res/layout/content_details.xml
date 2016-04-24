@@ -19,6 +19,7 @@
             android:layout_height="250dp"
             android:visibility="gone">
 
+            <!-- Override in layout 21 -->
             <ImageView
                 android:id="@+id/activity_details_image"
                 android:layout_width="match_parent"

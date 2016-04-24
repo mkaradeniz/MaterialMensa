@@ -1,6 +1,5 @@
 package de.prttstft.materialmensa.ui.fragments.main;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,11 +19,9 @@ import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentViewHold
 
 public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapter.MainFragmentViewHolder> {
     public List<Meal> meals = new ArrayList<>();
-    private Context context;
     private MainFragmentViewHolderListener listener;
 
-    public MainFragmentAdapter(Context context, MainFragmentViewHolderListener listener) {
-        this.context = context;
+    public MainFragmentAdapter(MainFragmentViewHolderListener listener) {
         this.listener = listener;
     }
 
@@ -65,13 +62,11 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
         @Bind(R.id.activity_details_description) TextView description;
         @Bind(R.id.item_meal_name) TextView name;
         @Bind(R.id.item_meal_price) TextView price;
-        private MainFragmentViewHolderListener listener;
         private View view;
 
         public MainFragmentViewHolder(View itemView, final MainFragmentViewHolderListener listener) {
             super(itemView);
             this.view = itemView;
-            this.listener = listener;
             ButterKnife.bind(this, itemView);
 
             view.setOnClickListener(new View.OnClickListener() {

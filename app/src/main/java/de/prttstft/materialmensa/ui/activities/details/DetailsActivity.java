@@ -24,16 +24,16 @@ import static de.prttstft.materialmensa.extras.Constants.MEAL;
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class DetailsActivity extends AppCompatActivity {
-    @Bind(R.id.activity_details_additives_allergens) TextView additivesAllergens;
-    @Bind(R.id.activity_details_description) TextView mealDescription;
-    @Bind(R.id.activity_details_description_no_image) TextView mealDescriptionNoImage;
-    @Bind(R.id.activity_details_image) ImageView mealImage;
-    @Bind(R.id.activity_details_image_container) FrameLayout imageContainer;
-    @Bind(R.id.activity_details_name) TextView mealName;
-    @Bind(R.id.activity_details_name_no_image) TextView mealNameNoImage;
-    @Bind(R.id.activity_details_no_image_container) RelativeLayout noImageContainer;
-    @Bind(R.id.activity_details_toolbar) Toolbar toolbar;
-    Meal meal;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_additives_allergens) TextView additivesAllergens;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_description) TextView mealDescription;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_description_no_image) TextView mealDescriptionNoImage;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_image) ImageView mealImage;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_image_container) FrameLayout imageContainer;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_name) TextView mealName;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_name_no_image) TextView mealNameNoImage;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_no_image_container) RelativeLayout noImageContainer;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_toolbar) Toolbar toolbar;
+    private Meal meal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

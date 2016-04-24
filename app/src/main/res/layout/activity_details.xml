@@ -9,6 +9,7 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.activities.details.DetailsActivity">
 
+    <!-- Override in layout 21 -->
     <android.support.v7.widget.Toolbar
         android:id="@+id/activity_details_toolbar"
         android:layout_width="match_parent"

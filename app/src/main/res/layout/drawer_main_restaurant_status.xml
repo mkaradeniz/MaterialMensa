@@ -20,7 +20,7 @@
         android:layout_gravity="center"
         android:layout_marginStart="6dp"
         android:layout_toEndOf="@+id/drawer_main_restaurant_status_circle"
-        android:text="02:56"
+        android:text="@string/drawer_main_header_time_placeholder"
         android:textColor="@color/colorNegative"
         android:textSize="12sp"
         android:visibility="gone"/>

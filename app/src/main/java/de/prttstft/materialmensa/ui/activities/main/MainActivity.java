@@ -40,6 +40,7 @@ import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.R
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_GRILL_CAFE;
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_MENSULA;
 import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ONE_WAY_SNACK;
+import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_LEVEL_FIVE_VEGAN;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_NOT_SET;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_PREF;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_VEGAN;
@@ -54,12 +55,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private static final Drawable DRAWER_HEADER_AVATAR_GUEST = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_guest_black);
     private static final Drawable DRAWER_HEADER_AVATAR_STAFF = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_staff_black);
     private static final Drawable DRAWER_HEADER_AVATAR_STUDENT = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_school_black);
-    @Bind(R.id.activity_main_drawer_layout) DrawerLayout drawerLayout;
-    @Bind(R.id.activity_main_navigation_view) NavigationView navigationView;
-    @Bind(R.id.activity_main_tab_layout) TabLayout tabLayout;
-    @Bind(R.id.activity_main_toolbar) Toolbar toolbar;
-    @Bind(R.id.activity_main_view_pager) ViewPager viewPager;
-    private MainFragmentPagerAdapter adapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_ACADEMICA);
+    private final MainFragmentPagerAdapter adapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_ACADEMICA);
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_drawer_layout) DrawerLayout drawerLayout;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_navigation_view) NavigationView navigationView;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_tab_layout) TabLayout tabLayout;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_toolbar) Toolbar toolbar;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_view_pager) ViewPager viewPager;
     private MainPresenter presenter;
 
     @Override
@@ -194,6 +195,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 break;
             case LIFESTYLE_NOT_SET:
                 lifestyleTextView.setText(getString(R.string.activity_settings_preferences_lifestyle_default));
+                break;
+            case LIFESTYLE_LEVEL_FIVE_VEGAN:
+                lifestyleTextView.setText(R.string.activity_settings_preferences_lifestyle_level_five_vegan_drawer);
                 break;
         }
     }

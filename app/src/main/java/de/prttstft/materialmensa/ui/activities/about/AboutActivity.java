@@ -27,14 +27,14 @@ public class AboutActivity extends AppCompatActivity {
     @SuppressWarnings("SpellCheckingInspection") private static final Uri ICONS_EIGHT_URL = Uri.parse("https://icons8.com/");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri PLAY_STORE_URL = Uri.parse("https://github.com/prttstft/MaterialMensa");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri WISH_LIST_URL = Uri.parse("https://www.amazon.de/registry/wishlist/2RQNQ7DEKD9WF");
-    @Bind(R.id.activity_about_button_git_hub) AppCompatButton buttonGitHub;
-    @Bind(R.id.activity_about_button_icons) AppCompatButton icons;
-    @Bind(R.id.activity_about_button_libraries) AppCompatButton buttonLibraries;
-    @Bind(R.id.activity_about_button_rate) AppCompatButton buttonRate;
-    @Bind(R.id.activity_about_button_wish_list) AppCompatButton buttonWishList;
-    @Bind(R.id.activity_about_credits) TextView credits;
-    @Bind(R.id.activity_about_toolbar) Toolbar toolbar;
-    @Bind(R.id.activity_about_version) TextView version;
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_git_hub) AppCompatButton buttonGitHub;
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_icons) AppCompatButton icons;
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_libraries) AppCompatButton buttonLibraries;
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_rate) AppCompatButton buttonRate;
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_wish_list) AppCompatButton buttonWishList;
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_credits) TextView credits;
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_toolbar) Toolbar toolbar;
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_version) TextView version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +78,7 @@ public class AboutActivity extends AppCompatActivity {
         buttonLibraries.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Status Bar bugged.
                 Intent startLibrariesActivityIntent = new LibsBuilder()
                         .withActivityTheme(R.style.AboutLibraries)
                         .withActivityTitle(getString(R.string.activity_about_libraries_title))

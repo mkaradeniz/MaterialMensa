@@ -7,44 +7,25 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class Meal {
-    @SerializedName("date")
-    private String date;
-    @SerializedName("name_de")
-    private String nameDe;
-    @SerializedName("name_en")
-    private String nameEn;
-    @SerializedName("description_de")
-    private String descriptionDe;
-    @SerializedName("description_en")
-    private String descriptionEn;
-    @SerializedName("category_de")
-    private String categoryDe;
-    @SerializedName("category_en")
-    private String categoryEn;
-    @SerializedName("subcategory")
-    private String subcategory;
-    @SerializedName("subcategory_en")
-    private String subcategoryEn;
-    @SerializedName("priceStudents")
-    private float priceStudents;
-    @SerializedName("priceWorkers")
-    private float priceWorkers;
-    @SerializedName("priceGuests")
-    private float priceGuests;
-    @SerializedName("allergens")
-    private List<String> allergens = new ArrayList<String>();
-    @SerializedName("order_info")
-    private int orderInfo;
-    @SerializedName("badges")
-    private List<String> badges = new ArrayList<String>();
-    @SerializedName("restaurant")
-    private String restaurant;
-    @SerializedName("pricetype")
-    private String pricetype;
-    @SerializedName("image")
-    private String image;
-    @SerializedName("thumbnail")
-    private String thumbnail;
+    @SerializedName("date") private String date;
+    @SerializedName("name_de") private String nameDe;
+    @SerializedName("name_en") private String nameEn;
+    @SerializedName("description_de") private String descriptionDe;
+    @SerializedName("description_en") private String descriptionEn;
+    @SerializedName("category_de") private String categoryDe;
+    @SerializedName("category_en") private String categoryEn;
+    @SerializedName("subcategory") private String subcategory;
+    @SerializedName("subcategory_en") private String subcategoryEn;
+    @SerializedName("priceStudents") private float priceStudents;
+    @SerializedName("priceWorkers") private float priceWorkers;
+    @SerializedName("priceGuests") private float priceGuests;
+    @SerializedName("allergens") private List<String> allergens = new ArrayList<>();
+    @SerializedName("order_info") private int orderInfo;
+    @SerializedName("badges") private List<String> badges = new ArrayList<>();
+    @SerializedName("restaurant") private String restaurant;
+    @SerializedName("pricetype") private String pricetype;
+    @SerializedName("image") private String image;
+    @SerializedName("thumbnail") private String thumbnail;
     private String priceString;
     private int orderNumber;
     private String customDescription;

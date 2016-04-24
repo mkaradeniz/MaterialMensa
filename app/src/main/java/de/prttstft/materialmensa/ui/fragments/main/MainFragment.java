@@ -29,15 +29,15 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MainFragment extends Fragment implements MainFragmentView, MainFragmentViewHolderListener {
-    public static final String ARG_PAGE = "ARG_PAGE";
-    public static final String ARG_RESTAURANT = "ARG_RESTAURANT";
+    private static final String ARG_PAGE = "ARG_PAGE";
+    private static final String ARG_RESTAURANT = "ARG_RESTAURANT";
 
-    @Bind(R.id.fragment_main_progress_container) RelativeLayout progressBar;
-    @Bind(R.id.fragment_main_empty_container) RelativeLayout empty;
-    @Bind(R.id.fragment_main_empty_emoji) ImageView emptyEmoji;
-    @Bind(R.id.fragment_main_filtered_container) RelativeLayout filtered;
-    @Bind(R.id.fragment_main_filtered_emoji) ImageView filteredEmoji;
-    @Bind(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_progress_container) RelativeLayout progressBar;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_empty_container) RelativeLayout empty;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_empty_emoji) ImageView emptyEmoji;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_filtered_container) RelativeLayout filtered;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_filtered_emoji) ImageView filteredEmoji;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
     private MainFragmentAdapter adapter;
     @SuppressWarnings("FieldCanBeLocal") private MainFragmentPresenter presenter;
 
@@ -48,11 +48,6 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         MainFragment fragment = new MainFragment();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -72,11 +67,17 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         return view;
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
     private void setUpRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.hasFixedSize();
 
-        adapter = new MainFragmentAdapter(getContext(), this);
+        adapter = new MainFragmentAdapter(this);
         adapter.hasStableIds();
         recyclerView.setAdapter(adapter);
     }
