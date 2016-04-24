@@ -11,8 +11,9 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
 
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_BASE_URL;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_GET_MEALS;
+import static de.prttstft.materialmensa.constants.APIConstants.API_BASE_URL;
+import static de.prttstft.materialmensa.constants.APIConstants.API_GET_MEALS;
+import static de.prttstft.materialmensa.constants.APIConstants.API_GET_RESTAURANT_STATUS;
 
 public interface MensaAPI {
 
@@ -26,6 +27,6 @@ public interface MensaAPI {
     @GET(API_GET_MEALS)
     Observable<List<Meal>> getMeals(@Query("date") String page, @Query("restaurant") String restaurant);
 
-    @GET("access2.php?id=karadeniz-android-o48Ken7eT&getopeningstatus=1&restaurant=")
+    @GET(API_GET_RESTAURANT_STATUS)
     Observable<Restaurant> getRestaurantStatus(@Query("restaurant") String restaurant);
 }

@@ -16,7 +16,6 @@ import com.google.gson.Gson;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
-import de.prttstft.materialmensa.extras.Constants;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.ui.activities.details.DetailsActivity;
@@ -27,6 +26,7 @@ import de.prttstft.materialmensa.ui.fragments.main.view.MainFragmentView;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static de.prttstft.materialmensa.constants.GeneralConstants.MEAL;
 
 public class MainFragment extends Fragment implements MainFragmentView, MainFragmentViewHolderListener {
     private static final String ARG_PAGE = "ARG_PAGE";
@@ -84,9 +84,9 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
 
     @Override
     public void onClick(int position) {
-        Intent test = new Intent(getActivity(), DetailsActivity.class);
-        test.putExtra(Constants.MEAL, new Gson().toJson(adapter.meals.get(position)));
-        startActivity(test);
+        Intent startDetailsActivityIntent = new Intent(getActivity(), DetailsActivity.class);
+        startDetailsActivityIntent.putExtra(MEAL, new Gson().toJson(adapter.meals.get(position)));
+        startActivity(startDetailsActivityIntent);
     }
 
     @Override

@@ -14,24 +14,24 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ACADEMICA;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAFETE;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAMPUS_DOENER;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_FORUM;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_GRILL_CAFE;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_MENSULA;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ONE_WAY_SNACK;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ACADEMICA;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_CAFETE;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_CAMPUS_DOENER;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_FORUM;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_GRILL_CAFE;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_MENSULA;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ONE_WAY_SNACK;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantStatusConstants.RESTAURANT_STATUS_CLOSED;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantStatusConstants.RESTAURANT_STATUS_CLOSED_DE;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantStatusConstants.RESTAURANT_STATUS_STARTS_WITH_OPENS;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantStatusConstants.RESTAURANT_STATUS_STARTS_WITH_OPENS_DE;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ACADEMICA;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_CAFETE;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_CAMPUS_DOENER;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_FORUM;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_GRILL_CAFE;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_MENSULA;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ONE_WAY_SNACK;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ACADEMICA;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAFETE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAMPUS_DOENER;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_FORUM;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_GRILL_CAFE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_MENSULA;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_CLOSED_DE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_CLOSED_EN;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_STARTS_WITH_OPENS_DE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_STARTS_WITH_OPENS_EN;
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainInteractorImplementation implements MainInteractor {
@@ -132,7 +132,7 @@ public class MainInteractorImplementation implements MainInteractor {
     }
 
     private boolean restaurantOpen(String status) {
-        return !(status.startsWith(RESTAURANT_STATUS_CLOSED) || status.startsWith(RESTAURANT_STATUS_CLOSED_DE) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS_DE));
+        return !(status.startsWith(RESTAURANT_STATUS_CLOSED_EN) || status.startsWith(RESTAURANT_STATUS_CLOSED_DE) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS_EN) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS_DE));
     }
 
     private String getClosingTime(String status) {

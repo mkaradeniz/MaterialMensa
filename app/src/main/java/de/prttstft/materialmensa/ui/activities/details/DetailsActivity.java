@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.model.Meal;
 
-import static de.prttstft.materialmensa.extras.Constants.MEAL;
+import static de.prttstft.materialmensa.constants.GeneralConstants.MEAL;
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class DetailsActivity extends AppCompatActivity {

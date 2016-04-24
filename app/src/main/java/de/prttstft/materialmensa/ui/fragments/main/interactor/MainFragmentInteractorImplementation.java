@@ -1,15 +1,12 @@
 package de.prttstft.materialmensa.ui.fragments.main.interactor;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-
 import java.math.BigDecimal;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.extras.DateTimeUtilities;
+import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.network.MensaAPI;
 import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentListener;
@@ -20,36 +17,34 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ACADEMICA;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAFETE;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_CAMPUS_DOENER;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_FORUM;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_GRILL_CAFE;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_MENSULA;
-import static de.prttstft.materialmensa.extras.Constants.APIConstants.API_RESTAURANT_ONE_WAY_SNACK;
-import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_LACTOSE_FREE;
-import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_LOW_CALORIE;
-import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_NONFAT;
-import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGAN;
-import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VEGETARIAN;
-import static de.prttstft.materialmensa.extras.Constants.MealBadgeConstants.MEAL_BADGE_VITAL_FOOD;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ACADEMICA;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_CAFETE;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_CAMPUS_DOENER;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_FORUM;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_GRILL_CAFE;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_MENSULA;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ONE_WAY_SNACK;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ACADEMICA;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_CAFETE;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_CAMPUS_DOENER;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_FORUM;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_GRILL_CAFE;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_MENSULA;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ONE_WAY_SNACK;
+import static de.prttstft.materialmensa.constants.APIConstants.MEAL_BADGE_LACTOSE_FREE;
+import static de.prttstft.materialmensa.constants.APIConstants.MEAL_BADGE_LOW_CALORIE;
+import static de.prttstft.materialmensa.constants.APIConstants.MEAL_BADGE_NONFAT;
+import static de.prttstft.materialmensa.constants.APIConstants.MEAL_BADGE_VEGAN;
+import static de.prttstft.materialmensa.constants.APIConstants.MEAL_BADGE_VEGETARIAN;
+import static de.prttstft.materialmensa.constants.APIConstants.MEAL_BADGE_VITAL_FOOD;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ACADEMICA;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAFETE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAMPUS_DOENER;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_FORUM;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_GRILL_CAFE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_MENSULA;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK;
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainFragmentInteractorImplementation implements MainFragmentInteractor {
     public static final String LIFESTYLE_LEVEL_FIVE_VEGAN = "level_five_vegan";
     public static final String LIFESTYLE_NOT_SET = "not_set";
-    public static final String LIFESTYLE_PREF = "prefLifestyle";
     public static final String LIFESTYLE_VEGAN = "vegan";
     public static final String LIFESTYLE_VEGETARIAN = "vegetarian";
     public static final String ROLE_GUEST = "guest";
-    public static final String ROLE_PREF = "prefRole";
     public static final String ROLE_STAFF = "staff";
     public static final String ROLE_STUDENT = "student";
     private static final String ACADEMICA_COUNTER_DESSERT = "Counter Dessert";
@@ -326,8 +321,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     }
 
     private String getPriceString(Meal meal) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        String role = sharedPreferences.getString(ROLE_PREF, ROLE_STUDENT);
+        String role = UserSettings.getRole();
 
         String priceGuests = round(meal.getPriceGuests());
         String priceStaff = round(meal.getPriceWorkers());
@@ -366,8 +360,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     }
 
     private boolean filterAdditives(Meal meal) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        Set<String> additives = sharedPreferences.getStringSet(getAppContext().getString(R.string.activity_settings_preferences_additives_key), new HashSet<String>());
+        Set<String> additives = UserSettings.getAdditives();
 
         for (int i = 0; i < meal.getAllergens().size(); i++) {
             if (additives.contains(meal.getAllergens().get(i))) {
@@ -378,8 +371,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     }
 
     private boolean filterAllergens(Meal meal) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        Set<String> allergens = sharedPreferences.getStringSet(getAppContext().getString(R.string.activity_settings_preferences_allergens_key), new HashSet<String>());
+        Set<String> allergens = UserSettings.getAllergens();
 
         for (int i = 0; i < meal.getAllergens().size(); i++) {
             if (allergens.contains(meal.getAllergens().get(i))) {
@@ -390,24 +382,21 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     }
 
     private boolean filterLifestyle(Meal meal) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        String lifestyle = sharedPreferences.getString(LIFESTYLE_PREF, LIFESTYLE_NOT_SET);
+        String lifestyle = UserSettings.getLifestyle();
 
-        if (!lifestyle.equals(LIFESTYLE_PREF)) {
-            switch (lifestyle) {
-                case LIFESTYLE_VEGETARIAN:
-                    if ((!meal.getBadges().contains(MEAL_BADGE_VEGETARIAN)) && (!meal.getBadges().contains(MEAL_BADGE_VEGAN))) {
-                        return true;
-                    }
-                    break;
-                case LIFESTYLE_VEGAN:
-                    if (!meal.getBadges().contains(MEAL_BADGE_VEGAN)) {
-                        return true;
-                    }
-                    break;
-                case LIFESTYLE_LEVEL_FIVE_VEGAN:
+        switch (lifestyle) {
+            case LIFESTYLE_VEGETARIAN:
+                if ((!meal.getBadges().contains(MEAL_BADGE_VEGETARIAN)) && (!meal.getBadges().contains(MEAL_BADGE_VEGAN))) {
                     return true;
-            }
+                }
+                break;
+            case LIFESTYLE_VEGAN:
+                if (!meal.getBadges().contains(MEAL_BADGE_VEGAN)) {
+                    return true;
+                }
+                break;
+            case LIFESTYLE_LEVEL_FIVE_VEGAN:
+                return true;
         }
         return false;
     }

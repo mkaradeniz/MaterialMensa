@@ -5,7 +5,7 @@
         android:title="@string/activity_settings_preference_category_general">
 
         <ListPreference
-            android:defaultValue="@string/activity_settings_preferences_role_pref_student"
+            android:defaultValue="@string/activity_settings_preferences_role_default"
             android:entries="@array/activity_settings_preferences_role_array"
             android:entryValues="@array/activity_settings_preferences_role_array_values"
             android:key="@string/activity_settings_preferences_role_key"

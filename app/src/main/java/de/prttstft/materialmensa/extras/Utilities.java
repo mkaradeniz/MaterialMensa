@@ -7,10 +7,9 @@ import java.util.Random;
 
 import de.prttstft.materialmensa.R;
 
-import static de.prttstft.materialmensa.extras.Constants.LOGTAG;
+import static de.prttstft.materialmensa.constants.GeneralConstants.LOGTAG;
 
 public class Utilities {
-
 
     private Utilities() {
 

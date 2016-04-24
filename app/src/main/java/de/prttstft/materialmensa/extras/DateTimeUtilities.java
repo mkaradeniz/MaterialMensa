@@ -12,8 +12,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import static de.prttstft.materialmensa.extras.Constants.TODAY;
-import static de.prttstft.materialmensa.extras.Constants.TOMORROW;
+import static de.prttstft.materialmensa.constants.GeneralConstants.TODAY;
+import static de.prttstft.materialmensa.constants.GeneralConstants.TOMORROW;
 
 public class DateTimeUtilities {
     private static final String DATE_PATTERN = "yyyy-MM-dd";

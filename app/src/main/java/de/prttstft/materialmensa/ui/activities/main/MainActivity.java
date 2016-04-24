@@ -1,12 +1,10 @@
 package de.prttstft.materialmensa.ui.activities.main;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
@@ -27,6 +25,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.MyApplication;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.ui.activities.about.AboutActivity;
 import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenter;
 import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenterImplementation;
@@ -34,19 +33,17 @@ import de.prttstft.materialmensa.ui.activities.main.view.MainView;
 import de.prttstft.materialmensa.ui.activities.settings.SettingsActivity;
 import de.prttstft.materialmensa.ui.fragments.main.MainFragmentPagerAdapter;
 
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ACADEMICA;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_CAFETE;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_FORUM;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_GRILL_CAFE;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_MENSULA;
-import static de.prttstft.materialmensa.extras.Constants.RestaurantIdConstants.RESTAURANT_ID_ONE_WAY_SNACK;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ACADEMICA;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAFETE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_FORUM;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_GRILL_CAFE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_MENSULA;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_LEVEL_FIVE_VEGAN;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_NOT_SET;
-import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_PREF;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_VEGAN;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_VEGETARIAN;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.ROLE_GUEST;
-import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.ROLE_PREF;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.ROLE_STAFF;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.ROLE_STUDENT;
 
@@ -155,9 +152,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     private void setUpDrawerHeader() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String role = sharedPreferences.getString(ROLE_PREF, ROLE_STUDENT);
-        String lifestyle = sharedPreferences.getString(LIFESTYLE_PREF, LIFESTYLE_NOT_SET);
+        String role = UserSettings.getRole();
+        String lifestyle = UserSettings.getLifestyle();
 
         RelativeLayout header = (RelativeLayout) navigationView.getHeaderView(0);
         FrameLayout frameLayout = (FrameLayout) header.getChildAt(0);
@@ -194,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 lifestyleTextView.setText(getString(R.string.activity_settings_preferences_lifestyle_vegetarian));
                 break;
             case LIFESTYLE_NOT_SET:
-                lifestyleTextView.setText(getString(R.string.activity_settings_preferences_lifestyle_default));
+                lifestyleTextView.setText(getString(R.string.activity_settings_preferences_lifestyle_meat));
                 break;
             case LIFESTYLE_LEVEL_FIVE_VEGAN:
                 lifestyleTextView.setText(R.string.activity_settings_preferences_lifestyle_level_five_vegan_drawer);
@@ -203,8 +199,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     private void setUpTabs() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        int tabCount = Integer.valueOf(sharedPreferences.getString(getString(R.string.activity_settings_preferences_tabs_key), "8"));
+        int tabCount = UserSettings.getTabCount();
 
         if (tabCount > 4) {
             tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
