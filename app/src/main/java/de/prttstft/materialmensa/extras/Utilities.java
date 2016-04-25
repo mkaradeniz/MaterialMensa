@@ -15,12 +15,15 @@ public class Utilities {
 
     }
 
-    // Easy Logging. Only when debugging.
     public static void L(String input) {
         Log.d(LOGTAG, input);
     }
 
-    // Get a random emoji resource id.
+    public static String addLeadingZero(int n, int places) {
+        String placesPattern = "%0" + places + "d";
+        return String.format(Locale.GERMAN, placesPattern, n);
+    }
+
     public static int getRandomEmoji() {
         Random random = new Random();
         int index = random.nextInt(6);
@@ -41,11 +44,5 @@ public class Utilities {
             default:
                 return R.drawable.emoji_1f622;
         }
-    }
-
-    // Get leading Zero
-    public static String addLeadingZero(int n, int places) {
-        String placesPattern = "%0" + places + "d";
-        return String.format(Locale.GERMAN, placesPattern, n);
     }
 }
