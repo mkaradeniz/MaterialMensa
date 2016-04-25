@@ -45,4 +45,8 @@ public class Utilities {
                 return R.drawable.emoji_1f622;
         }
     }
+
+    public static String getSystemLanguage() {
+        return Locale.getDefault().getDisplayLanguage();
+    }
 }

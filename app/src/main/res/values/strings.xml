@@ -1,21 +1,21 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- General -->
     <string name="app_name">MaterialMensa</string>
-    <string name="empty_string"/>
-    <string name="placeholder">placeholder</string>
+    <string name="empty_string" translatable="false"/>
+    <string name="placeholder" translatable="false">placeholder</string>
 
 
     <!-- Restaurants -->
-    <string name="restaurant_bistro_hotspot">Bistro Hotspot</string>
-    <string name="restaurant_cafete">Caféte</string>
-    <string name="restaurant_campus_doener">Campus Döner</string>
-    <string name="restaurant_grill_cafe">Grill | Café</string>
-    <string name="restaurant_mensa_academica_paderborn">Mensa Academica</string>
-    <string name="restaurant_mensa_forum_paderborn">Mensa Forum</string>
-    <string name="restaurant_mensa_hamm">Mensa Basilica</string>
-    <string name="restaurant_mensa_lippstadt">Mensa Atrium</string>
-    <string name="restaurant_mensula">Mensula</string>
-    <string name="restaurant_one_way_snack">One Way Snack</string>
+    <string name="restaurant_bistro_hotspot" translatable="false">Bistro Hotspot</string>
+    <string name="restaurant_cafete" translatable="false">Caféte</string>
+    <string name="restaurant_campus_doener" translatable="false">Campus Döner</string>
+    <string name="restaurant_grill_cafe" translatable="false">Grill | Café</string>
+    <string name="restaurant_mensa_academica_paderborn" translatable="false">Mensa Academica</string>
+    <string name="restaurant_mensa_forum_paderborn" translatable="false">Mensa Forum</string>
+    <string name="restaurant_mensa_hamm" translatable="false">Mensa Basilica</string>
+    <string name="restaurant_mensa_lippstadt" translatable="false">Mensa Atrium</string>
+    <string name="restaurant_mensula" translatable="false">Mensula</string>
+    <string name="restaurant_one_way_snack" translatable="false">One Way Snack</string>
 
 
     <!-- Errors -->
@@ -24,22 +24,22 @@
 
 
     <!-- About Activity -->
-    <string name="activity_about_button_git_hub">GitHub</string>
-    <string name="activity_about_button_libraries">Open Source</string>
+    <string name="activity_about_button_git_hub" translatable="false">GitHub</string>
+    <string name="activity_about_button_libraries" translatable="false">Open Source</string>
     <string name="activity_about_button_rate">Rate</string>
     <string name="activity_about_button_wish_list">Wish List</string>
-    <string name="activity_about_credits">Max Karadeniz\n prttstft@gmail.com</string>
-    <string name="activity_about_email_subject">[MaterialMensa] Ahoi!</string>
-    <string name="activity_about_libraries_title">Libraries</string>
+    <string name="activity_about_credits" translatable="false">Max Karadeniz\n prttstft.dev@gmail.com</string>
+    <string name="activity_about_email_subject" translatable="false">[MaterialMensa] Ahoi!</string>
+    <string name="activity_about_libraries_title" translatable="false">Libraries</string>
     <string name="activity_about_title">About</string>
-    <string name="activity_about_button_icons">Icons</string>
-    <string name="activity_about_version">Version %1$s (%2$s)</string>
+    <string name="activity_about_button_icons" translatable="false">Icons</string>
+    <string name="activity_about_version" translatable="false">Version %1$s (%2$s)</string>
 
 
     <!-- Details Activity -->
     <string name="activity_details_image_description">Meal Picture</string>
     <string name="activity_details_information">Please contact cafeteria staff for detailed information about additives and allergens. Don\'t rely on this information being correct if you have any allergies or want to avoid any additives.</string>
-    <string name="activity_details_title">Details</string>
+    <string name="activity_details_title" translatable="false">Details</string>
 
 
     <!--  Settings Activity -->
@@ -52,39 +52,46 @@
     <string name="activity_settings_preference_allergens_summary">Select your personal kryptonite.</string>
     <string name="activity_settings_preference_category_allergens_additives">Allergens &amp; Additives</string>
     <string name="activity_settings_preference_category_general">General</string>
-    <string name="activity_settings_preferences_additives_key">prefAdditives</string>
-    <string name="activity_settings_preferences_allergens_key">prefAllergens</string>
-    <string name="activity_settings_preferences_lifestyle">Lifestyle</string>
-    <string name="activity_settings_preferences_lifestyle_default">not_set</string>
-    <string name="activity_settings_preferences_lifestyle_key">prefLifestyle</string>
+    <string name="activity_settings_preferences_additives_key" translatable="false">prefAdditives</string>
+    <string name="activity_settings_preferences_allergens_key" translatable="false">prefAllergens</string>
+    <string name="activity_settings_preferences_language">Language</string>
+    <string name="activity_settings_preferences_language_default" translatable="false">system</string>
+    <string name="activity_settings_preferences_language_english">English</string>
+    <string name="activity_settings_preferences_language_german">German</string>
+    <string name="activity_settings_preferences_language_key" translatable="false">prefLanguage</string>
+    <string name="activity_settings_preferences_language_summary" translatable="false">Lost in translation.</string>
+    <string name="activity_settings_preferences_language_system" translatable="false">System Language</string>
+    <string name="activity_settings_preferences_lifestyle" translatable="false">Lifestyle</string>
+    <string name="activity_settings_preferences_lifestyle_default" translatable="false">not_set</string>
+    <string name="activity_settings_preferences_lifestyle_key" translatable="false">prefLifestyle</string>
     <string name="activity_settings_preferences_lifestyle_level_five_vegan">Nothing that casts a shadow.</string>
     <string name="activity_settings_preferences_lifestyle_level_five_vegan_drawer">Level 5 Vegan</string>
-    <string name="activity_settings_preferences_lifestyle_meat">Super Meat Girl</string>
+    <string name="activity_settings_preferences_lifestyle_meat" translatable="false">Super Meat Girl</string>
     <string name="activity_settings_preferences_lifestyle_summary">Whats your lifestyle?</string>
-    <string name="activity_settings_preferences_lifestyle_vegan">Vegan McGegan</string>
-    <string name="activity_settings_preferences_lifestyle_vegetarian">Vegetarian Stallion</string>
+    <string name="activity_settings_preferences_lifestyle_vegan" translatable="false">Vegan McGegan</string>
+    <string name="activity_settings_preferences_lifestyle_vegetarian" translatable="false">Vegetarian Stallion</string>
     <string name="activity_settings_preferences_role">Role</string>
-    <string name="activity_settings_preferences_role_default">student</string>
+    <string name="activity_settings_preferences_role_default" translatable="false">student</string>
     <string name="activity_settings_preferences_role_guest">Guest</string>
-    <string name="activity_settings_preferences_role_key">prefRole</string>
+    <string name="activity_settings_preferences_role_key" translatable="false">prefRole</string>
     <string name="activity_settings_preferences_role_staff">Staff</string>
     <string name="activity_settings_preferences_role_student">Student</string>
     <string name="activity_settings_preferences_role_summary">What would you say you do here?</string>
-    <string name="activity_settings_preferences_tabs">Maximum Day Tabs</string>
-    <string name="activity_settings_preferences_tabs_default">8</string>
-    <string name="activity_settings_preferences_tabs_key">prefTabs</string>
+    <string name="activity_settings_preferences_tabs">Day Tabs</string>
+    <string name="activity_settings_preferences_tabs_default" translatable="false">8</string>
+    <string name="activity_settings_preferences_tabs_key" translatable="false">prefTabs</string>
     <string name="activity_settings_preferences_tabs_summary" tools:ignore="Typos">Wanna look into the future?</string>
 
     <!-- Additives -->
-    <string name="additive_1_dyes">Colorings [1]</string>
+    <string name="additive_1_dyes">Food coloring [1]</string>
     <string name="additive_2_preservatives">Preservatives [2]</string>
     <string name="additive_3_antioxidant">Antioxidants [3]</string>
-    <string name="additive_4_flavor_enhancers">Flavor enhancers [4]</string>
+    <string name="additive_4_flavor_enhancers">Flavor enhancer [4]</string>
     <string name="additive_5_phosphate">Phosphate [5]</string>
-    <string name="additive_6_sulphurised">Sulphurised [6]</string>
+    <string name="additive_6_sulphurised">Sulphureted [6]</string>
     <string name="additive_7_waxed">Waxed [7]</string>
     <string name="additive_8_blackend">Blackend [8]</string>
-    <string name="additive_9_sweeteners">Sweeteners [9]</string>
+    <string name="additive_9_sweeteners">Sweetener(s) [9]</string>
     <string name="additive_10_phenylalanine">Phenylalanine [10]</string>
     <string name="additive_11_taurine">Taurine [11]</string>
     <string name="additive_12_nitrate_salting_mix">Nitrate Salting Mix [12]</string>
@@ -93,7 +100,7 @@
     <string name="additive_15_milk_protein">Milk protein [15]</string>
 
     <!-- Allergens -->
-    <string name="allergen_1_gluten">Gluten [A1]</string>
+    <string name="allergen_1_gluten" translatable="false">Gluten [A1]</string>
     <string name="allergen_2_crab">Crustaceans and/or products thereof [A2]</string>
     <string name="allergen_3_egg">Eggs and/or products thereof [A3]</string>
     <string name="allergen_4_fish">Fish [A4]</string>
@@ -110,14 +117,14 @@
 
 
     <!-- Main Activity -->
-    <string name="drawer_main_header_lifestyle_placeholder">Vegetarian</string>
+    <string name="drawer_main_header_lifestyle_placeholder" translatable="false">Vegetarian</string>
     <string name="drawer_main_header_role_image_description">Role</string>
-    <string name="drawer_main_header_role_placeholder">Student</string>
-    <string name="drawer_main_header_time_placeholder">02:56</string>
-    <string name="drawer_main_restaurant_status_closing_time">%1$s:%2$sh</string>
-    <string name="drawer_main_restaurant_status_description">Restaurant Status</string>
+    <string name="drawer_main_header_role_placeholder" translatable="false">Student</string>
+    <string name="drawer_main_header_time_placeholder" translatable="false">02:56</string>
+    <string name="drawer_main_restaurant_status_closing_time" translatable="false">%1$s:%2$sh</string>
+    <string name="drawer_main_restaurant_status_description" translatable="false">Restaurant Status</string>
     <string name="drawer_main_restaurant_status_opening_time">at %1$s:%2$s</string>
-    <string name="item_meal_description">%1$s%2$s</string>
+    <string name="item_meal_description" translatable="false">%1$s%2$s</string>
     <string name="item_meal_description_badge_lactose_free">Lactose-free\u0020</string>
     <string name="item_meal_description_badge_low_calorie">Low Calorie\u0020</string>
     <string name="item_meal_description_badge_non_fat">Low Fat\u0020</string>
@@ -125,22 +132,22 @@
     <string name="item_meal_description_badge_vegetarian">Vegetarian\u0020</string>
     <string name="item_meal_description_badge_vital_food">Vital\u0020</string>
     <string name="item_meal_description_category_appetizer">Appetizer</string>
-    <string name="item_meal_description_category_classic">classic</string>
-    <string name="item_meal_description_category_dessert">Dessert</string>
-    <string name="item_meal_description_category_lahmacun">Lahmacun</string>
+    <string name="item_meal_description_category_classic" translatable="false">Classic</string>
+    <string name="item_meal_description_category_dessert" translatable="false">Dessert</string>
+    <string name="item_meal_description_category_lahmacun" translatable="false">Lahmacun</string>
     <string name="item_meal_description_category_main_course">Main Course</string>
     <string name="item_meal_description_category_meal">Meal</string>
     <string name="item_meal_description_category_offer">Offer</string>
-    <string name="item_meal_description_category_sandwich">Sandwich</string>
+    <string name="item_meal_description_category_sandwich" translatable="false">Sandwich</string>
     <string name="item_meal_description_category_side_dish">Side Dish</string>
     <string name="item_meal_description_category_soup">Soup</string>
-    <string name="item_meal_description_category_wrap">Wrap</string>
-    <string name="item_meal_description_placeholder">Vegetarian Classic</string>
-    <string name="item_meal_name_placeholder">Meal Name</string>
-    <string name="item_meal_price_placeholder">Price</string>
-    <string name="item_meal_price_string">%1$s€%2$s</string>
-    <string name="item_meal_price_string_fixed"/>
-    <string name="item_meal_price_string_weighted">/100gr</string>
+    <string name="item_meal_description_category_wrap" translatable="false">Wrap</string>
+    <string name="item_meal_description_placeholder" translatable="false">Vegetarian Classic</string>
+    <string name="item_meal_name_placeholder" translatable="false">Meal Name</string>
+    <string name="item_meal_price_placeholder" translatable="false">Price</string>
+    <string name="item_meal_price_string" translatable="false">%1$s€%2$s</string>
+    <string name="item_meal_price_string_fixed" translatable="false"/>
+    <string name="item_meal_price_string_weighted" translatable="false">/100gr</string>
     <string name="item_meal_star_description">Star Meal</string>
 
 </resources>

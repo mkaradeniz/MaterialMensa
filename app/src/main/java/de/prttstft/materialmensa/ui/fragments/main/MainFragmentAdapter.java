@@ -14,10 +14,12 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentViewHolderListener;
 
 public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapter.MainFragmentViewHolder> {
+    private static final String LOCALE_DE = "Deutsch";
     public List<Meal> meals = new ArrayList<>();
     private MainFragmentViewHolderListener listener;
 
@@ -36,8 +38,13 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
         Meal meal = meals.get(position);
 
         holder.description.setText(meal.getCustomDescription());
-        holder.name.setText(meal.getNameEn());
         holder.price.setText(meal.getPriceString());
+
+        if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+            holder.name.setText(meal.getNameDe());
+        } else {
+            holder.name.setText(meal.getNameEn());
+        }
     }
 
     @Override

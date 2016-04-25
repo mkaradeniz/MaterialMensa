@@ -18,12 +18,14 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
 
 import static de.prttstft.materialmensa.constants.GeneralConstants.MEAL;
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class DetailsActivity extends AppCompatActivity {
+    private static final String LOCALE_DE = "Deutsch";
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_additives_allergens) TextView additivesAllergens;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_description) TextView mealDescription;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_description_no_image) TextView mealDescriptionNoImage;
@@ -73,13 +75,22 @@ public class DetailsActivity extends AppCompatActivity {
         if (meal.getImage().isEmpty()) {
             noImageContainer.setVisibility(View.VISIBLE);
             mealDescriptionNoImage.setText(meal.getCustomDescription());
-            mealNameNoImage.setText(meal.getNameEn());
 
+            if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+                mealNameNoImage.setText(meal.getNameDe());
+            } else {
+                mealNameNoImage.setText(meal.getNameEn());
+            }
         } else {
             imageContainer.setVisibility(View.VISIBLE);
             mealDescription.setText(meal.getCustomDescription());
-            mealName.setText(meal.getNameEn());
             Glide.with(this).load(meal.getImage()).into(mealImage);
+
+            if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+                mealName.setText(meal.getNameDe());
+            } else {
+                mealName.setText(meal.getNameEn());
+            }
         }
 
         additivesAllergens.setText(buildAdditiveAllergenString(meal.getAllergens()));

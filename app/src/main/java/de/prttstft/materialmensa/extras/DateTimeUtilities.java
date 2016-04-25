@@ -4,11 +4,14 @@ package de.prttstft.materialmensa.extras;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
-import static de.prttstft.materialmensa.constants.GeneralConstants.TODAY;
-import static de.prttstft.materialmensa.constants.GeneralConstants.TOMORROW;
+import static de.prttstft.materialmensa.constants.GeneralConstants.TODAY_DE;
+import static de.prttstft.materialmensa.constants.GeneralConstants.TODAY_EN;
+import static de.prttstft.materialmensa.constants.GeneralConstants.TOMORROW_DE;
+import static de.prttstft.materialmensa.constants.GeneralConstants.TOMORROW_EN;
 
 public class DateTimeUtilities {
     private static final String DATE_PATTERN = "yyyy-MM-dd";
+    private static final String LOCALE_DE = "Deutsch";
 
     private DateTimeUtilities() {
 
@@ -28,11 +31,21 @@ public class DateTimeUtilities {
 
     // Get day of week if date is not today nor tomorrow.
     public static String getDayString(DateTime dateTime) {
+        String language = Utilities.getSystemLanguage();
         String outputString;
+
         if (isToday(dateTime)) {
-            outputString = TODAY;
+            if (language.equals(LOCALE_DE)) {
+                outputString = TODAY_DE;
+            } else {
+                outputString = TODAY_EN;
+            }
         } else if (isTomorrow(dateTime)) {
-            outputString = TOMORROW;
+            if (language.equals(LOCALE_DE)) {
+                outputString = TOMORROW_DE;
+            } else {
+                outputString = TOMORROW_EN;
+            }
         } else {
             outputString = dateTime.dayOfWeek().getAsShortText();
         }

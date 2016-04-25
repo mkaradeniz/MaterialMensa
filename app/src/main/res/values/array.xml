@@ -7,6 +7,18 @@
     <!-- Activities -->
 
     <!-- Settings Activity -->
+    <string-array name="activity_settings_preferences_language_array">
+        <item>@string/activity_settings_preferences_language_system</item>
+        <item>@string/activity_settings_preferences_language_english</item>
+        <item>@string/activity_settings_preferences_language_german</item>
+    </string-array>
+
+    <string-array name="activity_settings_preferences_language_array_values">
+        <item>system</item>
+        <item>english</item>
+        <item>german</item>
+    </string-array>
+
     <string-array name="activity_settings_preferences_role_array">
         <item>@string/activity_settings_preferences_role_student</item>
         <item>@string/activity_settings_preferences_role_staff</item>

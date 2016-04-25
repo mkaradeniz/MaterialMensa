@@ -22,7 +22,7 @@ import de.prttstft.materialmensa.extras.Utilities;
 
 public class AboutActivity extends AppCompatActivity {
     @SuppressWarnings("SpellCheckingInspection") private static final String CHROME_PACKAGE = "com.android.chrome";
-    @SuppressWarnings("SpellCheckingInspection") private static final Uri EMAIL = Uri.parse("mailto:prttstft@gmail.com");
+    @SuppressWarnings("SpellCheckingInspection") private static final Uri EMAIL = Uri.parse("mailto:prttstft.dev@gmail.com");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri GIT_HUB_REPO_URL = Uri.parse("https://github.com/prttstft/MaterialMensa");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri ICONS_EIGHT_URL = Uri.parse("https://icons8.com/");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri PLAY_STORE_URL = Uri.parse("https://github.com/prttstft/MaterialMensa");

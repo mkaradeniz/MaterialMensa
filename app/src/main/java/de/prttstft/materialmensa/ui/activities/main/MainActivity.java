@@ -224,7 +224,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
         if (openingTime != null) {
             statusTextView.setText(openingTime);
             statusTextView.setTextColor(ContextCompat.getColor(this, R.color.colorNegative));
-
             circle.setVisibility(View.GONE);
             statusTextView.setVisibility(View.VISIBLE);
         } else {
@@ -232,12 +231,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
             if (circleColor instanceof ShapeDrawable) {
                 ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.colorNegative));
-
                 circle.setVisibility(View.VISIBLE);
                 statusTextView.setVisibility(View.GONE);
             } else if (circleColor instanceof GradientDrawable) {
                 ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.colorNegative));
-
                 circle.setVisibility(View.VISIBLE);
                 statusTextView.setVisibility(View.GONE);
             }

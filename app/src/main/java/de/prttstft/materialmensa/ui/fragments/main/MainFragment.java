@@ -91,7 +91,9 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
 
     @Override
     public void addMeal(Meal meal) {
-        adapter.addMeal(meal);
+        if (adapter != null) {
+            adapter.addMeal(meal);
+        }
     }
 
     @Override
@@ -107,31 +109,43 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
 
     @Override
     public void hideEmpty() {
-        empty.setVisibility(GONE);
+        if (empty != null) {
+            empty.setVisibility(GONE);
+        }
     }
 
     @Override
     public void hideFiltered() {
-        filtered.setVisibility(GONE);
+        if (filtered != null) {
+            filtered.setVisibility(GONE);
+        }
     }
 
     @Override
     public void hideProgress() {
-        progressBar.setVisibility(GONE);
+        if (progressBar != null) {
+            progressBar.setVisibility(GONE);
+        }
     }
 
     @Override
     public void showEmpty() {
-        empty.setVisibility(VISIBLE);
+        if (empty != null) {
+            empty.setVisibility(VISIBLE);
+        }
     }
 
     @Override
     public void showFiltered() {
-        filtered.setVisibility(VISIBLE);
+        if (filtered != null) {
+            filtered.setVisibility(VISIBLE);
+        }
     }
 
     @Override
     public void showProgress() {
-        progressBar.setVisibility(VISIBLE);
+        if (progressBar != null) {
+            progressBar.setVisibility(VISIBLE);
+        }
     }
 }
