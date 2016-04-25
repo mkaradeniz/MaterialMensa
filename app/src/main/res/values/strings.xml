@@ -125,12 +125,24 @@
     <string name="drawer_main_restaurant_status_description" translatable="false">Restaurant Status</string>
     <string name="drawer_main_restaurant_status_opening_time">at %1$s:%2$s</string>
     <string name="item_meal_description" translatable="false">%1$s%2$s</string>
-    <string name="item_meal_description_badge_lactose_free">Lactose-free\u0020</string>
-    <string name="item_meal_description_badge_low_calorie">Low Calorie\u0020</string>
-    <string name="item_meal_description_badge_non_fat">Low Fat\u0020</string>
-    <string name="item_meal_description_badge_vegan">Vegan\u0020</string>
-    <string name="item_meal_description_badge_vegetarian">Vegetarian\u0020</string>
-    <string name="item_meal_description_badge_vital_food">Vital\u0020</string>
+    <string name="item_meal_description_badge_lactose_free_e">Lactose-free\u0020</string>
+    <string name="item_meal_description_badge_lactose_free_r">Lactose-free\u0020</string>
+    <string name="item_meal_description_badge_lactose_free_s">Lactose-free\u0020</string>
+    <string name="item_meal_description_badge_low_calorie_e">Low Calorie\u0020</string>
+    <string name="item_meal_description_badge_low_calorie_r">Low Calorie\u0020</string>
+    <string name="item_meal_description_badge_low_calorie_s">Low Calorie\u0020</string>
+    <string name="item_meal_description_badge_non_fat_e">Low Fat\u0020</string>
+    <string name="item_meal_description_badge_non_fat_r">Low Fat\u0020</string>
+    <string name="item_meal_description_badge_non_fat_s">Low Fat\u0020</string>
+    <string name="item_meal_description_badge_vegan_e">Vegan\u0020</string>
+    <string name="item_meal_description_badge_vegan_r">Vegan\u0020</string>
+    <string name="item_meal_description_badge_vegan_s">Vegan\u0020</string>
+    <string name="item_meal_description_badge_vegetarian_e">Vegetarian\u0020</string>
+    <string name="item_meal_description_badge_vegetarian_r">Vegetarian\u0020</string>
+    <string name="item_meal_description_badge_vegetarian_s">Vegetarian\u0020</string>
+    <string name="item_meal_description_badge_vital_food_e">Vital\u0020</string>
+    <string name="item_meal_description_badge_vital_food_r">Vital\u0020</string>
+    <string name="item_meal_description_badge_vital_food_s">Vital\u0020</string>
     <string name="item_meal_description_category_appetizer">Appetizer</string>
     <string name="item_meal_description_category_classic" translatable="false">Classic</string>
     <string name="item_meal_description_category_dessert" translatable="false">Dessert</string>

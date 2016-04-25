@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- General -->
-    <string-array name="empty_array"/>
+    <string-array name="empty_array" translatable="false"/>
 
 
     <!-- Activities -->
 
     <!-- Settings Activity -->
-    <string-array name="activity_settings_preferences_language_array">
+    <string-array name="activity_settings_preferences_language_array" translatable="false">
         <item>@string/activity_settings_preferences_language_system</item>
         <item>@string/activity_settings_preferences_language_english</item>
         <item>@string/activity_settings_preferences_language_german</item>
     </string-array>
 
-    <string-array name="activity_settings_preferences_language_array_values">
+    <string-array name="activity_settings_preferences_language_array_values" translatable="false">
         <item>system</item>
         <item>english</item>
         <item>german</item>
     </string-array>
 
-    <string-array name="activity_settings_preferences_role_array">
+    <string-array name="activity_settings_preferences_role_array" translatable="false">
         <item>@string/activity_settings_preferences_role_student</item>
         <item>@string/activity_settings_preferences_role_staff</item>
         <item>@string/activity_settings_preferences_role_guest</item>
     </string-array>
 
-    <string-array name="activity_settings_preferences_role_array_values">
+    <string-array name="activity_settings_preferences_role_array_values" translatable="false">
         <item>student</item>
         <item>staff</item>
         <item>guest</item>
     </string-array>
 
-    <string-array name="activity_settings_preferences_lifestyle_array">
+    <string-array name="activity_settings_preferences_lifestyle_array" translatable="false">
         <item>@string/activity_settings_preferences_lifestyle_meat</item>
         <item>@string/activity_settings_preferences_lifestyle_vegetarian</item>
         <item>@string/activity_settings_preferences_lifestyle_vegan</item>
         <item>@string/activity_settings_preferences_lifestyle_level_five_vegan</item>
     </string-array>
 
-    <string-array name="activity_settings_preferences_lifestyle_array_values">
+    <string-array name="activity_settings_preferences_lifestyle_array_values" translatable="false">
         <item>not_set</item>
         <item>vegetarian</item>
         <item>vegan</item>
         <item>level_five_vegan</item>
     </string-array>
 
-    <string-array name="activity_settings_preferences_additives_array">
+    <string-array name="activity_settings_preferences_additives_array" translatable="false">
         <item>@string/additive_1_dyes</item>
         <item>@string/additive_2_preservatives</item>
         <item>@string/additive_3_antioxidant</item>
@@ -63,7 +63,7 @@
         <item>@string/additive_15_milk_protein</item>
     </string-array>
 
-    <string-array name="activity_settings_preferences_additives_array_values">
+    <string-array name="activity_settings_preferences_additives_array_values" translatable="false">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -81,7 +81,7 @@
         <item>15</item>
     </string-array>
 
-    <string-array name="activity_settings_preferences_allergens_array">
+    <string-array name="activity_settings_preferences_allergens_array" translatable="false">
         <item>@string/allergen_1_gluten</item>
         <item>@string/allergen_2_crab</item>
         <item>@string/allergen_3_egg</item>
@@ -98,7 +98,7 @@
         <item>@string/allergen_14_molluscs</item>
     </string-array>
 
-    <string-array name="activity_settings_preferences_allergens_array_values">
+    <string-array name="activity_settings_preferences_allergens_array_values" translatable="false">
         <item>A1</item>
         <item>A2</item>
         <item>A3</item>

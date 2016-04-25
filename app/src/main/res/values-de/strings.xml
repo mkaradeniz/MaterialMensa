@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MaterialMensa</string>
     <string name="activity_about_button_rate">Bewerten</string>
     <string name="activity_about_button_wish_list">Wunschliste</string>
     <string name="activity_about_title">Über</string>
@@ -12,6 +11,9 @@
     <string name="activity_settings_preference_allergens_summary">Dein persönliches Kryptonit.</string>
     <string name="activity_settings_preference_category_allergens_additives">Allergene &amp; Zusatzstoffe</string>
     <string name="activity_settings_preference_category_general">Allgemeines</string>
+    <string name="activity_settings_preferences_language">Sprache</string>
+    <string name="activity_settings_preferences_language_english">Englisch</string>
+    <string name="activity_settings_preferences_language_german">Deutsch</string>
     <string name="activity_settings_preferences_lifestyle_level_five_vegan">Ich esse nichts was einen Schatten wirft.</string>
     <string name="activity_settings_preferences_lifestyle_level_five_vegan_drawer">Level 5 Veganer*in</string>
     <string name="activity_settings_preferences_lifestyle_summary">Was ist dein Lifestyle?</string>
@@ -24,14 +26,13 @@
     <string name="activity_settings_preferences_tabs_summary">Wieviele Tage willst du in die Zukunft sehen?</string>
     <string name="activity_settings_title">Einstellungen</string>
     <string name="additive_10_phenylalanine">Phenylalanin [10]</string>
-    <string name="allergen_12_sulphites">Schwefeldioxid und Sulfite [A12]</string>
-    <string name="additive_2_preservatives">Konservierungsstoff(e) [2]</string>
     <string name="additive_11_taurine">Taurin [11]</string>
     <string name="additive_12_nitrate_salting_mix">Nitratpökelsalz [12]</string>
     <string name="additive_13_caffeine">Koffein [13]</string>
     <string name="additive_14_quinine">Chinin [14]</string>
     <string name="additive_15_milk_protein">Milcheiweiß [15]</string>
     <string name="additive_1_dyes">Farbstoff(e) [1]</string>
+    <string name="additive_2_preservatives">Konservierungsstoff(e) [2]</string>
     <string name="additive_3_antioxidant">Antioxidationsmittel [3]</string>
     <string name="additive_4_flavor_enhancers">Geschmacksverstärker [4]</string>
     <string name="additive_5_phosphate">Phosphat [5]</string>
@@ -41,6 +42,7 @@
     <string name="additive_9_sweeteners">Süßungsmittel [9]</string>
     <string name="allergen_10_mustard">Senf und Senferzeugnisse [A10]</string>
     <string name="allergen_11_sesame">Sesamsamen und Sesamsamenerzeugnisse [A11]</string>
+    <string name="allergen_12_sulphites">Schwefeldioxid und Sulfite [A12]</string>
     <string name="allergen_13_lupins">Lupinen und Lupinenerzeugnisse [A13]</string>
     <string name="allergen_14_molluscs">Weichtiere und Weichtiererzeugnisse [A14]</string>
     <string name="allergen_2_crab">Krebstiere und Krebstiererzeugnisse [A2]</string>
@@ -51,14 +53,29 @@
     <string name="allergen_7_milk">Milch und Milcherzeugnisse(einschließlich Lactose) [A7]</string>
     <string name="allergen_8_nuts">Schalenfrüchte sowie daraus hergest. Erzeugnisse [A8]</string>
     <string name="allergen_9_celery">Sellerie und Sellerieerzeugnisse [A9]</string>
+    <string name="app_name">MaterialMensa</string>
     <string name="drawer_main_header_role_image_description">Rolle</string>
+    <string name="drawer_main_restaurant_status_opening_time">um %1$s:%2$s</string>
+    <string name="error_all_meals_filtered">Nichts was deinem Lifestyle entspricht.\nSorry.</string>
     <string name="error_restaurant_closed">Restaurant geschloßen. Sorry.</string>
-    <string name="item_meal_description_badge_lactose_free">Lactose-freie(s)\u0020</string>
-    <string name="item_meal_description_badge_low_calorie">Kalorienarme(s)\u0020</string>
-    <string name="item_meal_description_badge_non_fat">Fettarme(s)\u0020</string>
-    <string name="item_meal_description_badge_vegan">Vegane(s)\u0020</string>
-    <string name="item_meal_description_badge_vegetarian">Vegetarische(s)\u0020</string>
-    <string name="item_meal_description_badge_vital_food">Vitale(s)\u0020</string>
+    <string name="item_meal_description_badge_lactose_free_e">Laktosefreie\u0020</string>
+    <string name="item_meal_description_badge_lactose_free_r">Laktosefreier\u0020</string>
+    <string name="item_meal_description_badge_lactose_free_s">Laktosefreies\u0020</string>
+    <string name="item_meal_description_badge_low_calorie_e">Kalorienarme\u0020</string>
+    <string name="item_meal_description_badge_low_calorie_r">Kalorienarmer\u0020</string>
+    <string name="item_meal_description_badge_low_calorie_s">Kalorienarmes\u0020</string>
+    <string name="item_meal_description_badge_non_fat_e">Fettarme\u0020</string>
+    <string name="item_meal_description_badge_non_fat_r">Fettarmer\u0020</string>
+    <string name="item_meal_description_badge_non_fat_s">Fettarmes\u0020</string>
+    <string name="item_meal_description_badge_vegan_e">Vegane\u0020</string>
+    <string name="item_meal_description_badge_vegan_r">Veganer\u0020</string>
+    <string name="item_meal_description_badge_vegan_s">Veganes\u0020</string>
+    <string name="item_meal_description_badge_vegetarian_e">Vegetarische\u0020</string>
+    <string name="item_meal_description_badge_vegetarian_r">Vegetarischer\u0020</string>
+    <string name="item_meal_description_badge_vegetarian_s">Vegetarisches\u0020</string>
+    <string name="item_meal_description_badge_vital_food_e">Vitale\u0020</string>
+    <string name="item_meal_description_badge_vital_food_r">Vitaler\u0020</string>
+    <string name="item_meal_description_badge_vital_food_s">Vitales\u0020</string>
     <string name="item_meal_description_category_appetizer">Vorspeise</string>
     <string name="item_meal_description_category_main_course">Hauptgang</string>
     <string name="item_meal_description_category_meal">Gericht</string>
@@ -66,10 +83,4 @@
     <string name="item_meal_description_category_side_dish">Beilage</string>
     <string name="item_meal_description_category_soup">Suppe</string>
     <string name="item_meal_star_description">Zu Favoriten hinzufügen</string>
-    <string name="error_all_meals_filtered">Nichts was deinem Lifestyle entspricht.\nSorry.</string>
-    <string name="activity_settings_preferences_language">Sprache</string>
-    <string name="activity_settings_preferences_language_english">Englisch</string>
-    <string name="activity_settings_preferences_language_german">Deutsch</string>
-    <string name="activity_settings_preferences_language_summary"></string>
-    <string name="drawer_main_restaurant_status_opening_time">um %1$s:%2$s</string>
 </resources>

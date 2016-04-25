@@ -30,6 +30,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@color/defaultBackground</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
     </style>
 
 </resources>

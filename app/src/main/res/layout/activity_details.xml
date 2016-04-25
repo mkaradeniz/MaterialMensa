@@ -9,16 +9,23 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.activities.details.DetailsActivity">
 
-    <!-- Override in layout 21 -->
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/activity_details_toolbar"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/background_toolbar_transparent"
-        android:elevation="4dp"
-        android:theme="@style/AppTheme.WhiteToolbarIcons"
-        app:popupTheme="@style/AppTheme.NoActionBar"/>
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false">
 
-    <include layout="@layout/content_details"/>
+        <!-- Override in layout 21 -->
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/activity_details_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/background_toolbar_transparent"
+            android:elevation="4dp"
+            android:theme="@style/AppTheme.WhiteToolbarIcons"
+            app:popupTheme="@style/AppTheme.NoActionBar"/>
+
+        <include layout="@layout/content_details"/>
+
+    </android.support.design.widget.CoordinatorLayout>
 
 </android.support.design.widget.CoordinatorLayout>

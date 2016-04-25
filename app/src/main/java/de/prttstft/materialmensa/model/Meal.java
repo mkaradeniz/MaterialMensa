@@ -12,6 +12,7 @@ public class Meal {
     @SerializedName("name_en") private String nameEn;
     @SerializedName("description_de") private String descriptionDe;
     @SerializedName("description_en") private String descriptionEn;
+    @SerializedName("category") private String category;
     @SerializedName("category_de") private String categoryDe;
     @SerializedName("category_en") private String categoryEn;
     @SerializedName("subcategory") private String subcategory;
@@ -50,6 +51,10 @@ public class Meal {
 
     public String getDescriptionEn() {
         return descriptionEn;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     public String getCategoryDe() {
