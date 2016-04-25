@@ -24,4 +24,5 @@
         android:textColor="@color/colorNegative"
         android:textSize="12sp"
         android:visibility="gone"/>
+
 </android.support.v7.widget.LinearLayoutCompat>

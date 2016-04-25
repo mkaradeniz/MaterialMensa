@@ -134,6 +134,6 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="@string/activity_details_information"
         android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="@color/textSecondary"
-        />
+        android:textColor="@color/textSecondary"/>
+
 </RelativeLayout>

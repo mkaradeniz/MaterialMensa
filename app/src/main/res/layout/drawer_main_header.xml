@@ -61,4 +61,5 @@
         android:text="@string/drawer_main_header_lifestyle_placeholder"
         android:textAppearance="?android:textAppearanceSmall"
         android:textColor="@color/textSecondary"/>
+
 </RelativeLayout>

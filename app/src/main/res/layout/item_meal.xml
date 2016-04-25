@@ -59,6 +59,7 @@
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:contentDescription="@string/item_meal_star_description"
         android:src="@drawable/ic_star_border_black"
-        android:tint="@color/textSecondaryLight"/>
+        android:tint="@color/textSecondaryLight"
+        android:visibility="gone"/>
 
 </RelativeLayout>
