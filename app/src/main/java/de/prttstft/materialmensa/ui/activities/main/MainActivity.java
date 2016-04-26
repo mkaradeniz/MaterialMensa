@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_white);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_black);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
         }

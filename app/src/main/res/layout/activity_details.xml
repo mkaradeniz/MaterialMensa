@@ -21,7 +21,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/background_toolbar_transparent"
             android:elevation="4dp"
-            android:theme="@style/AppTheme.WhiteToolbarIcons"
+            android:theme="@style/AppTheme.BlackToolbarIcons"
             app:popupTheme="@style/AppTheme.NoActionBar"/>
 
         <include layout="@layout/content_details"/>

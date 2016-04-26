@@ -31,6 +31,14 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/meal_example"/>
 
+            <ProgressBar
+                android:id="@+id/activity_details_image_progress_bar"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="gone"/>
+
             <RelativeLayout
                 android:id="@+id/item_meal_name_container"
                 android:layout_width="match_parent"

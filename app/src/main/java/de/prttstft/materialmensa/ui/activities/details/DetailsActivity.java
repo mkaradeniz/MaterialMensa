@@ -8,10 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -22,6 +26,8 @@ import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 import static de.prttstft.materialmensa.constants.GeneralConstants.MEAL;
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
@@ -32,6 +38,7 @@ public class DetailsActivity extends AppCompatActivity {
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_description_no_image) TextView mealDescriptionNoImage;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_image) ImageView mealImage;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_image_container) FrameLayout imageContainer;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_image_progress_bar) ProgressBar progressBar;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_name) TextView mealName;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_name_no_image) TextView mealNameNoImage;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_no_image_container) RelativeLayout noImageContainer;
@@ -80,7 +87,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private void setUpView() {
         if (meal.getImage().isEmpty()) {
-            noImageContainer.setVisibility(View.VISIBLE);
+            noImageContainer.setVisibility(VISIBLE);
             mealDescriptionNoImage.setText(meal.getCustomDescription());
 
             if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
@@ -89,9 +96,23 @@ public class DetailsActivity extends AppCompatActivity {
                 mealNameNoImage.setText(meal.getNameEn());
             }
         } else {
-            imageContainer.setVisibility(View.VISIBLE);
+            imageContainer.setVisibility(VISIBLE);
+            progressBar.setVisibility(VISIBLE);
             mealDescription.setText(meal.getCustomDescription());
-            Glide.with(this).load(meal.getImage()).into(mealImage);
+            Glide.with(this).load(meal.getImage())
+                    .listener(new RequestListener<String, GlideDrawable>() {
+                        @Override
+                        public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                            progressBar.setVisibility(GONE);
+                            return false;
+                        }
+                    })
+                    .into(mealImage);
 
             if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
                 mealName.setText(meal.getNameDe());

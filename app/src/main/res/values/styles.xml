@@ -1,14 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="actionModeBackground">@color/colorPrimaryDark</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="actionBarPopupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-        <item name="windowActionModeOverlay">true</item>
+        <item name="actionModeBackground">@color/colorPrimaryDark</item>
         <item name="android:statusBarColor" tools:ignore="NewApi">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds" tools:ignore="NewApi">true</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="windowActionModeOverlay">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -16,17 +16,17 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
-    <style name="AppTheme.WhiteToolbarIcons" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <item name="actionMenuTextColor">@android:color/white</item>
-        <item name="android:textColorSecondary">@android:color/white</item>
+    <style name="AppTheme.BlackToolbarIcons" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="actionMenuTextColor">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textPrimary</item>
     </style>
 
-    <style name="AboutLibraries" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="AboutLibraries" parent="ThemeOverlay.AppCompat.Light">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowBackground">@color/defaultBackground</item>
