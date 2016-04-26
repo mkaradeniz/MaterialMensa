@@ -31,15 +31,15 @@ import static de.prttstft.materialmensa.constants.GeneralConstants.MEAL;
 public class MainFragment extends Fragment implements MainFragmentView, MainFragmentViewHolderListener {
     private static final String ARG_PAGE = "ARG_PAGE";
     private static final String ARG_RESTAURANT = "ARG_RESTAURANT";
-
-    @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_progress_container) RelativeLayout progressBar;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_empty_container) RelativeLayout empty;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_empty_emoji) ImageView emptyEmoji;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_filtered_container) RelativeLayout filtered;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_filtered_emoji) ImageView filteredEmoji;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_progress_container) RelativeLayout progressBar;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
-    private MainFragmentAdapter adapter;
     @SuppressWarnings("FieldCanBeLocal") private MainFragmentPresenter presenter;
+    private MainFragmentAdapter adapter;
+
 
     public static MainFragment newInstance(int page, int restaurant) {
         Bundle args = new Bundle();
