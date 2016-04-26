@@ -54,6 +54,10 @@
     <string name="activity_settings_preference_category_general">General</string>
     <string name="activity_settings_preferences_additives_key" translatable="false">prefAdditives</string>
     <string name="activity_settings_preferences_allergens_key" translatable="false">prefAllergens</string>
+    <string name="activity_settings_preferences_filter">Hide Meals With Filtered Allergens &amp; Additives</string>
+    <string name="activity_settings_preferences_hide_filtered_default" translatable="false">true</string>
+    <string name="activity_settings_preferences_hide_filtered_key" translatable="false">prefFilter</string>
+    <string name="activity_settings_preferences_filter_summary" tools:ignore="Typos">[Insert joke about object permanence here.]</string>
     <string name="activity_settings_preferences_language">Language</string>
     <string name="activity_settings_preferences_language_default" translatable="false">system</string>
     <string name="activity_settings_preferences_language_english">English</string>
@@ -81,7 +85,6 @@
     <string name="activity_settings_preferences_tabs_default" translatable="false">8</string>
     <string name="activity_settings_preferences_tabs_key" translatable="false">prefTabs</string>
     <string name="activity_settings_preferences_tabs_summary" tools:ignore="Typos">Wanna look into the future?</string>
-
     <!-- Additives -->
     <string name="additive_1_dyes">Food coloring [1]</string>
     <string name="additive_2_preservatives">Preservatives [2]</string>

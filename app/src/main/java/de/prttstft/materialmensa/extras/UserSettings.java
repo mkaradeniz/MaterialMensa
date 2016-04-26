@@ -14,8 +14,8 @@ import static de.prttstft.materialmensa.MyApplication.getAppContext;
 public class UserSettings {
     private static final String ADDITIVES_PREF = getAppContext().getString(R.string.activity_settings_preferences_additives_key);
     private static final String ALLERGENS_PREF = getAppContext().getString(R.string.activity_settings_preferences_allergens_key);
-    private static final String LANGUAGE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_language_default);
-    private static final String LANGUAGE_PREF = getAppContext().getString(R.string.activity_settings_preferences_language_key);
+    private static final String HIDE_FILTERED_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_hide_filtered_default);
+    private static final String HIDE_FILTERED_PREF = getAppContext().getString(R.string.activity_settings_preferences_hide_filtered_key);
     private static final String LIFESTYLE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_lifestyle_default);
     private static final String LIFESTYLE_PREF = getAppContext().getString(R.string.activity_settings_preferences_lifestyle_key);
     private static final String ROLE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_role_default);
@@ -36,6 +36,11 @@ public class UserSettings {
     public static Set<String> getAllergens() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
         return sharedPreferences.getStringSet(ALLERGENS_PREF, new HashSet<String>());
+    }
+
+    public static boolean getHideFiltered() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
+        return sharedPreferences.getBoolean(HIDE_FILTERED_PREF, Boolean.valueOf(HIDE_FILTERED_DEFAULT));
     }
 
     public static String getLifestyle() {

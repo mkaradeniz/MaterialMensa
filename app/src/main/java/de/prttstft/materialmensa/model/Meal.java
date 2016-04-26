@@ -30,6 +30,7 @@ public class Meal {
     private String priceString;
     private int orderNumber;
     private String customDescription;
+    private boolean filtered;
 
     // Getters & Setters
 
@@ -137,6 +138,13 @@ public class Meal {
         this.customDescription = customDescription;
     }
 
+    public boolean isFiltered() {
+        return filtered;
+    }
+
+    public void setFiltered(boolean filtered) {
+        this.filtered = filtered;
+    }
 
     // Helpers
 

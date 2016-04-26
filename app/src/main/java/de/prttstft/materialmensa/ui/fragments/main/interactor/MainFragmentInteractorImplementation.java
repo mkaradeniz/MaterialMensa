@@ -97,7 +97,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
             @Override
             public void onNext(Meal meal) {
-                if (filterMeal(meal)) {
+                if (filterMeal(meal) && UserSettings.getHideFiltered()) {
                     listener.filteredMeal();
                 } else {
                     listener.addMeal(prepareMeal(meal));
@@ -113,6 +113,10 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
         meal.setPriceString(getPriceString(meal));
         meal.setOrderNumber(getOrderNumber(meal));
         meal.setCustomDescription(getDescription(meal));
+
+        if (filterAdditives(meal) || filterAllergens(meal)) {
+            meal.setFiltered(true);
+        }
 
         return meal;
     }

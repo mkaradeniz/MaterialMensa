@@ -5,7 +5,7 @@
     android:id="@+id/item_meal_container"
     android:layout_width="match_parent"
     android:layout_height="90dp"
-    android:background="?attr/selectableItemBackground"
+    android:background="?selectableItemBackground"
     android:clickable="true"
     android:gravity="center_vertical"
     tools:ignore="Overdraw">

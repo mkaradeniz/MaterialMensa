@@ -32,5 +32,4 @@
         <item name="android:windowBackground">@color/defaultBackground</item>
         <item name="android:statusBarColor" tools:ignore="NewApi">@color/colorPrimaryDark</item>
     </style>
-
 </resources>

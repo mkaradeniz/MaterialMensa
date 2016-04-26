@@ -77,7 +77,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.hasFixedSize();
 
-        adapter = new MainFragmentAdapter(this);
+        adapter = new MainFragmentAdapter(getContext(), this);
         adapter.hasStableIds();
         recyclerView.setAdapter(adapter);
     }

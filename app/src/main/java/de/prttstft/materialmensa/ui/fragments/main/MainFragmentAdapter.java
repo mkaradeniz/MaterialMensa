@@ -1,9 +1,12 @@
 package de.prttstft.materialmensa.ui.fragments.main;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,8 +25,10 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     private static final String LOCALE_DE = "Deutsch";
     public List<Meal> meals = new ArrayList<>();
     private MainFragmentViewHolderListener listener;
+    private Context context;
 
-    public MainFragmentAdapter(MainFragmentViewHolderListener listener) {
+    public MainFragmentAdapter(Context context, MainFragmentViewHolderListener listener) {
+        this.context = context;
         this.listener = listener;
     }
 
@@ -44,6 +49,10 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
             holder.name.setText(meal.getNameDe());
         } else {
             holder.name.setText(meal.getNameEn());
+        }
+
+        if (meal.isFiltered()) {
+            holder.name.setTextColor(ContextCompat.getColor(context, R.color.materialDeepOrange500));
         }
     }
 
@@ -66,9 +75,11 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     }
 
     public class MainFragmentViewHolder extends RecyclerView.ViewHolder {
+        @Bind(R.id.item_meal_container) RelativeLayout container;
         @Bind(R.id.activity_details_description) TextView description;
         @Bind(R.id.item_meal_name) TextView name;
         @Bind(R.id.item_meal_price) TextView price;
+
         private View view;
 
         public MainFragmentViewHolder(View itemView, final MainFragmentViewHolderListener listener) {

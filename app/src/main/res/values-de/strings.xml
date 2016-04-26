@@ -11,6 +11,8 @@
     <string name="activity_settings_preference_allergens_summary">Dein persönliches Kryptonit.</string>
     <string name="activity_settings_preference_category_allergens_additives">Allergene &amp; Zusatzstoffe</string>
     <string name="activity_settings_preference_category_general">Allgemeines</string>
+    <string name="activity_settings_preferences_filter">Verstecke Gerichte mit gefilterten Allergenen &amp; Zusatzstoffen</string>
+    <string name="activity_settings_preferences_filter_summary">\[Witz über Objektpermanenz hier einfügen.\]</string>
     <string name="activity_settings_preferences_language">Sprache</string>
     <string name="activity_settings_preferences_language_english">Englisch</string>
     <string name="activity_settings_preferences_language_german">Deutsch</string>
