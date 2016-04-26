@@ -3,6 +3,7 @@ package de.prttstft.materialmensa.ui.fragments.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -75,6 +76,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
 
     private void setUpRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.hasFixedSize();
 
         adapter = new MainFragmentAdapter(getContext(), this);

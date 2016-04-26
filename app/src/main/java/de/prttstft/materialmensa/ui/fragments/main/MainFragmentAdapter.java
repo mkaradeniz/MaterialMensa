@@ -6,8 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,10 +22,13 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentViewHolderListener;
+
+import static android.view.View.GONE;
 
 public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapter.MainFragmentViewHolder> {
     private static final String LOCALE_DE = "Deutsch";
@@ -34,12 +43,12 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
 
     @Override
     public MainFragmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_meal, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_meal_new, parent, false);
         return new MainFragmentViewHolder(v, listener);
     }
 
     @Override
-    public void onBindViewHolder(MainFragmentViewHolder holder, int position) {
+    public void onBindViewHolder(final MainFragmentViewHolder holder, int position) {
         Meal meal = meals.get(position);
 
         holder.description.setText(meal.getCustomDescription());
@@ -54,6 +63,23 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
         if (meal.isFiltered()) {
             holder.name.setTextColor(ContextCompat.getColor(context, R.color.materialDeepOrange500));
         }
+
+        Glide.with(context).load(meal.getThumbnail())
+                .listener(new RequestListener<String, GlideDrawable>() {
+                    @Override
+                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                        holder.progressBar.setVisibility(GONE);
+                        holder.icon_container.setVisibility(GONE);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                        holder.progressBar.setVisibility(GONE);
+                        return false;
+                    }
+                })
+                .into(holder.image);
     }
 
     @Override
@@ -75,10 +101,12 @@ public class MainFragmentAdapter extends RecyclerView.Adapter<MainFragmentAdapte
     }
 
     public class MainFragmentViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.item_meal_container) RelativeLayout container;
-        @Bind(R.id.activity_details_description) TextView description;
+        @Bind(R.id.item_meal_icon_container) FrameLayout icon_container;
+        @Bind(R.id.item_meal_description) TextView description;
+        @Bind(R.id.item_meal_icon) CircleImageView image;
         @Bind(R.id.item_meal_name) TextView name;
         @Bind(R.id.item_meal_price) TextView price;
+        @Bind(R.id.item_meal_icon_progress_bar) ProgressBar progressBar;
 
         private View view;
 

@@ -34,7 +34,7 @@ import static de.prttstft.materialmensa.extras.Utilities.L;
 public class DetailsActivity extends AppCompatActivity {
     private static final String LOCALE_DE = "Deutsch";
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_additives_allergens) TextView additivesAllergens;
-    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_description) TextView mealDescription;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.item_meal_description) TextView mealDescription;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_description_no_image) TextView mealDescriptionNoImage;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_image) ImageView mealImage;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_image_container) FrameLayout imageContainer;
