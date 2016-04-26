@@ -58,7 +58,7 @@
             android:title="@string/activity_settings_preference_additives"/>
 
         <SwitchPreference
-            android:defaultValue="@string/activity_settings_preferences_tabs_default"
+            android:defaultValue="@string/activity_settings_preferences_hide_filtered_default"
             android:key="@string/activity_settings_preferences_hide_filtered_key"
             android:summary="@string/activity_settings_preferences_filter_summary"
             android:title="@string/activity_settings_preferences_filter"/>
