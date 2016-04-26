@@ -22,6 +22,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
 
@@ -88,7 +89,10 @@ public class DetailsActivity extends AppCompatActivity {
         if (meal.getImage().isEmpty()) {
             noImageContainer.setVisibility(VISIBLE);
             mealDescriptionNoImage.setText(meal.getCustomDescription());
-            mealNameNoImage.setTextColor(ContextCompat.getColor(this, R.color.materialDeepOrange500));
+
+            if (!UserSettings.getHideFiltered()) {
+                mealNameNoImage.setTextColor(ContextCompat.getColor(this, R.color.materialDeepOrange500));
+            }
 
             if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
                 mealNameNoImage.setText(meal.getNameDe());
@@ -100,7 +104,10 @@ public class DetailsActivity extends AppCompatActivity {
             imageContainer.setVisibility(VISIBLE);
             progressBar.setVisibility(VISIBLE);
             mealDescription.setText(meal.getCustomDescription());
-            mealName.setTextColor(ContextCompat.getColor(this, R.color.materialDeepOrange500));
+
+            if (!UserSettings.getHideFiltered()) {
+                mealName.setTextColor(ContextCompat.getColor(this, R.color.materialDeepOrange500));
+            }
 
             Glide.with(this).load(meal.getImage())
                     .listener(new RequestListener<String, GlideDrawable>() {
