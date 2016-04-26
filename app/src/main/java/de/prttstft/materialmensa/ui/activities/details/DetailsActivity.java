@@ -90,7 +90,7 @@ public class DetailsActivity extends AppCompatActivity {
             noImageContainer.setVisibility(VISIBLE);
             mealDescriptionNoImage.setText(meal.getCustomDescription());
 
-            if (!UserSettings.getHideFiltered()) {
+            if (!UserSettings.getHideFiltered() && meal.isFiltered()) {
                 mealNameNoImage.setTextColor(ContextCompat.getColor(this, R.color.materialDeepOrange500));
             }
 
@@ -105,7 +105,7 @@ public class DetailsActivity extends AppCompatActivity {
             progressBar.setVisibility(VISIBLE);
             mealDescription.setText(meal.getCustomDescription());
 
-            if (!UserSettings.getHideFiltered()) {
+            if (!UserSettings.getHideFiltered() && meal.isFiltered()) {
                 mealName.setTextColor(ContextCompat.getColor(this, R.color.materialDeepOrange500));
             }
 
