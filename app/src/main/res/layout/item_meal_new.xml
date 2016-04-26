@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_meal_container"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:background="?selectableItemBackground"
+    android:gravity="center_vertical"
+    tools:ignore="Overdraw">
+
+    <FrameLayout
+        android:id="@+id/item_meal_icon_container"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/activity_horizontal_margin">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_meal_icon_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/placeholder"
+            android:src="@color/colorPrimary"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/item_meal_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/placeholder"
+            android:src="@drawable/meal_example"/>
+
+        <ImageView
+            android:id="@+id/item_meal_selected"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/placeholder"
+            android:src="@drawable/ic_check_black"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/item_meal_icon_container">
+
+        <TextView
+            android:id="@+id/item_meal_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/item_meal_name"
+            android:layout_toStartOf="@+id/item_meal_price"
+            android:ellipsize="end"
+            android:gravity="bottom"
+            android:maxLines="1"
+            android:text="@string/item_meal_description_placeholder"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/textSecondary"/>
+
+        <TextView
+            android:id="@+id/item_meal_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_toStartOf="@+id/item_meal_price"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/item_meal_name_placeholder"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/colorAccent"/>
+
+        <TextView
+            android:id="@+id/item_meal_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/activity_details_description"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:ellipsize="end"
+            android:gravity="end"
+            android:maxLines="1"
+            android:text="@string/item_meal_price_placeholder"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/textSecondary"/>
+
+        <ImageView
+            android:id="@+id/item_meal_star"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:contentDescription="@string/item_meal_star_description"
+            android:src="@drawable/ic_star_border_black"
+            android:tint="@color/textSecondaryLight"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
