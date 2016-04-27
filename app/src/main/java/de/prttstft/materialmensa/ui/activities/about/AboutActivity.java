@@ -25,7 +25,7 @@ public class AboutActivity extends AppCompatActivity {
     @SuppressWarnings("SpellCheckingInspection") private static final Uri EMAIL = Uri.parse("mailto:prttstft.dev@gmail.com");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri GIT_HUB_REPO_URL = Uri.parse("https://github.com/prttstft/MaterialMensa");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri ICONS_EIGHT_URL = Uri.parse("https://icons8.com/");
-    @SuppressWarnings("SpellCheckingInspection") private static final Uri PLAY_STORE_URL = Uri.parse("https://play.google.com/store/apps/details?id=de.prttstft.materialmensa");
+    @SuppressWarnings("SpellCheckingInspection") private static final Uri PLAY_STORE_URL = Uri.parse("https://goo.gl/HD2ed2");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri WISH_LIST_URL = Uri.parse("https://www.amazon.de/registry/wishlist/2RQNQ7DEKD9WF");
     @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_git_hub) AppCompatButton buttonGitHub;
     @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_icons) AppCompatButton icons;

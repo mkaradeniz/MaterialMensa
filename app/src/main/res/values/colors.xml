@@ -6,6 +6,7 @@
     <color name="colorPositive">#4CAF50</color>
     <color name="colorPrimary">#CDDC39</color>
     <color name="colorPrimaryDark">#AFB42B</color>
+    <color name="colorPrimaryLight">#E6EE9C</color>
     <color name="defaultBackground">#fffafafa</color>
     <color name="progressBarBackground">#F8BBD0</color>
     <color name="textHint" tools:ignore="UnusedResources">#59000000</color>

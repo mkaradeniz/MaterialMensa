@@ -146,6 +146,7 @@ public class Meal {
         this.filtered = filtered;
     }
 
+
     // Helpers
 
     public String getBadge() {

@@ -12,6 +12,7 @@ import static de.prttstft.materialmensa.constants.GeneralConstants.TOMORROW_EN;
 public class DateTimeUtilities {
     private static final String DATE_PATTERN = "yyyy-MM-dd";
     private static final String LOCALE_DE = "Deutsch";
+    private static final String ON = "on ";
 
     private DateTimeUtilities() {
 
@@ -57,4 +58,38 @@ public class DateTimeUtilities {
     public static String getDateString(int page) {
         return new DateTime().plusDays(page).toString(DateTimeUtilities.DATE_PATTERN);
     }
+
+    public static String getShareDayString(int page) {
+        String language = Utilities.getSystemLanguage();
+        String outputString;
+        DateTime dateTime = DateTime.parse(getDateString(page));
+
+        if (isToday(dateTime)) {
+            if (language.equals(LOCALE_DE)) {
+                outputString = TODAY_DE;
+            } else {
+                outputString = TODAY_EN;
+            }
+        } else if (isTomorrow(dateTime)) {
+            if (language.equals(LOCALE_DE)) {
+                outputString = TOMORROW_DE;
+            } else {
+                outputString = TOMORROW_EN;
+            }
+        } else {
+            if (language.equals(LOCALE_DE)) {
+                outputString = dateTime.dayOfWeek().getAsText();
+            } else {
+                outputString = "on " + dateTime.dayOfWeek().getAsText();
+            }
+        }
+
+        return outputString;
+    }
 }
+
+/*
+String day = DateTimeUtilities.getDateString(getArguments().getInt(ARG_PAGE));
+
+        L(DateTimeUtilities.getDayString(DateTime.parse(day)));
+ */

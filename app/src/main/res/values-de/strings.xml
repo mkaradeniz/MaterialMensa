@@ -5,6 +5,9 @@
     <string name="activity_about_title">Über</string>
     <string name="activity_details_image_description">Bild</string>
     <string name="activity_details_information">Alle Angaben über Allergene und Zusatzstoffe ohne Gewähr. Wenn du eine Allergie haben solltest oder bestimmte Zusatzstoffe vermeiden möchtest wende dich bitte an die geeigneten Mitarbeiterinnen und Mitarbeiter.</string>
+    <string name="activity_main_share_chooser_title">Teile dein Menü via</string>
+    <string name="activity_main_share_string_prefix">%1$s Mensen? Es gibt:\u0020</string>
+    <string name="activity_main_share_string_suffix">\n\nGeschickt von MaterialMensa: %1$s</string>
     <string name="activity_settings_preference_additives">Zusatzstoffe</string>
     <string name="activity_settings_preference_additives_summary">Dieses verdammte Nitratpökelsalz.</string>
     <string name="activity_settings_preference_allergens">Allergene</string>
@@ -85,4 +88,5 @@
     <string name="item_meal_description_category_side_dish">Beilage</string>
     <string name="item_meal_description_category_soup">Suppe</string>
     <string name="item_meal_star_description">Zu Favoriten hinzufügen</string>
+    <string name="share">Teilen</string>
 </resources>

@@ -3,6 +3,7 @@
     <string name="app_name">MaterialMensa</string>
     <string name="empty_string" translatable="false"/>
     <string name="placeholder" translatable="false">placeholder</string>
+    <string name="share">Share</string>
 
 
     <!-- Restaurants -->
@@ -41,6 +42,56 @@
     <string name="activity_details_image_description">Meal Picture</string>
     <string name="activity_details_information">Please contact cafeteria staff for detailed information about additives and allergens. Don\'t rely on this information being correct if you have any allergies or want to avoid any additives.</string>
     <string name="activity_details_title" translatable="false">Details</string>
+
+
+    <!-- Main Activity -->
+    <string name="activity_main_share_chooser_title">Share your menu via</string>
+    <string name="activity_main_share_string_prefix">Let\'s dine %1$s. They have:\u0020</string>
+    <string name="activity_main_share_string_suffix">\n\nShared via MaterialMensa: %1$s</string>
+    <string name="drawer_main_header_lifestyle_placeholder" translatable="false">Vegetarian</string>
+    <string name="drawer_main_header_role_image_description">Role</string>
+    <string name="drawer_main_header_role_placeholder" translatable="false">Student</string>
+    <string name="drawer_main_header_time_placeholder" translatable="false">02:56</string>
+    <string name="drawer_main_restaurant_status_closing_time" translatable="false">%1$s:%2$sh</string>
+    <string name="drawer_main_restaurant_status_description" translatable="false">Restaurant Status</string>
+    <string name="drawer_main_restaurant_status_opening_time">at %1$s:%2$s</string>
+    <string name="item_meal_description" translatable="false">%1$s%2$s</string>
+    <string name="item_meal_description_badge_lactose_free_e">Lactose-free\u0020</string>
+    <string name="item_meal_description_badge_lactose_free_r">Lactose-free\u0020</string>
+    <string name="item_meal_description_badge_lactose_free_s">Lactose-free\u0020</string>
+    <string name="item_meal_description_badge_low_calorie_e">Low Calorie\u0020</string>
+    <string name="item_meal_description_badge_low_calorie_r">Low Calorie\u0020</string>
+    <string name="item_meal_description_badge_low_calorie_s">Low Calorie\u0020</string>
+    <string name="item_meal_description_badge_non_fat_e">Low Fat\u0020</string>
+    <string name="item_meal_description_badge_non_fat_r">Low Fat\u0020</string>
+    <string name="item_meal_description_badge_non_fat_s">Low Fat\u0020</string>
+    <string name="item_meal_description_badge_vegan_e">Vegan\u0020</string>
+    <string name="item_meal_description_badge_vegan_r">Vegan\u0020</string>
+    <string name="item_meal_description_badge_vegan_s">Vegan\u0020</string>
+    <string name="item_meal_description_badge_vegetarian_e">Vegetarian\u0020</string>
+    <string name="item_meal_description_badge_vegetarian_r">Vegetarian\u0020</string>
+    <string name="item_meal_description_badge_vegetarian_s">Vegetarian\u0020</string>
+    <string name="item_meal_description_badge_vital_food_e">Vital\u0020</string>
+    <string name="item_meal_description_badge_vital_food_r">Vital\u0020</string>
+    <string name="item_meal_description_badge_vital_food_s">Vital\u0020</string>
+    <string name="item_meal_description_category_appetizer">Appetizer</string>
+    <string name="item_meal_description_category_classic" translatable="false">Classic</string>
+    <string name="item_meal_description_category_dessert" translatable="false">Dessert</string>
+    <string name="item_meal_description_category_lahmacun" translatable="false">Lahmacun</string>
+    <string name="item_meal_description_category_main_course">Main Course</string>
+    <string name="item_meal_description_category_meal">Meal</string>
+    <string name="item_meal_description_category_offer">Offer</string>
+    <string name="item_meal_description_category_sandwich" translatable="false">Sandwich</string>
+    <string name="item_meal_description_category_side_dish">Side Dish</string>
+    <string name="item_meal_description_category_soup">Soup</string>
+    <string name="item_meal_description_category_wrap" translatable="false">Wrap</string>
+    <string name="item_meal_description_placeholder" translatable="false">Vegetarian Classic</string>
+    <string name="item_meal_name_placeholder" translatable="false">Meal Name</string>
+    <string name="item_meal_price_placeholder" translatable="false">Price</string>
+    <string name="item_meal_price_string" translatable="false">%1$s€%2$s</string>
+    <string name="item_meal_price_string_fixed" translatable="false"/>
+    <string name="item_meal_price_string_weighted" translatable="false">/100gr</string>
+    <string name="item_meal_star_description">Star Meal</string>
 
 
     <!--  Settings Activity -->
@@ -118,52 +169,5 @@
     <string name="allergen_12_sulphites">Sulphur dioxide and Sulphites [A12]</string>
     <string name="allergen_13_lupins">Lupins and/or products thereof [A13]</string>
     <string name="allergen_14_molluscs">Molluscs and/or products thereof [A14]</string>
-
-
-    <!-- Main Activity -->
-    <string name="drawer_main_header_lifestyle_placeholder" translatable="false">Vegetarian</string>
-    <string name="drawer_main_header_role_image_description">Role</string>
-    <string name="drawer_main_header_role_placeholder" translatable="false">Student</string>
-    <string name="drawer_main_header_time_placeholder" translatable="false">02:56</string>
-    <string name="drawer_main_restaurant_status_closing_time" translatable="false">%1$s:%2$sh</string>
-    <string name="drawer_main_restaurant_status_description" translatable="false">Restaurant Status</string>
-    <string name="drawer_main_restaurant_status_opening_time">at %1$s:%2$s</string>
-    <string name="item_meal_description" translatable="false">%1$s%2$s</string>
-    <string name="item_meal_description_badge_lactose_free_e">Lactose-free\u0020</string>
-    <string name="item_meal_description_badge_lactose_free_r">Lactose-free\u0020</string>
-    <string name="item_meal_description_badge_lactose_free_s">Lactose-free\u0020</string>
-    <string name="item_meal_description_badge_low_calorie_e">Low Calorie\u0020</string>
-    <string name="item_meal_description_badge_low_calorie_r">Low Calorie\u0020</string>
-    <string name="item_meal_description_badge_low_calorie_s">Low Calorie\u0020</string>
-    <string name="item_meal_description_badge_non_fat_e">Low Fat\u0020</string>
-    <string name="item_meal_description_badge_non_fat_r">Low Fat\u0020</string>
-    <string name="item_meal_description_badge_non_fat_s">Low Fat\u0020</string>
-    <string name="item_meal_description_badge_vegan_e">Vegan\u0020</string>
-    <string name="item_meal_description_badge_vegan_r">Vegan\u0020</string>
-    <string name="item_meal_description_badge_vegan_s">Vegan\u0020</string>
-    <string name="item_meal_description_badge_vegetarian_e">Vegetarian\u0020</string>
-    <string name="item_meal_description_badge_vegetarian_r">Vegetarian\u0020</string>
-    <string name="item_meal_description_badge_vegetarian_s">Vegetarian\u0020</string>
-    <string name="item_meal_description_badge_vital_food_e">Vital\u0020</string>
-    <string name="item_meal_description_badge_vital_food_r">Vital\u0020</string>
-    <string name="item_meal_description_badge_vital_food_s">Vital\u0020</string>
-    <string name="item_meal_description_category_appetizer">Appetizer</string>
-    <string name="item_meal_description_category_classic" translatable="false">Classic</string>
-    <string name="item_meal_description_category_dessert" translatable="false">Dessert</string>
-    <string name="item_meal_description_category_lahmacun" translatable="false">Lahmacun</string>
-    <string name="item_meal_description_category_main_course">Main Course</string>
-    <string name="item_meal_description_category_meal">Meal</string>
-    <string name="item_meal_description_category_offer">Offer</string>
-    <string name="item_meal_description_category_sandwich" translatable="false">Sandwich</string>
-    <string name="item_meal_description_category_side_dish">Side Dish</string>
-    <string name="item_meal_description_category_soup">Soup</string>
-    <string name="item_meal_description_category_wrap" translatable="false">Wrap</string>
-    <string name="item_meal_description_placeholder" translatable="false">Vegetarian Classic</string>
-    <string name="item_meal_name_placeholder" translatable="false">Meal Name</string>
-    <string name="item_meal_price_placeholder" translatable="false">Price</string>
-    <string name="item_meal_price_string" translatable="false">%1$s€%2$s</string>
-    <string name="item_meal_price_string_fixed" translatable="false"/>
-    <string name="item_meal_price_string_weighted" translatable="false">/100gr</string>
-    <string name="item_meal_star_description">Star Meal</string>
 
 </resources>

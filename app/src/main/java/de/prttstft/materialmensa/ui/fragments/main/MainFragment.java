@@ -1,12 +1,20 @@
 package de.prttstft.materialmensa.ui.fragments.main;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ShareCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,6 +25,7 @@ import com.google.gson.Gson;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.ui.activities.details.DetailsActivity;
@@ -32,6 +41,10 @@ import static de.prttstft.materialmensa.constants.GeneralConstants.MEAL;
 public class MainFragment extends Fragment implements MainFragmentView, MainFragmentViewHolderListener {
     private static final String ARG_PAGE = "ARG_PAGE";
     private static final String ARG_RESTAURANT = "ARG_RESTAURANT";
+    private static final String LOCALE_DE = "Deutsch";
+    private static final String MIME_TYPE_TEXT = "text/plain";
+    private static final String PLAY_STORE_URL = "https://goo.gl/HD2ed2";
+    public ActionMode actionMode;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_empty_container) RelativeLayout empty;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_empty_emoji) ImageView emptyEmoji;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_filtered_container) RelativeLayout filtered;
@@ -39,8 +52,8 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_progress_container) RelativeLayout progressBar;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
     @SuppressWarnings("FieldCanBeLocal") private MainFragmentPresenter presenter;
+    private ActionMode.Callback actionModeCallback;
     private MainFragmentAdapter adapter;
-
 
     public static MainFragment newInstance(int page, int restaurant) {
         Bundle args = new Bundle();
@@ -59,6 +72,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         this.presenter = new MainFragmentPresenterImplementation(this);
 
         setUpRecyclerView(recyclerView);
+        setUpActionMode();
 
         emptyEmoji.setImageResource(Utilities.getRandomEmoji());
         filteredEmoji.setImageResource(Utilities.getRandomEmoji());
@@ -66,12 +80,6 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         presenter.getMeals(getArguments().getInt(ARG_PAGE), getArguments().getInt(ARG_RESTAURANT));
 
         return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
     }
 
     private void setUpRecyclerView(RecyclerView recyclerView) {
@@ -84,11 +92,71 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         recyclerView.setAdapter(adapter);
     }
 
+    private void setUpActionMode() {
+        actionModeCallback = new ActionMode.Callback() {
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                MenuInflater menuInflater = mode.getMenuInflater();
+                menuInflater.inflate(R.menu.menu_main, menu);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    getActivity().getWindow().setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.about_libraries_primary_dark));
+                }
+
+                return true;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                if (item.getItemId() == R.id.menu_main_share) {
+                    shareMenu();
+                    actionMode.finish();
+                    return true;
+                }
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+                adapter.clearSelections();
+                actionMode = null;
+            }
+        };
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
     @Override
     public void onClick(int position) {
-        Intent startDetailsActivityIntent = new Intent(getActivity(), DetailsActivity.class);
-        startDetailsActivityIntent.putExtra(MEAL, new Gson().toJson(adapter.meals.get(position)));
-        startActivity(startDetailsActivityIntent);
+        if (actionMode != null) {
+            toggleSelection(position);
+        } else {
+            Intent startDetailsActivityIntent = new Intent(getActivity(), DetailsActivity.class);
+            startDetailsActivityIntent.putExtra(MEAL, new Gson().toJson(adapter.meals.get(position)));
+            startActivity(startDetailsActivityIntent);
+        }
+    }
+
+    @Override
+    public void onLongClick(View view, int position) {
+        if (actionMode == null) {
+            actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+        }
+        toggleSelection(position);
+    }
+
+    @Override
+    public void finishActionMode() {
+        actionMode.finish();
     }
 
     @Override
@@ -149,5 +217,56 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         if (progressBar != null) {
             progressBar.setVisibility(VISIBLE);
         }
+    }
+
+    public void toggleSelection(int position) {
+        if (adapter.isSelected(position)) {
+            adapter.clearSelection(position);
+            adapter.notifyItemChanged(position);
+
+            if (adapter.getSelectedItemCount() == 0) {
+                actionMode.finish();
+            } else {
+                actionMode.setTitle(adapter.getSelectedItemCount() + "");
+            }
+        } else {
+            adapter.setSelection(position);
+            adapter.notifyItemChanged(position);
+
+            actionMode.setTitle(adapter.getSelectedItemCount() + "");
+        }
+    }
+
+    private void shareMenu() {
+        ShareCompat.IntentBuilder
+                .from(getActivity())
+                .setType(MIME_TYPE_TEXT)
+                .setText(buildShareString())
+                .setChooserTitle(R.string.activity_main_share_chooser_title)
+                .startChooser();
+    }
+
+    private String buildShareString() {
+        String shareString = getActivity().getString(R.string.activity_main_share_string_prefix, DateTimeUtilities.getShareDayString(getArguments().getInt(ARG_PAGE)));
+
+        if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+            shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameDe();
+        } else {
+            shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameEn();
+        }
+
+        if (adapter.getSelectedItemCount() > 1) {
+            for (int i = 1; i < adapter.getSelectedItemsPositions().size(); i++) {
+                if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+                    shareString = shareString + ",\n" + adapter.meals.get(adapter.getSelectedItemsPositions().get(i)).getNameDe();
+                } else {
+                    shareString = shareString + ",\n" + adapter.meals.get(adapter.getSelectedItemsPositions().get(i)).getNameEn();
+                }
+            }
+        }
+
+        shareString = shareString + getActivity().getString(R.string.activity_main_share_string_suffix, PLAY_STORE_URL);
+
+        return shareString;
     }
 }
