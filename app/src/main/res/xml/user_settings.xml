@@ -28,14 +28,6 @@
             android:summary="@string/activity_settings_preferences_lifestyle_summary"
             android:title="@string/activity_settings_preferences_lifestyle"/>
 
-        <EditTextPreference
-            android:defaultValue="@string/activity_settings_preferences_tabs_default"
-            android:inputType="number"
-            android:key="@string/activity_settings_preferences_tabs_key"
-            android:selectAllOnFocus="true"
-            android:summary="@string/activity_settings_preferences_tabs_summary"
-            android:title="@string/activity_settings_preferences_tabs"/>
-
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -62,6 +54,27 @@
             android:key="@string/activity_settings_preferences_hide_filtered_key"
             android:summary="@string/activity_settings_preferences_filter_summary"
             android:title="@string/activity_settings_preferences_filter"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/activity_settings_preference_category_user_interface">
+
+        <EditTextPreference
+            android:defaultValue="@string/activity_settings_preferences_tabs_default"
+            android:inputType="number"
+            android:key="@string/activity_settings_preferences_tabs_key"
+            android:selectAllOnFocus="true"
+            android:summary="@string/activity_settings_preferences_tabs_summary"
+            android:title="@string/activity_settings_preferences_tabs"/>
+
+        <ListPreference
+            android:defaultValue="@string/activity_settings_preferences_default_restaurant_default"
+            android:entries="@array/activity_settings_preferences_default_restaurant_array"
+            android:entryValues="@array/activity_settings_preferences_default_restaurant_array_values"
+            android:key="@string/activity_settings_preferences_default_restaurant_key"
+            android:summary="@string/activity_settings_preferences_default_restaurant_summary"
+            android:title="@string/activity_settings_preferences_default_restaurant"/>
 
     </PreferenceCategory>
 </PreferenceScreen>

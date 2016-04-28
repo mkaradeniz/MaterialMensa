@@ -7,18 +7,8 @@
     <!-- Activities -->
 
     <!-- Settings Activity -->
-    <string-array name="activity_settings_preferences_language_array" translatable="false">
-        <item>@string/activity_settings_preferences_language_system</item>
-        <item>@string/activity_settings_preferences_language_english</item>
-        <item>@string/activity_settings_preferences_language_german</item>
-    </string-array>
 
-    <string-array name="activity_settings_preferences_language_array_values" translatable="false">
-        <item>system</item>
-        <item>english</item>
-        <item>german</item>
-    </string-array>
-
+    <!-- General -->
     <string-array name="activity_settings_preferences_role_array" translatable="false">
         <item>@string/activity_settings_preferences_role_student</item>
         <item>@string/activity_settings_preferences_role_staff</item>
@@ -45,6 +35,19 @@
         <item>level_five_vegan</item>
     </string-array>
 
+    <string-array name="activity_settings_preferences_language_array" translatable="false">
+        <item>@string/activity_settings_preferences_language_system</item>
+        <item>@string/activity_settings_preferences_language_english</item>
+        <item>@string/activity_settings_preferences_language_german</item>
+    </string-array>
+
+    <string-array name="activity_settings_preferences_language_array_values" translatable="false">
+        <item>system</item>
+        <item>english</item>
+        <item>german</item>
+    </string-array>
+
+    <!--Allergens & Additvies -->
     <string-array name="activity_settings_preferences_additives_array" translatable="false">
         <item>@string/additive_1_dyes</item>
         <item>@string/additive_2_preservatives</item>
@@ -114,4 +117,24 @@
         <item>A13</item>
         <item>A14</item>
     </string-array>
+
+    <!--User Interface -->
+    <string-array name="activity_settings_preferences_default_restaurant_array" translatable="false">
+        <item>@string/restaurant_mensa_academica_paderborn</item>
+        <item>@string/restaurant_mensa_forum_paderborn</item>
+        <item>@string/restaurant_cafete</item>
+        <item>@string/restaurant_mensula</item>
+        <item>@string/restaurant_one_way_snack</item>
+        <item>@string/restaurant_grill_cafe</item>
+    </string-array>
+
+    <string-array name="activity_settings_preferences_default_restaurant_array_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
 </resources>

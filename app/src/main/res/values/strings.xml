@@ -33,7 +33,7 @@
     <string name="activity_about_credits" translatable="false">Max Karadeniz\n prttstft.dev@gmail.com</string>
     <string name="activity_about_email_subject" translatable="false">[MaterialMensa] Ahoi!</string>
     <string name="activity_about_libraries_title" translatable="false">Libraries</string>
-    <string name="activity_about_one_day" translatable="false">One day this screen will be pretty. One day...</string>
+    <string name="activity_about_one_day" translatable="false">One day this screen will be pretty. One day…</string>
     <string name="activity_about_title">About</string>
     <string name="activity_about_version" translatable="false">Version %1$s (%2$s)</string>
 
@@ -104,12 +104,17 @@
     <string name="activity_settings_preference_allergens_summary">Select your personal kryptonite.</string>
     <string name="activity_settings_preference_category_allergens_additives">Allergens &amp; Additives</string>
     <string name="activity_settings_preference_category_general">General</string>
+    <string name="activity_settings_preference_category_user_interface">User Interface</string>
     <string name="activity_settings_preferences_additives_key" translatable="false">prefAdditives</string>
     <string name="activity_settings_preferences_allergens_key" translatable="false">prefAllergens</string>
-    <string name="activity_settings_preferences_filter">Hide Meals With Filtered Allergens &amp; Additives</string>
+    <string name="activity_settings_preferences_default_restaurant">Default Restaurant</string>
+    <string name="activity_settings_preferences_default_restaurant_default" translatable="false">0</string>
+    <string name="activity_settings_preferences_default_restaurant_key" translatable="false">prefDefaultRestaurant</string>
+    <string name="activity_settings_preferences_default_restaurant_summary">Can\'t think of a joke right now</string>
+    <string name="activity_settings_preferences_filter">Hide Filtered Meals</string>
+    <string name="activity_settings_preferences_filter_summary" tools:ignore="Typos">[Insert joke about object permanence here.]</string>
     <string name="activity_settings_preferences_hide_filtered_default" translatable="false">true</string>
     <string name="activity_settings_preferences_hide_filtered_key" translatable="false">prefFilter</string>
-    <string name="activity_settings_preferences_filter_summary" tools:ignore="Typos">[Insert joke about object permanence here.]</string>
     <string name="activity_settings_preferences_language">Language</string>
     <string name="activity_settings_preferences_language_default" translatable="false">system</string>
     <string name="activity_settings_preferences_language_english">English</string>
@@ -137,6 +142,7 @@
     <string name="activity_settings_preferences_tabs_default" translatable="false">8</string>
     <string name="activity_settings_preferences_tabs_key" translatable="false">prefTabs</string>
     <string name="activity_settings_preferences_tabs_summary" tools:ignore="Typos">Wanna look into the future?</string>
+
     <!-- Additives -->
     <string name="additive_1_dyes">Food coloring [1]</string>
     <string name="additive_2_preservatives">Preservatives [2]</string>

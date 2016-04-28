@@ -26,6 +26,7 @@ import butterknife.ButterKnife;
 import de.prttstft.materialmensa.MyApplication;
 import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.extras.UserSettings;
+import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.ui.activities.about.AboutActivity;
 import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenter;
 import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenterImplementation;
@@ -40,6 +41,7 @@ import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_GRILL_CAFE;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_MENSULA;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK;
+import static de.prttstft.materialmensa.extras.Utilities.L;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_LEVEL_FIVE_VEGAN;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_NOT_SET;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_VEGAN;
@@ -53,12 +55,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private static final Drawable DRAWER_HEADER_AVATAR_GUEST = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_guest_black);
     private static final Drawable DRAWER_HEADER_AVATAR_STAFF = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_staff_black);
     private static final Drawable DRAWER_HEADER_AVATAR_STUDENT = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_school_black);
-    private final MainFragmentPagerAdapter adapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), RESTAURANT_ID_ACADEMICA);
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_drawer_layout) DrawerLayout drawerLayout;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_navigation_view) NavigationView navigationView;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_tab_layout) TabLayout tabLayout;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_toolbar) Toolbar toolbar;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_view_pager) ViewPager viewPager;
+    private MainFragmentPagerAdapter adapter;
     private MainPresenter presenter;
 
     @Override
@@ -70,9 +72,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
         presenter = new MainPresenterImplementation(this);
 
         setUpToolbar();
+        setUpInitialRestaurant();
         setUpDrawerLayout();
         setUpDrawerHeader();
         setUpTabs();
+
+        L("" + UserSettings.getDefaultRestaurant());
     }
 
     @Override
@@ -90,6 +95,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
         }
+    }
+
+    private void setUpInitialRestaurant() {
+        int defaultRestaurant = UserSettings.getDefaultRestaurant();
+
+        adapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), defaultRestaurant);
+        toolbar.setTitle(Utilities.getRestaurantName(defaultRestaurant));
+        navigationView.getMenu().getItem(defaultRestaurant).setChecked(true);
     }
 
     private void setUpDrawerLayout() {

@@ -15,6 +15,8 @@ import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmen
 public class UserSettings {
     private static final String ADDITIVES_PREF = getAppContext().getString(R.string.activity_settings_preferences_additives_key);
     private static final String ALLERGENS_PREF = getAppContext().getString(R.string.activity_settings_preferences_allergens_key);
+    private static final String DEFAULT_RESTAURANT_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_default_restaurant_default);
+    private static final String DEFAULT_RESTAURANT_PREF = getAppContext().getString(R.string.activity_settings_preferences_default_restaurant_key);
     private static final String HIDE_FILTERED_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_hide_filtered_default);
     private static final String HIDE_FILTERED_PREF = getAppContext().getString(R.string.activity_settings_preferences_hide_filtered_key);
     private static final String LIFESTYLE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_lifestyle_default);
@@ -38,14 +40,14 @@ public class UserSettings {
         return sharedPreferences.getStringSet(ALLERGENS_PREF, new HashSet<String>());
     }
 
+    public static int getDefaultRestaurant() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
+        return Integer.valueOf(sharedPreferences.getString(DEFAULT_RESTAURANT_PREF, DEFAULT_RESTAURANT_DEFAULT));
+    }
+
     public static boolean getHideFiltered() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-
-        if (getLifestyle().equals(LIFESTYLE_LEVEL_FIVE_VEGAN)) {
-            return true;
-        } else {
-            return sharedPreferences.getBoolean(HIDE_FILTERED_PREF, Boolean.valueOf(HIDE_FILTERED_DEFAULT));
-        }
+        return getLifestyle().equals(LIFESTYLE_LEVEL_FIVE_VEGAN) || sharedPreferences.getBoolean(HIDE_FILTERED_PREF, Boolean.valueOf(HIDE_FILTERED_DEFAULT));
     }
 
     public static String getLifestyle() {
