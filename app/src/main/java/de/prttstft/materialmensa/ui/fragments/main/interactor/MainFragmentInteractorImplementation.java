@@ -99,6 +99,8 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
             public void onNext(Meal meal) {
                 if (filterMeal(meal) && UserSettings.getHideFiltered()) {
                     listener.filteredMeal();
+                } else if (filterLifestyle(meal)) {
+                    listener.filteredMeal();
                 } else {
                     listener.addMeal(prepareMeal(meal));
                 }

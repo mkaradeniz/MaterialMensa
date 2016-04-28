@@ -10,6 +10,7 @@ import java.util.Set;
 import de.prttstft.materialmensa.R;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
+import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_LEVEL_FIVE_VEGAN;
 
 public class UserSettings {
     private static final String ADDITIVES_PREF = getAppContext().getString(R.string.activity_settings_preferences_additives_key);
@@ -22,7 +23,6 @@ public class UserSettings {
     private static final String ROLE_PREF = getAppContext().getString(R.string.activity_settings_preferences_role_key);
     private static final String TABS_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_tabs_default);
     private static final String TABS_PREF = getAppContext().getString(R.string.activity_settings_preferences_tabs_key);
-
 
     private UserSettings() {
 
@@ -40,7 +40,12 @@ public class UserSettings {
 
     public static boolean getHideFiltered() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        return sharedPreferences.getBoolean(HIDE_FILTERED_PREF, Boolean.valueOf(HIDE_FILTERED_DEFAULT));
+
+        if (getLifestyle().equals(LIFESTYLE_LEVEL_FIVE_VEGAN)) {
+            return true;
+        } else {
+            return sharedPreferences.getBoolean(HIDE_FILTERED_PREF, Boolean.valueOf(HIDE_FILTERED_DEFAULT));
+        }
     }
 
     public static String getLifestyle() {
