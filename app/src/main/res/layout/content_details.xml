@@ -17,6 +17,7 @@
             android:id="@+id/activity_details_image_container"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:visibility="gone">
 
             <!-- Override in layout 21 -->
@@ -42,7 +43,10 @@
             <RelativeLayout
                 android:id="@+id/item_meal_name_container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/background_transparent_details"
+                android:gravity="bottom">
 
                 <TextView
                     android:id="@+id/item_meal_description"
@@ -51,14 +55,13 @@
                     android:layout_above="@+id/activity_details_name"
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:background="@color/colorPrimary"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:paddingEnd="8dp"
                     android:paddingStart="8dp"
                     android:text="@string/item_meal_description_placeholder"
                     android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/textSecondary"/>
+                    android:textColor="@color/textPrimary"/>
 
                 <TextView
                     android:id="@+id/activity_details_name"
@@ -69,15 +72,13 @@
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"
                     android:layout_marginEnd="@dimen/activity_horizontal_margin"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:background="@color/colorPrimary"
                     android:ellipsize="end"
                     android:gravity="bottom"
                     android:maxLines="2"
                     android:paddingEnd="8dp"
                     android:paddingStart="8dp"
                     android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/colorAccent"
-                    />
+                    android:textColor="@color/textPrimaryLight"/>
 
             </RelativeLayout>
         </FrameLayout>
@@ -115,8 +116,7 @@
                 android:gravity="bottom"
                 android:maxLines="2"
                 android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="@color/colorAccent"
-                />
+                android:textColor="@color/colorAccent"/>
         </RelativeLayout>
 
     </RelativeLayout>
