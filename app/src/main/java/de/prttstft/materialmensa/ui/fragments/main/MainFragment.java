@@ -237,12 +237,12 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
                 .from(getActivity())
                 .setType(MIME_TYPE_TEXT)
                 .setText(buildShareString())
-                .setChooserTitle(R.string.activity_main_share_chooser_title)
+                .setChooserTitle(R.string.share_chooser_title)
                 .startChooser();
     }
 
     private String buildShareString() {
-        String shareString = getActivity().getString(R.string.activity_main_share_string_prefix, DateTimeUtilities.getShareDayString(getArguments().getInt(ARG_PAGE)));
+        String shareString = getActivity().getString(R.string.share_string_prefix, DateTimeUtilities.getShareDayString(getArguments().getInt(ARG_PAGE)));
 
         if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
             shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameDe();
@@ -260,7 +260,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
             }
         }
 
-        shareString = shareString + getActivity().getString(R.string.activity_main_share_string_suffix, PLAY_STORE_URL);
+        shareString = shareString + getActivity().getString(R.string.share_string_suffix, PLAY_STORE_URL);
 
         return shareString;
     }

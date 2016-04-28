@@ -86,6 +86,34 @@ public class DateTimeUtilities {
 
         return outputString;
     }
+
+    public static String getShareDayString(String dateString) {
+        String language = Utilities.getSystemLanguage();
+        String outputString;
+        DateTime dateTime = DateTime.parse(dateString);
+
+        if (isToday(dateTime)) {
+            if (language.equals(LOCALE_DE)) {
+                outputString = TODAY_DE;
+            } else {
+                outputString = TODAY_EN;
+            }
+        } else if (isTomorrow(dateTime)) {
+            if (language.equals(LOCALE_DE)) {
+                outputString = TOMORROW_DE;
+            } else {
+                outputString = TOMORROW_EN;
+            }
+        } else {
+            if (language.equals(LOCALE_DE)) {
+                outputString = dateTime.dayOfWeek().getAsText();
+            } else {
+                outputString = "on " + dateTime.dayOfWeek().getAsText();
+            }
+        }
+
+        return outputString;
+    }
 }
 
 /*

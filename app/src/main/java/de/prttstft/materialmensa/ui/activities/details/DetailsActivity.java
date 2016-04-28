@@ -1,9 +1,11 @@
 package de.prttstft.materialmensa.ui.activities.details;
 
 import android.os.Bundle;
+import android.support.v4.app.ShareCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -22,6 +24,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
@@ -33,6 +36,8 @@ import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class DetailsActivity extends AppCompatActivity {
     private static final String LOCALE_DE = "Deutsch";
+    private static final String MIME_TYPE_TEXT = "text/plain";
+    private static final String PLAY_STORE_URL = "https://goo.gl/HD2ed2";
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_additives_allergens) TextView additivesAllergens;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.item_meal_description) TextView mealDescription;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_details_description_no_image) TextView mealDescriptionNoImage;
@@ -64,9 +69,23 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        onBackPressed();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_details, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.menu_details_share:
+                shareMeal();
+                return true;
+            default:
+                onBackPressed();
+                return true;
+        }
     }
 
     private void setUpToolbar() {
@@ -214,5 +233,28 @@ public class DetailsActivity extends AppCompatActivity {
                 L(additiveAllergen);
                 return "";
         }
+    }
+
+    private void shareMeal() {
+        ShareCompat.IntentBuilder
+                .from(this)
+                .setType(MIME_TYPE_TEXT)
+                .setText(buildShareString())
+                .setChooserTitle(R.string.share_chooser_title)
+                .startChooser();
+    }
+
+    private String buildShareString() {
+        String shareString = getString(R.string.share_string_prefix, DateTimeUtilities.getShareDayString(meal.getDate()));
+
+        if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+            shareString = shareString + meal.getNameDe();
+        } else {
+            shareString = shareString + meal.getNameEn();
+        }
+
+        shareString = shareString + getString(R.string.share_string_suffix, PLAY_STORE_URL);
+
+        return shareString;
     }
 }

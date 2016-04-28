@@ -4,6 +4,9 @@
     <string name="empty_string" translatable="false"/>
     <string name="placeholder" translatable="false">placeholder</string>
     <string name="share">Share</string>
+    <string name="share_chooser_title">Share your menu via</string>
+    <string name="share_string_prefix">Let\'s dine %1$s. They have:\u0020</string>
+    <string name="share_string_suffix">\n\nShared via MaterialMensa: %1$s</string>
 
 
     <!-- Restaurants -->
@@ -45,9 +48,6 @@
 
 
     <!-- Main Activity -->
-    <string name="activity_main_share_chooser_title">Share your menu via</string>
-    <string name="activity_main_share_string_prefix">Let\'s dine %1$s. They have:\u0020</string>
-    <string name="activity_main_share_string_suffix">\n\nShared via MaterialMensa: %1$s</string>
     <string name="drawer_main_header_lifestyle_placeholder" translatable="false">Vegetarian</string>
     <string name="drawer_main_header_role_image_description">Role</string>
     <string name="drawer_main_header_role_placeholder" translatable="false">Student</string>
