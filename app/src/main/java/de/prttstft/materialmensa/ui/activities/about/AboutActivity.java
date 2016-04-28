@@ -23,12 +23,14 @@ import de.prttstft.materialmensa.extras.Utilities;
 public class AboutActivity extends AppCompatActivity {
     @SuppressWarnings("SpellCheckingInspection") private static final String CHROME_PACKAGE = "com.android.chrome";
     @SuppressWarnings("SpellCheckingInspection") private static final Uri EMAIL = Uri.parse("mailto:prttstft.dev@gmail.com");
+    @SuppressWarnings("SpellCheckingInspection") private static final Uri EMOJI_ONE_URL = Uri.parse("http://emojione.com/");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri GIT_HUB_REPO_URL = Uri.parse("https://github.com/prttstft/MaterialMensa");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri ICONS_EIGHT_URL = Uri.parse("https://icons8.com/");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri PLAY_STORE_URL = Uri.parse("https://goo.gl/HD2ed2");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri WISH_LIST_URL = Uri.parse("https://www.amazon.de/registry/wishlist/2RQNQ7DEKD9WF");
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_emojis) AppCompatButton buttonEmojis;
     @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_git_hub) AppCompatButton buttonGitHub;
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_icons) AppCompatButton icons;
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_icons) AppCompatButton buttonIcons;
     @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_libraries) AppCompatButton buttonLibraries;
     @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_rate) AppCompatButton buttonRate;
     @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_wish_list) AppCompatButton buttonWishList;
@@ -54,10 +56,24 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     private void setUpOnClickListeners() {
+        buttonEmojis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startCustomTab(EMOJI_ONE_URL);
+            }
+        });
+
         buttonGitHub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startCustomTab(GIT_HUB_REPO_URL);
+            }
+        });
+
+        buttonIcons.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startCustomTab(ICONS_EIGHT_URL);
             }
         });
 
@@ -100,12 +116,7 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
-        icons.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startCustomTab(ICONS_EIGHT_URL);
-            }
-        });
+
     }
 
     private void startCustomTab(Uri url) {

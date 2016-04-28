@@ -10,6 +10,7 @@ You need a personal API-Key issued by the [Studentenwerk Paderborn](http://www.s
 - [AboutLibraries](https://github.com/mikepenz/AboutLibraries)
 - [ButterKnife](https://github.com/JakeWharton/butterknife)
 - [CircleImageView](https://github.com/hdodenhof/CircleImageView)
+- [EmojiOne](http://emojione.com/)
 - [Glide](https://github.com/bumptech/glide)
 - [Gson](https://github.com/google/gson)
 - [Icons8](https://icons8.com)

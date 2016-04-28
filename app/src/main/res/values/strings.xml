@@ -28,6 +28,7 @@
 
 
     <!-- About Activity -->
+    <string name="activity_about_button_emojis" translatable="false">Emojis</string>
     <string name="activity_about_button_git_hub" translatable="false">GitHub</string>
     <string name="activity_about_button_icons" translatable="false">Icons</string>
     <string name="activity_about_button_libraries" translatable="false">Open Source</string>
