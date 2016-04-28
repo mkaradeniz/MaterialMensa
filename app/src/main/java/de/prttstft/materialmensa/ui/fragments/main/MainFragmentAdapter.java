@@ -86,10 +86,6 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         notifyDataSetChanged();
     }
 
-    public void finishActionMode() {
-        listener.finishActionMode();
-    }
-
     public class MainFragmentViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.item_meal_description) TextView description;
         @Bind(R.id.item_meal_name) TextView name;

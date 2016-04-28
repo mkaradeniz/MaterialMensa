@@ -6,6 +6,4 @@ public interface MainFragmentViewHolderListener {
     void onClick(int position);
 
     void onLongClick(View view, int position);
-
-    void finishActionMode();
 }

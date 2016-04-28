@@ -31,6 +31,7 @@ import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenter;
 import de.prttstft.materialmensa.ui.activities.main.presenter.MainPresenterImplementation;
 import de.prttstft.materialmensa.ui.activities.main.view.MainView;
 import de.prttstft.materialmensa.ui.activities.settings.SettingsActivity;
+import de.prttstft.materialmensa.ui.fragments.main.MainFragment;
 import de.prttstft.materialmensa.ui.fragments.main.MainFragmentPagerAdapter;
 
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ACADEMICA;
@@ -92,6 +93,23 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     private void setUpDrawerLayout() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (MainFragment.actionMode != null) {
+                    MainFragment.actionMode.finish();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
+
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
@@ -146,23 +164,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);
-
-                viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-                    @Override
-                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                    }
-
-                    @Override
-                    public void onPageSelected(int position) {
-
-                    }
-
-                    @Override
-                    public void onPageScrollStateChanged(int state) {
-
-                    }
-                });
 
                 return true;
             }

@@ -44,7 +44,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     private static final String LOCALE_DE = "Deutsch";
     private static final String MIME_TYPE_TEXT = "text/plain";
     private static final String PLAY_STORE_URL = "https://goo.gl/HD2ed2";
-    public ActionMode actionMode;
+    public static ActionMode actionMode;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_empty_container) RelativeLayout empty;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_empty_emoji) ImageView emptyEmoji;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_filtered_container) RelativeLayout filtered;
@@ -152,11 +152,6 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
             actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
         }
         toggleSelection(position);
-    }
-
-    @Override
-    public void finishActionMode() {
-        actionMode.finish();
     }
 
     @Override
