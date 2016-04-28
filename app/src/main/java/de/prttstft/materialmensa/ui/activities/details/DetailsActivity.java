@@ -128,7 +128,7 @@ public class DetailsActivity extends AppCompatActivity {
                 mealName.setTextColor(ContextCompat.getColor(this, R.color.materialDeepOrange500));
             }
 
-            Glide.with(this).load(meal.getImage())
+            Glide.with(this).load(meal.getThumbnail())
                     .listener(new RequestListener<String, GlideDrawable>() {
                         @Override
                         public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {

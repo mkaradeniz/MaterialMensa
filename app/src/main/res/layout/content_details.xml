@@ -57,8 +57,6 @@
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:paddingEnd="8dp"
-                    android:paddingStart="8dp"
                     android:text="@string/item_meal_description_placeholder"
                     android:textAppearance="?android:textAppearanceSmall"
                     android:textColor="@color/textPrimary"/>
@@ -75,8 +73,6 @@
                     android:ellipsize="end"
                     android:gravity="bottom"
                     android:maxLines="2"
-                    android:paddingEnd="8dp"
-                    android:paddingStart="8dp"
                     android:textAppearance="?android:textAppearanceLarge"
                     android:textColor="@color/textPrimaryLight"/>
 
