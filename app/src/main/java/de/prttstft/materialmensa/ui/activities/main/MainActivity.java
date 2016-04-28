@@ -41,7 +41,6 @@ import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_GRILL_CAFE;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_MENSULA;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK;
-import static de.prttstft.materialmensa.extras.Utilities.L;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_LEVEL_FIVE_VEGAN;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_NOT_SET;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_VEGAN;
@@ -76,8 +75,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setUpDrawerLayout();
         setUpDrawerHeader();
         setUpTabs();
-
-        L("" + UserSettings.getDefaultRestaurant());
     }
 
     @Override

@@ -8,8 +8,8 @@ android {
         applicationId "de.prttstft.materialmensa"
         minSdkVersion 19
         targetSdkVersion 23
-        versionCode 2
-        versionName "0.9.0"
+        versionCode 3
+        versionName "0.9.1"
     }
     buildTypes {
         applicationVariants.all { variant ->
