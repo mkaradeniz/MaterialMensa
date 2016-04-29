@@ -1,45 +1,44 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto">
+    >
     <group
         android:id="@+id/drawer_main_group1"
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/menu_main_drawer_restaurant_mensa_academica_paderborn"
+            android:id="@+id/menu_main_drawer_0"
             android:checked="true"
-            android:icon="@drawable/ic_academica"
-            android:title="@string/restaurant_mensa_academica_paderborn"
-            app:actionLayout="@layout/drawer_main_restaurant_status"/>
+            android:icon="@drawable/ic_calendar_black_1"
+            android:title="1"/>
 
         <item
-            android:id="@+id/menu_main_drawer_restaurant_mensa_forum_paderborn"
-            android:icon="@drawable/ic_forum"
-            android:title="@string/restaurant_mensa_forum_paderborn"
-            app:actionLayout="@layout/drawer_main_restaurant_status"/>
+            android:id="@+id/menu_main_drawer_1"
+            android:icon="@drawable/ic_calendar_black_2"
+            android:title="2"/>
 
         <item
-            android:id="@+id/menu_main_drawer_restaurant_cafete"
-            android:icon="@drawable/ic_cafete"
-            android:title="@string/restaurant_cafete"
-            app:actionLayout="@layout/drawer_main_restaurant_status"/>
+            android:id="@+id/menu_main_drawer_2"
+            android:icon="@drawable/ic_calendar_black_3"
+            android:title="3"/>
 
         <item
-            android:id="@+id/menu_main_drawer_restaurant_mensula"
-            android:icon="@drawable/ic_mensula"
-            android:title="@string/restaurant_mensula"
-            app:actionLayout="@layout/drawer_main_restaurant_status"/>
+            android:id="@+id/menu_main_drawer_3"
+            android:icon="@drawable/ic_calendar_black_4"
+            android:title="4"/>
 
         <item
-            android:id="@+id/menu_main_drawer_restaurant_one_way_snack"
-            android:icon="@drawable/ic_one_way_snack"
-            android:title="@string/restaurant_one_way_snack"
-            app:actionLayout="@layout/drawer_main_restaurant_status"/>
+            android:id="@+id/menu_main_drawer_4"
+            android:icon="@drawable/ic_calendar_black_5"
+            android:title="5"/>
 
         <item
-            android:id="@+id/menu_main_drawer_restaurant_grill_cafe"
-            android:icon="@drawable/ic_grill_cafe"
-            android:title="@string/restaurant_grill_cafe"
-            app:actionLayout="@layout/drawer_main_restaurant_status"/>
+            android:id="@+id/menu_main_drawer_5"
+            android:icon="@drawable/ic_calendar_black_6"
+            android:title="6"/>
+
+        <item
+            android:id="@+id/menu_main_drawer_6"
+            android:icon="@drawable/ic_calendar_black_7"
+            android:title="7"/>
     </group>
 
     <group

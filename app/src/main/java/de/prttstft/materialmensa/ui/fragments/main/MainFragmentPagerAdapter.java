@@ -1,5 +1,6 @@
 package de.prttstft.materialmensa.ui.fragments.main;
 
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -10,6 +11,7 @@ import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.UserSettings;
 
 public class MainFragmentPagerAdapter extends FragmentStatePagerAdapter {
+    Drawable myDrawable;
     private int restaurant;
 
     public MainFragmentPagerAdapter(FragmentManager fm, int restaurant) {
@@ -24,12 +26,12 @@ public class MainFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return MainFragment.newInstance(position, restaurant);
+        return MainFragment.newInstance(restaurant, position);
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return getDateTabTitle(position);
+        return null;
     }
 
     private String getDateTabTitle(int page) {

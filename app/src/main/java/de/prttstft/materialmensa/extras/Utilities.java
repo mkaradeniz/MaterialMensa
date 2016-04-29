@@ -67,6 +67,25 @@ public class Utilities {
         }
     }
 
+    public static int getRestaurantIcon(int restaurant) {
+        switch (restaurant) {
+            case 0:
+                return R.drawable.ic_academica;
+            case 1:
+                return R.drawable.ic_forum;
+            case 2:
+                return R.drawable.ic_cafete;
+            case 3:
+                return R.drawable.ic_mensula;
+            case 4:
+                return R.drawable.ic_one_way_snack;
+            case 5:
+                return R.drawable.ic_grill_cafe;
+            default:
+                return -1;
+        }
+    }
+
     public static String getSystemLanguage() {
         return Locale.getDefault().getDisplayLanguage();
     }

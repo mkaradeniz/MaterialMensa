@@ -36,7 +36,7 @@
                 android:id="@+id/activity_main_tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabGravity="center"
+                app:tabGravity="fill"
                 app:tabMode="fixed"/>
         </android.support.design.widget.AppBarLayout>
 
