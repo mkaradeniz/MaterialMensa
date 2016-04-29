@@ -35,7 +35,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
 
     @Override
     public MainFragmentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_meal_new, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_meal, parent, false);
         return new MainFragmentViewHolder(v, listener);
     }
 

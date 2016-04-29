@@ -14,13 +14,11 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="false">
 
-        <!-- Override in layout 21 -->
         <android.support.v7.widget.Toolbar
             android:id="@+id/activity_details_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/background_toolbar_transparent"
-            android:elevation="4dp"
             android:theme="@style/AppTheme.BlackToolbarIcons"
             app:popupTheme="@style/AppTheme.NoActionBar"/>
 

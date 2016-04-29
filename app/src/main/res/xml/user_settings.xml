@@ -69,4 +69,5 @@
             android:title="@string/activity_settings_preferences_default_restaurant"/>
 
     </PreferenceCategory>
+
 </PreferenceScreen>

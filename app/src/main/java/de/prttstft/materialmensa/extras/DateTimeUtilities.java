@@ -204,7 +204,7 @@ public class DateTimeUtilities {
             case 31:
                 return R.drawable.ic_calendar_black_31;
             default:
-                return R.drawable.ic_calendar_black_0;
+                return -1;
         }
     }
 }

@@ -19,9 +19,6 @@
     <string name="activity_settings_preferences_default_restaurant_summary">Mir fällt gerade kein Witz ein.</string>
     <string name="activity_settings_preferences_filter">Verstecke gefilterte Gerichte</string>
     <string name="activity_settings_preferences_filter_summary">[Witz über Objektpermanenz hier einfügen.]</string>
-    <string name="activity_settings_preferences_language">Sprache</string>
-    <string name="activity_settings_preferences_language_english">Englisch</string>
-    <string name="activity_settings_preferences_language_german">Deutsch</string>
     <string name="activity_settings_preferences_lifestyle_level_five_vegan">Ich esse nichts was einen Schatten wirft.</string>
     <string name="activity_settings_preferences_lifestyle_level_five_vegan_drawer">Level 5 Veganer*in</string>
     <string name="activity_settings_preferences_lifestyle_summary">Was ist dein Lifestyle?</string>
