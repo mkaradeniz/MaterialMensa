@@ -132,10 +132,6 @@
     <string name="activity_settings_preferences_role_staff">Staff</string>
     <string name="activity_settings_preferences_role_student">Student</string>
     <string name="activity_settings_preferences_role_summary">What would you say you do here?</string>
-    <string name="activity_settings_preferences_tabs">Day Tabs</string>
-    <string name="activity_settings_preferences_tabs_default" translatable="false">8</string>
-    <string name="activity_settings_preferences_tabs_key" translatable="false">prefTabs</string>
-    <string name="activity_settings_preferences_tabs_summary" tools:ignore="Typos">Wanna look into the future?</string>
 
     <!-- Additives -->
     <string name="additive_1_dyes">Food coloring [1]</string>

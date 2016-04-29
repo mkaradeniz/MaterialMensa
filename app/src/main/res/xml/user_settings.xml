@@ -52,14 +52,6 @@
     <PreferenceCategory
         android:title="@string/activity_settings_preference_category_user_interface">
 
-        <EditTextPreference
-            android:defaultValue="@string/activity_settings_preferences_tabs_default"
-            android:inputType="number"
-            android:key="@string/activity_settings_preferences_tabs_key"
-            android:selectAllOnFocus="true"
-            android:summary="@string/activity_settings_preferences_tabs_summary"
-            android:title="@string/activity_settings_preferences_tabs"/>
-
         <ListPreference
             android:defaultValue="@string/activity_settings_preferences_default_restaurant_default"
             android:entries="@array/activity_settings_preferences_default_restaurant_array"

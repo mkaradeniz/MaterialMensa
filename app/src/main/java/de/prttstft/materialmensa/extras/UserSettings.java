@@ -22,8 +22,6 @@ public class UserSettings {
     private static final String LIFESTYLE_PREF = getAppContext().getString(R.string.activity_settings_preferences_lifestyle_key);
     private static final String ROLE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_role_default);
     private static final String ROLE_PREF = getAppContext().getString(R.string.activity_settings_preferences_role_key);
-    private static final String TABS_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_tabs_default);
-    private static final String TABS_PREF = getAppContext().getString(R.string.activity_settings_preferences_tabs_key);
 
     private UserSettings() {
 
@@ -57,18 +55,5 @@ public class UserSettings {
     public static String getRole() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
         return sharedPreferences.getString(ROLE_PREF, ROLE_DEFAULT);
-    }
-
-    public static int getTabCount() {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        int tabCount = Integer.valueOf(sharedPreferences.getString(TABS_PREF, TABS_DEFAULT));
-
-        if (tabCount < 1) {
-            return 1;
-        } else if (tabCount > 15) {
-            return 15;
-        } else {
-            return tabCount;
-        }
     }
 }
