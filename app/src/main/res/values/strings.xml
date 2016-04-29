@@ -111,7 +111,7 @@
     <string name="activity_settings_preferences_default_restaurant">Default Restaurant</string>
     <string name="activity_settings_preferences_default_restaurant_default" translatable="false">0</string>
     <string name="activity_settings_preferences_default_restaurant_key" translatable="false">prefDefaultRestaurant</string>
-    <string name="activity_settings_preferences_default_restaurant_summary">Can\'t think of a joke right now</string>
+    <string name="activity_settings_preferences_default_restaurant_summary">Can\'t think of a joke right now.</string>
     <string name="activity_settings_preferences_filter">Hide Filtered Meals</string>
     <string name="activity_settings_preferences_filter_summary" tools:ignore="Typos">[Insert joke about object permanence here.]</string>
     <string name="activity_settings_preferences_hide_filtered_default" translatable="false">true</string>
