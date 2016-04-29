@@ -30,6 +30,10 @@ public class DateTimeUtilities {
         return tomorrow.equals(dateTime.toLocalDate());
     }
 
+    public static String getDateString(int page) {
+        return new DateTime().plusDays(page).toString(DateTimeUtilities.DATE_PATTERN);
+    }
+
     public static String getDayString(DateTime dateTime) {
         String language = Utilities.getSystemLanguage();
         String outputString;
@@ -53,11 +57,7 @@ public class DateTimeUtilities {
         return outputString;
     }
 
-    public static String getDateString(int page) {
-        return new DateTime().plusDays(page).toString(DateTimeUtilities.DATE_PATTERN);
-    }
-
-    public static String getShareDayString(int page) {
+    public static String getDayStringLong(int page) {
         String language = Utilities.getSystemLanguage();
         String outputString;
         DateTime dateTime = DateTime.parse(getDateString(page));
@@ -75,11 +75,7 @@ public class DateTimeUtilities {
                 outputString = TOMORROW_EN;
             }
         } else {
-            if (language.equals(LOCALE_DE)) {
-                outputString = dateTime.dayOfWeek().getAsText();
-            } else {
-                outputString = "on " + dateTime.dayOfWeek().getAsText();
-            }
+            outputString = dateTime.dayOfWeek().getAsText();
         }
 
         return outputString;
@@ -107,6 +103,34 @@ public class DateTimeUtilities {
                 outputString = dateTime.dayOfWeek().getAsText();
             } else {
                 outputString = "on " + dateTime.dayOfWeek().getAsText();
+            }
+        }
+
+        return outputString;
+    }
+
+    public static String getShareDayString(int page) {
+        String language = Utilities.getSystemLanguage();
+        String outputString;
+        DateTime dateTime = DateTime.parse(getDateString(page));
+
+        if (isToday(dateTime)) {
+            if (language.equals(LOCALE_DE)) {
+                outputString = TODAY_DE;
+            } else {
+                outputString = TODAY_EN;
+            }
+        } else if (isTomorrow(dateTime)) {
+            if (language.equals(LOCALE_DE)) {
+                outputString = TOMORROW_DE;
+            } else {
+                outputString = TOMORROW_EN;
+            }
+        } else {
+            if (language.equals(LOCALE_DE)) {
+                outputString = dateTime.dayOfWeek().getAsText();
+            } else {
+                outputString = ON + dateTime.dayOfWeek().getAsText();
             }
         }
 

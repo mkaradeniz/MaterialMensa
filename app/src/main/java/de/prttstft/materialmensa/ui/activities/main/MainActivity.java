@@ -1,21 +1,21 @@
 package de.prttstft.materialmensa.ui.activities.main;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -25,6 +25,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.MyApplication;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.ui.activities.about.AboutActivity;
@@ -65,9 +66,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
         presenter = new MainPresenterImplementation(this);
 
         setUpToolbar();
+        setUpInititalDay();
+        setUpTabs();
+        setUpDrawerIcons();
         setUpDrawerLayout();
         setUpDrawerHeader();
-        setUpTabs();
     }
 
     @Override
@@ -87,7 +90,13 @@ public class MainActivity extends AppCompatActivity implements MainView {
         }
     }
 
-    private void setUpDrawerLayout() {
+    private void setUpInititalDay() {
+        adapter = new MainFragmentPagerAdapter(getSupportFragmentManager(), 0);
+        toolbar.setTitle(Utilities.getRestaurantName(0));
+        navigationView.getMenu().getItem(0).setChecked(true);
+    }
+
+    private void setUpTabs() {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -98,7 +107,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 if (MainFragment.actionMode != null) {
                     MainFragment.actionMode.finish();
                 }
-                //tabLayout.getTabAt(position).setIcon(Utilities.getRestaurantIcon(position));
+                toolbar.setTitle(Utilities.getRestaurantName(position));
+                setTabIcon(position);
             }
 
             @Override
@@ -109,6 +119,18 @@ public class MainActivity extends AppCompatActivity implements MainView {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
+        viewPager.setCurrentItem(UserSettings.getDefaultRestaurant());
+        setTabIcon(UserSettings.getDefaultRestaurant());
+    }
+
+    private void setUpDrawerIcons() {
+        for (int i = 0; i < navigationView.getMenu().size() - 2; i++) {
+            navigationView.getMenu().getItem(i).setIcon(DateTimeUtilities.getDateIcon(i));
+            navigationView.getMenu().getItem(i).setTitle(DateTimeUtilities.getDayStringLong(i));
+        }
+    }
+
+    private void setUpDrawerLayout() {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -123,42 +145,42 @@ public class MainActivity extends AppCompatActivity implements MainView {
                     case R.id.menu_main_drawer_1:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), 1));
                         adapter.notifyDataSetChanged();
-                        toolbar.setTitle(getString(R.string.restaurant_mensa_forum_paderborn));
+                        toolbar.setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
                         menuItem.setChecked(true);
                         setUpTabs();
                         break;
                     case R.id.menu_main_drawer_2:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), 2));
                         adapter.notifyDataSetChanged();
-                        toolbar.setTitle(getString(R.string.restaurant_cafete));
+                        toolbar.setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
                         menuItem.setChecked(true);
                         setUpTabs();
                         break;
                     case R.id.menu_main_drawer_3:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), 3));
                         adapter.notifyDataSetChanged();
-                        toolbar.setTitle(getString(R.string.restaurant_mensula));
+                        toolbar.setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
                         menuItem.setChecked(true);
                         setUpTabs();
                         break;
                     case R.id.menu_main_drawer_4:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), 4));
                         adapter.notifyDataSetChanged();
-                        toolbar.setTitle(getString(R.string.restaurant_one_way_snack));
+                        toolbar.setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
                         menuItem.setChecked(true);
                         setUpTabs();
                         break;
                     case R.id.menu_main_drawer_5:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), 5));
                         adapter.notifyDataSetChanged();
-                        toolbar.setTitle(getString(R.string.restaurant_grill_cafe));
+                        toolbar.setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
                         menuItem.setChecked(true);
                         setUpTabs();
                         break;
                     case R.id.menu_main_drawer_6:
                         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), 6));
                         adapter.notifyDataSetChanged();
-                        toolbar.setTitle(getString(R.string.restaurant_grill_cafe));
+                        toolbar.setTitle(getString(R.string.restaurant_mensa_academica_paderborn));
                         menuItem.setChecked(true);
                         setUpTabs();
                         break;
@@ -226,11 +248,22 @@ public class MainActivity extends AppCompatActivity implements MainView {
         }
     }
 
-    private void setUpTabs() {
+    private void setTabIcon(int position) {
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            Drawable tabIcon = ResourcesCompat.getDrawable(getResources(), Utilities.getRestaurantIcon(i), null);
+            assert tabIcon != null;
+            Drawable wrappedTabIcon = DrawableCompat.wrap(tabIcon);
+
+            if (i == position) {
+                DrawableCompat.setTintList(wrappedTabIcon, ColorStateList.valueOf(Color.BLACK));
+            } else {
+                DrawableCompat.setTintList(wrappedTabIcon, ColorStateList.valueOf(Color.GRAY));
+            }
+
             //noinspection ConstantConditions
-            tabLayout.getTabAt(i).setIcon(Utilities.getRestaurantIcon(i));
+            tabLayout.getTabAt(i).setIcon(wrappedTabIcon);
         }
+
     }
 
     @Override
@@ -245,6 +278,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void restaurantClosed(int restaurant, String openingTime) {
+        /*
         ImageView circle = (ImageView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(0);
         TextView statusTextView = (TextView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(1);
 
@@ -266,10 +300,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 statusTextView.setVisibility(View.GONE);
             }
         }
+        */
     }
 
     @Override
     public void restaurantOpen(int restaurant, String closingTime) {
+        /*
         ImageView circle = (ImageView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(0);
         TextView statusTextView = (TextView) ((LinearLayoutCompat) navigationView.getMenu().getItem(restaurant).getActionView()).getChildAt(1);
 
@@ -294,5 +330,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 statusTextView.setVisibility(View.GONE);
             }
         }
+        */
     }
 }
