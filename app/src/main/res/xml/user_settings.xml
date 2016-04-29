@@ -4,14 +4,6 @@
     <PreferenceCategory
         android:title="@string/activity_settings_preference_category_general">
 
-        <!--<ListPreference
-            android:defaultValue="@string/activity_settings_preferences_language_default"
-            android:entries="@array/activity_settings_preferences_language_array"
-            android:entryValues="@array/activity_settings_preferences_language_array_values"
-            android:key="@string/activity_settings_preferences_language_key"
-            android:summary="@string/activity_settings_preferences_language_summary"
-            android:title="@string/activity_settings_preferences_language"/>-->
-
         <ListPreference
             android:defaultValue="@string/activity_settings_preferences_role_default"
             android:entries="@array/activity_settings_preferences_role_array"

@@ -37,9 +37,10 @@ import de.prttstft.materialmensa.ui.fragments.main.view.MainFragmentView;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static de.prttstft.materialmensa.constants.GeneralConstants.MEAL;
+import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRandomEmoji;
 
 public class MainFragment extends Fragment implements MainFragmentView, MainFragmentViewHolderListener {
-    private static final String ARG_PAGE = "ARG_PAGE";
+    private static final String ARG_DAY = "ARG_DAY";
     private static final String ARG_RESTAURANT = "ARG_RESTAURANT";
     private static final String LOCALE_DE = "Deutsch";
     private static final String MIME_TYPE_TEXT = "text/plain";
@@ -55,9 +56,9 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     private ActionMode.Callback actionModeCallback;
     private MainFragmentAdapter adapter;
 
-    public static MainFragment newInstance(int page, int restaurant) {
+    public static MainFragment newInstance(int day, int restaurant) {
         Bundle args = new Bundle();
-        args.putInt(ARG_PAGE, page);
+        args.putInt(ARG_DAY, day);
         args.putInt(ARG_RESTAURANT, restaurant);
         MainFragment fragment = new MainFragment();
         fragment.setArguments(args);
@@ -74,10 +75,10 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         setUpRecyclerView(recyclerView);
         setUpActionMode();
 
-        emptyEmoji.setImageResource(Utilities.getRandomEmoji());
-        filteredEmoji.setImageResource(Utilities.getRandomEmoji());
+        emptyEmoji.setImageResource(getRandomEmoji());
+        filteredEmoji.setImageResource(getRandomEmoji());
 
-        presenter.getMeals(getArguments().getInt(ARG_PAGE), getArguments().getInt(ARG_RESTAURANT));
+        presenter.getMeals(getArguments().getInt(ARG_DAY), getArguments().getInt(ARG_RESTAURANT));
 
         return view;
     }
@@ -242,7 +243,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
     private String buildShareString() {
-        String shareString = getActivity().getString(R.string.share_string_prefix, DateTimeUtilities.getShareDayString(getArguments().getInt(ARG_PAGE)));
+        String shareString = getActivity().getString(R.string.share_string_prefix, DateTimeUtilities.getShareDayString(getArguments().getInt(ARG_DAY)));
 
         if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
             shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameDe();

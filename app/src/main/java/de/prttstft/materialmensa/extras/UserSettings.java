@@ -1,6 +1,5 @@
 package de.prttstft.materialmensa.extras;
 
-
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 

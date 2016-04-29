@@ -29,8 +29,7 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:backgroundTintMode="multiply"
                 android:contentDescription="@string/activity_details_image_description"
-                android:scaleType="centerCrop"
-                android:src="@drawable/meal_example"/>
+                android:scaleType="centerCrop"/>
 
             <ProgressBar
                 android:id="@+id/activity_details_image_progress_bar"
