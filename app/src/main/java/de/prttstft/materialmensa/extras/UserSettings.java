@@ -18,6 +18,8 @@ public class UserSettings {
     private static final String DEFAULT_RESTAURANT_PREF = getAppContext().getString(R.string.activity_settings_preferences_default_restaurant_key);
     private static final String HIDE_FILTERED_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_hide_filtered_default);
     private static final String HIDE_FILTERED_PREF = getAppContext().getString(R.string.activity_settings_preferences_hide_filtered_key);
+    private static final String IMAGES_IN_MAIN_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_images_in_main_default);
+    private static final String IMAGES_IN_MAIN_PREF = getAppContext().getString(R.string.activity_settings_preferences_images_in_main_key);
     private static final String LIFESTYLE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_lifestyle_default);
     private static final String LIFESTYLE_PREF = getAppContext().getString(R.string.activity_settings_preferences_lifestyle_key);
     private static final String ROLE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_role_default);
@@ -46,6 +48,11 @@ public class UserSettings {
     public static boolean getHideFiltered() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
         return getLifestyle().equals(LIFESTYLE_LEVEL_FIVE_VEGAN) || sharedPreferences.getBoolean(HIDE_FILTERED_PREF, Boolean.valueOf(HIDE_FILTERED_DEFAULT));
+    }
+
+    public static boolean getImagesInMainView() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
+        return sharedPreferences.getBoolean(IMAGES_IN_MAIN_PREF, Boolean.valueOf(IMAGES_IN_MAIN_DEFAULT));
     }
 
     public static String getLifestyle() {

@@ -128,7 +128,7 @@ public class DetailsActivity extends AppCompatActivity {
                 mealName.setTextColor(ContextCompat.getColor(this, R.color.materialDeepOrange500));
             }
 
-            if (Utilities.onWifi(this)) {
+            if (Utilities.onWifi()) {
                 Glide.with(this).
                         load(meal.getImage())
                         .listener(new RequestListener<String, GlideDrawable>() {

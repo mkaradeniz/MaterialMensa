@@ -7,7 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,9 +24,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.extensions.SelectionRecyclerView;
+import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentViewHolderListener;
+
+import static android.view.View.GONE;
 
 public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmentAdapter.MainFragmentViewHolder> {
     private static final String LOCALE_DE = "Deutsch";
@@ -68,6 +77,52 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         } else {
             holder.name.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
         }
+
+        if (UserSettings.getImagesInMainView()) {
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.name.getLayoutParams();
+            params.setMarginStart(Utilities.convertToPx(58));
+
+            if (meal.getImage() != null) {
+                if (Utilities.onWifi()) {
+                    Glide.with(context).load(meal.getImage())
+                            .listener(new RequestListener<String, GlideDrawable>() {
+                                @Override
+                                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                    return false;
+                                }
+
+                                @Override
+                                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                    holder.image.setVisibility(View.VISIBLE);
+                                    return false;
+                                }
+                            })
+                            .into(holder.image);
+                } else {
+                    Glide.with(context).load(meal.getThumbnail())
+                            .listener(new RequestListener<String, GlideDrawable>() {
+                                @Override
+                                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                    return false;
+                                }
+
+                                @Override
+                                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                    holder.image.setVisibility(View.VISIBLE);
+                                    return false;
+                                }
+                            })
+                            .into(holder.image);
+                }
+            } else {
+                holder.image.setVisibility(GONE);
+            }
+        } else {
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.name.getLayoutParams();
+            params.setMarginStart(Utilities.convertToPx(16));
+
+            holder.image.setVisibility(GONE);
+        }
     }
 
     @Override
@@ -90,6 +145,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
 
     public class MainFragmentViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.item_meal_description) TextView description;
+        @Bind(R.id.item_meal_image) ImageView image;
         @Bind(R.id.item_meal_name) TextView name;
         @Bind(R.id.item_meal_price) TextView price;
 
