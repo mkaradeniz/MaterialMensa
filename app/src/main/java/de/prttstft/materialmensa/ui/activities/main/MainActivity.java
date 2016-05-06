@@ -104,9 +104,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 if (MainFragment.actionMode != null) {
                     MainFragment.actionMode.finish();
                 }
-
-                setCurrentTab(position);
                 statusText.setVisibility(View.GONE);
+                setCurrentTab(position);
             }
 
             @Override
@@ -278,6 +277,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void restaurantClosed(int restaurant, String openingTime) {
         setRestaurantClosed(restaurant);
+
         if (restaurant == currentRestaurant) {
             if (openingTime != null) {
                 statusText.setText(openingTime);
@@ -291,11 +291,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     public void restaurantOpen(int restaurant, String closingTime) {
         setRestaurantOpen(restaurant);
-        if (closingTime != null) {
-            statusText.setText(closingTime);
-            statusText.setVisibility(View.VISIBLE);
-        } else {
-            statusText.setVisibility(View.GONE);
+
+        if (restaurant == currentRestaurant) {
+            if (closingTime != null) {
+                statusText.setText(closingTime);
+                statusText.setVisibility(View.VISIBLE);
+            } else {
+                statusText.setVisibility(View.GONE);
+            }
         }
     }
 }

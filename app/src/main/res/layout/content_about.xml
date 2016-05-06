@@ -57,49 +57,57 @@
         android:text="@string/activity_about_button_rate"/>
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/activity_about_button_git_hub"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/activity_about_button_rate"
-        android:layout_centerInParent="true"
-        android:text="@string/activity_about_button_git_hub"/>
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/activity_about_button_libraries"
-        android:layout_width="@dimen/activity_about_button_width"
-        android:layout_height="@dimen/activity_about_button_height"
-        android:layout_below="@+id/activity_about_button_git_hub"
-        android:layout_centerInParent="true"
-        android:text="@string/activity_about_button_libraries"/>
-
-    <android.support.v7.widget.AppCompatButton
         android:id="@+id/activity_about_button_wish_list"
         android:layout_width="@dimen/activity_about_button_width"
         android:layout_height="@dimen/activity_about_button_height"
-        android:layout_below="@+id/activity_about_button_libraries"
+        android:layout_below="@+id/activity_about_button_rate"
         android:layout_centerInParent="true"
         android:text="@string/activity_about_button_wish_list"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/activity_about_button_api"
+        android:layout_width="@dimen/activity_about_button_width"
+        android:layout_height="@dimen/activity_about_button_height"
+        android:layout_below="@id/activity_about_button_wish_list"
+        android:layout_centerInParent="true"
+        android:text="@string/activity_about_button_api"/>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/activity_about_button_emojis"
         android:layout_width="@dimen/activity_about_button_width"
         android:layout_height="@dimen/activity_about_button_height"
-        android:layout_below="@id/activity_about_button_wish_list"
+        android:layout_below="@id/activity_about_button_api"
         android:layout_centerInParent="true"
         android:text="@string/activity_about_button_emojis"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/activity_about_button_git_hub"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/activity_about_button_emojis"
+        android:layout_centerInParent="true"
+        android:text="@string/activity_about_button_git_hub"/>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/activity_about_button_icons"
         android:layout_width="@dimen/activity_about_button_width"
         android:layout_height="@dimen/activity_about_button_height"
-        android:layout_below="@id/activity_about_button_emojis"
+        android:layout_below="@id/activity_about_button_git_hub"
         android:layout_centerInParent="true"
         android:text="@string/activity_about_button_icons"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/activity_about_button_libraries"
+        android:layout_width="@dimen/activity_about_button_width"
+        android:layout_height="@dimen/activity_about_button_height"
+        android:layout_below="@+id/activity_about_button_icons"
+        android:layout_centerInParent="true"
+        android:text="@string/activity_about_button_libraries"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/activity_about_button_icons"
+        android:layout_below="@id/activity_about_button_libraries"
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:gravity="center"

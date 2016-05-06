@@ -73,7 +73,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         }
 
         if (meal.isFiltered()) {
-            holder.name.setTextColor(ContextCompat.getColor(context, R.color.materialDeepOrange500));
+            holder.name.setTextColor(ContextCompat.getColor(context, R.color.materialRed900));
         } else {
             holder.name.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
         }

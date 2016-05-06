@@ -110,7 +110,7 @@ public class DetailsActivity extends AppCompatActivity {
             mealDescriptionNoImage.setText(meal.getCustomDescription());
 
             if (!UserSettings.getHideFiltered() && meal.isFiltered()) {
-                mealNameNoImage.setTextColor(ContextCompat.getColor(this, R.color.materialDeepOrange500));
+                mealNameNoImage.setTextColor(ContextCompat.getColor(this, R.color.materialRed900));
             }
 
             if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
@@ -125,7 +125,7 @@ public class DetailsActivity extends AppCompatActivity {
             mealDescription.setText(meal.getCustomDescription());
 
             if (!UserSettings.getHideFiltered() && meal.isFiltered()) {
-                mealName.setTextColor(ContextCompat.getColor(this, R.color.materialDeepOrange500));
+                mealName.setTextColor(ContextCompat.getColor(this, R.color.materialRed900));
             }
 
             if (Utilities.onWifi()) {
