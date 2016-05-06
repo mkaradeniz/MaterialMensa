@@ -20,17 +20,13 @@
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:visibility="gone">
 
-            <!-- Override in layout 21 -->
             <ImageView
                 android:id="@+id/activity_details_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:alpha="1"
-                android:backgroundTint="@color/colorPrimary"
-                android:backgroundTintMode="multiply"
                 android:contentDescription="@string/activity_details_image_description"
-                android:scaleType="centerCrop"
-                android:src="@drawable/meal_example"/>
+                android:scaleType="centerCrop"/>
 
             <ProgressBar
                 android:id="@+id/activity_details_image_progress_bar"
@@ -77,6 +73,7 @@
                     android:textColor="@color/textPrimaryLight"/>
 
             </RelativeLayout>
+
         </FrameLayout>
 
         <RelativeLayout

@@ -1,16 +1,10 @@
 package de.prttstft.materialmensa.ui.activities.main.presenter;
 
+import de.prttstft.materialmensa.constants.RestaurantConstants;
 import de.prttstft.materialmensa.ui.activities.main.interactor.MainInteractor;
 import de.prttstft.materialmensa.ui.activities.main.interactor.MainInteractorImplementation;
 import de.prttstft.materialmensa.ui.activities.main.listener.MainListener;
 import de.prttstft.materialmensa.ui.activities.main.view.MainView;
-
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ACADEMICA;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAFETE;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_FORUM;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_GRILL_CAFE;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_MENSULA;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK;
 
 public class MainPresenterImplementation implements MainPresenter, MainListener {
     private MainInteractor interactor;
@@ -23,13 +17,12 @@ public class MainPresenterImplementation implements MainPresenter, MainListener 
 
     @Override
     public void getRestaurantStatus() {
-        // There has to be a better way.
-        interactor.getRestaurantStatus(this, RESTAURANT_ID_ACADEMICA);
-        interactor.getRestaurantStatus(this, RESTAURANT_ID_FORUM);
-        interactor.getRestaurantStatus(this, RESTAURANT_ID_CAFETE);
-        interactor.getRestaurantStatus(this, RESTAURANT_ID_MENSULA);
-        interactor.getRestaurantStatus(this, RESTAURANT_ID_ONE_WAY_SNACK);
-        interactor.getRestaurantStatus(this, RESTAURANT_ID_GRILL_CAFE);
+        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_ACADEMICA);
+        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_FORUM);
+        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_CAFETE);
+        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_MENSULA);
+        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK);
+        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_GRILL_CAFE);
     }
 
     @Override

@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/activity_about_logo"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="@dimen/activity_about_logo"
+        android:layout_height="@dimen/activity_about_logo"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:contentDescription="@string/app_name"
@@ -66,32 +66,32 @@
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/activity_about_button_libraries"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/activity_about_button_width"
+        android:layout_height="@dimen/activity_about_button_height"
         android:layout_below="@+id/activity_about_button_git_hub"
         android:layout_centerInParent="true"
         android:text="@string/activity_about_button_libraries"/>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/activity_about_button_wish_list"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/activity_about_button_width"
+        android:layout_height="@dimen/activity_about_button_height"
         android:layout_below="@+id/activity_about_button_libraries"
         android:layout_centerInParent="true"
         android:text="@string/activity_about_button_wish_list"/>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/activity_about_button_emojis"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/activity_about_button_width"
+        android:layout_height="@dimen/activity_about_button_height"
         android:layout_below="@id/activity_about_button_wish_list"
         android:layout_centerInParent="true"
         android:text="@string/activity_about_button_emojis"/>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/activity_about_button_icons"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/activity_about_button_width"
+        android:layout_height="@dimen/activity_about_button_height"
         android:layout_below="@id/activity_about_button_emojis"
         android:layout_centerInParent="true"
         android:text="@string/activity_about_button_icons"/>

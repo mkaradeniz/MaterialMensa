@@ -75,8 +75,8 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     private static final String PRICE_TYPE_WEIGHTED = "weighted";
 
     @Override
-    public void getMeals(final MainFragmentListener listener, final int page, final int restaurant) {
-        Observable<Meal> observable = MensaAPI.mensaAPI.getMeals(DateTimeUtilities.getDateString(page), getRestaurantString(restaurant)).flatMap(new Func1<List<Meal>, Observable<Meal>>() {
+    public void getMeals(final MainFragmentListener listener, final int day, final int restaurant) {
+        Observable<Meal> observable = MensaAPI.mensaAPI.getMeals(DateTimeUtilities.getDateString(day), getRestaurantString(restaurant)).flatMap(new Func1<List<Meal>, Observable<Meal>>() {
             @Override
             public Observable<Meal> call(List<Meal> iterable) {
                 return Observable.from(iterable);

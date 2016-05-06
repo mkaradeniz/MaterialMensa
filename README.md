@@ -18,3 +18,4 @@ You need a personal API-Key issued by the [Studentenwerk Paderborn](http://www.s
 - [Retrofit](https://github.com/square/retrofit)
 - [RxAndroid](https://github.com/ReactiveX/RxAndroid)
 - [RxJava](https://github.com/ReactiveX/RxJava)
+- [Studentenwerk Paderborn](http://www.studentenwerk-pb.de/)

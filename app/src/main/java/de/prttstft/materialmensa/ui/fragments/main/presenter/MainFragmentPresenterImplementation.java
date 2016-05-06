@@ -30,11 +30,11 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     }
 
     @Override
-    public void getMeals(int page, int restaurant) {
+    public void getMeals(int day, int restaurant) {
         if (view != null) {
             view.showProgress();
         }
-        interactor.getMeals(this, page, restaurant);
+        interactor.getMeals(this, day, restaurant);
     }
 
     @Override

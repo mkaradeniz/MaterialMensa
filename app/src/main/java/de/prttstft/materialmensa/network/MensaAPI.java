@@ -16,7 +16,6 @@ import static de.prttstft.materialmensa.constants.APIConstants.API_GET_MEALS;
 import static de.prttstft.materialmensa.constants.APIConstants.API_GET_RESTAURANT_STATUS;
 
 public interface MensaAPI {
-
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(API_BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())

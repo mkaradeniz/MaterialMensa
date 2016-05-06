@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_main_header"
-    android:layout_width="match_parent"
-    android:layout_height="172dp"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/activity_horizontal_margin"
-    tools:ignore="Overdraw">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/drawer_main_header"
+                android:layout_width="match_parent"
+                android:layout_height="172dp"
+                android:background="@color/colorPrimary"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                tools:ignore="Overdraw">
 
     <FrameLayout
         android:id="@+id/drawer_main_header_avatar_container"
@@ -16,23 +16,19 @@
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:layout_marginTop="25dp">
 
-        <!-- Override in layout 21 -->
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/drawer_main_header_avatar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:contentDescription="@string/placeholder"
-            android:elevation="6dp"
             android:src="@color/colorAccent"/>
 
-        <!-- Override in layout 21 -->
         <ImageView
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:contentDescription="@string/drawer_main_header_role_image_description"
-            android:elevation="6dp"
             android:scaleX="1.5"
             android:scaleY="1.5"
             android:src="@drawable/ic_staff_black"/>

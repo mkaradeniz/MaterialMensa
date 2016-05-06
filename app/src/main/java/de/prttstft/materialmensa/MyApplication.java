@@ -5,7 +5,6 @@ import android.content.Context;
 
 import net.danlew.android.joda.JodaTimeAndroid;
 
-
 public class MyApplication extends Application {
     private static MyApplication sInstance;
 
