@@ -23,12 +23,14 @@
     <color name="materialDeepOrange500" tools:ignore="UnusedResources">#FF5722</color>
     <color name="materialDeepPurple500" tools:ignore="UnusedResources">#673AB7</color>
     <color name="materialGreen500" tools:ignore="UnusedResources">#4CAF50</color>
+    <color name="materialGreen800" tools:ignore="UnusedResources">#2E7D32</color>
     <color name="materialLightBlue500" tools:ignore="UnusedResources">#03A9F4</color>
     <color name="materialLightGreen500" tools:ignore="UnusedResources">#8BC34A</color>
     <color name="materialLime500" tools:ignore="UnusedResources">#CDDC39</color>
     <color name="materialOrange500" tools:ignore="UnusedResources">#FF9800</color>
     <color name="materialPurple500" tools:ignore="UnusedResources">#9C27B0</color>
     <color name="materialRed500" tools:ignore="UnusedResources">#F44336</color>
+    <color name="materialRed900" tools:ignore="UnusedResources">#B71C1C</color>
     <color name="materialTeal500" tools:ignore="UnusedResources">#009688</color>
     <color name="materialYellow500" tools:ignore="UnusedResources">#FFEB3B</color>
 </resources>

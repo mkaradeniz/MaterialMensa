@@ -1,3 +1,3 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:color="@color/materialRed500"/>
+    <item android:color="@color/materialRed900"/>
 </selector>
