@@ -110,7 +110,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
             view.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    listener.onLongClick(v, getAdapterPosition());
+                    listener.onLongClick(getAdapterPosition());
                     return true;
                 }
             });

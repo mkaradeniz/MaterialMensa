@@ -13,6 +13,7 @@ public class GeneralConstants {
     // Intents
     public static final String MEAL = "meal";
 
+
     private GeneralConstants() {
 
     }

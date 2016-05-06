@@ -19,6 +19,7 @@ public class DateTimeUtilities {
 
     }
 
+
     private static boolean isToday(DateTime dateTime) {
         LocalDate today = new LocalDate();
         return today.equals(dateTime.toLocalDate());

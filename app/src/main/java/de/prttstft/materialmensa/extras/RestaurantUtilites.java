@@ -7,10 +7,10 @@ import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.constants.RestaurantConstants;
 
 public class RestaurantUtilites {
-
     private RestaurantUtilites() {
 
     }
+
 
     public static int getRandomEmoji() {
         Random random = new Random();
@@ -31,25 +31,6 @@ public class RestaurantUtilites {
                 return R.drawable.emoji_1f64a;
             default:
                 return R.drawable.emoji_1f622;
-        }
-    }
-
-    public static int getRestaurantHeader(int restaurant) {
-        switch (restaurant) {
-            case 0:
-                return R.drawable.header_academica;
-            case 1:
-                return R.drawable.header_forum;
-            case 2:
-                return R.drawable.header_cafete;
-            case 3:
-                return R.drawable.header_mensula;
-            case 4:
-                return R.drawable.header_one_way_snack;
-            case 5:
-                return R.drawable.header_grill;
-            default:
-                return -1;
         }
     }
 

@@ -1,5 +1,8 @@
 package de.prttstft.materialmensa.extras;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import java.util.Locale;
@@ -7,10 +10,10 @@ import java.util.Locale;
 import static de.prttstft.materialmensa.constants.GeneralConstants.LOGTAG;
 
 public class Utilities {
-
     private Utilities() {
 
     }
+
 
     public static void L(String input) {
         Log.d(LOGTAG, input);
@@ -23,5 +26,17 @@ public class Utilities {
 
     public static String getSystemLanguage() {
         return Locale.getDefault().getDisplayLanguage();
+    }
+
+    public static boolean onWifi(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null) {
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

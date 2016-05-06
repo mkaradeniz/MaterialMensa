@@ -32,6 +32,8 @@ import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_CLOSED_EN;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_STARTS_WITH_OPENS_DE;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_STARTS_WITH_OPENS_EN;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_TEMPORALIY_CLOSED_DE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_TEMPORALIY_CLOSED_EN;
 import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainInteractorImplementation implements MainInteractor {
@@ -132,7 +134,7 @@ public class MainInteractorImplementation implements MainInteractor {
     }
 
     private boolean restaurantOpen(String status) {
-        return !(status.startsWith(RESTAURANT_STATUS_CLOSED_EN) || status.startsWith(RESTAURANT_STATUS_CLOSED_DE) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS_EN) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS_DE));
+        return !(status.startsWith(RESTAURANT_STATUS_CLOSED_EN) || status.startsWith(RESTAURANT_STATUS_CLOSED_DE) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS_EN) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS_DE) || status.startsWith(RESTAURANT_STATUS_TEMPORALIY_CLOSED_EN) || status.startsWith(RESTAURANT_STATUS_TEMPORALIY_CLOSED_DE)) && !status.isEmpty();
     }
 
     private String getClosingTime(String status) {
@@ -173,7 +175,11 @@ public class MainInteractorImplementation implements MainInteractor {
             try {
                 hours = Integer.parseInt(matcher.group(2));
                 minutes = Integer.parseInt(matcher.group(4));
-                return getAppContext().getString(R.string.drawer_main_restaurant_status_opening_time, Utilities.addLeadingZero(hours, 2), Utilities.addLeadingZero(minutes, 2));
+                String suffix = getAppContext().getString(R.string.drawer_main_restaurant_status_opening_time_suffix);
+                String sHours = Utilities.addLeadingZero(hours, 2);
+                String sMinutes = Utilities.addLeadingZero(minutes, 2);
+
+                return getAppContext().getString(R.string.drawer_main_restaurant_status_opening_time, sHours, sMinutes, suffix);
             } catch (NumberFormatException ignored) {
 
             }

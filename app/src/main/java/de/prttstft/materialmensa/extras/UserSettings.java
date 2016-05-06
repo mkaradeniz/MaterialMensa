@@ -27,6 +27,7 @@ public class UserSettings {
 
     }
 
+
     public static Set<String> getAdditives() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
         return sharedPreferences.getStringSet(ADDITIVES_PREF, new HashSet<String>());

@@ -128,20 +128,38 @@ public class DetailsActivity extends AppCompatActivity {
                 mealName.setTextColor(ContextCompat.getColor(this, R.color.materialDeepOrange500));
             }
 
-            Glide.with(this).load(meal.getThumbnail())
-                    .listener(new RequestListener<String, GlideDrawable>() {
-                        @Override
-                        public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                            return false;
-                        }
+            if (Utilities.onWifi(this)) {
+                Glide.with(this).
+                        load(meal.getImage())
+                        .listener(new RequestListener<String, GlideDrawable>() {
+                            @Override
+                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                return false;
+                            }
 
-                        @Override
-                        public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                            progressBar.setVisibility(GONE);
-                            return false;
-                        }
-                    })
-                    .into(mealImage);
+                            @Override
+                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                progressBar.setVisibility(GONE);
+                                return false;
+                            }
+                        })
+                        .into(mealImage);
+            } else {
+                Glide.with(this).load(meal.getThumbnail())
+                        .listener(new RequestListener<String, GlideDrawable>() {
+                            @Override
+                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                progressBar.setVisibility(GONE);
+                                return false;
+                            }
+                        })
+                        .into(mealImage);
+            }
 
             if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
                 mealName.setText(meal.getNameDe());

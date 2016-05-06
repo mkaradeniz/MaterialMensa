@@ -148,7 +148,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
     @Override
-    public void onLongClick(View view, int position) {
+    public void onLongClick(int position) {
         if (actionMode == null) {
             actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
         }
@@ -215,7 +215,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         }
     }
 
-    public void toggleSelection(int position) {
+    private void toggleSelection(int position) {
         if (adapter.isSelected(position)) {
             adapter.clearSelection(position);
             adapter.notifyItemChanged(position);

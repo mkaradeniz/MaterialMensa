@@ -2,8 +2,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- App Colors -->
     <color name="colorAccent">#03A9F4</color>
-    <color name="colorNegative">#F44336</color>
-    <color name="colorPositive">#4CAF50</color>
     <color name="colorPrimary">#CDDC39</color>
     <color name="colorPrimaryDark">#AFB42B</color>
     <color name="colorPrimaryLight">#E6EE9C</color>
@@ -20,6 +18,8 @@
     <color name="materialBlue500" tools:ignore="UnusedResources">#2196F3</color>
     <color name="materialBlueGrey500" tools:ignore="UnusedResources">#607D8B</color>
     <color name="materialCyan500" tools:ignore="UnusedResources">#00BCD4</color>
+    <color name="materialGrey400" tools:ignore="UnusedResources">#BDBDBD</color>
+    <color name="materialGrey500" tools:ignore="UnusedResources">#9E9E9E</color>
     <color name="materialDeepOrange500" tools:ignore="UnusedResources">#FF5722</color>
     <color name="materialDeepPurple500" tools:ignore="UnusedResources">#673AB7</color>
     <color name="materialGreen500" tools:ignore="UnusedResources">#4CAF50</color>
@@ -31,5 +31,4 @@
     <color name="materialRed500" tools:ignore="UnusedResources">#F44336</color>
     <color name="materialTeal500" tools:ignore="UnusedResources">#009688</color>
     <color name="materialYellow500" tools:ignore="UnusedResources">#FFEB3B</color>
-
 </resources>

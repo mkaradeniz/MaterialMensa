@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
@@ -39,7 +37,6 @@ import de.prttstft.materialmensa.ui.activities.settings.SettingsActivity;
 import de.prttstft.materialmensa.ui.fragments.main.MainFragment;
 import de.prttstft.materialmensa.ui.fragments.main.MainFragmentPagerAdapter;
 
-import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRestaurantHeader;
 import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRestaurantIcon;
 import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRestaurantName;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_LEVEL_FIVE_VEGAN;
@@ -57,11 +54,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_collapsing_toolbar) CollapsingToolbarLayout collapsingToolbarLayout;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_drawer_layout) DrawerLayout drawerLayout;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_navigation_view) NavigationView navigationView;
-    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_restaurant_status_circle) ImageView statusCircle;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_restaurant_status_text) TextView statusText;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_tab_layout) TabLayout tabLayout;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_toolbar) Toolbar toolbar;
-    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_toolbar_image) ImageView toolbarImage;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_view_pager) ViewPager viewPager;
     private MainPresenter presenter;
     private int currentRestaurant = -1;
@@ -86,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     protected void onResume() {
         super.onResume();
 
-        presenter.getRestaurantStatus(currentRestaurant);
+        presenter.getRestaurantStatus();
     }
 
     private void setUpToolbar() {
@@ -111,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 }
 
                 setCurrentTab(position);
+                statusText.setVisibility(View.GONE);
             }
 
             @Override
@@ -118,6 +114,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
             }
         });
         tabLayout.setupWithViewPager(viewPager);
+
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            Drawable tabIcon = ResourcesCompat.getDrawable(getResources(), getRestaurantIcon(i), null);
+            assert tabIcon != null;
+            Drawable wrappedTabIcon = DrawableCompat.wrap(tabIcon);
+            DrawableCompat.setTintList(wrappedTabIcon, ColorStateList.valueOf(Color.BLACK));
+
+            //noinspection ConstantConditions
+            tabLayout.getTabAt(i).setIcon(wrappedTabIcon);
+        }
 
         setCurrentTab(UserSettings.getDefaultRestaurant());
     }
@@ -221,18 +227,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     private void getRestaurantStatus(int restaurant) {
         currentRestaurant = restaurant;
-
         statusText.setVisibility(View.GONE);
-        statusCircle.setVisibility(View.GONE);
-
-        presenter.getRestaurantStatus(currentRestaurant);
+        presenter.getRestaurantStatus();
     }
 
     private void setCurrentTab(int position) {
         collapsingToolbarLayout.setTitle(getRestaurantName(position));
-        toolbarImage.setImageDrawable(ContextCompat.getDrawable(getBaseContext(), getRestaurantHeader(position)));
-
-        setTabIcon(position);
         getRestaurantStatus(position);
     }
 
@@ -245,22 +245,24 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setCurrentTab(UserSettings.getDefaultRestaurant());
     }
 
-    private void setTabIcon(int position) {
-        for (int i = 0; i < tabLayout.getTabCount(); i++) {
-            Drawable tabIcon = ResourcesCompat.getDrawable(getResources(), getRestaurantIcon(i), null);
-            assert tabIcon != null;
-            Drawable wrappedTabIcon = DrawableCompat.wrap(tabIcon);
+    private void setRestaurantClosed(int position) {
+        Drawable tabIcon = ResourcesCompat.getDrawable(getResources(), getRestaurantIcon(position), null);
+        assert tabIcon != null;
+        Drawable wrappedTabIcon = DrawableCompat.wrap(tabIcon);
+        DrawableCompat.setTintList(wrappedTabIcon, ContextCompat.getColorStateList(this, R.color.restaurant_status_closed));
 
-            if (i == position) {
-                DrawableCompat.setTintList(wrappedTabIcon, ColorStateList.valueOf(Color.BLACK));
-            } else {
-                DrawableCompat.setTintList(wrappedTabIcon, ColorStateList.valueOf(Color.GRAY));
-            }
+        //noinspection ConstantConditions
+        tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
+    }
 
-            //noinspection ConstantConditions
-            tabLayout.getTabAt(i).setIcon(wrappedTabIcon);
-        }
+    private void setRestaurantOpen(int position) {
+        Drawable tabIcon = ResourcesCompat.getDrawable(getResources(), getRestaurantIcon(position), null);
+        assert tabIcon != null;
+        Drawable wrappedTabIcon = DrawableCompat.wrap(tabIcon);
+        DrawableCompat.setTintList(wrappedTabIcon, ContextCompat.getColorStateList(this, R.color.restaurant_status_open));
 
+        //noinspection ConstantConditions
+        tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
     }
 
     @Override
@@ -275,23 +277,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void restaurantClosed(int restaurant, String openingTime) {
-        if (openingTime != null) {
-            statusText.setText(openingTime);
-            statusText.setTextColor(ContextCompat.getColor(this, R.color.colorNegative));
-            statusCircle.setVisibility(View.GONE);
-            statusText.setVisibility(View.VISIBLE);
-        } else {
-            Drawable circleColor = statusCircle.getDrawable();
-
-            if (circleColor instanceof ShapeDrawable) {
-                ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.colorNegative));
-
-                statusCircle.setVisibility(View.VISIBLE);
-                statusText.setVisibility(View.GONE);
-            } else if (circleColor instanceof GradientDrawable) {
-                ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.colorNegative));
-
-                statusCircle.setVisibility(View.VISIBLE);
+        setRestaurantClosed(restaurant);
+        if (restaurant == currentRestaurant) {
+            if (openingTime != null) {
+                statusText.setText(openingTime);
+                statusText.setVisibility(View.VISIBLE);
+            } else {
                 statusText.setVisibility(View.GONE);
             }
         }
@@ -299,26 +290,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void restaurantOpen(int restaurant, String closingTime) {
+        setRestaurantOpen(restaurant);
         if (closingTime != null) {
             statusText.setText(closingTime);
-            statusText.setTextColor(ContextCompat.getColor(this, R.color.colorPositive));
-
-            statusCircle.setVisibility(View.GONE);
             statusText.setVisibility(View.VISIBLE);
         } else {
-            Drawable circleColor = statusCircle.getDrawable();
-
-            if (circleColor instanceof ShapeDrawable) {
-                ((ShapeDrawable) circleColor).getPaint().setColor(ContextCompat.getColor(this, R.color.colorPositive));
-
-                statusCircle.setVisibility(View.VISIBLE);
-                statusText.setVisibility(View.GONE);
-            } else if (circleColor instanceof GradientDrawable) {
-                ((GradientDrawable) circleColor).setColor(ContextCompat.getColor(this, R.color.colorPositive));
-
-                statusCircle.setVisibility(View.VISIBLE);
-                statusText.setVisibility(View.GONE);
-            }
+            statusText.setVisibility(View.GONE);
         }
     }
 }
