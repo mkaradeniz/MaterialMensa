@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- General -->
     <string name="app_name">MaterialMensa</string>
     <string name="empty_string" translatable="false"/>
@@ -113,13 +113,20 @@
     <string name="activity_settings_preferences_default_restaurant_key" translatable="false">prefDefaultRestaurant</string>
     <string name="activity_settings_preferences_default_restaurant_summary">Can\'t think of a joke right now.</string>
     <string name="activity_settings_preferences_filter">Hide Filtered Meals</string>
-    <string name="activity_settings_preferences_filter_summary" tools:ignore="Typos">[Insert joke about object permanence here.]</string>
+    <string name="activity_settings_preferences_filter_summary">[Insert joke about object permanence here.]</string>
     <string name="activity_settings_preferences_hide_filtered_default" translatable="false">true</string>
     <string name="activity_settings_preferences_hide_filtered_key" translatable="false">prefFilter</string>
     <string name="activity_settings_preferences_images_in_main">Show Images in main view</string>
     <string name="activity_settings_preferences_images_in_main_default" translatable="false">true</string>
     <string name="activity_settings_preferences_images_in_main_key" translatable="false">prefImagesInMain</string>
     <string name="activity_settings_preferences_images_in_main_summary">I\'m more the visual type.</string>
+    <string name="activity_settings_preferences_language">Language (Restart required)</string>
+    <string name="activity_settings_preferences_language_de">German</string>
+    <string name="activity_settings_preferences_language_default" translatable="false">not_set</string>
+    <string name="activity_settings_preferences_language_en">English</string>
+    <string name="activity_settings_preferences_language_key" translatable="false">prefLang</string>
+    <string name="activity_settings_preferences_language_summary" translatable="false">Lost in Translation.</string>
+    <string name="activity_settings_preferences_language_system">System Language</string>
     <string name="activity_settings_preferences_lifestyle" translatable="false">Lifestyle</string>
     <string name="activity_settings_preferences_lifestyle_default" translatable="false">not_set</string>
     <string name="activity_settings_preferences_lifestyle_key" translatable="false">prefLifestyle</string>

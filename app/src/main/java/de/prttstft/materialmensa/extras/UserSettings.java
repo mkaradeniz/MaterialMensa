@@ -20,6 +20,8 @@ public class UserSettings {
     private static final String HIDE_FILTERED_PREF = getAppContext().getString(R.string.activity_settings_preferences_hide_filtered_key);
     private static final String IMAGES_IN_MAIN_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_images_in_main_default);
     private static final String IMAGES_IN_MAIN_PREF = getAppContext().getString(R.string.activity_settings_preferences_images_in_main_key);
+    private static final String LANGUAGE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_language_default);
+    private static final String LANGUAGE_PREF = getAppContext().getString(R.string.activity_settings_preferences_language_key);
     private static final String LIFESTYLE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_lifestyle_default);
     private static final String LIFESTYLE_PREF = getAppContext().getString(R.string.activity_settings_preferences_lifestyle_key);
     private static final String ROLE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_role_default);
@@ -53,6 +55,17 @@ public class UserSettings {
     public static boolean getImagesInMainView() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
         return sharedPreferences.getBoolean(IMAGES_IN_MAIN_PREF, Boolean.valueOf(IMAGES_IN_MAIN_DEFAULT));
+    }
+
+    public static String getLanguage() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
+        String language = sharedPreferences.getString(LANGUAGE_PREF, LANGUAGE_DEFAULT);
+
+        if (language.equals(LANGUAGE_DEFAULT)) {
+            return Utilities.getSystemLanguageShort();
+        } else {
+            return language;
+        }
     }
 
     public static String getLifestyle() {
