@@ -18,6 +18,10 @@
     <string name="activity_settings_preferences_filter_summary">[Witz über Objektpermanenz hier einfügen.]</string>
     <string name="activity_settings_preferences_images_in_main">Bilder in Hauptansicht</string>
     <string name="activity_settings_preferences_images_in_main_summary">Ich bin eher der visuelle Typ.</string>
+    <string name="activity_settings_preferences_language">Sprache (Neustart erforderlich)</string>
+    <string name="activity_settings_preferences_language_de">Deutsch</string>
+    <string name="activity_settings_preferences_language_en">Englisch</string>
+    <string name="activity_settings_preferences_language_system">Systemsprache</string>
     <string name="activity_settings_preferences_lifestyle_level_five_vegan">Ich esse nichts was einen Schatten wirft.</string>
     <string name="activity_settings_preferences_lifestyle_level_five_vegan_drawer">Level 5 Veganer*in</string>
     <string name="activity_settings_preferences_lifestyle_summary">Was ist dein Lifestyle?</string>

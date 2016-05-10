@@ -14,6 +14,11 @@ import de.prttstft.materialmensa.MyApplication;
 import static de.prttstft.materialmensa.constants.GeneralConstants.LOGTAG;
 
 public class Utilities {
+    private static final String LANGUAGE_DE = "Deutsch";
+    private static final String LANGUAGE_DE_SHORT = "de";
+    private static final String LANGUAGE_EN_SHORT = "en";
+
+
     private Utilities() {
 
     }
@@ -35,6 +40,14 @@ public class Utilities {
 
     public static String getSystemLanguage() {
         return Locale.getDefault().getDisplayLanguage();
+    }
+
+    public static String getSystemLanguageShort() {
+        if (Locale.getDefault().getDisplayLanguage().equals(LANGUAGE_DE)) {
+            return LANGUAGE_DE_SHORT;
+        } else {
+            return LANGUAGE_EN_SHORT;
+        }
     }
 
     public static boolean onWifi() {
