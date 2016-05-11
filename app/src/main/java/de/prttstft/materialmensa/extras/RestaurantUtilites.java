@@ -6,6 +6,8 @@ import de.prttstft.materialmensa.MyApplication;
 import de.prttstft.materialmensa.R;
 
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ACADEMICA;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ATRIUM;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_BASILICA;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAFETE;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_FORUM;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_GRILL_CAFE;
@@ -21,7 +23,7 @@ public class RestaurantUtilites {
 
     public static int getRandomEmoji() {
         Random random = new Random();
-        int index = random.nextInt(6);
+        int index = random.nextInt(5);
 
         switch (index) {
             case 0:
@@ -34,8 +36,6 @@ public class RestaurantUtilites {
                 return R.drawable.emoji_1f62d;
             case 4:
                 return R.drawable.emoji_1f630;
-            case 5:
-                return R.drawable.emoji_1f64a;
             default:
                 return R.drawable.emoji_1f622;
         }
@@ -57,6 +57,10 @@ public class RestaurantUtilites {
                 return R.drawable.ic_grill_cafe;
             case RESTAURANT_ID_HOTSPOT:
                 return R.drawable.ic_hotspot;
+            case RESTAURANT_ID_BASILICA:
+                return R.drawable.ic_basilica;
+            case RESTAURANT_ID_ATRIUM:
+                return R.drawable.ic_atrium;
             default:
                 return -1;
         }
@@ -78,6 +82,11 @@ public class RestaurantUtilites {
                 return MyApplication.getAppContext().getString(R.string.restaurant_grill_cafe);
             case RESTAURANT_ID_HOTSPOT:
                 return MyApplication.getAppContext().getString(R.string.restaurant_bistro_hotspot);
+            case RESTAURANT_ID_BASILICA:
+                return MyApplication.getAppContext().getString(R.string.restaurant_mensa_basilica);
+            case RESTAURANT_ID_ATRIUM:
+                return MyApplication.getAppContext().getString(R.string.restaurant_mensa_atrium);
+
             default:
                 return MyApplication.getAppContext().getString(R.string.restaurant_mensa_academica_paderborn);
         }

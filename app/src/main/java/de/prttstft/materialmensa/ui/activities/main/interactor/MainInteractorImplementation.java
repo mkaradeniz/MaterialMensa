@@ -15,6 +15,8 @@ import rx.schedulers.Schedulers;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ACADEMICA;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ATRIUM;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_BASILICA;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_BISTRO_HOTSPOT;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_CAFETE;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_FORUM;
@@ -22,6 +24,8 @@ import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_GR
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_MENSULA;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ONE_WAY_SNACK;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ACADEMICA;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ATRIUM;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_BASILICA;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAFETE;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_FORUM;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_GRILL_CAFE;
@@ -76,6 +80,10 @@ public class MainInteractorImplementation implements MainInteractor {
                 return API_RESTAURANT_GRILL_CAFE;
             case RESTAURANT_ID_HOTSPOT:
                 return API_RESTAURANT_BISTRO_HOTSPOT;
+            case RESTAURANT_ID_BASILICA:
+                return API_RESTAURANT_BASILICA;
+            case RESTAURANT_ID_ATRIUM:
+                return API_RESTAURANT_ATRIUM;
             default:
                 return API_RESTAURANT_ACADEMICA;
         }
@@ -138,7 +146,23 @@ public class MainInteractorImplementation implements MainInteractor {
             } else {
                 listener.restaurantClosed(RESTAURANT_ID_HOTSPOT, getOpeningTime(status));
             }
-        }
+        } /*else if (restaurant.getMensaBasilica() != null) {
+            String status = restaurant.getMensaBasilica().getStatus();
+
+            if (restaurantOpen(status)) {
+                listener.restaurantOpen(RESTAURANT_ID_BASILICA, getClosingTime(status));
+            } else {
+                listener.restaurantClosed(RESTAURANT_ID_BASILICA, getOpeningTime(status));
+            }
+        } else if (restaurant.getMensaAtrium() != null) {
+            String status = restaurant.getMensaAtrium().getStatus();
+
+            if (restaurantOpen(status)) {
+                listener.restaurantOpen(RESTAURANT_ID_ATRIUM, getClosingTime(status));
+            } else {
+                listener.restaurantClosed(RESTAURANT_ID_ATRIUM, getOpeningTime(status));
+            }
+        }*/
     }
 
     private boolean restaurantOpen(String status) {
