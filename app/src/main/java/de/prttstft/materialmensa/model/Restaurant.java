@@ -2,6 +2,7 @@ package de.prttstft.materialmensa.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import de.prttstft.materialmensa.model.restaurants.BistroHotspot;
 import de.prttstft.materialmensa.model.restaurants.Cafete;
 import de.prttstft.materialmensa.model.restaurants.GrillCafe;
 import de.prttstft.materialmensa.model.restaurants.MensaAcademicaPaderborn;
@@ -16,6 +17,7 @@ public class Restaurant {
     @SuppressWarnings("unused") @SerializedName("mensula") private Mensula mensula;
     @SuppressWarnings("unused") @SerializedName("one-way-snack") private OneWaySnack oneWaySnack;
     @SuppressWarnings("unused") @SerializedName("grill-cafe") private GrillCafe grillCafe;
+    @SuppressWarnings("unused") @SerializedName("bistro-hotspot") private BistroHotspot bistroHotspot;
 
     public MensaAcademicaPaderborn getMensaAcademicaPaderborn() {
         return mensaAcademicaPaderborn;
@@ -39,5 +41,9 @@ public class Restaurant {
 
     public GrillCafe getGrillCafe() {
         return grillCafe;
+    }
+
+    public BistroHotspot getBistroHotspot() {
+        return bistroHotspot;
     }
 }

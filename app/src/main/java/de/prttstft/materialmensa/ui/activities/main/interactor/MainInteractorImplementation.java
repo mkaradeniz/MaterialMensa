@@ -15,17 +15,17 @@ import rx.schedulers.Schedulers;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ACADEMICA;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_BISTRO_HOTSPOT;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_CAFETE;
-import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_CAMPUS_DOENER;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_FORUM;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_GRILL_CAFE;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_MENSULA;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ONE_WAY_SNACK;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ACADEMICA;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAFETE;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAMPUS_DOENER;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_FORUM;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_GRILL_CAFE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_HOTSPOT;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_MENSULA;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_CLOSED_DE;
@@ -74,8 +74,8 @@ public class MainInteractorImplementation implements MainInteractor {
                 return API_RESTAURANT_ONE_WAY_SNACK;
             case RESTAURANT_ID_GRILL_CAFE:
                 return API_RESTAURANT_GRILL_CAFE;
-            case RESTAURANT_ID_CAMPUS_DOENER:
-                return API_RESTAURANT_CAMPUS_DOENER;
+            case RESTAURANT_ID_HOTSPOT:
+                return API_RESTAURANT_BISTRO_HOTSPOT;
             default:
                 return API_RESTAURANT_ACADEMICA;
         }
@@ -129,6 +129,14 @@ public class MainInteractorImplementation implements MainInteractor {
                 listener.restaurantOpen(RESTAURANT_ID_GRILL_CAFE, getClosingTime(status));
             } else {
                 listener.restaurantClosed(RESTAURANT_ID_GRILL_CAFE, getOpeningTime(status));
+            }
+        } else if (restaurant.getBistroHotspot() != null) {
+            String status = restaurant.getBistroHotspot().getStatus();
+
+            if (restaurantOpen(status)) {
+                listener.restaurantOpen(RESTAURANT_ID_HOTSPOT, getClosingTime(status));
+            } else {
+                listener.restaurantClosed(RESTAURANT_ID_HOTSPOT, getOpeningTime(status));
             }
         }
     }

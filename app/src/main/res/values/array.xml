@@ -114,6 +114,7 @@
         <item>@string/restaurant_mensula</item>
         <item>@string/restaurant_one_way_snack</item>
         <item>@string/restaurant_grill_cafe</item>
+        <item>@string/restaurant_bistro_hotspot</item>
     </string-array>
 
     <string-array name="activity_settings_preferences_default_restaurant_array_values" translatable="false">
@@ -123,6 +124,7 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
     </string-array>
 
     <string-array name="activity_settings_preferences_language_array" translatable="false">

@@ -23,6 +23,7 @@ public class MainPresenterImplementation implements MainPresenter, MainListener 
         interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_MENSULA);
         interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK);
         interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_GRILL_CAFE);
+        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_HOTSPOT);
     }
 
     @Override
