@@ -61,7 +61,7 @@
     <string name="allergen_9_celery">Sellerie und Sellerieerzeugnisse [A9]</string>
     <string name="app_name">MaterialMensa</string>
     <string name="drawer_main_header_role_image_description">Rolle</string>
-    <string name="drawer_main_restaurant_status_closing_time">Schließt in %1$s:%2$sh</string>
+    <string name="drawer_main_restaurant_status_closing_time">Noch %1$s:%2$sh geöffnet</string>
     <string name="drawer_main_restaurant_status_opening_time">Öffnet um %1$s:%2$s%3$s</string>
     <string name="drawer_main_restaurant_status_opening_time_suffix">\u0020Uhr</string>
     <string name="error_all_meals_filtered">Nichts was deinem Lifestyle entspricht.\nSorry.</string>

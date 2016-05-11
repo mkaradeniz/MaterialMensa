@@ -18,11 +18,14 @@ public class MainPresenterImplementation implements MainPresenter, MainListener 
     @Override
     public void getRestaurantStatus() {
         interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_ACADEMICA);
-        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_FORUM);
+        //interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_ATRIUM);
+        //interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_BASILICA);
         interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_CAFETE);
+        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_FORUM);
+        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_GRILL_CAFE);
+        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_HOTSPOT);
         interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_MENSULA);
         interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK);
-        interactor.getRestaurantStatus(this, RestaurantConstants.RESTAURANT_ID_GRILL_CAFE);
     }
 
     @Override

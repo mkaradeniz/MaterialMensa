@@ -11,8 +11,8 @@ public class APIConstants {
     public static final String API_RESTAURANT_CAMPUS_DOENER = "campus-doener";
     public static final String API_RESTAURANT_FORUM = "mensa-forum-paderborn";
     public static final String API_RESTAURANT_GRILL_CAFE = "grill-cafe";
-    public static final String API_RESTAURANT_HAMM = "mensa-hamm";
-    public static final String API_RESTAURANT_LIPPSTADT = "mensa-lippstadt";
+    public static final String API_RESTAURANT_BASILICA = "mensa-hamm";
+    public static final String API_RESTAURANT_ATRIUM = "mensa-lippstadt";
     public static final String API_RESTAURANT_MENSULA = "mensula";
     public static final String API_RESTAURANT_ONE_WAY_SNACK = "one-way-snack";
     // Meal Badges

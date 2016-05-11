@@ -18,8 +18,10 @@ import rx.schedulers.Schedulers;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ACADEMICA;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ATRIUM;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_BASILICA;
+import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_BISTRO_HOTSPOT;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_CAFETE;
-import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_CAMPUS_DOENER;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_FORUM;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_GRILL_CAFE;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_MENSULA;
@@ -31,10 +33,12 @@ import static de.prttstft.materialmensa.constants.APIConstants.MEAL_BADGE_VEGAN;
 import static de.prttstft.materialmensa.constants.APIConstants.MEAL_BADGE_VEGETARIAN;
 import static de.prttstft.materialmensa.constants.APIConstants.MEAL_BADGE_VITAL_FOOD;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ACADEMICA;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ATRIUM;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_BASILICA;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAFETE;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_CAMPUS_DOENER;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_FORUM;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_GRILL_CAFE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_HOTSPOT;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_MENSULA;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK;
 import static de.prttstft.materialmensa.extras.Utilities.L;
@@ -137,8 +141,12 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
                 return API_RESTAURANT_ONE_WAY_SNACK;
             case RESTAURANT_ID_GRILL_CAFE:
                 return API_RESTAURANT_GRILL_CAFE;
-            case RESTAURANT_ID_CAMPUS_DOENER:
-                return API_RESTAURANT_CAMPUS_DOENER;
+            case RESTAURANT_ID_HOTSPOT:
+                return API_RESTAURANT_BISTRO_HOTSPOT;
+            case RESTAURANT_ID_BASILICA:
+                return API_RESTAURANT_BASILICA;
+            case RESTAURANT_ID_ATRIUM:
+                return API_RESTAURANT_ATRIUM;
             default:
                 return API_RESTAURANT_ACADEMICA;
         }
@@ -183,6 +191,81 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
                         return 3;
                     case FORUM_DESSERT_COUNTER:
                         return 4;
+                }
+                break;
+            case API_RESTAURANT_BISTRO_HOTSPOT:
+                switch (meal.getSubcategoryEn()) {
+                    case ACADEMICA_DEFAULT_MENU:
+                        return 0;
+                    case ACADEMICA_DISH:
+                        return 1;
+                    case ACADEMICA_PASTA:
+                        return 2;
+                    case ACADEMICA_WOK:
+                        return 3;
+                    case ACADEMICA_GRILL:
+                        return 4;
+                    case ACADEMICA_DEFAULT_DESSERT:
+                        return 7;
+                    case ACADEMICA_COUNTER_DESSERT:
+                        return 8;
+                    default:
+                        switch (meal.getCategoryEn()) {
+                            case ACADEMICA_SIDE_DISH:
+                                return 6;
+                            case ACADEMICA_SOUPS:
+                                return 5;
+                        }
+                }
+                break;
+            case API_RESTAURANT_BASILICA:
+                switch (meal.getSubcategoryEn()) {
+                    case ACADEMICA_DEFAULT_MENU:
+                        return 0;
+                    case ACADEMICA_DISH:
+                        return 1;
+                    case ACADEMICA_PASTA:
+                        return 2;
+                    case ACADEMICA_WOK:
+                        return 3;
+                    case ACADEMICA_GRILL:
+                        return 4;
+                    case ACADEMICA_DEFAULT_DESSERT:
+                        return 7;
+                    case ACADEMICA_COUNTER_DESSERT:
+                        return 8;
+                    default:
+                        switch (meal.getCategoryEn()) {
+                            case ACADEMICA_SIDE_DISH:
+                                return 6;
+                            case ACADEMICA_SOUPS:
+                                return 5;
+                        }
+                }
+                break;
+            case API_RESTAURANT_ATRIUM:
+                switch (meal.getSubcategoryEn()) {
+                    case ACADEMICA_DEFAULT_MENU:
+                        return 0;
+                    case ACADEMICA_DISH:
+                        return 1;
+                    case ACADEMICA_PASTA:
+                        return 2;
+                    case ACADEMICA_WOK:
+                        return 3;
+                    case ACADEMICA_GRILL:
+                        return 4;
+                    case ACADEMICA_DEFAULT_DESSERT:
+                        return 7;
+                    case ACADEMICA_COUNTER_DESSERT:
+                        return 8;
+                    default:
+                        switch (meal.getCategoryEn()) {
+                            case ACADEMICA_SIDE_DISH:
+                                return 6;
+                            case ACADEMICA_SOUPS:
+                                return 5;
+                        }
                 }
                 break;
             default:
@@ -274,6 +357,108 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
                     case FORUM_SIDE_DISH:
                         category = getAppContext().getString(R.string.item_meal_description_category_side_dish);
                         return getAppContext().getString(R.string.item_meal_description, badgeE, category);
+                }
+                break;
+            case API_RESTAURANT_BISTRO_HOTSPOT:
+                switch (meal.getSubcategoryEn()) {
+                    case ACADEMICA_COUNTER_DESSERT:
+                        category = getAppContext().getString(R.string.item_meal_description_category_dessert);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_DEFAULT_DESSERT:
+                        category = getAppContext().getString(R.string.item_meal_description_category_dessert);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_DEFAULT_MENU:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_DISH:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_GRILL:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_PASTA:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_WOK:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    default:
+                        switch (meal.getCategoryEn()) {
+                            case ACADEMICA_SIDE_DISH:
+                                category = getAppContext().getString(R.string.item_meal_description_category_side_dish);
+                                return getAppContext().getString(R.string.item_meal_description, badgeE, category);
+                            case ACADEMICA_SOUPS:
+                                category = getAppContext().getString(R.string.item_meal_description_category_soup);
+                                return getAppContext().getString(R.string.item_meal_description, badgeE, category);
+                        }
+                }
+                break;
+            case API_RESTAURANT_BASILICA:
+                switch (meal.getSubcategoryEn()) {
+                    case ACADEMICA_COUNTER_DESSERT:
+                        category = getAppContext().getString(R.string.item_meal_description_category_dessert);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_DEFAULT_DESSERT:
+                        category = getAppContext().getString(R.string.item_meal_description_category_dessert);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_DEFAULT_MENU:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_DISH:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_GRILL:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_PASTA:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_WOK:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    default:
+                        switch (meal.getCategoryEn()) {
+                            case ACADEMICA_SIDE_DISH:
+                                category = getAppContext().getString(R.string.item_meal_description_category_side_dish);
+                                return getAppContext().getString(R.string.item_meal_description, badgeE, category);
+                            case ACADEMICA_SOUPS:
+                                category = getAppContext().getString(R.string.item_meal_description_category_soup);
+                                return getAppContext().getString(R.string.item_meal_description, badgeE, category);
+                        }
+                }
+                break;
+            case API_RESTAURANT_ATRIUM:
+                switch (meal.getSubcategoryEn()) {
+                    case ACADEMICA_COUNTER_DESSERT:
+                        category = getAppContext().getString(R.string.item_meal_description_category_dessert);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_DEFAULT_DESSERT:
+                        category = getAppContext().getString(R.string.item_meal_description_category_dessert);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_DEFAULT_MENU:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_DISH:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_GRILL:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_PASTA:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    case ACADEMICA_WOK:
+                        category = getAppContext().getString(R.string.item_meal_description_category_meal);
+                        return getAppContext().getString(R.string.item_meal_description, badgeS, category);
+                    default:
+                        switch (meal.getCategoryEn()) {
+                            case ACADEMICA_SIDE_DISH:
+                                category = getAppContext().getString(R.string.item_meal_description_category_side_dish);
+                                return getAppContext().getString(R.string.item_meal_description, badgeE, category);
+                            case ACADEMICA_SOUPS:
+                                category = getAppContext().getString(R.string.item_meal_description_category_soup);
+                                return getAppContext().getString(R.string.item_meal_description, badgeE, category);
+                        }
                 }
                 break;
             default:
