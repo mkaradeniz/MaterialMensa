@@ -99,8 +99,8 @@ public class MainInteractorImplementation implements MainInteractor {
                 listener.restaurantClosed(RESTAURANT_ID_ACADEMICA, getOpeningTime(status));
             }
         } else if (restaurant.getMensaForumPaderborn() != null) {
-
             String status = restaurant.getMensaForumPaderborn().getStatus();
+
             if (restaurantOpen(status)) {
                 listener.restaurantOpen(RESTAURANT_ID_FORUM, getClosingTime(status));
             } else {

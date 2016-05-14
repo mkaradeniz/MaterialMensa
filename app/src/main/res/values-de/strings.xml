@@ -61,11 +61,13 @@
     <string name="allergen_9_celery">Sellerie und Sellerieerzeugnisse [A9]</string>
     <string name="app_name">MaterialMensa</string>
     <string name="drawer_main_header_role_image_description">Rolle</string>
-    <string name="drawer_main_restaurant_status_closing_time">Noch %1$s:%2$sh geöffnet</string>
+    <string name="drawer_main_restaurant_status_closed">Momentan geschlossen.</string>
+    <string name="drawer_main_restaurant_status_closing_time">Noch %1$s:%2$sh geöffnet.</string>
     <string name="drawer_main_restaurant_status_opening_time">Öffnet um %1$s:%2$s%3$s</string>
-    <string name="drawer_main_restaurant_status_opening_time_suffix">\u0020Uhr</string>
+    <string name="drawer_main_restaurant_status_opening_time_suffix">\u0020Uhr.</string>
     <string name="error_all_meals_filtered">Nichts was deinem Lifestyle entspricht.\nSorry.</string>
-    <string name="error_restaurant_closed">Restaurant geschloßen. Sorry.</string>
+    <string name="error_offline">Du bist offline. Sorry.</string>
+    <string name="error_restaurant_closed">Restaurant bleibt heute geschlossen. Sorry.</string>
     <string name="item_meal_description_badge_lactose_free_e">Laktosefreie\u0020</string>
     <string name="item_meal_description_badge_lactose_free_r">Laktosefreier\u0020</string>
     <string name="item_meal_description_badge_lactose_free_s">Laktosefreies\u0020</string>

@@ -7,11 +7,15 @@ public interface MainFragmentView {
 
     void onComplete();
 
+    void hideConnectionError();
+
     void hideEmpty();
 
     void hideFiltered();
 
     void hideProgress();
+
+    void showConnectionError();
 
     void showEmpty();
 

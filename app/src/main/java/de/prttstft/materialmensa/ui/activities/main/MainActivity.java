@@ -283,7 +283,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 statusText.setText(openingTime);
                 statusText.setVisibility(View.VISIBLE);
             } else {
-                statusText.setVisibility(View.GONE);
+                statusText.setText(getResources().getString(R.string.drawer_main_restaurant_status_closed));
+                statusText.setVisibility(View.VISIBLE);
             }
         }
     }

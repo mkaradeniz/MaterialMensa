@@ -23,7 +23,8 @@
 
     <!-- Errors -->
     <string name="error_all_meals_filtered">Nothing that fits your lifestyle. Sorry.</string>
-    <string name="error_restaurant_closed">Restaurant closed. Sorry.</string>
+    <string name="error_offline">You\'re Offline. Sorry.</string>
+    <string name="error_restaurant_closed">The restaurant is closed today. Sorry.</string>
 
 
     <!-- About Activity -->
@@ -52,8 +53,9 @@
     <string name="drawer_main_header_lifestyle_placeholder" translatable="false">Vegetarian</string>
     <string name="drawer_main_header_role_image_description">Role</string>
     <string name="drawer_main_header_role_placeholder" translatable="false">Student</string>
-    <string name="drawer_main_restaurant_status_closing_time">Closes in %1$s:%2$sh</string>
-    <string name="drawer_main_restaurant_status_opening_time">Opens at %1$s:%2$s%3$s</string>
+    <string name="drawer_main_restaurant_status_closed">Closed at the moment.</string>
+    <string name="drawer_main_restaurant_status_closing_time">Closes in %1$s:%2$sh.</string>
+    <string name="drawer_main_restaurant_status_opening_time">Opens at %1$s:%2$s%3$s.</string>
     <string name="drawer_main_restaurant_status_opening_time_suffix"/>
     <string name="item_meal_description" translatable="false">%1$s%2$s</string>
     <string name="item_meal_description_badge_lactose_free_e">Lactose-free\u0020</string>
