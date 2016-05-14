@@ -117,6 +117,10 @@
     <string name="activity_settings_preferences_filter_summary">[Insert joke about object permanence here.]</string>
     <string name="activity_settings_preferences_hide_filtered_default" translatable="false">true</string>
     <string name="activity_settings_preferences_hide_filtered_key" translatable="false">prefFilter</string>
+    <string name="activity_settings_preferences_hide_sundays">Hide Sundays</string>
+    <string name="activity_settings_preferences_hide_sundays_default" translatable="false">false</string>
+    <string name="activity_settings_preferences_hide_sundays_key" translatable="false">prefHideSundays</string>
+    <string name="activity_settings_preferences_hide_sundays_summary">Summary</string>
     <string name="activity_settings_preferences_images_in_main">Show Images in main view</string>
     <string name="activity_settings_preferences_images_in_main_default" translatable="false">true</string>
     <string name="activity_settings_preferences_images_in_main_key" translatable="false">prefImagesInMain</string>

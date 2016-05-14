@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_toolbar) Toolbar toolbar;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_view_pager) ViewPager viewPager;
     private MainPresenter presenter;
+    private int currentDay = 0;
     private int currentRestaurant = -1;
 
     @Override
@@ -72,9 +73,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setUpToolbar();
         setDay(0);
         setUpTabs();
-        setUpDrawerIcons();
-        setUpDrawerLayout();
-        setUpDrawerHeader();
+        setUpDrawer();
     }
 
     @Override
@@ -127,14 +126,24 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setCurrentTab(UserSettings.getDefaultRestaurant());
     }
 
-    private void setUpDrawerIcons() {
+    private void setUpDrawer() {
+        setUpDrawerMenu();
+        setUpDrawerClickListener();
+        setUpDrawerHeader();
+    }
+
+    private void setUpDrawerMenu() {
         for (int i = 0; i < navigationView.getMenu().size() - 2; i++) {
-            navigationView.getMenu().getItem(i).setIcon(DateTimeUtilities.getDateIcon(i));
-            navigationView.getMenu().getItem(i).setTitle(DateTimeUtilities.getDayStringLong(i));
+            if (UserSettings.getHideSundays() && DateTimeUtilities.isSunday(i)) {
+                navigationView.getMenu().getItem(i).setVisible(false);
+            } else {
+                navigationView.getMenu().getItem(i).setIcon(DateTimeUtilities.getDateIcon(i));
+                navigationView.getMenu().getItem(i).setTitle(DateTimeUtilities.getDayStringLong(i));
+            }
         }
     }
 
-    private void setUpDrawerLayout() {
+    private void setUpDrawerClickListener() {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -262,6 +271,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         //noinspection ConstantConditions
         tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
+    }
+
+    private void setUpFirstDay(int day) {
+        if (DateTimeUtilities.isSunday(day)) {
+            setUpFirstDay(day + 1);
+        } else {
+            setDay(day);
+        }
     }
 
     @Override

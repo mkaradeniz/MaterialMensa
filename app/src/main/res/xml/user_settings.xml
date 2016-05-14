@@ -74,6 +74,12 @@
             android:summary="@string/activity_settings_preferences_images_in_main_summary"
             android:title="@string/activity_settings_preferences_images_in_main"/>
 
+        <SwitchPreference
+            android:defaultValue="@string/activity_settings_preferences_hide_sundays_default"
+            android:key="@string/activity_settings_preferences_hide_sundays_key"
+            android:summary="@string/activity_settings_preferences_hide_sundays_summary"
+            android:title="@string/activity_settings_preferences_hide_sundays"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>

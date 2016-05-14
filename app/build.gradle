@@ -11,6 +11,7 @@ android {
         versionCode 12
         versionName "1.1.1"
     }
+
     buildTypes {
         applicationVariants.all { variant ->
             variant.buildConfigField "String", "API_KEY", "\""+getApiKey()+"\""
