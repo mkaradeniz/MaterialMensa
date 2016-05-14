@@ -39,6 +39,7 @@ import de.prttstft.materialmensa.ui.fragments.main.MainFragmentPagerAdapter;
 
 import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRestaurantIcon;
 import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRestaurantName;
+import static de.prttstft.materialmensa.extras.Utilities.L;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_LEVEL_FIVE_VEGAN;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_NOT_SET;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_VEGAN;
@@ -92,6 +93,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         }
     }
 
+    /*
+     * Check onPageSelected
+     */
     private void setUpTabs() {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -100,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
             @Override
             public void onPageSelected(int position) {
+                L("Selected: " + position);
                 if (MainFragment.actionMode != null) {
                     MainFragment.actionMode.finish();
                 }
@@ -111,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
             public void onPageScrollStateChanged(int state) {
             }
         });
+
         tabLayout.setupWithViewPager(viewPager);
 
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
@@ -132,13 +138,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setUpDrawerHeader();
     }
 
+    /*
+     * WIP WIP WIP
+     */
     private void setUpDrawerMenu() {
         for (int i = 0; i < navigationView.getMenu().size() - 2; i++) {
+            navigationView.getMenu().getItem(i).setIcon(DateTimeUtilities.getDateIcon(i));
+            navigationView.getMenu().getItem(i).setTitle(DateTimeUtilities.getDayStringLong(i));
+
             if (UserSettings.getHideSundays() && DateTimeUtilities.isSunday(i)) {
-                navigationView.getMenu().getItem(i).setVisible(false);
-            } else {
-                navigationView.getMenu().getItem(i).setIcon(DateTimeUtilities.getDateIcon(i));
-                navigationView.getMenu().getItem(i).setTitle(DateTimeUtilities.getDayStringLong(i));
+                //navigationView.getMenu().getItem(i).setVisible(false);
             }
         }
     }
@@ -273,6 +282,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
     }
 
+    /*
+     * WIP WIP WIP
+     */
     private void setUpFirstDay(int day) {
         if (DateTimeUtilities.isSunday(day)) {
             setUpFirstDay(day + 1);

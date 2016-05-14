@@ -33,7 +33,7 @@ public class DateTimeUtilities {
 
     public static boolean isSunday(int page) {
         DateTime dateTime = DateTime.parse(getDateString(page));
-        return dateTime.getDayOfWeek() == DateTimeConstants.SATURDAY;
+        return dateTime.getDayOfWeek() == DateTimeConstants.SUNDAY;
     }
 
     public static String getDateString(int page) {
