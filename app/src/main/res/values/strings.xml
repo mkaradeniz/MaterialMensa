@@ -115,8 +115,15 @@
     <string name="activity_settings_preferences_filter">Hide Filtered Meals</string>
     <string name="activity_settings_preferences_filter_summary">[Insert joke about object permanence here.]</string>
     <string name="activity_settings_preferences_hide_days">Hide Days</string>
+    <string name="activity_settings_preferences_hide_days_fridays">Fridays</string>
     <string name="activity_settings_preferences_hide_days_key" translatable="false">prefHideDays</string>
-    <string name="activity_settings_preferences_hide_days_summary">Lazy Sundays</string>
+    <string name="activity_settings_preferences_hide_days_mondays">Mondays</string>
+    <string name="activity_settings_preferences_hide_days_saturdays">Saturdays</string>
+    <string name="activity_settings_preferences_hide_days_summary">Lazy Sundays.</string>
+    <string name="activity_settings_preferences_hide_days_sundays">Sundays</string>
+    <string name="activity_settings_preferences_hide_days_thursdays">Thursdays</string>
+    <string name="activity_settings_preferences_hide_days_tuesday">Tuesdays</string>
+    <string name="activity_settings_preferences_hide_days_wednesdays">Wednesdays</string>
     <string name="activity_settings_preferences_hide_filtered_default" translatable="false">true</string>
     <string name="activity_settings_preferences_hide_filtered_key" translatable="false">prefFilter</string>
     <string name="activity_settings_preferences_images_in_main">Show Images in main view</string>
