@@ -8,7 +8,6 @@ public class APIConstants {
     public static final String API_RESTAURANT_ACADEMICA = "mensa-academica-paderborn";
     public static final String API_RESTAURANT_BISTRO_HOTSPOT = "bistro-hotspot";
     public static final String API_RESTAURANT_CAFETE = "cafete";
-    public static final String API_RESTAURANT_CAMPUS_DOENER = "campus-doener";
     public static final String API_RESTAURANT_FORUM = "mensa-forum-paderborn";
     public static final String API_RESTAURANT_GRILL_CAFE = "grill-cafe";
     public static final String API_RESTAURANT_BASILICA = "mensa-hamm";

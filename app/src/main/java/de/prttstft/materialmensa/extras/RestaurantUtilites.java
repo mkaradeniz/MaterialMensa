@@ -62,7 +62,7 @@ public class RestaurantUtilites {
             case RESTAURANT_ID_ATRIUM:
                 return R.drawable.ic_atrium;
             default:
-                return -1;
+                return R.drawable.ic_academica;
         }
     }
 
@@ -86,7 +86,6 @@ public class RestaurantUtilites {
                 return MyApplication.getAppContext().getString(R.string.restaurant_mensa_basilica);
             case RESTAURANT_ID_ATRIUM:
                 return MyApplication.getAppContext().getString(R.string.restaurant_mensa_atrium);
-
             default:
                 return MyApplication.getAppContext().getString(R.string.restaurant_mensa_academica_paderborn);
         }

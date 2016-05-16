@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         android:title="@string/activity_settings_preference_category_general">
@@ -74,12 +75,13 @@
             android:summary="@string/activity_settings_preferences_images_in_main_summary"
             android:title="@string/activity_settings_preferences_images_in_main"/>
 
-        <SwitchPreference
-            android:defaultValue="@string/activity_settings_preferences_hide_sundays_default"
-            android:key="@string/activity_settings_preferences_hide_sundays_key"
-            android:summary="@string/activity_settings_preferences_hide_sundays_summary"
-            android:title="@string/activity_settings_preferences_hide_sundays"/>
-
+        <MultiSelectListPreference
+            android:defaultValue="@array/empty_array"
+            android:entries="@array/activity_settings_preferences_hide_days_array"
+            android:entryValues="@array/activity_settings_preferences_hide_days_values"
+            android:key="@string/activity_settings_preferences_hide_days_key"
+            android:summary="@string/activity_settings_preferences_hide_days_summary"
+            android:title="@string/activity_settings_preferences_hide_days"/>
     </PreferenceCategory>
 
 </PreferenceScreen>

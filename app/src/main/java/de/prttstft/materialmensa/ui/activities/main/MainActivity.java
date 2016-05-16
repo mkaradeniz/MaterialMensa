@@ -39,7 +39,6 @@ import de.prttstft.materialmensa.ui.fragments.main.MainFragmentPagerAdapter;
 
 import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRestaurantIcon;
 import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRestaurantName;
-import static de.prttstft.materialmensa.extras.Utilities.L;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_LEVEL_FIVE_VEGAN;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_NOT_SET;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_VEGAN;
@@ -60,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_toolbar) Toolbar toolbar;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_view_pager) ViewPager viewPager;
     private MainPresenter presenter;
-    private int currentDay = 0;
     private int currentRestaurant = -1;
 
     @Override
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         presenter = new MainPresenterImplementation(this);
 
         setUpToolbar();
-        setDay(0);
+        setUpFirstDay(0);
         setUpTabs();
         setUpDrawer();
     }
@@ -93,9 +91,21 @@ public class MainActivity extends AppCompatActivity implements MainView {
         }
     }
 
-    /*
-     * Check onPageSelected
-     */
+    private void setUpFirstDay(int day) {
+        if (UserSettings.isDayFiltered(day)) {
+            setUpFirstDay(day + 1);
+        } else {
+            setDay(day);
+        }
+    }
+
+    private void setDay(int day) {
+        viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), day));
+        viewPager.getAdapter().notifyDataSetChanged();
+        viewPager.setCurrentItem(UserSettings.getDefaultRestaurant());
+        navigationView.getMenu().getItem(day).setChecked(true);
+    }
+
     private void setUpTabs() {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -104,7 +114,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
             @Override
             public void onPageSelected(int position) {
-                L("Selected: " + position);
                 if (MainFragment.actionMode != null) {
                     MainFragment.actionMode.finish();
                 }
@@ -132,22 +141,24 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setCurrentTab(UserSettings.getDefaultRestaurant());
     }
 
+    private void setCurrentTab(int position) {
+        collapsingToolbarLayout.setTitle(getRestaurantName(position));
+        getRestaurantStatus(position);
+    }
+
     private void setUpDrawer() {
         setUpDrawerMenu();
         setUpDrawerClickListener();
         setUpDrawerHeader();
     }
 
-    /*
-     * WIP WIP WIP
-     */
     private void setUpDrawerMenu() {
         for (int i = 0; i < navigationView.getMenu().size() - 2; i++) {
             navigationView.getMenu().getItem(i).setIcon(DateTimeUtilities.getDateIcon(i));
             navigationView.getMenu().getItem(i).setTitle(DateTimeUtilities.getDayStringLong(i));
 
-            if (UserSettings.getHideSundays() && DateTimeUtilities.isSunday(i)) {
-                //navigationView.getMenu().getItem(i).setVisible(false);
+            if (UserSettings.isDayFiltered(i)) {
+                navigationView.getMenu().getItem(i).setVisible(false);
             }
         }
     }
@@ -248,20 +259,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
         presenter.getRestaurantStatus();
     }
 
-    private void setCurrentTab(int position) {
-        collapsingToolbarLayout.setTitle(getRestaurantName(position));
-        getRestaurantStatus(position);
-    }
-
-    private void setDay(int day) {
-        viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), day));
-        viewPager.getAdapter().notifyDataSetChanged();
-        viewPager.setCurrentItem(UserSettings.getDefaultRestaurant());
-        navigationView.getMenu().getItem(day).setChecked(true);
-
-        setCurrentTab(UserSettings.getDefaultRestaurant());
-    }
-
     private void setRestaurantClosed(int position) {
         Drawable tabIcon = ResourcesCompat.getDrawable(getResources(), getRestaurantIcon(position), null);
         assert tabIcon != null;
@@ -280,17 +277,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         //noinspection ConstantConditions
         tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
-    }
-
-    /*
-     * WIP WIP WIP
-     */
-    private void setUpFirstDay(int day) {
-        if (DateTimeUtilities.isSunday(day)) {
-            setUpFirstDay(day + 1);
-        } else {
-            setDay(day);
-        }
     }
 
     @Override

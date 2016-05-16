@@ -12,7 +12,6 @@
     <!-- Restaurants -->
     <string name="restaurant_bistro_hotspot" translatable="false">Bistro Hotspot</string>
     <string name="restaurant_cafete" translatable="false">Caféte</string>
-    <string name="restaurant_campus_doener" translatable="false">Campus Döner</string>
     <string name="restaurant_grill_cafe" translatable="false">Grill | Café</string>
     <string name="restaurant_mensa_academica_paderborn" translatable="false">Mensa Academica</string>
     <string name="restaurant_mensa_atrium" translatable="false">Mensa Atrium</string>
@@ -115,12 +114,11 @@
     <string name="activity_settings_preferences_default_restaurant_summary">Can\'t think of a joke right now.</string>
     <string name="activity_settings_preferences_filter">Hide Filtered Meals</string>
     <string name="activity_settings_preferences_filter_summary">[Insert joke about object permanence here.]</string>
+    <string name="activity_settings_preferences_hide_days">Hide Days</string>
+    <string name="activity_settings_preferences_hide_days_key" translatable="false">prefHideDays</string>
+    <string name="activity_settings_preferences_hide_days_summary">Lazy Sundays</string>
     <string name="activity_settings_preferences_hide_filtered_default" translatable="false">true</string>
     <string name="activity_settings_preferences_hide_filtered_key" translatable="false">prefFilter</string>
-    <string name="activity_settings_preferences_hide_sundays">Hide Sundays</string>
-    <string name="activity_settings_preferences_hide_sundays_default" translatable="false">false</string>
-    <string name="activity_settings_preferences_hide_sundays_key" translatable="false">prefHideSundays</string>
-    <string name="activity_settings_preferences_hide_sundays_summary">Summary</string>
     <string name="activity_settings_preferences_images_in_main">Show Images in main view</string>
     <string name="activity_settings_preferences_images_in_main_default" translatable="false">true</string>
     <string name="activity_settings_preferences_images_in_main_key" translatable="false">prefImagesInMain</string>

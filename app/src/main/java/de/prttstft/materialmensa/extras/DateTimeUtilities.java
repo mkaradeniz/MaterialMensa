@@ -1,7 +1,6 @@
 package de.prttstft.materialmensa.extras;
 
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeConstants;
 import org.joda.time.LocalDate;
 
 import de.prttstft.materialmensa.R;
@@ -31,9 +30,9 @@ public class DateTimeUtilities {
         return tomorrow.equals(dateTime.toLocalDate());
     }
 
-    public static boolean isSunday(int page) {
+    public static int getDayOfWeekInt(int page) {
         DateTime dateTime = DateTime.parse(getDateString(page));
-        return dateTime.getDayOfWeek() == DateTimeConstants.SUNDAY;
+        return dateTime.getDayOfWeek();
     }
 
     public static String getDateString(int page) {

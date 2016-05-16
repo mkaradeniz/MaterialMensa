@@ -131,6 +131,26 @@
         <!--<item>8</item>-->
     </string-array>
 
+    <string-array name="activity_settings_preferences_hide_days_array" translatable="false">
+        <item>Mondays</item>
+        <item>Tuesdays</item>
+        <item>Wednesdays</item>
+        <item>Thursdays</item>
+        <item>Fridays</item>
+        <item>Saturdays</item>
+        <item>Sundays</item>
+    </string-array>
+
+    <string-array name="activity_settings_preferences_hide_days_values" translatable="false">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
     <string-array name="activity_settings_preferences_language_array" translatable="false">
         <item>@string/activity_settings_preferences_language_system</item>
         <item>@string/activity_settings_preferences_language_en</item>
