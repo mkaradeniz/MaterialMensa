@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         viewPager.getAdapter().notifyDataSetChanged();
         viewPager.setCurrentItem(UserSettings.getDefaultRestaurant());
         navigationView.getMenu().getItem(day).setChecked(true);
+        setCurrentTab(UserSettings.getDefaultRestaurant());
     }
 
     private void setUpTabs() {
