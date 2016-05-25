@@ -12,10 +12,37 @@
         android:overScrollMode="ifContentScrolls"/>
 
     <RelativeLayout
-        android:id="@+id/fragment_main_empty_container"
+        android:id="@+id/fragment_main_offline_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/fragment_main_offline_emoji"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/placeholder"
+            android:src="@drawable/emoji_1f622"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_below="@+id/fragment_main_offline_emoji"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:gravity="center"
+            android:text="@string/error_offline"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="@color/textSecondary"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_main_empty_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/fragment_main_empty_emoji"
@@ -31,9 +58,10 @@
             android:layout_below="@+id/fragment_main_empty_emoji"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:gravity="center"
             android:text="@string/error_restaurant_closed"
             android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@color/progressBarBackground"/>
+            android:textColor="@color/textSecondary"/>
 
     </RelativeLayout>
 
@@ -58,9 +86,10 @@
             android:layout_below="@+id/fragment_main_filtered_emoji"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:gravity="center"
             android:text="@string/error_all_meals_filtered"
             android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@color/progressBarBackground"/>
+            android:textColor="@color/textSecondary"/>
 
     </RelativeLayout>
 
@@ -68,7 +97,8 @@
         android:id="@+id/fragment_main_progress_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?android:colorBackground">
+        android:background="?android:colorBackground"
+        android:visibility="gone">
 
         <ProgressBar
             android:layout_width="wrap_content"

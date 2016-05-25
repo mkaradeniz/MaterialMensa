@@ -152,17 +152,17 @@ public class AboutActivity extends AppCompatActivity {
         }
     }
 
-    public void rateApp() {
+    private void rateApp() {
         try {
-            Intent rateIntent = startPlayStoreIntent("market://details");
+            Intent rateIntent = startPlayStoreIntent();
             startActivity(rateIntent);
         } catch (ActivityNotFoundException e) {
             startCustomTab(PLAY_STORE_URL);
         }
     }
 
-    private Intent startPlayStoreIntent(String url) {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("%s?id=%s", url, getPackageName())));
+    private Intent startPlayStoreIntent() {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("%s?id=%s", "market://details", getPackageName())));
         int flags = Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_MULTIPLE_TASK;
         if (Build.VERSION.SDK_INT >= 21) {
             flags |= Intent.FLAG_ACTIVITY_NEW_DOCUMENT;

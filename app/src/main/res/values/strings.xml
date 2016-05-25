@@ -12,7 +12,6 @@
     <!-- Restaurants -->
     <string name="restaurant_bistro_hotspot" translatable="false">Bistro Hotspot</string>
     <string name="restaurant_cafete" translatable="false">Caféte</string>
-    <string name="restaurant_campus_doener" translatable="false">Campus Döner</string>
     <string name="restaurant_grill_cafe" translatable="false">Grill | Café</string>
     <string name="restaurant_mensa_academica_paderborn" translatable="false">Mensa Academica</string>
     <string name="restaurant_mensa_atrium" translatable="false">Mensa Atrium</string>
@@ -23,7 +22,8 @@
 
     <!-- Errors -->
     <string name="error_all_meals_filtered">Nothing that fits your lifestyle. Sorry.</string>
-    <string name="error_restaurant_closed">Restaurant closed. Sorry.</string>
+    <string name="error_offline">You\'re Offline. Sorry.</string>
+    <string name="error_restaurant_closed">The restaurant is closed today. Sorry.</string>
 
 
     <!-- About Activity -->
@@ -52,8 +52,9 @@
     <string name="drawer_main_header_lifestyle_placeholder" translatable="false">Vegetarian</string>
     <string name="drawer_main_header_role_image_description">Role</string>
     <string name="drawer_main_header_role_placeholder" translatable="false">Student</string>
-    <string name="drawer_main_restaurant_status_closing_time">Closes in %1$s:%2$sh</string>
-    <string name="drawer_main_restaurant_status_opening_time">Opens at %1$s:%2$s%3$s</string>
+    <string name="drawer_main_restaurant_status_closed">Closed at the moment.</string>
+    <string name="drawer_main_restaurant_status_closing_time">Closes in %1$s:%2$sh.</string>
+    <string name="drawer_main_restaurant_status_opening_time">Opens at %1$s:%2$s%3$s.</string>
     <string name="drawer_main_restaurant_status_opening_time_suffix"/>
     <string name="item_meal_description" translatable="false">%1$s%2$s</string>
     <string name="item_meal_description_badge_lactose_free_e">Lactose-free\u0020</string>
@@ -113,6 +114,16 @@
     <string name="activity_settings_preferences_default_restaurant_summary">Can\'t think of a joke right now.</string>
     <string name="activity_settings_preferences_filter">Hide Filtered Meals</string>
     <string name="activity_settings_preferences_filter_summary">[Insert joke about object permanence here.]</string>
+    <string name="activity_settings_preferences_hide_days">Hide Days</string>
+    <string name="activity_settings_preferences_hide_days_fridays">Fridays</string>
+    <string name="activity_settings_preferences_hide_days_key" translatable="false">prefHideDays</string>
+    <string name="activity_settings_preferences_hide_days_mondays">Mondays</string>
+    <string name="activity_settings_preferences_hide_days_saturdays">Saturdays</string>
+    <string name="activity_settings_preferences_hide_days_summary">Lazy Sundays.</string>
+    <string name="activity_settings_preferences_hide_days_sundays">Sundays</string>
+    <string name="activity_settings_preferences_hide_days_thursdays">Thursdays</string>
+    <string name="activity_settings_preferences_hide_days_tuesday">Tuesdays</string>
+    <string name="activity_settings_preferences_hide_days_wednesdays">Wednesdays</string>
     <string name="activity_settings_preferences_hide_filtered_default" translatable="false">true</string>
     <string name="activity_settings_preferences_hide_filtered_key" translatable="false">prefFilter</string>
     <string name="activity_settings_preferences_images_in_main">Show Images in main view</string>

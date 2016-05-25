@@ -70,11 +70,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         presenter = new MainPresenterImplementation(this);
 
         setUpToolbar();
-        setDay(0);
+        setUpFirstDay(0);
         setUpTabs();
-        setUpDrawerIcons();
-        setUpDrawerLayout();
-        setUpDrawerHeader();
+        setUpDrawer();
     }
 
     @Override
@@ -91,6 +89,22 @@ public class MainActivity extends AppCompatActivity implements MainView {
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_black);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    private void setUpFirstDay(int day) {
+        if (UserSettings.isDayFiltered(day)) {
+            setUpFirstDay(day + 1);
+        } else {
+            setDay(day);
+        }
+    }
+
+    private void setDay(int day) {
+        viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), day));
+        viewPager.getAdapter().notifyDataSetChanged();
+        viewPager.setCurrentItem(UserSettings.getDefaultRestaurant());
+        navigationView.getMenu().getItem(day).setChecked(true);
+        setCurrentTab(UserSettings.getDefaultRestaurant());
     }
 
     private void setUpTabs() {
@@ -112,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
             public void onPageScrollStateChanged(int state) {
             }
         });
+
         tabLayout.setupWithViewPager(viewPager);
 
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
@@ -127,14 +142,29 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setCurrentTab(UserSettings.getDefaultRestaurant());
     }
 
-    private void setUpDrawerIcons() {
+    private void setCurrentTab(int position) {
+        collapsingToolbarLayout.setTitle(getRestaurantName(position));
+        getRestaurantStatus(position);
+    }
+
+    private void setUpDrawer() {
+        setUpDrawerMenu();
+        setUpDrawerClickListener();
+        setUpDrawerHeader();
+    }
+
+    private void setUpDrawerMenu() {
         for (int i = 0; i < navigationView.getMenu().size() - 2; i++) {
             navigationView.getMenu().getItem(i).setIcon(DateTimeUtilities.getDateIcon(i));
             navigationView.getMenu().getItem(i).setTitle(DateTimeUtilities.getDayStringLong(i));
+
+            if (UserSettings.isDayFiltered(i)) {
+                navigationView.getMenu().getItem(i).setVisible(false);
+            }
         }
     }
 
-    private void setUpDrawerLayout() {
+    private void setUpDrawerClickListener() {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -230,20 +260,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
         presenter.getRestaurantStatus();
     }
 
-    private void setCurrentTab(int position) {
-        collapsingToolbarLayout.setTitle(getRestaurantName(position));
-        getRestaurantStatus(position);
-    }
-
-    private void setDay(int day) {
-        viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), day));
-        viewPager.getAdapter().notifyDataSetChanged();
-        viewPager.setCurrentItem(UserSettings.getDefaultRestaurant());
-        navigationView.getMenu().getItem(day).setChecked(true);
-
-        setCurrentTab(UserSettings.getDefaultRestaurant());
-    }
-
     private void setRestaurantClosed(int position) {
         Drawable tabIcon = ResourcesCompat.getDrawable(getResources(), getRestaurantIcon(position), null);
         assert tabIcon != null;
@@ -283,7 +299,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 statusText.setText(openingTime);
                 statusText.setVisibility(View.VISIBLE);
             } else {
-                statusText.setVisibility(View.GONE);
+                statusText.setText(getResources().getString(R.string.drawer_main_restaurant_status_closed));
+                statusText.setVisibility(View.VISIBLE);
             }
         }
     }

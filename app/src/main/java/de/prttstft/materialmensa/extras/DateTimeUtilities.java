@@ -30,31 +30,13 @@ public class DateTimeUtilities {
         return tomorrow.equals(dateTime.toLocalDate());
     }
 
-    public static String getDateString(int page) {
-        return new DateTime().plusDays(page).toString(DateTimeUtilities.DATE_PATTERN);
+    public static int getDayOfWeekInt(int page) {
+        DateTime dateTime = DateTime.parse(getDateString(page));
+        return dateTime.getDayOfWeek();
     }
 
-    public static String getDayString(DateTime dateTime) {
-        String language = Utilities.getSystemLanguage();
-        String outputString;
-
-        if (isToday(dateTime)) {
-            if (language.equals(LOCALE_DE)) {
-                outputString = TODAY_DE;
-            } else {
-                outputString = TODAY_EN;
-            }
-        } else if (isTomorrow(dateTime)) {
-            if (language.equals(LOCALE_DE)) {
-                outputString = TOMORROW_DE;
-            } else {
-                outputString = TOMORROW_EN;
-            }
-        } else {
-            outputString = dateTime.dayOfWeek().getAsShortText();
-        }
-
-        return outputString;
+    public static String getDateString(int page) {
+        return new DateTime().plusDays(page).toString(DateTimeUtilities.DATE_PATTERN);
     }
 
     public static String getDayStringLong(int page) {

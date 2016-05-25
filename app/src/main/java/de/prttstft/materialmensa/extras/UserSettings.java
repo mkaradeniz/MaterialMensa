@@ -18,6 +18,7 @@ public class UserSettings {
     private static final String DEFAULT_RESTAURANT_PREF = getAppContext().getString(R.string.activity_settings_preferences_default_restaurant_key);
     private static final String HIDE_FILTERED_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_hide_filtered_default);
     private static final String HIDE_FILTERED_PREF = getAppContext().getString(R.string.activity_settings_preferences_hide_filtered_key);
+    private static final String HIDE_DAYS_PREF = getAppContext().getString(R.string.activity_settings_preferences_hide_days_key);
     private static final String IMAGES_IN_MAIN_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_images_in_main_default);
     private static final String IMAGES_IN_MAIN_PREF = getAppContext().getString(R.string.activity_settings_preferences_images_in_main_key);
     private static final String LANGUAGE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_language_default);
@@ -50,6 +51,27 @@ public class UserSettings {
     public static boolean getHideFiltered() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
         return getLifestyle().equals(LIFESTYLE_LEVEL_FIVE_VEGAN) || sharedPreferences.getBoolean(HIDE_FILTERED_PREF, Boolean.valueOf(HIDE_FILTERED_DEFAULT));
+    }
+
+    public static boolean isDayFiltered(int day) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
+        Set<String> days = sharedPreferences.getStringSet("prefHideDays", new HashSet<String>());
+
+        int dayOfWeek = DateTimeUtilities.getDayOfWeekInt(day);
+        String[] daysArray = days.toArray(new String[days.size()]);
+
+        // If the user hides every day of the week the current day will be shown regardless.
+        if (daysArray.length == 7 && day == 0) {
+            return false;
+        }
+
+        for (String filteredDay : daysArray) {
+            if (Integer.valueOf(filteredDay) == dayOfWeek) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public static boolean getImagesInMainView() {

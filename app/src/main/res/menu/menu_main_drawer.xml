@@ -1,5 +1,6 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
     <group
         android:id="@+id/drawer_main_group1"
         android:checkableBehavior="single">
@@ -7,7 +8,7 @@
         <item
             android:id="@+id/menu_main_drawer_0"
             android:checked="true"
-            android:icon="@drawable/ic_calendar_black_4"
+            android:icon="@drawable/ic_calendar_black_1"
             android:title="@string/placeholder"/>
 
         <item

@@ -1,6 +1,7 @@
 package de.prttstft.materialmensa.ui.fragments.main.interactor;
 
 import java.math.BigDecimal;
+import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Set;
 
@@ -97,6 +98,10 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
             @Override
             public void onError(Throwable e) {
                 L("Error adding meal: " + e.toString());
+                //L(e.getClass().getName());
+                if (e instanceof UnknownHostException) {
+                    listener.connectionError();
+                }
             }
 
             @Override

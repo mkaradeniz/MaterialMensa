@@ -23,6 +23,13 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     }
 
     @Override
+    public void connectionError() {
+        if (view != null) {
+            view.showConnectionError();
+        }
+    }
+
+    @Override
     public void filteredMeal() {
         if (view != null) {
             view.showFiltered();

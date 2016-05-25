@@ -50,6 +50,8 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_empty_emoji) ImageView emptyEmoji;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_filtered_container) RelativeLayout filtered;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_filtered_emoji) ImageView filteredEmoji;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_offline_container) RelativeLayout connectionError;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_offline_emoji) ImageView connectionErrorEmoji;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_progress_container) RelativeLayout progressBar;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.fragment_main_recycler_view) RecyclerView recyclerView;
     @SuppressWarnings("FieldCanBeLocal") private MainFragmentPresenter presenter;
@@ -169,8 +171,16 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         } else {
             hideEmpty();
             hideFiltered();
+            hideConnectionError();
         }
         hideProgress();
+    }
+
+    @Override
+    public void hideConnectionError() {
+        if (connectionError != null) {
+            connectionError.setVisibility(GONE);
+        }
     }
 
     @Override
@@ -192,6 +202,16 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         if (progressBar != null) {
             progressBar.setVisibility(GONE);
         }
+    }
+
+    @Override
+    public void showConnectionError() {
+        if (connectionError != null) {
+            connectionError.setVisibility(VISIBLE);
+        }
+        hideEmpty();
+        hideFiltered();
+        hideProgress();
     }
 
     @Override
