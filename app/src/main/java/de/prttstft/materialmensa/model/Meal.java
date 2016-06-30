@@ -7,32 +7,52 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class Meal {
-    @SerializedName("date") private String date;
-    @SerializedName("name_de") private String nameDe;
-    @SerializedName("name_en") private String nameEn;
-    @SerializedName("description_de") private String descriptionDe;
-    @SerializedName("description_en") private String descriptionEn;
+    @SerializedName("allergens") private List<String> allergens = new ArrayList<>();
+    @SerializedName("badges") private List<String> badges = new ArrayList<>();
     @SerializedName("category") private String category;
     @SerializedName("category_de") private String categoryDe;
     @SerializedName("category_en") private String categoryEn;
-    @SerializedName("subcategory") private String subcategory;
-    @SerializedName("subcategory_en") private String subcategoryEn;
+    @SerializedName("date") private String date;
+    @SerializedName("description_de") private String descriptionDe;
+    @SerializedName("description_en") private String descriptionEn;
+    @SerializedName("image") private String image;
+    @SerializedName("name_de") private String nameDe;
+    @SerializedName("name_en") private String nameEn;
+    @SerializedName("order_info") private int orderInfo;
+    @SerializedName("priceGuests") private float priceGuests;
     @SerializedName("priceStudents") private float priceStudents;
     @SerializedName("priceWorkers") private float priceWorkers;
-    @SerializedName("priceGuests") private float priceGuests;
-    @SerializedName("allergens") private List<String> allergens = new ArrayList<>();
-    @SerializedName("order_info") private int orderInfo;
-    @SerializedName("badges") private List<String> badges = new ArrayList<>();
-    @SerializedName("restaurant") private String restaurant;
     @SerializedName("pricetype") private String pricetype;
-    @SerializedName("image") private String image;
+    @SerializedName("restaurant") private String restaurant;
+    @SerializedName("subcategory") private String subcategory;
+    @SerializedName("subcategory_en") private String subcategoryEn;
     @SerializedName("thumbnail") private String thumbnail;
-    private String priceString;
-    private int orderNumber;
     private String customDescription;
+    private String priceString;
+    private boolean downvoted;
     private boolean filtered;
+    private boolean upvoted;
+    private int orderNumber;
+    private int score;
 
     // Getters & Setters
+
+
+    public boolean isDownvoted() {
+        return downvoted;
+    }
+
+    public void setDownvoted(boolean downvoted) {
+        this.downvoted = downvoted;
+    }
+
+    public boolean isUpvoted() {
+        return upvoted;
+    }
+
+    public void setUpvoted(boolean upvoted) {
+        this.upvoted = upvoted;
+    }
 
     public String getDate() {
         return date;
@@ -44,6 +64,10 @@ public class Meal {
 
     public String getNameEn() {
         return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
     public String getDescriptionDe() {
@@ -146,6 +170,13 @@ public class Meal {
         this.filtered = filtered;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 
     // Helpers
 

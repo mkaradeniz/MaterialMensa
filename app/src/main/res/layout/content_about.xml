@@ -73,18 +73,18 @@
         android:text="@string/activity_about_button_api"/>
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/activity_about_button_emojis"
+        android:id="@+id/activity_about_button_emoji"
         android:layout_width="@dimen/activity_about_button_width"
         android:layout_height="@dimen/activity_about_button_height"
         android:layout_below="@id/activity_about_button_api"
         android:layout_centerInParent="true"
-        android:text="@string/activity_about_button_emojis"/>
+        android:text="@string/activity_about_button_emoji"/>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/activity_about_button_git_hub"
         android:layout_width="130dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/activity_about_button_emojis"
+        android:layout_below="@+id/activity_about_button_emoji"
         android:layout_centerInParent="true"
         android:text="@string/activity_about_button_git_hub"/>
 

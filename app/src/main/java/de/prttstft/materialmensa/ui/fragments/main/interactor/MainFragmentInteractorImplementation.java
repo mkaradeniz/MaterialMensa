@@ -8,6 +8,7 @@ import java.util.Set;
 import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.UserSettings;
+import de.prttstft.materialmensa.firebase.FirebaseMeals;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.network.MensaAPI;
 import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentListener;
@@ -16,6 +17,7 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ACADEMICA;
@@ -42,7 +44,6 @@ import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_HOTSPOT;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_MENSULA;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK;
-import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainFragmentInteractorImplementation implements MainFragmentInteractor {
     public static final String LIFESTYLE_LEVEL_FIVE_VEGAN = "level_five_vegan";
@@ -80,6 +81,11 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     private static final String PRICE_TYPE_WEIGHTED = "weighted";
 
     @Override
+    public void downvoteMeal(Meal meal) {
+        FirebaseMeals.downvoteMeal(meal.getNameEn());
+    }
+
+    @Override
     public void getMeals(final MainFragmentListener listener, final int day, final int restaurant) {
         Observable<Meal> observable = MensaAPI.mensaAPI.getMeals(DateTimeUtilities.getDateString(day), getRestaurantString(restaurant)).flatMap(new Func1<List<Meal>, Observable<Meal>>() {
             @Override
@@ -97,8 +103,8 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
             @Override
             public void onError(Throwable e) {
-                L("Error adding meal: " + e.toString());
-                //L(e.getClass().getName());
+                Timber.e(e.toString());
+
                 if (e instanceof UnknownHostException) {
                     listener.connectionError();
                 }
@@ -106,6 +112,8 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
             @Override
             public void onNext(Meal meal) {
+                addMealToDatabase(meal);
+
                 if (filterMeal(meal) && UserSettings.getHideFiltered()) {
                     listener.filteredMeal();
                 } else if (filterLifestyle(meal)) {
@@ -117,8 +125,24 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
         });
     }
 
+    @Override
+    public void getSocial(MainFragmentListener listener, List<Meal> meals) {
+        FirebaseMeals.getSocial(listener, meals);
+    }
+
+    @Override
+    public void upvoteMeal(Meal meal) {
+        FirebaseMeals.upvoteMeal(meal.getNameEn());
+    }
+
 
     // Private Methods
+
+    private void addMealToDatabase(Meal meal) {
+        meal.setNameEn(meal.getNameEn().replaceAll("/", "-"));
+
+        FirebaseMeals.addMealToDatabase(meal.getNameEn());
+    }
 
     private Meal prepareMeal(Meal meal) {
         meal.setPriceString(getPriceString(meal));

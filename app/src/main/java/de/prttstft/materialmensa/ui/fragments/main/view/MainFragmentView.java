@@ -22,4 +22,8 @@ public interface MainFragmentView {
     void showFiltered();
 
     void showProgress();
+
+    void updateMealWithScore(Meal meal);
+
+    void updateMealWithVote(Meal meal);
 }

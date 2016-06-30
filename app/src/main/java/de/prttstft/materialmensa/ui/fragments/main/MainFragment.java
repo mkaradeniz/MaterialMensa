@@ -139,6 +139,11 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
     @Override
+    public void downvoteMeal(int position) {
+        presenter.downvoteMeal(adapter.meals.get(position));
+    }
+
+    @Override
     public void onClick(int position) {
         if (actionMode != null) {
             toggleSelection(position);
@@ -158,6 +163,11 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
     @Override
+    public void upvoteMeal(int position) {
+        presenter.upvoteMeal(adapter.meals.get(position));
+    }
+
+    @Override
     public void addMeal(Meal meal) {
         if (adapter != null) {
             adapter.addMeal(meal);
@@ -174,6 +184,8 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
             hideConnectionError();
         }
         hideProgress();
+
+        presenter.getSocial(adapter.meals);
     }
 
     @Override
@@ -233,6 +245,16 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         if (progressBar != null) {
             progressBar.setVisibility(VISIBLE);
         }
+    }
+
+    @Override
+    public void updateMealWithScore(Meal meal) {
+        adapter.updateMealWithScore(meal);
+    }
+
+    @Override
+    public void updateMealWithVote(Meal meal) {
+        adapter.updateMealWithVote(meal);
     }
 
     private void toggleSelection(int position) {

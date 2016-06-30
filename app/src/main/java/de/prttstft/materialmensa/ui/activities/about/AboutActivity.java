@@ -32,7 +32,7 @@ public class AboutActivity extends AppCompatActivity {
     @SuppressWarnings("SpellCheckingInspection") private static final Uri PLAY_STORE_URL = Uri.parse("https://goo.gl/HD2ed2");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri WISH_LIST_URL = Uri.parse("https://www.amazon.de/registry/wishlist/2RQNQ7DEKD9WF");
     @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_api) AppCompatButton buttonApi;
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_emojis) AppCompatButton buttonEmojis;
+    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_emoji) AppCompatButton buttonEmojis;
     @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_git_hub) AppCompatButton buttonGitHub;
     @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_icons) AppCompatButton buttonIcons;
     @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_libraries) AppCompatButton buttonLibraries;

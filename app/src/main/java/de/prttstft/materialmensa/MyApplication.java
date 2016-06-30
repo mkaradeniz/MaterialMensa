@@ -9,6 +9,7 @@ import net.danlew.android.joda.JodaTimeAndroid;
 import java.util.Locale;
 
 import de.prttstft.materialmensa.extras.UserSettings;
+import timber.log.Timber;
 
 public class MyApplication extends Application {
     private static MyApplication sInstance;
@@ -30,6 +31,15 @@ public class MyApplication extends Application {
         sInstance = this;
 
         setLanguage();
+
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree() {
+                @Override
+                protected String createStackElementTag(StackTraceElement element) {
+                    return "TMBR|" + super.createStackElementTag(element) + ":" + element.getLineNumber();
+                }
+            });
+        }
     }
 
     private void setLanguage() {

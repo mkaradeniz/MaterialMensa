@@ -1,5 +1,7 @@
 package de.prttstft.materialmensa.ui.fragments.main.presenter;
 
+import java.util.List;
+
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractor;
 import de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation;
@@ -37,6 +39,11 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     }
 
     @Override
+    public void downvoteMeal(Meal meal) {
+        interactor.downvoteMeal(meal);
+    }
+
+    @Override
     public void getMeals(int day, int restaurant) {
         if (view != null) {
             view.showProgress();
@@ -45,9 +52,29 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     }
 
     @Override
+    public void getSocial(List<Meal> meals) {
+        interactor.getSocial(this, meals);
+    }
+
+    @Override
+    public void upvoteMeal(Meal meal) {
+        interactor.upvoteMeal(meal);
+    }
+
+    @Override
     public void onComplete() {
         if (view != null) {
             view.onComplete();
         }
+    }
+
+    @Override
+    public void updateMealWithScore(Meal meal) {
+        view.updateMealWithScore(meal);
+    }
+
+    @Override
+    public void updateMealWithVote(Meal meal) {
+        view.updateMealWithVote(meal);
     }
 }

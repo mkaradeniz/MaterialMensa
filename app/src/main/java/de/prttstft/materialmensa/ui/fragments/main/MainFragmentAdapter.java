@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -53,8 +54,25 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         Meal meal = meals.get(position);
         Boolean selected = isSelected(position);
 
+        /*if (meal.getScore() < 0) {
+            holder.view.setAlpha(0.3F);
+        }*/
+
         holder.description.setText(meal.getCustomDescription());
         holder.price.setText(meal.getPriceString());
+
+        holder.score.setText(String.valueOf(meal.getScore()));
+
+        if (meal.isDownvoted()) {
+            holder.downvoteArror.setImageAlpha(255);
+            holder.upvoteArrow.setImageAlpha(79);
+        } else if (meal.isUpvoted()) {
+            holder.downvoteArror.setImageAlpha(79);
+            holder.upvoteArrow.setImageAlpha(255);
+        } else {
+            holder.downvoteArror.setImageAlpha(79);
+            holder.upvoteArrow.setImageAlpha(79);
+        }
 
         if (selected) {
             holder.view.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimaryLight));
@@ -78,9 +96,13 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
             holder.name.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
         }
 
+        setUpImage(holder, meal);
+    }
+
+    private void setUpImage(final MainFragmentViewHolder holder, Meal meal) {
         if (UserSettings.getImagesInMainView()) {
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.name.getLayoutParams();
-            params.setMarginStart(Utilities.convertToPx(58));
+            ViewGroup.MarginLayoutParams nameLayoutParams = (ViewGroup.MarginLayoutParams) holder.name.getLayoutParams();
+            nameLayoutParams.setMarginStart(Utilities.convertToPx(79));
 
             if (meal.getImage() != null) {
                 if (Utilities.onWifi()) {
@@ -118,8 +140,8 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
                 holder.image.setVisibility(GONE);
             }
         } else {
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.name.getLayoutParams();
-            params.setMarginStart(Utilities.convertToPx(16));
+            ViewGroup.MarginLayoutParams nameLayoutParams = (ViewGroup.MarginLayoutParams) holder.name.getLayoutParams();
+            nameLayoutParams.setMarginStart(Utilities.convertToPx(16));
 
             holder.image.setVisibility(GONE);
         }
@@ -130,8 +152,23 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         return meals.size();
     }
 
+    public int alreadyInList(Meal meal) {
+        for (int i = 0; i < meals.size(); i++) {
+            if (meals.get(i).getNameEn().equals(meal.getNameEn())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void addMeal(Meal meal) {
-        meals.add(meal);
+        int index = alreadyInList(meal);
+
+        if (index == -1) {
+            meals.add(meal);
+        } else {
+            meals.set(index, meal);
+        }
 
         Collections.sort(meals, new Comparator<Meal>() {
             @Override
@@ -143,11 +180,40 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         notifyDataSetChanged();
     }
 
+    public void updateMealWithScore(Meal meal) {
+        int index = alreadyInList(meal);
+
+        if (index != -1) {
+            meals.get(index).setScore(meal.getScore());
+            notifyItemChanged(index);
+        }
+    }
+
+    public void updateMealWithVote(Meal meal) {
+        int index = alreadyInList(meal);
+
+        if (index != -1) {
+            if (meal.isDownvoted()) {
+                meals.get(index).setDownvoted(true);
+                meals.get(index).setUpvoted(false);
+                notifyItemChanged(index);
+            } else if (meal.isUpvoted()) {
+                meals.get(index).setDownvoted(false);
+                meals.get(index).setUpvoted(true);
+                notifyItemChanged(index);
+            }
+        }
+    }
+
     public class MainFragmentViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.item_meal_description) TextView description;
         @Bind(R.id.item_meal_image) ImageView image;
+        @Bind(R.id.item_meal_meal_container) RelativeLayout mealRelativeLayout;
         @Bind(R.id.item_meal_name) TextView name;
         @Bind(R.id.item_meal_price) TextView price;
+        @Bind(R.id.item_meal_social_arrow_down) ImageView downvoteArror;
+        @Bind(R.id.item_meal_social_arrow_up) ImageView upvoteArrow;
+        @Bind(R.id.item_meal_social_score) TextView score;
 
         private View view;
 
@@ -156,18 +222,32 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
             this.view = itemView;
             ButterKnife.bind(this, itemView);
 
-            view.setOnClickListener(new View.OnClickListener() {
+            mealRelativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     listener.onClick(getAdapterPosition());
                 }
             });
 
-            view.setOnLongClickListener(new View.OnLongClickListener() {
+            mealRelativeLayout.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
                     listener.onLongClick(getAdapterPosition());
                     return true;
+                }
+            });
+
+            downvoteArror.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.downvoteMeal(getAdapterPosition());
+                }
+            });
+
+            upvoteArrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.upvoteMeal(getAdapterPosition());
                 }
             });
         }

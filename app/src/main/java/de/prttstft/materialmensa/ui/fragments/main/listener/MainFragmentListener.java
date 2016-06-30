@@ -10,4 +10,8 @@ public interface MainFragmentListener {
     void filteredMeal();
 
     void onComplete();
+
+    void updateMealWithScore(Meal meal);
+
+    void updateMealWithVote(Meal meal);
 }

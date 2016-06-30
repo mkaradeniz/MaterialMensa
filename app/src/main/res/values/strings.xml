@@ -28,7 +28,7 @@
 
     <!-- About Activity -->
     <string name="activity_about_button_api" translatable="false">API</string>
-    <string name="activity_about_button_emojis" translatable="false">Emojis</string>
+    <string name="activity_about_button_emoji" translatable="false">Emoji</string>
     <string name="activity_about_button_git_hub" translatable="false">GitHub</string>
     <string name="activity_about_button_icons" translatable="false">Icons</string>
     <string name="activity_about_button_libraries" translatable="false">Open Source</string>
@@ -88,7 +88,7 @@
     <string name="item_meal_description_category_wrap" translatable="false">Wrap</string>
     <string name="item_meal_description_placeholder" translatable="false">Vegetarian Classic</string>
     <string name="item_meal_name_placeholder" translatable="false">Meal Name</string>
-    <string name="item_meal_price_placeholder" translatable="false">Price</string>
+    <string name="item_meal_price_placeholder" translatable="false">0,90€/100gr</string>
     <string name="item_meal_price_string" translatable="false">%1$s€%2$s</string>
     <string name="item_meal_price_string_fixed" translatable="false"/>
     <string name="item_meal_price_string_weighted" translatable="false">/100gr</string>
