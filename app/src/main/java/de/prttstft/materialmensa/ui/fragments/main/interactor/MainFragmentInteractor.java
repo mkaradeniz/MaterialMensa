@@ -10,7 +10,7 @@ public interface MainFragmentInteractor {
 
     void getMeals(MainFragmentListener listener, int page, int restaurant);
 
-    void getSocial(MainFragmentListener listener, List<Meal> meals);
+    void getSocialData(MainFragmentListener listener, List<Meal> meals);
 
     void upvoteMeal(Meal meal);
 }

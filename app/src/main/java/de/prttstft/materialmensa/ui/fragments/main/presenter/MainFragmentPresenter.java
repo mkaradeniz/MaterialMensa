@@ -9,7 +9,7 @@ public interface MainFragmentPresenter {
 
     void getMeals(int day, int restaurant);
 
-    void getSocial(List<Meal> meals);
+    void getSocialData(List<Meal> meals);
 
     void upvoteMeal(Meal meal);
 }

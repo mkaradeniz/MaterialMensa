@@ -10,8 +10,12 @@ import timber.log.Timber
 class FirebaseMeals() {
 
     companion object {
+        val DOWNVOTES = "downvotes";
+        val MEALS = "meals"
+        val UPVOTES = "upvotes";
+
         val firebaseDatabase = FirebaseDatabase.getInstance()
-        val mealReference = firebaseDatabase.getReference("meals")
+        val mealReference = firebaseDatabase.getReference(MEALS)
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
         @JvmStatic fun addMealToDatabase(mealName: String) {
@@ -46,7 +50,7 @@ class FirebaseMeals() {
             })
         }
 
-        @JvmStatic fun getSocial(listener: MainFragmentListener, meals: List<Meal>) {
+        @JvmStatic fun getSocialData(listener: MainFragmentListener, meals: List<Meal>) {
             updateMealWithSocial(listener, meals)
         }
 
@@ -85,6 +89,8 @@ class FirebaseMeals() {
                 if (firebaseMeal.downvotes[userId] == true) {
                     meal.isDownvoted = true;
                     meal.isUpvoted = false;
+                } else {
+                    meal.isDownvoted = false;
                 }
             }
 
@@ -92,36 +98,38 @@ class FirebaseMeals() {
                 if (firebaseMeal.upvotes[userId] == true) {
                     meal.isDownvoted = false;
                     meal.isUpvoted = true;
+                } else {
+                    meal.isUpvoted = false;
                 }
             }
 
-            if (meal.isDownvoted || meal.isUpvoted) {
-                listener.updateMealWithVote(meal)
-            }
+            //if (meal.isDownvoted || meal.isUpvoted) {
+            listener.sendUserVote(meal)
+            //}
         }
 
         private fun downvote(mealName: String) {
-            mealReference.child(mealName).child("downvotes").child(userId).setValue(true, DatabaseReference.CompletionListener { databaseError, ref ->
-                if (databaseError != null) {
-                    Timber.e(databaseError.message)
+            mealReference.child(mealName).child(DOWNVOTES).child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                    if (dataSnapshot != null && dataSnapshot.exists()) {
+                        unvote(DOWNVOTES, mealName)
+                        unvote(UPVOTES, mealName)
+                    } else {
+                        vote(DOWNVOTES, mealName)
+                        unvote(UPVOTES, mealName)
+                    }
                 }
-            })
 
-            mealReference.child(mealName).child("upvotes").child(userId).setValue(null, DatabaseReference.CompletionListener { databaseError, ref ->
-                if (databaseError != null) {
-                    Timber.e(databaseError.message)
+                override fun onCancelled(databaseError: DatabaseError?) {
+                    if (databaseError != null) {
+                        Timber.e(databaseError.message)
+                    }
                 }
             })
         }
 
-        private fun upvote(mealName: String) {
-            mealReference.child(mealName).child("upvotes").child(userId).setValue(true, DatabaseReference.CompletionListener { databaseError, ref ->
-                if (databaseError != null) {
-                    Timber.e(databaseError.message)
-                }
-            })
-
-            mealReference.child(mealName).child("downvotes").child(userId).setValue(null, DatabaseReference.CompletionListener { databaseError, ref ->
+        private fun unvote(type: String, mealName: String) {
+            mealReference.child(mealName).child(type).child(userId).setValue(null, DatabaseReference.CompletionListener { databaseError, ref ->
                 if (databaseError != null) {
                     Timber.e(databaseError.message)
                 }
@@ -152,9 +160,7 @@ class FirebaseMeals() {
 
                             checkIfUserVoted(listener, firebaseMeal)
 
-                            if (meal.score != 0) {
-                                listener.addMeal(meal)
-                            }
+                            listener.addMeal(meal)
                         }
                     }
 
@@ -189,7 +195,7 @@ class FirebaseMeals() {
 
                         checkIfUserVoted(listener, firebaseMeal)
 
-                        listener.updateMealWithScore(meal)
+                        listener.sendMealScore(meal)
                     }
                 }
 
@@ -207,6 +213,34 @@ class FirebaseMeals() {
 
                 override fun onCancelled(databaseError: DatabaseError?) {
                     Timber.e(databaseError?.message)
+                }
+            })
+        }
+
+        private fun upvote(mealName: String) {
+            mealReference.child(mealName).child(UPVOTES).child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                    if (dataSnapshot != null && dataSnapshot.exists()) {
+                        unvote(DOWNVOTES, mealName)
+                        unvote(UPVOTES, mealName)
+                    } else {
+                        vote(UPVOTES, mealName)
+                        unvote(DOWNVOTES, mealName)
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError?) {
+                    if (databaseError != null) {
+                        Timber.e(databaseError.message)
+                    }
+                }
+            })
+        }
+
+        private fun vote(type: String, mealName: String) {
+            mealReference.child(mealName).child(type).child(userId).setValue(true, DatabaseReference.CompletionListener { databaseError, ref ->
+                if (databaseError != null) {
+                    Timber.e(databaseError.message)
                 }
             })
         }

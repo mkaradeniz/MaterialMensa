@@ -49,60 +49,33 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         return new MainFragmentViewHolder(v, listener);
     }
 
+
     @Override
     public void onBindViewHolder(final MainFragmentViewHolder holder, int position) {
         Meal meal = meals.get(position);
         Boolean selected = isSelected(position);
 
-        /*if (meal.getScore() < 0) {
-            holder.view.setAlpha(0.3F);
-        }*/
+        setUpFiltered(holder, meal);
+        setUpImage(holder, meal);
+        setUpMealText(holder, meal);
+        setUpSelection(holder, selected);
+        setUpSocialData(holder, meal);
+        setUpFooter(holder, position);
+    }
 
-        holder.description.setText(meal.getCustomDescription());
-        holder.price.setText(meal.getPriceString());
 
-        holder.score.setText(String.valueOf(meal.getScore()));
-
-        if (meal.isDownvoted()) {
-            holder.downvoteArror.setImageAlpha(255);
-            holder.upvoteArrow.setImageAlpha(79);
-        } else if (meal.isUpvoted()) {
-            holder.downvoteArror.setImageAlpha(79);
-            holder.upvoteArrow.setImageAlpha(255);
-        } else {
-            holder.downvoteArror.setImageAlpha(79);
-            holder.upvoteArrow.setImageAlpha(79);
-        }
-
-        if (selected) {
-            holder.view.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimaryLight));
-        } else {
-            int[] attrs = new int[]{R.attr.selectableItemBackground};
-            TypedArray typedArray = context.obtainStyledAttributes(attrs);
-            int backgroundResource = typedArray.getResourceId(0, 0);
-            holder.view.setBackgroundResource(backgroundResource);
-            typedArray.recycle();
-        }
-
-        if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
-            holder.name.setText(meal.getNameDe());
-        } else {
-            holder.name.setText(meal.getNameEn());
-        }
-
+    private void setUpFiltered(MainFragmentViewHolder holder, Meal meal) {
         if (meal.isFiltered()) {
             holder.name.setTextColor(ContextCompat.getColor(context, R.color.materialRed900));
         } else {
             holder.name.setTextColor(ContextCompat.getColor(context, R.color.colorAccent));
         }
-
-        setUpImage(holder, meal);
     }
 
     private void setUpImage(final MainFragmentViewHolder holder, Meal meal) {
         if (UserSettings.getImagesInMainView()) {
             ViewGroup.MarginLayoutParams nameLayoutParams = (ViewGroup.MarginLayoutParams) holder.name.getLayoutParams();
-            nameLayoutParams.setMarginStart(Utilities.convertToPx(79));
+            nameLayoutParams.setMarginStart(Utilities.convertDpToPx(79));
 
             if (meal.getImage() != null) {
                 if (Utilities.onWifi()) {
@@ -141,25 +114,73 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
             }
         } else {
             ViewGroup.MarginLayoutParams nameLayoutParams = (ViewGroup.MarginLayoutParams) holder.name.getLayoutParams();
-            nameLayoutParams.setMarginStart(Utilities.convertToPx(16));
+            nameLayoutParams.setMarginStart(Utilities.convertDpToPx(16));
 
             holder.image.setVisibility(GONE);
         }
     }
+
+    private void setUpMealText(MainFragmentViewHolder holder, Meal meal) {
+        if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+            holder.name.setText(meal.getNameDe());
+        } else {
+            holder.name.setText(meal.getNameEn());
+        }
+
+        holder.description.setText(meal.getCustomDescription());
+        holder.price.setText(meal.getPriceString());
+    }
+
+    private void setUpSelection(MainFragmentViewHolder holder, Boolean selected) {
+        if (selected) {
+            holder.view.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimaryLight));
+        } else {
+            int[] attrs = new int[]{R.attr.selectableItemBackground};
+            TypedArray typedArray = context.obtainStyledAttributes(attrs);
+            int backgroundResource = typedArray.getResourceId(0, 0);
+            holder.view.setBackgroundResource(backgroundResource);
+            typedArray.recycle();
+        }
+    }
+
+    private void setUpSocialData(MainFragmentViewHolder holder, Meal meal) {
+        if (meal.getScore() > 0) {
+            String bla = "+" + String.valueOf(meal.getScore());
+            holder.score.setText(bla);
+        } else {
+            holder.score.setText(String.valueOf(meal.getScore()));
+        }
+
+        /*if (meal.getScore() < 0) {
+            holder.view.setAlpha(0.3F);
+        }*/
+
+        if (meal.isDownvoted()) {
+            holder.downvoteArror.setImageAlpha(255);
+            holder.upvoteArrow.setImageAlpha(79);
+        } else if (meal.isUpvoted()) {
+            holder.downvoteArror.setImageAlpha(79);
+            holder.upvoteArrow.setImageAlpha(255);
+        } else {
+            holder.downvoteArror.setImageAlpha(79);
+            holder.upvoteArrow.setImageAlpha(79);
+        }
+    }
+
+    private void setUpFooter(MainFragmentViewHolder holder, int position) {
+        if (position == meals.size() - 1) {
+            holder.footer.setVisibility(View.VISIBLE);
+        } else {
+            holder.footer.setVisibility(View.GONE);
+        }
+    }
+
 
     @Override
     public int getItemCount() {
         return meals.size();
     }
 
-    public int alreadyInList(Meal meal) {
-        for (int i = 0; i < meals.size(); i++) {
-            if (meals.get(i).getNameEn().equals(meal.getNameEn())) {
-                return i;
-            }
-        }
-        return -1;
-    }
 
     public void addMeal(Meal meal) {
         int index = alreadyInList(meal);
@@ -170,10 +191,11 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
             meals.set(index, meal);
         }
 
+
         Collections.sort(meals, new Comparator<Meal>() {
             @Override
             public int compare(Meal meal1, Meal meal2) {
-                return (meal1.getOrderNumber() - meal2.getOrderNumber());
+                return (meal2.getScore() - meal1.getScore());
             }
         });
 
@@ -187,6 +209,15 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
             meals.get(index).setScore(meal.getScore());
             notifyItemChanged(index);
         }
+
+        Collections.sort(meals, new Comparator<Meal>() {
+            @Override
+            public int compare(Meal meal1, Meal meal2) {
+                return (meal2.getScore() - meal1.getScore());
+            }
+        });
+
+        notifyDataSetChanged();
     }
 
     public void updateMealWithVote(Meal meal) {
@@ -201,12 +232,28 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
                 meals.get(index).setDownvoted(false);
                 meals.get(index).setUpvoted(true);
                 notifyItemChanged(index);
+            } else {
+                meals.get(index).setDownvoted(false);
+                meals.get(index).setUpvoted(false);
+                notifyItemChanged(index);
             }
         }
     }
 
+
+    private int alreadyInList(Meal meal) {
+        for (int i = 0; i < meals.size(); i++) {
+            if (meals.get(i).getNameEn().equals(meal.getNameEn())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
     public class MainFragmentViewHolder extends RecyclerView.ViewHolder {
         @Bind(R.id.item_meal_description) TextView description;
+        @Bind(R.id.item_meal_footer) RelativeLayout footer;
         @Bind(R.id.item_meal_image) ImageView image;
         @Bind(R.id.item_meal_meal_container) RelativeLayout mealRelativeLayout;
         @Bind(R.id.item_meal_name) TextView name;
@@ -214,8 +261,8 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         @Bind(R.id.item_meal_social_arrow_down) ImageView downvoteArror;
         @Bind(R.id.item_meal_social_arrow_up) ImageView upvoteArrow;
         @Bind(R.id.item_meal_social_score) TextView score;
-
         private View view;
+
 
         public MainFragmentViewHolder(View itemView, final MainFragmentViewHolderListener listener) {
             super(itemView);

@@ -28,11 +28,11 @@ import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
+import timber.log.Timber;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static de.prttstft.materialmensa.constants.GeneralConstants.MEAL;
-import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class DetailsActivity extends AppCompatActivity {
     private static final String LOCALE_DE = "Deutsch";
@@ -68,25 +68,6 @@ public class DetailsActivity extends AppCompatActivity {
         setUpView();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_details, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.menu_details_share:
-                shareMeal();
-                return true;
-            default:
-                onBackPressed();
-                return true;
-        }
-    }
 
     private void setUpToolbar() {
         setSupportActionBar(toolbar);
@@ -171,6 +152,28 @@ public class DetailsActivity extends AppCompatActivity {
         additivesAllergens.setText(buildAdditiveAllergenString(meal.getAllergens()));
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_details, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.menu_details_share:
+                shareMeal();
+                return true;
+            default:
+                onBackPressed();
+                return true;
+        }
+    }
+
+
     private String buildAdditiveAllergenString(List<String> additivesAllergens) {
         String builder = "";
 
@@ -182,6 +185,20 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
         return builder;
+    }
+
+    private String buildShareString() {
+        String shareString = getString(R.string.share_string_prefix, DateTimeUtilities.getShareDayString(meal.getDate()));
+
+        if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+            shareString = shareString + meal.getNameDe();
+        } else {
+            shareString = shareString + meal.getNameEn();
+        }
+
+        shareString = shareString + getString(R.string.share_string_suffix, PLAY_STORE_URL);
+
+        return shareString;
     }
 
     private String getAdditiveAllergenString(String additiveAllergen) {
@@ -248,7 +265,7 @@ public class DetailsActivity extends AppCompatActivity {
             case "A14":
                 return allergens[13];
             default:
-                L(additiveAllergen);
+                Timber.d("Default AdditiveAllergene called: $additiveAllergen");
                 return "";
         }
     }
@@ -260,19 +277,5 @@ public class DetailsActivity extends AppCompatActivity {
                 .setText(buildShareString())
                 .setChooserTitle(R.string.share_chooser_title)
                 .startChooser();
-    }
-
-    private String buildShareString() {
-        String shareString = getString(R.string.share_string_prefix, DateTimeUtilities.getShareDayString(meal.getDate()));
-
-        if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
-            shareString = shareString + meal.getNameDe();
-        } else {
-            shareString = shareString + meal.getNameEn();
-        }
-
-        shareString = shareString + getString(R.string.share_string_suffix, PLAY_STORE_URL);
-
-        return shareString;
     }
 }

@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import de.prttstft.materialmensa.extras.Utilities
 import de.prttstft.materialmensa.ui.activities.main.MainActivity
+import timber.log.Timber
 
 class LaunchActivity : AppCompatActivity() {
     private var auth: FirebaseAuth? = null;
@@ -27,7 +27,7 @@ class LaunchActivity : AppCompatActivity() {
                 auth!!.signInAnonymously().addOnCompleteListener(this, { task ->
 
                     if (!task.isSuccessful) {
-                        Utilities.L("Nope!");
+                        Timber.e(task.exception?.message)
                     }
                 })
 

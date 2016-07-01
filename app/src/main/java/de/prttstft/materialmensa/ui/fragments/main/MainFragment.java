@@ -132,11 +132,13 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         };
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
+
 
     @Override
     public void downvoteMeal(int position) {
@@ -185,7 +187,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         }
         hideProgress();
 
-        presenter.getSocial(adapter.meals);
+        presenter.getSocialData(adapter.meals);
     }
 
     @Override
@@ -256,6 +258,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     public void updateMealWithVote(Meal meal) {
         adapter.updateMealWithVote(meal);
     }
+
 
     private void toggleSelection(int position) {
         if (adapter.isSelected(position)) {

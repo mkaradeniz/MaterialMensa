@@ -70,9 +70,9 @@
     <string name="allergen_9_celery">Sellerie und Sellerieerzeugnisse [A9]</string>
     <string name="app_name">MaterialMensa</string>
     <string name="drawer_main_header_role_image_description">Rolle</string>
-    <string name="drawer_main_restaurant_status_closed">Momentan geschlossen.</string>
-    <string name="drawer_main_restaurant_status_closing_time">Noch %1$s:%2$sh geöffnet.</string>
-    <string name="drawer_main_restaurant_status_opening_time">Öffnet um %1$s:%2$s%3$s</string>
+    <string name="drawer_main_restaurant_status_closed">Restaurant ist momentan geschlossen.</string>
+    <string name="drawer_main_restaurant_status_closing_time">Restaurant ist noch %1$s:%2$sh geöffnet.</string>
+    <string name="drawer_main_restaurant_status_opening_time">Restaurant öffnet um %1$s:%2$s%3$s</string>
     <string name="drawer_main_restaurant_status_opening_time_suffix">\u0020Uhr.</string>
     <string name="error_all_meals_filtered">Nichts was deinem Lifestyle entspricht.\nSorry.</string>
     <string name="error_offline">Du bist offline. Sorry.</string>
@@ -101,9 +101,10 @@
     <string name="item_meal_description_category_offer">Angebot</string>
     <string name="item_meal_description_category_side_dish">Beilage</string>
     <string name="item_meal_description_category_soup">Suppe</string>
-    <string name="item_meal_star_description">Zu Favoriten hinzufügen</string>
     <string name="share">Teilen</string>
     <string name="share_chooser_title">Teile dein Menü via</string>
     <string name="share_string_prefix">%1$s Mensen? Es gibt:\u0020</string>
     <string name="share_string_suffix">\n\nGeschickt von MaterialMensa: %1$s</string>
+    <string name="upvote">Upvoten</string>
+    <string name="downvote">Downvoten</string>
 </resources>

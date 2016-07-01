@@ -59,6 +59,7 @@ public class AboutActivity extends AppCompatActivity {
         setUpOnClickListeners();
     }
 
+
     private void setUpOnClickListeners() {
         buttonApi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,18 +131,6 @@ public class AboutActivity extends AppCompatActivity {
 
     }
 
-    private void startCustomTab(Uri url) {
-        CustomTabsIntent.Builder startCustomTabIntent = new CustomTabsIntent.Builder();
-        startCustomTabIntent.setToolbarColor(ContextCompat.getColor(AboutActivity.this, R.color.colorPrimary));
-        startCustomTabIntent.setShowTitle(true);
-        startCustomTabIntent.setSecondaryToolbarColor(ContextCompat.getColor(AboutActivity.this, R.color.colorAccent));
-
-        if (chromeInstalled()) {
-            startCustomTabIntent.build().intent.setPackage(CHROME_PACKAGE);
-        }
-
-        startCustomTabIntent.build().launchUrl(AboutActivity.this, url);
-    }
 
     private boolean chromeInstalled() {
         try {
@@ -159,6 +148,19 @@ public class AboutActivity extends AppCompatActivity {
         } catch (ActivityNotFoundException e) {
             startCustomTab(PLAY_STORE_URL);
         }
+    }
+
+    private void startCustomTab(Uri url) {
+        CustomTabsIntent.Builder startCustomTabIntent = new CustomTabsIntent.Builder();
+        startCustomTabIntent.setToolbarColor(ContextCompat.getColor(AboutActivity.this, R.color.colorPrimary));
+        startCustomTabIntent.setShowTitle(true);
+        startCustomTabIntent.setSecondaryToolbarColor(ContextCompat.getColor(AboutActivity.this, R.color.colorAccent));
+
+        if (chromeInstalled()) {
+            startCustomTabIntent.build().intent.setPackage(CHROME_PACKAGE);
+        }
+
+        startCustomTabIntent.build().launchUrl(AboutActivity.this, url);
     }
 
     private Intent startPlayStoreIntent() {

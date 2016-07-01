@@ -52,8 +52,8 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     }
 
     @Override
-    public void getSocial(List<Meal> meals) {
-        interactor.getSocial(this, meals);
+    public void getSocialData(List<Meal> meals) {
+        interactor.getSocialData(this, meals);
     }
 
     @Override
@@ -69,12 +69,12 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     }
 
     @Override
-    public void updateMealWithScore(Meal meal) {
+    public void sendMealScore(Meal meal) {
         view.updateMealWithScore(meal);
     }
 
     @Override
-    public void updateMealWithVote(Meal meal) {
+    public void sendUserVote(Meal meal) {
         view.updateMealWithVote(meal);
     }
 }

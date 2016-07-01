@@ -126,8 +126,8 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     }
 
     @Override
-    public void getSocial(MainFragmentListener listener, List<Meal> meals) {
-        FirebaseMeals.getSocial(listener, meals);
+    public void getSocialData(MainFragmentListener listener, List<Meal> meals) {
+        FirebaseMeals.getSocialData(listener, meals);
     }
 
     @Override

@@ -12,6 +12,7 @@ import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ACADEMICA;
@@ -38,7 +39,6 @@ import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_STARTS_WITH_OPENS_EN;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_TEMPORALIY_CLOSED_DE;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_TEMPORALIY_CLOSED_EN;
-import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainInteractorImplementation implements MainInteractor {
     @Override
@@ -54,7 +54,7 @@ public class MainInteractorImplementation implements MainInteractor {
 
             @Override
             public void onError(Throwable e) {
-                L("Error getting restaurant status: " + e);
+                Timber.e(e.getMessage());
             }
 
             @Override

@@ -2,14 +2,14 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="124dp"
+    android:layout_height="wrap_content"
     android:background="?selectableItemBackground"
     android:clickable="true">
 
     <RelativeLayout
         android:id="@+id/item_meal_meal_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="124dp"
         android:layout_marginEnd="64dp">
 
         <ImageView
@@ -42,7 +42,7 @@
             android:layout_marginTop="4dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="Bklasdklasd kalsd kasld aksdsalskd kalsd"
+            android:text="@string/item_meal_name_placeholder"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@color/colorAccent"/>
 
@@ -64,12 +64,12 @@
 
     </RelativeLayout>
 
-
     <RelativeLayout
         android:id="@+id/item_meal_social_container"
         android:layout_width="56dp"
-        android:layout_height="match_parent"
-        android:layout_alignParentEnd="true">
+        android:layout_height="124dp"
+        android:layout_alignParentEnd="true"
+        android:background="?selectableItemBackground">
 
         <ImageView
             android:id="@+id/item_meal_social_arrow_up"
@@ -79,7 +79,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:alpha="0.3"
-            android:contentDescription="Upvote"
+            android:contentDescription="@string/upvote"
             android:scaleX="1.5"
             android:scaleY="1.5"
             android:src="@drawable/ic_arrow_drop_up_black"
@@ -92,7 +92,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:gravity="center"
-            android:text="-2140"/>
+            android:text="@string/item_meal_social_score_placeholder"/>
 
         <ImageView
             android:id="@+id/item_meal_social_arrow_down"
@@ -102,12 +102,21 @@
             android:layout_below="@+id/item_meal_social_score"
             android:layout_centerVertical="true"
             android:alpha="0.3"
-            android:contentDescription="Downvote"
+            android:contentDescription="@string/downvote"
             android:rotation="180"
             android:scaleX="1.5"
             android:scaleY="1.5"
             android:src="@drawable/ic_arrow_drop_up_black"
             android:tint="@color/colorAccent"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/item_meal_footer"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_below="@+id/item_meal_meal_container"
+        android:visibility="gone">
 
     </RelativeLayout>
 

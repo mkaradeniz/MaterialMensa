@@ -1,12 +1,14 @@
 <resources>
     <!-- General -->
     <string name="app_name">MaterialMensa</string>
+    <string name="downvote">Downvote</string>
     <string name="empty_string" translatable="false"/>
-    <string name="placeholder" translatable="false">placeholder</string>
+    <string name="placeholder" translatable="false">Placeholder</string>
     <string name="share">Share</string>
     <string name="share_chooser_title">Share your menu via</string>
     <string name="share_string_prefix">Let\'s dine %1$s. They have:\u0020</string>
     <string name="share_string_suffix">\n\nShared via MaterialMensa: %1$s</string>
+    <string name="upvote">Upvote</string>
 
 
     <!-- Restaurants -->
@@ -52,9 +54,9 @@
     <string name="drawer_main_header_lifestyle_placeholder" translatable="false">Vegetarian</string>
     <string name="drawer_main_header_role_image_description">Role</string>
     <string name="drawer_main_header_role_placeholder" translatable="false">Student</string>
-    <string name="drawer_main_restaurant_status_closed">Closed at the moment.</string>
-    <string name="drawer_main_restaurant_status_closing_time">Closes in %1$s:%2$sh.</string>
-    <string name="drawer_main_restaurant_status_opening_time">Opens at %1$s:%2$s%3$s.</string>
+    <string name="drawer_main_restaurant_status_closed">Restaurant closed at the moment.</string>
+    <string name="drawer_main_restaurant_status_closing_time">Restaurant closes in %1$s:%2$sh.</string>
+    <string name="drawer_main_restaurant_status_opening_time">Restaurant opens at %1$s:%2$s%3$s.</string>
     <string name="drawer_main_restaurant_status_opening_time_suffix"/>
     <string name="item_meal_description" translatable="false">%1$s%2$s</string>
     <string name="item_meal_description_badge_lactose_free_e">Lactose-free\u0020</string>
@@ -87,13 +89,12 @@
     <string name="item_meal_description_category_soup">Soup</string>
     <string name="item_meal_description_category_wrap" translatable="false">Wrap</string>
     <string name="item_meal_description_placeholder" translatable="false">Vegetarian Classic</string>
-    <string name="item_meal_name_placeholder" translatable="false">Meal Name</string>
+    <string name="item_meal_name_placeholder" translatable="false">Three variations of poultry with rucola salad and orange vinaigrette</string>
     <string name="item_meal_price_placeholder" translatable="false">0,90€/100gr</string>
     <string name="item_meal_price_string" translatable="false">%1$s€%2$s</string>
     <string name="item_meal_price_string_fixed" translatable="false"/>
     <string name="item_meal_price_string_weighted" translatable="false">/100gr</string>
-    <string name="item_meal_star_description">Star Meal</string>
-
+    <string name="item_meal_social_score_placeholder" translatable="false">-2140</string>
 
     <!--  Settings Activity -->
     <string name="activity_settings_title">Settings</string>

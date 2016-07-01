@@ -11,7 +11,7 @@ public interface MainFragmentListener {
 
     void onComplete();
 
-    void updateMealWithScore(Meal meal);
+    void sendMealScore(Meal meal);
 
-    void updateMealWithVote(Meal meal);
+    void sendUserVote(Meal meal);
 }
