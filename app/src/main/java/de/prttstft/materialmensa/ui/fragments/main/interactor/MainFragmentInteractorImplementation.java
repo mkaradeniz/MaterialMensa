@@ -2,6 +2,7 @@ package de.prttstft.materialmensa.ui.fragments.main.interactor;
 
 import java.math.BigDecimal;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -80,6 +81,9 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     private static final String OTHER_WRAP = "wrap";
     private static final String PRICE_TYPE_WEIGHTED = "weighted";
 
+    private List<Meal> meals = new ArrayList<>();
+
+
     @Override
     public void downvoteMeal(Meal meal) {
         if (meal.getNameEn() != null) {
@@ -94,18 +98,20 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
             public Observable<Meal> call(List<Meal> iterable) {
                 return Observable.from(iterable);
             }
-        }).subscribeOn(Schedulers.newThread())
+        })
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
 
         observable.subscribe(new Observer<Meal>() {
             @Override
             public void onCompleted() {
-                listener.onComplete();
+                listener.onCompleted();
+                Timber.d("Hi from on completed");
             }
 
             @Override
             public void onError(Throwable e) {
-                Timber.e(e.getMessage());
+                Timber.e(e, e.getMessage());
 
                 if (e instanceof UnknownHostException) {
                     listener.connectionError();
@@ -114,17 +120,23 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
             @Override
             public void onNext(Meal meal) {
-                addMealToDatabase(prepareMeal(meal));
+                meal = prepareMeal(meal);
+
+                addMealToDatabase(meal);
 
                 if (filterMeal(meal) && UserSettings.getHideFiltered()) {
                     listener.filteredMeal();
                 } else if (filterLifestyle(meal)) {
                     listener.filteredMeal();
                 } else {
-                    listener.addMeal(prepareMeal(meal));
+                    sendMeal(listener, meal);
                 }
             }
         });
+    }
+
+    private void sendMealsToFirebase(MainFragmentListener listener) {
+        FirebaseMeals.processMealList(listener, meals);
     }
 
     @Override
@@ -139,8 +151,14 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
         }
     }
 
-
     // Private Methods
+
+
+    private void sendMeal(MainFragmentListener listener, Meal meal) {
+        listener.addMeal(meal);
+
+        //FirebaseMeals.getSocialDataMeal(listener, meal);
+    }
 
     private void addMealToDatabase(Meal meal) {
         FirebaseMeals.addMealToDatabase(meal);

@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import net.danlew.android.joda.JodaTimeAndroid;
 
 import java.util.Locale;
@@ -39,6 +41,10 @@ public class MyApplication extends Application {
                     return "TMBR|" + super.createStackElementTag(element) + ":" + element.getLineNumber();
                 }
             });
+        }
+
+        if (BuildConfig.BUILD_TYPE.equals("release")) {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         }
     }
 

@@ -23,6 +23,10 @@ public class FirebaseMeal {
         return nameEn;
     }
 
+    public String getNameDe() {
+        return nameDe;
+    }
+
     public HashMap<String, Object> getDownvotes() {
         return downvotes;
     }

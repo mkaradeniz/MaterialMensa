@@ -66,9 +66,9 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     }
 
     @Override
-    public void onComplete() {
+    public void onCompleted() {
         if (view != null) {
-            view.onComplete();
+            view.onCompleted();
         }
     }
 

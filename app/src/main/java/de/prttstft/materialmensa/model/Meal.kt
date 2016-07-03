@@ -28,12 +28,15 @@ class Meal : Comparable<Meal> {
     @SerializedName("subcategory_en") val subcategoryEn: String? = null
     @SerializedName("thumbnail") val thumbnail: String? = null
     var customDescription: String? = null
+    var downvotes: HashMap<String, Any> = HashMap()
     var isDownvoted: Boolean = false
     var isFiltered: Boolean = false
     var isUpvoted: Boolean = false
     var orderNumber: Int = 0
     var priceString: String? = null
     var score: Int = 0
+    var upvotes: HashMap<String, Any> = HashMap()
+    var hasScores: Boolean = false;
 
 
     val badge: String

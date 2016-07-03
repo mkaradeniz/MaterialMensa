@@ -140,6 +140,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
 
+    // View Holder Listener
     @Override
     public void downvoteMeal(int position) {
         presenter.downvoteMeal(adapter.meals.get(position));
@@ -169,6 +170,8 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         presenter.upvoteMeal(adapter.meals.get(position));
     }
 
+
+    // View Listener
     @Override
     public void addMeal(Meal meal) {
         if (adapter != null) {
@@ -177,14 +180,10 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
     @Override
-    public void onComplete() {
+    public void onCompleted() {
         if (adapter.getItemCount() == 0) {
             showEmpty();
         } else {
-            adapter.sortMeals();
-
-            presenter.getSocialData(adapter.meals);
-
             hideEmpty();
             hideFiltered();
             hideConnectionError();
@@ -254,12 +253,12 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
 
     @Override
     public void updateMealWithScore(Meal meal) {
-        adapter.updateMealWithScore(meal);
+        //adapter.updateMealWithScore(meal);
     }
 
     @Override
     public void updateMealWithVote(Meal meal) {
-        adapter.updateMealWithVote(meal);
+        //adapter.updateMealWithVote(meal);
     }
 
 

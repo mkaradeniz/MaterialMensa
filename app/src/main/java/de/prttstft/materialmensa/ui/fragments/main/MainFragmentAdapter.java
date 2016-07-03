@@ -61,7 +61,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         setUpSelection(holder, selected);
         setUpSocialData(holder, meal);
         setUpFooter(holder, position);
-    }
+    }/**/
 
 
     private void setUpFiltered(MainFragmentViewHolder holder, Meal meal) {
@@ -197,6 +197,8 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         } else {
             meals.set(index, meal);
         }
+
+        sortMeals();
     }
 
     public void sortMeals() {

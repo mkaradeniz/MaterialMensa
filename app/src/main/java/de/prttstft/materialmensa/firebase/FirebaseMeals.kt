@@ -6,16 +6,22 @@ import de.prttstft.materialmensa.model.FirebaseMeal
 import de.prttstft.materialmensa.model.Meal
 import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentListener
 import timber.log.Timber
+import java.util.*
 
 class FirebaseMeals() {
 
     companion object {
-        val DOWNVOTES = "downvotes";
+        val DOWNVOTES = "downvotes"
         val MEALS = "meals"
-        val UPVOTES = "upvotes";
+        val UPVOTES = "upvotes"
 
-        val firebaseDatabase = FirebaseDatabase.getInstance()
-        val mealReference = firebaseDatabase.getReference(MEALS)
+        var mealCount = 0;
+
+        var socialMeals = ArrayList<Meal>()
+
+        val firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val mealReference: DatabaseReference = firebaseDatabase.getReference(MEALS)
+
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
         @JvmStatic fun addMealToDatabase(meal: Meal) {
@@ -55,6 +61,97 @@ class FirebaseMeals() {
 
         @JvmStatic fun getSocialData(listener: MainFragmentListener, meals: List<Meal>) {
             updateMealWithSocial(listener, meals)
+        }
+
+        @JvmStatic fun getSocialDataMeal(listener: MainFragmentListener, meal: Meal) {
+            mealReference.child(meal.nameEn).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                    if (dataSnapshot != null && dataSnapshot.exists()) {
+                        val firebaseMeal: FirebaseMeal = dataSnapshot.getValue(FirebaseMeal::class.java)
+                        val socialMeal = mergeMeals(meal, firebaseMeal)
+
+                        socialMeal.score = socialMeal.upvotes.size - socialMeal.downvotes.size
+
+                        if (socialMeal.downvotes[userId] == true) {
+                            socialMeal.isDownvoted = true
+                            socialMeal.isUpvoted = false
+                        } else if (socialMeal.upvotes[userId] == true) {
+                            socialMeal.isDownvoted = false
+                            socialMeal.isUpvoted = true
+                        } else {
+                            socialMeal.isDownvoted = false
+                            socialMeal.isUpvoted = false
+                        }
+
+                        listener.addMeal(socialMeal)
+                    }
+                }
+
+                override fun onCancelled(databaseError: DatabaseError?) {
+                    if (databaseError != null) {
+                        Timber.e(databaseError.message)
+                    }
+                }
+            })
+        }
+
+        @JvmStatic fun processMealList(listener: MainFragmentListener, meals: List<Meal>) {
+            mealCount = meals.size
+
+            for (meal in meals) {
+                mealReference.child(meal.nameEn).addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                        if (dataSnapshot != null && dataSnapshot.exists()) {
+                            val firebaseMeal: FirebaseMeal = dataSnapshot.getValue(FirebaseMeal::class.java)
+                            val socialMeal = mergeMeals(meal, firebaseMeal)
+
+                            socialMeal.score = socialMeal.upvotes.size - socialMeal.downvotes.size
+
+                            if (socialMeal.downvotes[userId] == true) {
+                                socialMeal.isDownvoted = true
+                                socialMeal.isUpvoted = false
+                            } else if (socialMeal.upvotes[userId] == true) {
+                                socialMeal.isDownvoted = false
+                                socialMeal.isUpvoted = true
+                            } else {
+                                socialMeal.isDownvoted = false
+                                socialMeal.isUpvoted = false
+                            }
+
+                            addToSocialMeals(listener, socialMeal)
+                        }
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError?) {
+                        if (databaseError != null) {
+                            Timber.e(databaseError.message)
+                        }
+                    }
+                })
+            }
+        }
+
+        private fun addToSocialMeals(listener: MainFragmentListener, meal: Meal) {
+            socialMeals.add(meal)
+
+            if (socialMeals.size == mealCount) {
+                Timber.d("Hi from addToSocialMeals")
+
+
+            }
+
+        }
+
+        private fun mergeMeals(meal: Meal, firebaseMeal: FirebaseMeal): Meal {
+            if (firebaseMeal.downvotes != null) {
+                meal.downvotes = firebaseMeal.downvotes
+            }
+
+            if (firebaseMeal.upvotes != null) {
+                meal.upvotes = firebaseMeal.upvotes
+            }
+
+            return meal
         }
 
         @JvmStatic fun upvoteMeal(mealName: String) {
