@@ -45,8 +45,8 @@
         <SwitchPreference
             android:defaultValue="@string/activity_settings_preferences_hide_filtered_default"
             android:key="@string/activity_settings_preferences_hide_filtered_key"
-            android:summary="@string/activity_settings_preferences_filter_summary"
-            android:title="@string/activity_settings_preferences_filter"/>
+            android:summary="@string/activity_settings_preferences_hide_filtered_summary"
+            android:title="@string/activity_settings_preferences_hide_filtered"/>
 
     </PreferenceCategory>
 
@@ -68,6 +68,12 @@
             android:key="@string/activity_settings_preferences_default_restaurant_key"
             android:summary="@string/activity_settings_preferences_default_restaurant_summary"
             android:title="@string/activity_settings_preferences_default_restaurant"/>
+
+        <SwitchPreference
+            android:defaultValue="@string/activity_settings_preferences_show_social_default"
+            android:key="@string/activity_settings_preferences_show_social_key"
+            android:summary="@string/activity_settings_preferences_show_social_summary"
+            android:title="@string/activity_settings_preferences_show_social"/>
 
         <SwitchPreference
             android:defaultValue="@string/activity_settings_preferences_images_in_main_default"

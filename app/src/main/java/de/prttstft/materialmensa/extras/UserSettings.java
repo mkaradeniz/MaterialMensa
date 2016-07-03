@@ -16,9 +16,11 @@ public class UserSettings {
     private static final String ALLERGENS_PREF = getAppContext().getString(R.string.activity_settings_preferences_allergens_key);
     private static final String DEFAULT_RESTAURANT_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_default_restaurant_default);
     private static final String DEFAULT_RESTAURANT_PREF = getAppContext().getString(R.string.activity_settings_preferences_default_restaurant_key);
+    private static final String HIDE_DAYS_PREF = getAppContext().getString(R.string.activity_settings_preferences_hide_days_key);
     private static final String HIDE_FILTERED_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_hide_filtered_default);
     private static final String HIDE_FILTERED_PREF = getAppContext().getString(R.string.activity_settings_preferences_hide_filtered_key);
-    private static final String HIDE_DAYS_PREF = getAppContext().getString(R.string.activity_settings_preferences_hide_days_key);
+    private static final String HIDE_SOCIAL_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_show_social_default);
+    private static final String HIDE_SOCIAL_PREF = getAppContext().getString(R.string.activity_settings_preferences_show_social_key);
     private static final String IMAGES_IN_MAIN_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_images_in_main_default);
     private static final String IMAGES_IN_MAIN_PREF = getAppContext().getString(R.string.activity_settings_preferences_images_in_main_key);
     private static final String LANGUAGE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_language_default);
@@ -53,9 +55,14 @@ public class UserSettings {
         return getLifestyle().equals(LIFESTYLE_LEVEL_FIVE_VEGAN) || sharedPreferences.getBoolean(HIDE_FILTERED_PREF, Boolean.valueOf(HIDE_FILTERED_DEFAULT));
     }
 
+    public static boolean getShowSocial() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
+        return sharedPreferences.getBoolean(HIDE_SOCIAL_PREF, Boolean.valueOf(HIDE_SOCIAL_DEFAULT));
+    }
+
     public static boolean isDayFiltered(int day) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
-        Set<String> days = sharedPreferences.getStringSet("prefHideDays", new HashSet<String>());
+        Set<String> days = sharedPreferences.getStringSet(HIDE_DAYS_PREF, new HashSet<String>());
 
         int dayOfWeek = DateTimeUtilities.getDayOfWeekInt(day);
         String[] daysArray = days.toArray(new String[days.size()]);

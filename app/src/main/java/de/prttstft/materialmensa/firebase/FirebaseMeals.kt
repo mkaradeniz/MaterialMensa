@@ -18,20 +18,23 @@ class FirebaseMeals() {
         val mealReference = firebaseDatabase.getReference(MEALS)
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
-        @JvmStatic fun addMealToDatabase(mealName: String) {
-            mealReference.child(mealName).addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(dataSnapshot: DataSnapshot?) {
-                    if (dataSnapshot != null && !dataSnapshot.exists()) {
-                        addMeal(mealName);
+        @JvmStatic fun addMealToDatabase(meal: Meal) {
+            if (meal.nameEn != null) {
+                mealReference.child(meal.nameEn).addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                        if (dataSnapshot != null && !dataSnapshot.exists()) {
+                            addMeal(meal)
+                        }
                     }
-                }
 
-                override fun onCancelled(databaseError: DatabaseError?) {
-                    if (databaseError != null) {
-                        Timber.e(databaseError.message)
+                    override fun onCancelled(databaseError: DatabaseError?) {
+                        if (databaseError != null) {
+                            Timber.e(databaseError.message)
+                        }
                     }
-                }
-            })
+                })
+            }
+
         }
 
         @JvmStatic fun downvoteMeal(mealName: String) {
@@ -71,10 +74,10 @@ class FirebaseMeals() {
         }
 
 
-        private fun addMeal(mealName: String) {
-            val newMeal: FirebaseMeal = FirebaseMeal(mealName)
+        private fun addMeal(meal: Meal) {
+            val newMeal: FirebaseMeal = FirebaseMeal(meal.nameDe, meal.nameEn)
 
-            mealReference.child(mealName).setValue(newMeal, DatabaseReference.CompletionListener { databaseError, ref ->
+            mealReference.child(meal.nameEn).setValue(newMeal, DatabaseReference.CompletionListener { databaseError, ref ->
                 if (databaseError != null) {
                     Timber.e(databaseError.message)
                 }
@@ -83,29 +86,27 @@ class FirebaseMeals() {
 
         private fun checkIfUserVoted(listener: MainFragmentListener, firebaseMeal: FirebaseMeal) {
             val meal: Meal = Meal()
-            meal.nameEn = firebaseMeal.name
+            meal.nameEn = firebaseMeal.nameEn
 
             if (firebaseMeal.downvotes != null) {
                 if (firebaseMeal.downvotes[userId] == true) {
-                    meal.isDownvoted = true;
-                    meal.isUpvoted = false;
+                    meal.isDownvoted = true
+                    meal.isUpvoted = false
                 } else {
-                    meal.isDownvoted = false;
+                    meal.isDownvoted = false
                 }
             }
 
             if (firebaseMeal.upvotes != null) {
                 if (firebaseMeal.upvotes[userId] == true) {
-                    meal.isDownvoted = false;
-                    meal.isUpvoted = true;
+                    meal.isDownvoted = false
+                    meal.isUpvoted = true
                 } else {
-                    meal.isUpvoted = false;
+                    meal.isUpvoted = false
                 }
             }
 
-            //if (meal.isDownvoted || meal.isUpvoted) {
             listener.sendUserVote(meal)
-            //}
         }
 
         private fun downvote(mealName: String) {
@@ -190,7 +191,7 @@ class FirebaseMeals() {
 
                         val meal = Meal()
 
-                        meal.nameEn = firebaseMeal.name
+                        meal.nameEn = firebaseMeal.nameEn
                         meal.score = upvotes - downvotes
 
                         checkIfUserVoted(listener, firebaseMeal)

@@ -285,6 +285,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         //noinspection ConstantConditions
         tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
+
+
     }
 
 

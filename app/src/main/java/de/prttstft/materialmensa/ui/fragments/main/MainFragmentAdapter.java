@@ -17,9 +17,8 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -27,6 +26,7 @@ import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.extensions.SelectionRecyclerView;
 import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.extras.Utilities;
+import de.prttstft.materialmensa.extras.UtilitiesKt;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentViewHolderListener;
 
@@ -144,26 +144,33 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
     }
 
     private void setUpSocialData(MainFragmentViewHolder holder, Meal meal) {
-        if (meal.getScore() > 0) {
-            String bla = "+" + String.valueOf(meal.getScore());
-            holder.score.setText(bla);
-        } else {
-            holder.score.setText(String.valueOf(meal.getScore()));
-        }
+        if (UserSettings.getShowSocial()) {
+            holder.socialRelativeLayout.setVisibility(View.VISIBLE);
 
-        /*if (meal.getScore() < 0) {
-            holder.view.setAlpha(0.3F);
-        }*/
+            if (meal.getScore() > 0) {
+                String bla = "+" + String.valueOf(meal.getScore());
+                holder.score.setText(bla);
+            } else {
+                holder.score.setText(String.valueOf(meal.getScore()));
+            }
 
-        if (meal.isDownvoted()) {
-            holder.downvoteArror.setImageAlpha(255);
-            holder.upvoteArrow.setImageAlpha(79);
-        } else if (meal.isUpvoted()) {
-            holder.downvoteArror.setImageAlpha(79);
-            holder.upvoteArrow.setImageAlpha(255);
+            // Some logic to fade out terrible meals.
+            /*if (meal.getScore() < 0) {
+                holder.view.setAlpha(meal.getScore() * 0.1F);
+            }*/
+
+            if (meal.isDownvoted()) {
+                holder.downvoteArror.setImageAlpha(255);
+                holder.upvoteArrow.setImageAlpha(79);
+            } else if (meal.isUpvoted()) {
+                holder.downvoteArror.setImageAlpha(79);
+                holder.upvoteArrow.setImageAlpha(255);
+            } else {
+                holder.downvoteArror.setImageAlpha(79);
+                holder.upvoteArrow.setImageAlpha(79);
+            }
         } else {
-            holder.downvoteArror.setImageAlpha(79);
-            holder.upvoteArrow.setImageAlpha(79);
+            holder.socialRelativeLayout.setVisibility(GONE);
         }
     }
 
@@ -183,47 +190,37 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
 
 
     public void addMeal(Meal meal) {
-        int index = alreadyInList(meal);
+        int index = getIndex(meal);
 
         if (index == -1) {
             meals.add(meal);
         } else {
             meals.set(index, meal);
         }
+    }
 
-
-        Collections.sort(meals, new Comparator<Meal>() {
-            @Override
-            public int compare(Meal meal1, Meal meal2) {
-                return (meal2.getScore() - meal1.getScore());
-            }
-        });
+    public void sortMeals() {
+        meals = UtilitiesKt.sortMeals(meals);
 
         notifyDataSetChanged();
     }
 
     public void updateMealWithScore(Meal meal) {
-        int index = alreadyInList(meal);
+        int index = getIndex(meal);
 
         if (index != -1) {
             meals.get(index).setScore(meal.getScore());
             notifyItemChanged(index);
         }
 
-        Collections.sort(meals, new Comparator<Meal>() {
-            @Override
-            public int compare(Meal meal1, Meal meal2) {
-                return (meal2.getScore() - meal1.getScore());
-            }
-        });
-
-        notifyDataSetChanged();
+        sortMeals();
     }
 
     public void updateMealWithVote(Meal meal) {
-        int index = alreadyInList(meal);
+        int index = getIndex(meal);
 
         if (index != -1) {
+
             if (meal.isDownvoted()) {
                 meals.get(index).setDownvoted(true);
                 meals.get(index).setUpvoted(false);
@@ -238,15 +235,20 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
                 notifyItemChanged(index);
             }
         }
+
+        sortMeals();
     }
 
 
-    private int alreadyInList(Meal meal) {
+    private int getIndex(Meal meal) {
         for (int i = 0; i < meals.size(); i++) {
-            if (meals.get(i).getNameEn().equals(meal.getNameEn())) {
-                return i;
+            if (meals.get(i).getNameEn() != null) {
+                if (Objects.equals(meals.get(i).getNameEn(), meal.getNameEn())) {
+                    return i;
+                }
             }
         }
+
         return -1;
     }
 
@@ -256,6 +258,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         @Bind(R.id.item_meal_footer) RelativeLayout footer;
         @Bind(R.id.item_meal_image) ImageView image;
         @Bind(R.id.item_meal_meal_container) RelativeLayout mealRelativeLayout;
+        @Bind(R.id.item_meal_social_container) RelativeLayout socialRelativeLayout;
         @Bind(R.id.item_meal_name) TextView name;
         @Bind(R.id.item_meal_price) TextView price;
         @Bind(R.id.item_meal_social_arrow_down) ImageView downvoteArror;

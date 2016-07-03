@@ -82,7 +82,9 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     @Override
     public void downvoteMeal(Meal meal) {
-        FirebaseMeals.downvoteMeal(meal.getNameEn());
+        if (meal.getNameEn() != null) {
+            FirebaseMeals.downvoteMeal(meal.getNameEn());
+        }
     }
 
     @Override
@@ -103,7 +105,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
             @Override
             public void onError(Throwable e) {
-                Timber.e(e.toString());
+                Timber.e(e.getMessage());
 
                 if (e instanceof UnknownHostException) {
                     listener.connectionError();
@@ -112,7 +114,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
             @Override
             public void onNext(Meal meal) {
-                addMealToDatabase(meal);
+                addMealToDatabase(prepareMeal(meal));
 
                 if (filterMeal(meal) && UserSettings.getHideFiltered()) {
                     listener.filteredMeal();
@@ -132,19 +134,27 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     @Override
     public void upvoteMeal(Meal meal) {
-        FirebaseMeals.upvoteMeal(meal.getNameEn());
+        if (meal.getNameEn() != null) {
+            FirebaseMeals.upvoteMeal(meal.getNameEn());
+        }
     }
 
 
     // Private Methods
 
     private void addMealToDatabase(Meal meal) {
-        meal.setNameEn(meal.getNameEn().replaceAll("/", "-"));
-
-        FirebaseMeals.addMealToDatabase(meal.getNameEn());
+        FirebaseMeals.addMealToDatabase(meal);
     }
 
     private Meal prepareMeal(Meal meal) {
+        if (meal.getNameEn() != null) {
+            meal.setNameEn(meal.getNameEn().replaceAll("/", "-"));
+        }
+
+        if (meal.getNameDe() != null) {
+            meal.setNameDe(meal.getNameDe().replaceAll("/", "-"));
+        }
+
         meal.setPriceString(getPriceString(meal));
         meal.setOrderNumber(getOrderNumber(meal));
         meal.setCustomDescription(getDescription(meal));

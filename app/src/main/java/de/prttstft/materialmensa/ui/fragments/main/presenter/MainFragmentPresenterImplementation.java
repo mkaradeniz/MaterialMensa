@@ -2,6 +2,7 @@ package de.prttstft.materialmensa.ui.fragments.main.presenter;
 
 import java.util.List;
 
+import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractor;
 import de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation;
@@ -48,12 +49,15 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
         if (view != null) {
             view.showProgress();
         }
+
         interactor.getMeals(this, day, restaurant);
     }
 
     @Override
     public void getSocialData(List<Meal> meals) {
-        interactor.getSocialData(this, meals);
+        if (UserSettings.getShowSocial()) {
+            interactor.getSocialData(this, meals);
+        }
     }
 
     @Override

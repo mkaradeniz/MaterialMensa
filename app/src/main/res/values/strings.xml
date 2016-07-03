@@ -113,8 +113,6 @@
     <string name="activity_settings_preferences_default_restaurant_default" translatable="false">0</string>
     <string name="activity_settings_preferences_default_restaurant_key" translatable="false">prefDefaultRestaurant</string>
     <string name="activity_settings_preferences_default_restaurant_summary">Can\'t think of a joke right now.</string>
-    <string name="activity_settings_preferences_filter">Hide Filtered Meals</string>
-    <string name="activity_settings_preferences_filter_summary">[Insert joke about object permanence here.]</string>
     <string name="activity_settings_preferences_hide_days">Hide Days</string>
     <string name="activity_settings_preferences_hide_days_fridays">Fridays</string>
     <string name="activity_settings_preferences_hide_days_key" translatable="false">prefHideDays</string>
@@ -125,8 +123,10 @@
     <string name="activity_settings_preferences_hide_days_thursdays">Thursdays</string>
     <string name="activity_settings_preferences_hide_days_tuesday">Tuesdays</string>
     <string name="activity_settings_preferences_hide_days_wednesdays">Wednesdays</string>
+    <string name="activity_settings_preferences_hide_filtered">Hide Filtered Meals</string>
     <string name="activity_settings_preferences_hide_filtered_default" translatable="false">true</string>
     <string name="activity_settings_preferences_hide_filtered_key" translatable="false">prefFilter</string>
+    <string name="activity_settings_preferences_hide_filtered_summary">[Insert joke about object permanence here.]</string>
     <string name="activity_settings_preferences_images_in_main">Show Images in main view</string>
     <string name="activity_settings_preferences_images_in_main_default" translatable="false">true</string>
     <string name="activity_settings_preferences_images_in_main_key" translatable="false">prefImagesInMain</string>
@@ -154,6 +154,10 @@
     <string name="activity_settings_preferences_role_staff">Staff</string>
     <string name="activity_settings_preferences_role_student">Student</string>
     <string name="activity_settings_preferences_role_summary">What would you say you do here?</string>
+    <string name="activity_settings_preferences_show_social">Show Social Features</string>
+    <string name="activity_settings_preferences_show_social_default" translatable="false">true</string>
+    <string name="activity_settings_preferences_show_social_key" translatable="false">prefSocial</string>
+    <string name="activity_settings_preferences_show_social_summary">IAMA Social Creature</string>
 
     <!-- Additives -->
     <string name="additive_1_dyes">Food coloring [1]</string>

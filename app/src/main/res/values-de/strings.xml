@@ -14,8 +14,8 @@
     <string name="activity_settings_preference_category_user_interface">Benutzeroberfläche</string>
     <string name="activity_settings_preferences_default_restaurant">Standard Restaurant</string>
     <string name="activity_settings_preferences_default_restaurant_summary">Oben oder unten?</string>
-    <string name="activity_settings_preferences_filter">Verstecke gefilterte Gerichte</string>
-    <string name="activity_settings_preferences_filter_summary">[Witz über Objektpermanenz hier einfügen.]</string>
+    <string name="activity_settings_preferences_hide_filtered">Verstecke gefilterte Gerichte</string>
+    <string name="activity_settings_preferences_hide_filtered_summary">[Witz über Objektpermanenz hier einfügen.]</string>
     <string name="activity_settings_preferences_hide_days">Verstecke Wochentage</string>
     <string name="activity_settings_preferences_hide_days_fridays">Freitage</string>
     <string name="activity_settings_preferences_hide_days_mondays">Montage</string>

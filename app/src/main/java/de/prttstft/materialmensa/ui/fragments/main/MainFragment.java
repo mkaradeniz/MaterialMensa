@@ -181,13 +181,16 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         if (adapter.getItemCount() == 0) {
             showEmpty();
         } else {
+            adapter.sortMeals();
+
+            presenter.getSocialData(adapter.meals);
+
             hideEmpty();
             hideFiltered();
             hideConnectionError();
         }
-        hideProgress();
 
-        presenter.getSocialData(adapter.meals);
+        hideProgress();
     }
 
     @Override
@@ -260,6 +263,30 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
 
+    private String buildShareString() {
+        String shareString = getActivity().getString(R.string.share_string_prefix, DateTimeUtilities.getShareDayString(getArguments().getInt(ARG_DAY)));
+
+        if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+            shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameDe();
+        } else {
+            shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameEn();
+        }
+
+        if (adapter.getSelectedItemCount() > 1) {
+            for (int i = 1; i < adapter.getSelectedItemsPositions().size(); i++) {
+                if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+                    shareString = shareString + ",\n" + adapter.meals.get(adapter.getSelectedItemsPositions().get(i)).getNameDe();
+                } else {
+                    shareString = shareString + ",\n" + adapter.meals.get(adapter.getSelectedItemsPositions().get(i)).getNameEn();
+                }
+            }
+        }
+
+        shareString = shareString + getActivity().getString(R.string.share_string_suffix, PLAY_STORE_URL);
+
+        return shareString;
+    }
+
     private void toggleSelection(int position) {
         if (adapter.isSelected(position)) {
             adapter.clearSelection(position);
@@ -285,29 +312,5 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
                 .setText(buildShareString())
                 .setChooserTitle(R.string.share_chooser_title)
                 .startChooser();
-    }
-
-    private String buildShareString() {
-        String shareString = getActivity().getString(R.string.share_string_prefix, DateTimeUtilities.getShareDayString(getArguments().getInt(ARG_DAY)));
-
-        if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
-            shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameDe();
-        } else {
-            shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameEn();
-        }
-
-        if (adapter.getSelectedItemCount() > 1) {
-            for (int i = 1; i < adapter.getSelectedItemsPositions().size(); i++) {
-                if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
-                    shareString = shareString + ",\n" + adapter.meals.get(adapter.getSelectedItemsPositions().get(i)).getNameDe();
-                } else {
-                    shareString = shareString + ",\n" + adapter.meals.get(adapter.getSelectedItemsPositions().get(i)).getNameEn();
-                }
-            }
-        }
-
-        shareString = shareString + getActivity().getString(R.string.share_string_suffix, PLAY_STORE_URL);
-
-        return shareString;
     }
 }
