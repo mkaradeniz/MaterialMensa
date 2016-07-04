@@ -261,6 +261,13 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         //adapter.updateMealWithVote(meal);
     }
 
+    @Override
+    public void sendSocialData(Meal meal) {
+        if (adapter != null) {
+            adapter.setSocialData(meal);
+        }
+    }
+
 
     private String buildShareString() {
         String shareString = getActivity().getString(R.string.share_string_prefix, DateTimeUtilities.getShareDayString(getArguments().getInt(ARG_DAY)));

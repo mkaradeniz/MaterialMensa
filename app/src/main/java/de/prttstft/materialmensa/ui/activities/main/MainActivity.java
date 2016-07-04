@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -23,6 +24,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.MyApplication;
@@ -36,6 +43,7 @@ import de.prttstft.materialmensa.ui.activities.main.view.MainView;
 import de.prttstft.materialmensa.ui.activities.settings.SettingsActivity;
 import de.prttstft.materialmensa.ui.fragments.main.MainFragment;
 import de.prttstft.materialmensa.ui.fragments.main.MainFragmentPagerAdapter;
+import timber.log.Timber;
 
 import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRestaurantIcon;
 import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRestaurantName;
@@ -61,12 +69,16 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private BottomSheetBehavior bottomSheetBehavior;
     private MainPresenter presenter;
     private int currentRestaurant = -1;
+    private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        //setUpFirebase();
 
         presenter = new MainPresenterImplementation(this);
 
@@ -77,6 +89,30 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setUpDrawer();
     }
 
+
+    private void setUpFirebase() {
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        firebaseAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                if (user == null) {
+                    MainActivity.this.firebaseAuth.signInAnonymously()
+                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (!task.isSuccessful()) {
+                                        Timber.e(task.getException(), "");
+                                    }
+                                }
+                            });
+                }
+
+            }
+        };
+    }
 
     private void setUpToolbar() {
         setSupportActionBar(toolbar);
@@ -285,16 +321,30 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         //noinspection ConstantConditions
         tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
-
-
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //firebaseAuth.addAuthStateListener(firebaseAuthStateListener);
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
 
         presenter.getRestaurantStatus();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (firebaseAuthStateListener != null) {
+            firebaseAuth.removeAuthStateListener(firebaseAuthStateListener);
+        }
     }
 
     @Override

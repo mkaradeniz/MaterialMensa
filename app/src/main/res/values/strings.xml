@@ -90,6 +90,7 @@
     <string name="item_meal_description_category_wrap" translatable="false">Wrap</string>
     <string name="item_meal_description_placeholder" translatable="false">Vegetarian Classic</string>
     <string name="item_meal_name_placeholder" translatable="false">Three variations of poultry with rucola salad and orange vinaigrette</string>
+    <string name="item_meal_positive_score" translatable="false">+ %1$s</string>
     <string name="item_meal_price_placeholder" translatable="false">0,90€/100gr</string>
     <string name="item_meal_price_string" translatable="false">%1$s€%2$s</string>
     <string name="item_meal_price_string_fixed" translatable="false"/>

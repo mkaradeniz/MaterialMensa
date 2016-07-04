@@ -7,10 +7,8 @@ open class UtilitiesKt() {
 
     companion object {
 
-        @JvmStatic fun sortMeals(meals: List<Meal>): List<Meal> {
-            var newMeals = meals.sorted()
-
-            return newMeals
+        @JvmStatic fun sortMeals(meals: List<Meal>): MutableList<Meal> {
+            return meals.sorted().toMutableList()
         }
 
     }

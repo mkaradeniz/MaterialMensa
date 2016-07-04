@@ -26,7 +26,7 @@
     <string name="activity_settings_preferences_hide_days_tuesday">Dienstage</string>
     <string name="activity_settings_preferences_hide_days_wednesdays">Mittwoche</string>
     <string name="activity_settings_preferences_images_in_main">Bilder in Hauptansicht</string>
-    <string name="activity_settings_preferences_images_in_main_summary">Ich bin eher der visuelle Typ.</string>
+    <string name="activity_settings_preferences_images_in_main_summary">Ich bin eher so der visuelle Typ.</string>
     <string name="activity_settings_preferences_language">Sprache (Neustart erforderlich)</string>
     <string name="activity_settings_preferences_language_de">Deutsch</string>
     <string name="activity_settings_preferences_language_en">Englisch</string>
@@ -107,4 +107,6 @@
     <string name="share_string_suffix">\n\nGeschickt von MaterialMensa: %1$s</string>
     <string name="upvote">Upvoten</string>
     <string name="downvote">Downvoten</string>
+    <string name="activity_settings_preferences_show_social">Aktiviere Social Features</string>
+    <string name="activity_settings_preferences_show_social_summary">Ich bin eher so der soziale Typ</string>
 </resources>

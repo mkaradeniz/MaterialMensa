@@ -8,11 +8,16 @@ import de.prttstft.materialmensa.ui.activities.main.MainActivity
 import timber.log.Timber
 
 class LaunchActivity : AppCompatActivity() {
-    private var auth: FirebaseAuth? = null;
+    private var auth: FirebaseAuth? = null
     private var authStateListener: FirebaseAuth.AuthStateListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        /*val startMainActivityIntent = Intent(this@LaunchActivity, MainActivity::class.java)
+        startActivity(startMainActivityIntent)
+
+        finish()*/
 
         auth = FirebaseAuth.getInstance()
 

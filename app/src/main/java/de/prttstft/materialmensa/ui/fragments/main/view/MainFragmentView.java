@@ -26,4 +26,6 @@ public interface MainFragmentView {
     void updateMealWithScore(Meal meal);
 
     void updateMealWithVote(Meal meal);
+
+    void sendSocialData(Meal meal);
 }

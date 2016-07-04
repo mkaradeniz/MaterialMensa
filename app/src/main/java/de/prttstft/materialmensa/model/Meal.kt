@@ -36,7 +36,7 @@ class Meal : Comparable<Meal> {
     var priceString: String? = null
     var score: Int = 0
     var upvotes: HashMap<String, Any> = HashMap()
-    var hasScores: Boolean = false;
+    var hasScores: Boolean = false
 
 
     val badge: String

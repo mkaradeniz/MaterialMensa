@@ -11,7 +11,5 @@ public interface MainFragmentListener {
 
     void onCompleted();
 
-    void sendMealScore(Meal meal);
-
-    void sendUserVote(Meal meal);
+    void sendSocialData(Meal meal);
 }

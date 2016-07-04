@@ -31,9 +31,11 @@ import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentViewHolderListener;
 
 import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
 
 public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmentAdapter.MainFragmentViewHolder> {
     private static final String LOCALE_DE = "Deutsch";
+
     public List<Meal> meals = new ArrayList<>();
     private MainFragmentViewHolderListener listener;
     private Context context;
@@ -61,7 +63,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         setUpSelection(holder, selected);
         setUpSocialData(holder, meal);
         setUpFooter(holder, position);
-    }/**/
+    }
 
 
     private void setUpFiltered(MainFragmentViewHolder holder, Meal meal) {
@@ -88,7 +90,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
 
                                 @Override
                                 public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                    holder.image.setVisibility(View.VISIBLE);
+                                    holder.image.setVisibility(VISIBLE);
                                     return false;
                                 }
                             })
@@ -103,7 +105,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
 
                                 @Override
                                 public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                    holder.image.setVisibility(View.VISIBLE);
+                                    holder.image.setVisibility(VISIBLE);
                                     return false;
                                 }
                             })
@@ -145,29 +147,32 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
 
     private void setUpSocialData(MainFragmentViewHolder holder, Meal meal) {
         if (UserSettings.getShowSocial()) {
-            holder.socialRelativeLayout.setVisibility(View.VISIBLE);
+            if (meal.getHasScores()) {
+                holder.socialRelativeLayout.setVisibility(VISIBLE);
 
-            if (meal.getScore() > 0) {
-                String bla = "+" + String.valueOf(meal.getScore());
-                holder.score.setText(bla);
+                if (meal.getScore() > 0) {
+                    holder.score.setText(context.getResources().getString(R.string.item_meal_positive_score, meal.getScore()));
+                } else {
+                    holder.score.setText(String.valueOf(meal.getScore()));
+                }
+
+                // Some logic to fade out terrible meals.
+                /*if (meal.getScore() < 0) {
+                    holder.view.setAlpha(meal.getScore() * 0.1F);
+                }*/
+
+                if (meal.isDownvoted()) {
+                    holder.downvoteArror.setImageAlpha(255);
+                    holder.upvoteArrow.setImageAlpha(79);
+                } else if (meal.isUpvoted()) {
+                    holder.downvoteArror.setImageAlpha(79);
+                    holder.upvoteArrow.setImageAlpha(255);
+                } else {
+                    holder.downvoteArror.setImageAlpha(79);
+                    holder.upvoteArrow.setImageAlpha(79);
+                }
             } else {
-                holder.score.setText(String.valueOf(meal.getScore()));
-            }
-
-            // Some logic to fade out terrible meals.
-            /*if (meal.getScore() < 0) {
-                holder.view.setAlpha(meal.getScore() * 0.1F);
-            }*/
-
-            if (meal.isDownvoted()) {
-                holder.downvoteArror.setImageAlpha(255);
-                holder.upvoteArrow.setImageAlpha(79);
-            } else if (meal.isUpvoted()) {
-                holder.downvoteArror.setImageAlpha(79);
-                holder.upvoteArrow.setImageAlpha(255);
-            } else {
-                holder.downvoteArror.setImageAlpha(79);
-                holder.upvoteArrow.setImageAlpha(79);
+                holder.socialRelativeLayout.setVisibility(GONE);
             }
         } else {
             holder.socialRelativeLayout.setVisibility(GONE);
@@ -176,7 +181,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
 
     private void setUpFooter(MainFragmentViewHolder holder, int position) {
         if (position == meals.size() - 1) {
-            holder.footer.setVisibility(View.VISIBLE);
+            holder.footer.setVisibility(VISIBLE);
         } else {
             holder.footer.setVisibility(View.GONE);
         }
@@ -201,44 +206,25 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         sortMeals();
     }
 
-    public void sortMeals() {
-        meals = UtilitiesKt.sortMeals(meals);
-
-        notifyDataSetChanged();
-    }
-
-    public void updateMealWithScore(Meal meal) {
+    public void setSocialData(Meal meal) {
         int index = getIndex(meal);
 
         if (index != -1) {
             meals.get(index).setScore(meal.getScore());
-            notifyItemChanged(index);
-        }
-
-        sortMeals();
-    }
-
-    public void updateMealWithVote(Meal meal) {
-        int index = getIndex(meal);
-
-        if (index != -1) {
 
             if (meal.isDownvoted()) {
                 meals.get(index).setDownvoted(true);
                 meals.get(index).setUpvoted(false);
-                notifyItemChanged(index);
             } else if (meal.isUpvoted()) {
                 meals.get(index).setDownvoted(false);
                 meals.get(index).setUpvoted(true);
-                notifyItemChanged(index);
             } else {
                 meals.get(index).setDownvoted(false);
                 meals.get(index).setUpvoted(false);
-                notifyItemChanged(index);
             }
-        }
 
-        sortMeals();
+            sortMeals();
+        }
     }
 
 
@@ -252,6 +238,12 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         }
 
         return -1;
+    }
+
+    private void sortMeals() {
+        meals = UtilitiesKt.sortMeals(meals);
+
+        notifyDataSetChanged();
     }
 
 

@@ -2,7 +2,6 @@ package de.prttstft.materialmensa.ui.fragments.main.interactor;
 
 import java.math.BigDecimal;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -81,8 +80,6 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     private static final String OTHER_WRAP = "wrap";
     private static final String PRICE_TYPE_WEIGHTED = "weighted";
 
-    private List<Meal> meals = new ArrayList<>();
-
 
     @Override
     public void downvoteMeal(Meal meal) {
@@ -106,7 +103,10 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
             @Override
             public void onCompleted() {
                 listener.onCompleted();
-                Timber.d("Hi from on completed");
+
+                if (UserSettings.getShowSocial()) {
+                    FirebaseMeals.setUpSocialListener(listener);
+                }
             }
 
             @Override
@@ -135,15 +135,6 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
         });
     }
 
-    private void sendMealsToFirebase(MainFragmentListener listener) {
-        FirebaseMeals.processMealList(listener, meals);
-    }
-
-    @Override
-    public void getSocialData(MainFragmentListener listener, List<Meal> meals) {
-        FirebaseMeals.getSocialData(listener, meals);
-    }
-
     @Override
     public void upvoteMeal(Meal meal) {
         if (meal.getNameEn() != null) {
@@ -151,17 +142,21 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
         }
     }
 
-    // Private Methods
 
+    // Private Methods
 
     private void sendMeal(MainFragmentListener listener, Meal meal) {
         listener.addMeal(meal);
 
-        //FirebaseMeals.getSocialDataMeal(listener, meal);
+        if (UserSettings.getShowSocial()) {
+            FirebaseMeals.getSocialDataMeal(listener, meal);
+        }
     }
 
     private void addMealToDatabase(Meal meal) {
-        FirebaseMeals.addMealToDatabase(meal);
+        if (UserSettings.getShowSocial()) {
+            FirebaseMeals.addMealToDatabase(meal);
+        }
     }
 
     private Meal prepareMeal(Meal meal) {
