@@ -14,8 +14,6 @@
     <string name="activity_settings_preference_category_user_interface">Benutzeroberfläche</string>
     <string name="activity_settings_preferences_default_restaurant">Standard Restaurant</string>
     <string name="activity_settings_preferences_default_restaurant_summary">Oben oder unten?</string>
-    <string name="activity_settings_preferences_hide_filtered">Verstecke gefilterte Gerichte</string>
-    <string name="activity_settings_preferences_hide_filtered_summary">[Witz über Objektpermanenz hier einfügen.]</string>
     <string name="activity_settings_preferences_hide_days">Verstecke Wochentage</string>
     <string name="activity_settings_preferences_hide_days_fridays">Freitage</string>
     <string name="activity_settings_preferences_hide_days_mondays">Montage</string>
@@ -25,6 +23,8 @@
     <string name="activity_settings_preferences_hide_days_thursdays">Donnerstage</string>
     <string name="activity_settings_preferences_hide_days_tuesday">Dienstage</string>
     <string name="activity_settings_preferences_hide_days_wednesdays">Mittwoche</string>
+    <string name="activity_settings_preferences_hide_filtered">Verstecke gefilterte Gerichte</string>
+    <string name="activity_settings_preferences_hide_filtered_summary">[Witz über Objektpermanenz hier einfügen.]</string>
     <string name="activity_settings_preferences_images_in_main">Bilder in Hauptansicht</string>
     <string name="activity_settings_preferences_images_in_main_summary">Ich bin eher so der visuelle Typ.</string>
     <string name="activity_settings_preferences_language">Sprache (Neustart erforderlich)</string>
@@ -39,6 +39,7 @@
     <string name="activity_settings_preferences_role_staff">Mitarbeiter*in</string>
     <string name="activity_settings_preferences_role_student">Student*in</string>
     <string name="activity_settings_preferences_role_summary">Was genau machst du eigentlich hier?</string>
+    <string name="activity_settings_preferences_show_social_summary">Ich bin eher so der soziale Typ</string>
     <string name="activity_settings_title">Einstellungen</string>
     <string name="additive_10_phenylalanine">Phenylalanin [10]</string>
     <string name="additive_11_taurine">Taurin [11]</string>
@@ -69,6 +70,7 @@
     <string name="allergen_8_nuts">Schalenfrüchte sowie daraus hergest. Erzeugnisse [A8]</string>
     <string name="allergen_9_celery">Sellerie und Sellerieerzeugnisse [A9]</string>
     <string name="app_name">MaterialMensa</string>
+    <string name="downvote">Downvoten</string>
     <string name="drawer_main_header_role_image_description">Rolle</string>
     <string name="drawer_main_restaurant_status_closed">Restaurant ist momentan geschlossen.</string>
     <string name="drawer_main_restaurant_status_closing_time">Restaurant ist noch %1$s:%2$sh geöffnet.</string>
@@ -106,7 +108,4 @@
     <string name="share_string_prefix">%1$s Mensen? Es gibt:\u0020</string>
     <string name="share_string_suffix">\n\nGeschickt von MaterialMensa: %1$s</string>
     <string name="upvote">Upvoten</string>
-    <string name="downvote">Downvoten</string>
-    <string name="activity_settings_preferences_show_social">Aktiviere Social Features</string>
-    <string name="activity_settings_preferences_show_social_summary">Ich bin eher so der soziale Typ</string>
 </resources>

@@ -15,6 +15,8 @@ public interface MainFragmentView {
 
     void hideProgress();
 
+    void sendSocialData(Meal meal);
+
     void showConnectionError();
 
     void showEmpty();
@@ -22,10 +24,4 @@ public interface MainFragmentView {
     void showFiltered();
 
     void showProgress();
-
-    void updateMealWithScore(Meal meal);
-
-    void updateMealWithVote(Meal meal);
-
-    void sendSocialData(Meal meal);
 }

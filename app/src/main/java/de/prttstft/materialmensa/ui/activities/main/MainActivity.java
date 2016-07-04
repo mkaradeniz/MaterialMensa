@@ -325,27 +325,12 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
-
-        //firebaseAuth.addAuthStateListener(firebaseAuthStateListener);
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
 
         presenter.getRestaurantStatus();
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-
-        if (firebaseAuthStateListener != null) {
-            firebaseAuth.removeAuthStateListener(firebaseAuthStateListener);
-        }
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -90,11 +90,11 @@
     <string name="item_meal_description_category_wrap" translatable="false">Wrap</string>
     <string name="item_meal_description_placeholder" translatable="false">Vegetarian Classic</string>
     <string name="item_meal_name_placeholder" translatable="false">Three variations of poultry with rucola salad and orange vinaigrette</string>
-    <string name="item_meal_positive_score" translatable="false">+ %1$s</string>
     <string name="item_meal_price_placeholder" translatable="false">0,90€/100gr</string>
     <string name="item_meal_price_string" translatable="false">%1$s€%2$s</string>
     <string name="item_meal_price_string_fixed" translatable="false"/>
     <string name="item_meal_price_string_weighted" translatable="false">/100gr</string>
+    <string name="item_meal_social_positive_score" translatable="false">+ %1$s</string>
     <string name="item_meal_social_score_placeholder" translatable="false">-2140</string>
 
     <!--  Settings Activity -->
@@ -155,7 +155,7 @@
     <string name="activity_settings_preferences_role_staff">Staff</string>
     <string name="activity_settings_preferences_role_student">Student</string>
     <string name="activity_settings_preferences_role_summary">What would you say you do here?</string>
-    <string name="activity_settings_preferences_show_social">Show Social Features</string>
+    <string name="activity_settings_preferences_show_social" translatable="false">Social Features</string>
     <string name="activity_settings_preferences_show_social_default" translatable="false">true</string>
     <string name="activity_settings_preferences_show_social_key" translatable="false">prefSocial</string>
     <string name="activity_settings_preferences_show_social_summary">IAMA Social Creature</string>
@@ -192,5 +192,4 @@
     <string name="allergen_12_sulphites">Sulphur dioxide and Sulphites [A12]</string>
     <string name="allergen_13_lupins">Lupins and/or products thereof [A13]</string>
     <string name="allergen_14_molluscs">Molluscs and/or products thereof [A14]</string>
-
 </resources>

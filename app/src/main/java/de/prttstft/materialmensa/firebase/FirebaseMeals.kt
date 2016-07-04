@@ -20,7 +20,6 @@ class FirebaseMeals() {
 
         val userId = FirebaseAuth.getInstance().currentUser?.uid
 
-
         @JvmStatic fun addMealToDatabase(meal: Meal) {
             if (userId != null) {
                 if (meal.nameEn != null) {
@@ -101,24 +100,6 @@ class FirebaseMeals() {
             }
         }
 
-        @JvmStatic fun upvoteMeal(mealName: String) {
-            if (userId != null) {
-                mealReference.child(mealName).addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(dataSnapshot: DataSnapshot?) {
-                        if (dataSnapshot != null && dataSnapshot.exists()) {
-                            upvote(mealName)
-                        }
-                    }
-
-                    override fun onCancelled(databaseError: DatabaseError?) {
-                        if (databaseError != null) {
-                            Timber.e(databaseError.message)
-                        }
-                    }
-                })
-            }
-        }
-
         @JvmStatic fun setUpSocialListener(listener: MainFragmentListener) {
             if (userId != null) {
                 mealReference.addChildEventListener(object : ChildEventListener {
@@ -148,6 +129,24 @@ class FirebaseMeals() {
 
                     override fun onCancelled(databaseError: DatabaseError?) {
                         Timber.e(databaseError?.message)
+                    }
+                })
+            }
+        }
+
+        @JvmStatic fun upvoteMeal(mealName: String) {
+            if (userId != null) {
+                mealReference.child(mealName).addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                        if (dataSnapshot != null && dataSnapshot.exists()) {
+                            upvote(mealName)
+                        }
+                    }
+
+                    override fun onCancelled(databaseError: DatabaseError?) {
+                        if (databaseError != null) {
+                            Timber.e(databaseError.message)
+                        }
                     }
                 })
             }

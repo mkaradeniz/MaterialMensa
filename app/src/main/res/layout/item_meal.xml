@@ -82,7 +82,7 @@
             android:contentDescription="@string/upvote"
             android:scaleX="1.5"
             android:scaleY="1.5"
-            android:src="@drawable/ic_arrow_drop_up_black"
+            android:src="@drawable/ic_arrow_black"
             android:tint="@color/colorAccent"/>
 
         <TextView
@@ -106,7 +106,7 @@
             android:rotation="180"
             android:scaleX="1.5"
             android:scaleY="1.5"
-            android:src="@drawable/ic_arrow_drop_up_black"
+            android:src="@drawable/ic_arrow_black"
             android:tint="@color/colorAccent"/>
 
     </RelativeLayout>

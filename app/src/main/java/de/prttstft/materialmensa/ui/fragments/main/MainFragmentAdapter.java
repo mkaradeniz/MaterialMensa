@@ -151,7 +151,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
                 holder.socialRelativeLayout.setVisibility(VISIBLE);
 
                 if (meal.getScore() > 0) {
-                    holder.score.setText(context.getResources().getString(R.string.item_meal_positive_score, meal.getScore()));
+                    holder.score.setText(context.getResources().getString(R.string.item_meal_social_positive_score, meal.getScore()));
                 } else {
                     holder.score.setText(String.valueOf(meal.getScore()));
                 }

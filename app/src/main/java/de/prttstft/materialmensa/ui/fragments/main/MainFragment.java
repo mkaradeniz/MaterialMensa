@@ -76,9 +76,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
 
         setUpRecyclerView(recyclerView);
         setUpActionMode();
-
-        emptyEmoji.setImageResource(getRandomEmoji());
-        filteredEmoji.setImageResource(getRandomEmoji());
+        setUpErrorViews();
 
         presenter.getMeals(getArguments().getInt(ARG_DAY), getArguments().getInt(ARG_RESTAURANT));
 
@@ -130,6 +128,12 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
                 actionMode = null;
             }
         };
+    }
+
+    private void setUpErrorViews() {
+        connectionErrorEmoji.setImageResource(getRandomEmoji());
+        emptyEmoji.setImageResource(getRandomEmoji());
+        filteredEmoji.setImageResource(getRandomEmoji());
     }
 
 
@@ -221,10 +225,18 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
     @Override
+    public void sendSocialData(Meal meal) {
+        if (adapter != null) {
+            adapter.setSocialData(meal);
+        }
+    }
+
+    @Override
     public void showConnectionError() {
         if (connectionError != null) {
             connectionError.setVisibility(VISIBLE);
         }
+
         hideEmpty();
         hideFiltered();
         hideProgress();
@@ -248,23 +260,6 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     public void showProgress() {
         if (progressBar != null) {
             progressBar.setVisibility(VISIBLE);
-        }
-    }
-
-    @Override
-    public void updateMealWithScore(Meal meal) {
-        //adapter.updateMealWithScore(meal);
-    }
-
-    @Override
-    public void updateMealWithVote(Meal meal) {
-        //adapter.updateMealWithVote(meal);
-    }
-
-    @Override
-    public void sendSocialData(Meal meal) {
-        if (adapter != null) {
-            adapter.setSocialData(meal);
         }
     }
 
