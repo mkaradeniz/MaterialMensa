@@ -4,4 +4,6 @@
     <dimen name="activity_about_logo">48dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="list_separator_horizontal_margin">28dp</dimen>
+    <dimen name="list_separator_vertical_margin">16dp</dimen>
 </resources>

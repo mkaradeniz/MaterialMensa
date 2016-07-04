@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="activity_about_button_rate">Bewerten</string>
-    <string name="activity_about_button_wish_list">Wunschliste</string>
     <string name="activity_about_title">Über</string>
     <string name="activity_details_image_description">Bild</string>
     <string name="activity_details_information">Alle Angaben über Allergene und Zusatzstoffe ohne Gewähr. Wenn du eine Allergie haben solltest oder bestimmte Zusatzstoffe vermeiden möchtest wende dich bitte an die geeigneten Mitarbeiterinnen und Mitarbeiter.</string>

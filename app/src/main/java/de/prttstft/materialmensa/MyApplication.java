@@ -16,10 +16,6 @@ import timber.log.Timber;
 public class MyApplication extends Application {
     private static MyApplication sInstance;
 
-    public static MyApplication getsInstance() {
-        return sInstance;
-    }
-
     public static Context getAppContext() {
         return sInstance.getApplicationContext();
     }
@@ -32,20 +28,9 @@ public class MyApplication extends Application {
 
         sInstance = this;
 
+        setUpLogging();
         setLanguage();
-
-        if (BuildConfig.DEBUG) {
-            Timber.plant(new Timber.DebugTree() {
-                @Override
-                protected String createStackElementTag(StackTraceElement element) {
-                    return "TMBR|" + super.createStackElementTag(element) + ":" + element.getLineNumber();
-                }
-            });
-        }
-
-        if (BuildConfig.BUILD_TYPE.equals("release")) {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        }
+        setUpFirebase();
     }
 
     // Need a new way of doing this in API >= 24.
@@ -55,5 +40,22 @@ public class MyApplication extends Application {
         Configuration config = new Configuration();
         config.locale = locale;
         getResources().updateConfiguration(config, null);
+    }
+
+    private void setUpLogging() {
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree() {
+                @Override
+                protected String createStackElementTag(StackTraceElement element) {
+                    return "TMBR|" + super.createStackElementTag(element) + ":" + element.getLineNumber();
+                }
+            });
+        }
+    }
+
+    private void setUpFirebase() {
+        if (BuildConfig.BUILD_TYPE.equals("release")) {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        }
     }
 }

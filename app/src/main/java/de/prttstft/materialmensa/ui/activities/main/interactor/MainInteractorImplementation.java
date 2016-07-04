@@ -33,12 +33,8 @@ import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_HOTSPOT;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_MENSULA;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_CLOSED_DE;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_CLOSED_EN;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_STARTS_WITH_OPENS_DE;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_STARTS_WITH_OPENS_EN;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_TEMPORALIY_CLOSED_DE;
-import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_TEMPORALIY_CLOSED_EN;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_STARTS_WITH_OPEN_DE;
+import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_STATUS_STARTS_WITH_OPEN_EN;
 
 public class MainInteractorImplementation implements MainInteractor {
     @Override
@@ -54,7 +50,7 @@ public class MainInteractorImplementation implements MainInteractor {
 
             @Override
             public void onError(Throwable e) {
-                Timber.e(e.getMessage());
+                Timber.e(e, e.getMessage());
             }
 
             @Override
@@ -166,7 +162,7 @@ public class MainInteractorImplementation implements MainInteractor {
     }
 
     private boolean restaurantOpen(String status) {
-        return !(status.startsWith(RESTAURANT_STATUS_CLOSED_EN) || status.startsWith(RESTAURANT_STATUS_CLOSED_DE) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS_EN) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPENS_DE) || status.startsWith(RESTAURANT_STATUS_TEMPORALIY_CLOSED_EN) || status.startsWith(RESTAURANT_STATUS_TEMPORALIY_CLOSED_DE)) && !status.isEmpty();
+        return (status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPEN_DE) || status.startsWith(RESTAURANT_STATUS_STARTS_WITH_OPEN_EN));
     }
 
     private String getClosingTime(String status) {

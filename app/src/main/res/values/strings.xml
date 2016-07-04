@@ -29,17 +29,16 @@
 
 
     <!-- About Activity -->
-    <string name="activity_about_button_api" translatable="false">API</string>
-    <string name="activity_about_button_emoji" translatable="false">Emoji</string>
-    <string name="activity_about_button_git_hub" translatable="false">GitHub</string>
-    <string name="activity_about_button_icons" translatable="false">Icons</string>
-    <string name="activity_about_button_libraries" translatable="false">Open Source</string>
-    <string name="activity_about_button_rate">Rate</string>
-    <string name="activity_about_button_wish_list">Wish List</string>
-    <string name="activity_about_credits" translatable="false">Max Karadeniz\n prttstft.dev@gmail.com</string>
+    <string name="activity_about_attribution_api" translatable="false">API</string>
+    <string name="activity_about_attribution_emoji" translatable="false">Emoji</string>
+    <string name="activity_about_attribution_icons" translatable="false">Icons</string>
+    <string name="activity_about_attribution_libraries" translatable="false">Libraries</string>
     <string name="activity_about_email_subject" translatable="false">[MaterialMensa] Ahoi!</string>
+    <string name="activity_about_general_git_hub" translatable="false">GitHub</string>
+    <string name="activity_about_general_mail_me" translatable="false">Mail Me</string>
+    <string name="activity_about_general_rate" translatable="false">Rate</string>
+    <string name="activity_about_general_wish_list" translatable="false">Wish List</string>
     <string name="activity_about_libraries_title" translatable="false">Libraries</string>
-    <string name="activity_about_one_day" translatable="false">One day this screen will be pretty. One day…</string>
     <string name="activity_about_title">About</string>
     <string name="activity_about_version" translatable="false">Version %1$s (%2$s)</string>
 

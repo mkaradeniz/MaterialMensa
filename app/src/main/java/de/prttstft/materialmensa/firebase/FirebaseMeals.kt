@@ -26,7 +26,7 @@ class FirebaseMeals() {
                     mealReference.child(meal.nameEn).addListenerForSingleValueEvent(object : ValueEventListener {
                         override fun onDataChange(dataSnapshot: DataSnapshot?) {
                             if (dataSnapshot != null && !dataSnapshot.exists()) {
-                                val newMeal: FirebaseMeal = FirebaseMeal(meal.nameDe, meal.nameEn)
+                                val newMeal: FirebaseMeal = FirebaseMeal(meal)
 
                                 mealReference.child(meal.nameEn).setValue(newMeal, DatabaseReference.CompletionListener { databaseError, ref ->
                                     if (databaseError != null) {

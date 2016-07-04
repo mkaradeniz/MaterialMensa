@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
@@ -31,16 +30,17 @@ public class AboutActivity extends AppCompatActivity {
     @SuppressWarnings("SpellCheckingInspection") private static final Uri ICONS_EIGHT_URL = Uri.parse("https://icons8.com/");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri PLAY_STORE_URL = Uri.parse("https://goo.gl/HD2ed2");
     @SuppressWarnings("SpellCheckingInspection") private static final Uri WISH_LIST_URL = Uri.parse("https://www.amazon.de/registry/wishlist/2RQNQ7DEKD9WF");
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_api) AppCompatButton buttonApi;
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_emoji) AppCompatButton buttonEmojis;
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_git_hub) AppCompatButton buttonGitHub;
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_icons) AppCompatButton buttonIcons;
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_libraries) AppCompatButton buttonLibraries;
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_rate) AppCompatButton buttonRate;
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_button_wish_list) AppCompatButton buttonWishList;
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_credits) TextView credits;
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_toolbar) Toolbar toolbar;
-    @SuppressWarnings({"WeakerAccess", "unused"}) @Bind(R.id.activity_about_version) TextView version;
+
+    @Bind(R.id.activity_about_attributions_api) TextView apiTextView;
+    @Bind(R.id.activity_about_attributions_emoji) TextView emojiTextView;
+    @Bind(R.id.activity_about_attributions_icons) TextView iconsTextView;
+    @Bind(R.id.activity_about_attributions_libraries) TextView librariesTextView;
+    @Bind(R.id.activity_about_general_git_hub) TextView gitHubTextView;
+    @Bind(R.id.activity_about_general_mail_me) TextView mailMeTextView;
+    @Bind(R.id.activity_about_general_rate) TextView rateTextView;
+    @Bind(R.id.activity_about_general_wish_list) TextView wishListTextView;
+    @Bind(R.id.activity_about_toolbar) Toolbar toolbar;
+    @Bind(R.id.activity_about_version) TextView versionTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,56 +54,42 @@ public class AboutActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        version.setText(getString(R.string.activity_about_version, BuildConfig.VERSION_NAME, Utilities.addLeadingZero(BuildConfig.VERSION_CODE, 3)));
+        versionTextView.setText(getString(R.string.activity_about_version, BuildConfig.VERSION_NAME, Utilities.addLeadingZero(BuildConfig.VERSION_CODE, 3)));
 
         setUpOnClickListeners();
     }
 
 
     private void setUpOnClickListeners() {
-        buttonApi.setOnClickListener(new View.OnClickListener() {
+        apiTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startCustomTab(API_URL);
             }
         });
 
-        buttonEmojis.setOnClickListener(new View.OnClickListener() {
+        emojiTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startCustomTab(EMOJI_ONE_URL);
             }
         });
 
-        buttonGitHub.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startCustomTab(GIT_HUB_REPO_URL);
-            }
-        });
-
-        buttonIcons.setOnClickListener(new View.OnClickListener() {
+        iconsTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startCustomTab(ICONS_EIGHT_URL);
             }
         });
 
-        buttonRate.setOnClickListener(new View.OnClickListener() {
+        gitHubTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rateApp();
+                startCustomTab(GIT_HUB_REPO_URL);
             }
         });
 
-        buttonWishList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startCustomTab(WISH_LIST_URL);
-            }
-        });
-
-        buttonLibraries.setOnClickListener(new View.OnClickListener() {
+        librariesTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Status Bar bugged.
@@ -119,7 +105,7 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
-        credits.setOnClickListener(new View.OnClickListener() {
+        mailMeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent sendEmailIntent = new Intent(Intent.ACTION_SENDTO, EMAIL);
@@ -129,6 +115,19 @@ public class AboutActivity extends AppCompatActivity {
         });
 
 
+        rateTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rateApp();
+            }
+        });
+
+        wishListTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startCustomTab(WISH_LIST_URL);
+            }
+        });
     }
 
 
