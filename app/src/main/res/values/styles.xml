@@ -9,6 +9,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="windowActionModeOverlay">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -28,6 +30,12 @@
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <style name="AppTheme.Details">
+        <item name="android:windowSharedElementEnterTransition" tools:targetApi="lollipop">
+            @transition/shared_main_detail
+        </item>
     </style>
 
     <style name="AboutLibraries" parent="ThemeOverlay.AppCompat.Light">

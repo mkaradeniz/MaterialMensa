@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
@@ -57,6 +58,8 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
         Meal meal = meals.get(position);
         Boolean selected = isSelected(position);
 
+        holder.view.setTag(meal);
+
         setUpFiltered(holder, meal);
         setUpImage(holder, meal);
         setUpMealText(holder, meal);
@@ -79,40 +82,38 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
             ViewGroup.MarginLayoutParams nameLayoutParams = (ViewGroup.MarginLayoutParams) holder.name.getLayoutParams();
             nameLayoutParams.setMarginStart(Utilities.convertDpToPx(79));
 
-            if (meal.getImage() != null) {
-                if (Utilities.onWifi()) {
-                    Glide.with(context).load(meal.getImage())
-                            .listener(new RequestListener<String, GlideDrawable>() {
-                                @Override
-                                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                                    return false;
-                                }
+            if (Utilities.onWifi()) {
+                Glide.with(context).load(meal.getImage()).diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .listener(new RequestListener<String, GlideDrawable>() {
+                            @Override
+                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                //Timber.e(e, e.getMessage());
+                                return false;
+                            }
 
-                                @Override
-                                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                    holder.image.setVisibility(VISIBLE);
-                                    return false;
-                                }
-                            })
-                            .into(holder.image);
-                } else {
-                    Glide.with(context).load(meal.getThumbnail())
-                            .listener(new RequestListener<String, GlideDrawable>() {
-                                @Override
-                                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                                    return false;
-                                }
-
-                                @Override
-                                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                    holder.image.setVisibility(VISIBLE);
-                                    return false;
-                                }
-                            })
-                            .into(holder.image);
-                }
+                            @Override
+                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                holder.image.setVisibility(VISIBLE);
+                                return false;
+                            }
+                        })
+                        .into(holder.image);
             } else {
-                holder.image.setVisibility(GONE);
+                Glide.with(context).load(meal.getThumbnail()).diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .listener(new RequestListener<String, GlideDrawable>() {
+                            @Override
+                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                //Timber.e(e, e.getMessage());
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                holder.image.setVisibility(VISIBLE);
+                                return false;
+                            }
+                        })
+                        .into(holder.image);
             }
         } else {
             ViewGroup.MarginLayoutParams nameLayoutParams = (ViewGroup.MarginLayoutParams) holder.name.getLayoutParams();
@@ -146,7 +147,7 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
     }
 
     private void setUpSocialData(MainFragmentViewHolder holder, Meal meal) {
-        if (UserSettings.getShowSocial()) {
+        if (UserSettings.getSocialFeatures()) {
             if (meal.getHasScores()) {
                 holder.socialRelativeLayout.setVisibility(VISIBLE);
 
@@ -230,10 +231,8 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
 
     private int getIndex(Meal meal) {
         for (int i = 0; i < meals.size(); i++) {
-            if (meals.get(i).getNameEn() != null) {
-                if (Objects.equals(meals.get(i).getNameEn(), meal.getNameEn())) {
-                    return i;
-                }
+            if (Objects.equals(meals.get(i).getNameEn(), meal.getNameEn())) {
+                return i;
             }
         }
 
@@ -269,7 +268,8 @@ public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmen
             mealRelativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onClick(getAdapterPosition());
+                    listener.onClick(getAdapterPosition(), image);
+
                 }
             });
 

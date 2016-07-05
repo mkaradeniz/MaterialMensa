@@ -6,8 +6,7 @@
     android:id="@+id/activity_main_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".ui.activities.main.MainActivity">
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -62,7 +61,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="16dp"
-                android:text="@string/placeholder"
                 android:textSize="16sp"/>
 
         </android.support.v4.widget.NestedScrollView>

@@ -9,8 +9,8 @@ android {
         applicationId "de.prttstft.materialmensa"
         minSdkVersion 19
         targetSdkVersion 24
-        versionCode 13
-        versionName "1.1.2"
+        versionCode 14
+        versionName "2.0.0"
     }
 
     buildTypes {
@@ -55,8 +55,8 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.1'
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'io.reactivex:rxandroid:1.1.0'
-    compile 'jp.wasabeef:glide-transformations:2.0.1'
     compile 'net.danlew:android.joda:2.9.2'
+    compile 'net.opacapp:multiline-collapsingtoolbar:1.2.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 repositories {

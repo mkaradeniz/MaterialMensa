@@ -3,6 +3,7 @@ package de.prttstft.materialmensa.ui.fragments.main;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.ContextCompat;
@@ -151,13 +152,19 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
     @Override
-    public void onClick(int position) {
+    public void onClick(int position, ImageView image) {
         if (actionMode != null) {
             toggleSelection(position);
         } else {
-            Intent startDetailsActivityIntent = new Intent(getActivity(), DetailsActivity.class);
-            startDetailsActivityIntent.putExtra(MEAL, new Gson().toJson(adapter.meals.get(position)));
-            startActivity(startDetailsActivityIntent);
+            if (adapter.meals.get(position).getImage().isEmpty()) {
+                Intent startDetailsActivityIntent = new Intent(getActivity(), DetailsActivity.class);
+                startDetailsActivityIntent.putExtra(MEAL, new Gson().toJson(adapter.meals.get(position)));
+                startActivity(startDetailsActivityIntent);
+            } else {
+                Intent startDetailsActivityIntent = new Intent(getActivity(), DetailsActivity.class);
+                startDetailsActivityIntent.putExtra(MEAL, new Gson().toJson(adapter.meals.get(position)));
+                startActivity(startDetailsActivityIntent, ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), image, "target").toBundle());
+            }
         }
     }
 

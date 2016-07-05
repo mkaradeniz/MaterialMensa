@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import de.prttstft.materialmensa.extras.UserSettings
+import de.prttstft.materialmensa.extras.UtilitiesKt
 import de.prttstft.materialmensa.ui.activities.main.MainActivity
 import timber.log.Timber
 
@@ -14,36 +16,38 @@ class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /*val startMainActivityIntent = Intent(this@LaunchActivity, MainActivity::class.java)
-        startActivity(startMainActivityIntent)
+        if (UtilitiesKt.arePlayServicesInstalled(this)) {
+            auth = FirebaseAuth.getInstance()
 
-        finish()*/
+            authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+                val user = firebaseAuth.currentUser
+                if (user != null) {
+                    launchMainActivity()
+                    finish()
+                } else {
+                    auth!!.signInAnonymously().addOnCompleteListener(this, { task ->
+                        if (!task.isSuccessful) {
+                            Timber.e(task.exception?.message)
+                        }
+                    })
 
-        auth = FirebaseAuth.getInstance()
-
-        authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
-            val user = firebaseAuth.currentUser
-            if (user != null) {
-                val startMainActivityIntent = Intent(this@LaunchActivity, MainActivity::class.java)
-                startActivity(startMainActivityIntent)
-
-                finish()
-            } else {
-                auth!!.signInAnonymously().addOnCompleteListener(this, { task ->
-
-                    if (!task.isSuccessful) {
-                        Timber.e(task.exception?.message)
-                    }
-                })
-
+                }
             }
+        } else {
+            UserSettings.disableSocialFeatures()
+
+            launchMainActivity()
+            finish()
         }
     }
+
 
     public override fun onStart() {
         super.onStart()
 
-        auth!!.addAuthStateListener(authStateListener!!)
+        if (auth != null) {
+            auth!!.addAuthStateListener(authStateListener!!)
+        }
     }
 
     public override fun onStop() {
@@ -52,5 +56,11 @@ class LaunchActivity : AppCompatActivity() {
         if (authStateListener != null) {
             auth!!.removeAuthStateListener(authStateListener!!)
         }
+    }
+
+
+    private fun launchMainActivity() {
+        val startMainActivityIntent = Intent(this@LaunchActivity, MainActivity::class.java)
+        startActivity(startMainActivityIntent)
     }
 }

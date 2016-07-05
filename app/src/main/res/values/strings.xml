@@ -106,6 +106,7 @@
     <string name="activity_settings_preference_allergens_summary">Select your personal kryptonite.</string>
     <string name="activity_settings_preference_category_allergens_additives">Allergens &amp; Additives</string>
     <string name="activity_settings_preference_category_general">General</string>
+    <string name="activity_settings_preference_category_general_key" translatable="false">prefCategoryGeneral</string>
     <string name="activity_settings_preference_category_user_interface">User Interface</string>
     <string name="activity_settings_preferences_additives_key" translatable="false">prefAdditives</string>
     <string name="activity_settings_preferences_allergens_key" translatable="false">prefAllergens</string>

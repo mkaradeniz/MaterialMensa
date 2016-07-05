@@ -55,7 +55,7 @@ public class UserSettings {
         return getLifestyle().equals(LIFESTYLE_LEVEL_FIVE_VEGAN) || sharedPreferences.getBoolean(HIDE_FILTERED_PREF, Boolean.valueOf(HIDE_FILTERED_DEFAULT));
     }
 
-    public static boolean getShowSocial() {
+    public static boolean getSocialFeatures() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
         return sharedPreferences.getBoolean(HIDE_SOCIAL_PREF, Boolean.valueOf(HIDE_SOCIAL_DEFAULT));
     }
@@ -105,5 +105,13 @@ public class UserSettings {
     public static String getRole() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
         return sharedPreferences.getString(ROLE_PREF, ROLE_DEFAULT);
+    }
+
+
+    public static void disableSocialFeatures() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(HIDE_SOCIAL_PREF, false);
+        editor.apply();
     }
 }

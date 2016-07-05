@@ -83,9 +83,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     @Override
     public void downvoteMeal(Meal meal) {
-        if (meal.getNameEn() != null) {
-            FirebaseMeals.downvoteMeal(meal.getNameEn());
-        }
+        FirebaseMeals.downvoteMeal(meal.getNameEn());
     }
 
     @Override
@@ -104,7 +102,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
             public void onCompleted() {
                 listener.onCompleted();
 
-                if (UserSettings.getShowSocial()) {
+                if (UserSettings.getSocialFeatures()) {
                     FirebaseMeals.setUpSocialListener(listener);
                 }
             }
@@ -137,9 +135,7 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
     @Override
     public void upvoteMeal(Meal meal) {
-        if (meal.getNameEn() != null) {
-            FirebaseMeals.upvoteMeal(meal.getNameEn());
-        }
+        FirebaseMeals.upvoteMeal(meal.getNameEn());
     }
 
 
@@ -148,25 +144,21 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     private void sendMeal(MainFragmentListener listener, Meal meal) {
         listener.addMeal(meal);
 
-        if (UserSettings.getShowSocial()) {
+        if (UserSettings.getSocialFeatures()) {
             FirebaseMeals.getSocialDataMeal(listener, meal);
         }
     }
 
     private void addMealToDatabase(Meal meal) {
-        if (UserSettings.getShowSocial()) {
+        if (UserSettings.getSocialFeatures()) {
             FirebaseMeals.addMealToDatabase(meal);
         }
     }
 
     private Meal prepareMeal(Meal meal) {
-        if (meal.getNameEn() != null) {
-            meal.setNameEn(meal.getNameEn().replaceAll("/", "-"));
-        }
+        meal.setNameEn(meal.getNameEn().replaceAll("/", "-"));
 
-        if (meal.getNameDe() != null) {
-            meal.setNameDe(meal.getNameDe().replaceAll("/", "-"));
-        }
+        meal.setNameDe(meal.getNameDe().replaceAll("/", "-"));
 
         meal.setPriceString(getPriceString(meal));
         meal.setOrderNumber(getOrderNumber(meal));

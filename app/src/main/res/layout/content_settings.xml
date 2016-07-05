@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".ui.activities.settings.SettingsActivity"
+    tools:keep="@layout/content_settings"
     tools:showIn="@layout/activity_settings">
 
     <fragment
         android:id="@+id/activity_settings_fragment"
-        class="de.prttstft.materialmensa.ui.activities.settings.SettingsFragment"
+        class="de.prttstft.materialmensa.ui.fragments.settings.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@android:layout/preference_category"/>

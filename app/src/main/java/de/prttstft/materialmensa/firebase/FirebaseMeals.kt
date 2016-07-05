@@ -22,27 +22,25 @@ class FirebaseMeals() {
 
         @JvmStatic fun addMealToDatabase(meal: Meal) {
             if (userId != null) {
-                if (meal.nameEn != null) {
-                    mealReference.child(meal.nameEn).addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(dataSnapshot: DataSnapshot?) {
-                            if (dataSnapshot != null && !dataSnapshot.exists()) {
-                                val newMeal: FirebaseMeal = FirebaseMeal(meal)
+                mealReference.child(meal.nameEn).addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot?) {
+                        if (dataSnapshot != null && !dataSnapshot.exists()) {
+                            val newMeal: FirebaseMeal = FirebaseMeal(meal)
 
-                                mealReference.child(meal.nameEn).setValue(newMeal, DatabaseReference.CompletionListener { databaseError, ref ->
-                                    if (databaseError != null) {
-                                        Timber.e(databaseError.message)
-                                    }
-                                })
-                            }
+                            mealReference.child(meal.nameEn).setValue(newMeal, DatabaseReference.CompletionListener { databaseError, ref ->
+                                if (databaseError != null) {
+                                    Timber.e(databaseError.message)
+                                }
+                            })
                         }
+                    }
 
-                        override fun onCancelled(databaseError: DatabaseError?) {
-                            if (databaseError != null) {
-                                Timber.e(databaseError.message)
-                            }
+                    override fun onCancelled(databaseError: DatabaseError?) {
+                        if (databaseError != null) {
+                            Timber.e(databaseError.message)
                         }
-                    })
-                }
+                    }
+                })
             }
         }
 
@@ -182,9 +180,7 @@ class FirebaseMeals() {
         }
 
         private fun mergeMeals(meal: Meal, firebaseMeal: FirebaseMeal): Meal {
-            if (meal.nameEn == null) {
-                meal.nameEn = firebaseMeal.nameEn
-            }
+            meal.nameEn = firebaseMeal.nameEn
 
             if (firebaseMeal.downvotes != null) {
                 meal.downvotes = firebaseMeal.downvotes
