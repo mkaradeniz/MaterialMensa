@@ -1,5 +1,5 @@
 # MaterialMensa.Legacy
-This is the legacy, no longer maintained, version of [MaterialMensa](/github.com/prttstft/MaterialMensa) without any social features or Google Play Services dependencies.
+This is the legacy, no longer maintained, version of [MaterialMensa](https://github.com/prttstft/MaterialMensa/tree/master) without any social features or Google Play Services dependencies.
 
 ## Development Requirements
 You need a personal API-Key issued by the [Studentenwerk Paderborn](http://www.studentenwerk-pb.de).
