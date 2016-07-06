@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Analytics;
 import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
@@ -320,5 +321,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
                 .setText(buildShareString())
                 .setChooserTitle(R.string.share_chooser_title)
                 .startChooser();
+
+        Analytics.mealsShared();
     }
 }

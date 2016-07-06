@@ -2,6 +2,7 @@ package de.prttstft.materialmensa.firebase
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import de.prttstft.materialmensa.extras.Analytics
 import de.prttstft.materialmensa.model.FirebaseMeal
 import de.prttstft.materialmensa.model.Meal
 import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentListener
@@ -28,7 +29,9 @@ class FirebaseMeals() {
                             val newMeal: FirebaseMeal = FirebaseMeal(meal)
 
                             mealReference.child(meal.nameEn).setValue(newMeal, DatabaseReference.CompletionListener { databaseError, ref ->
-                                if (databaseError != null) {
+                                if (databaseError == null) {
+                                    Analytics.mealAddedToDatabase()
+                                } else {
                                     Timber.e(databaseError.message)
                                 }
                             })
@@ -86,6 +89,8 @@ class FirebaseMeals() {
                             socialMeal.hasScores = true
 
                             listener.addMeal(socialMeal)
+
+                            Analytics.socialMealServed()
                         }
                     }
 
@@ -152,9 +157,11 @@ class FirebaseMeals() {
 
 
         private fun addVote(type: String, mealName: String) {
-            mealReference.child(mealName).child(type).child(userId).setValue(null, DatabaseReference.CompletionListener { databaseError, ref ->
-                if (databaseError != null) {
-                    Timber.e(databaseError.message)
+            mealReference.child(mealName).child(type).child(userId).setValue(true, DatabaseReference.CompletionListener { databaseError, ref ->
+                if (type == DOWNVOTES) {
+                    Analytics.mealdownvoted()
+                } else if (type == UPVOTES) {
+                    Analytics.mealUpvoted()
                 }
             })
         }
@@ -163,11 +170,11 @@ class FirebaseMeals() {
             mealReference.child(mealName).child(DOWNVOTES).child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot?) {
                     if (dataSnapshot != null && dataSnapshot.exists()) {
-                        addVote(DOWNVOTES, mealName)
-                        addVote(UPVOTES, mealName)
-                    } else {
                         removeVote(DOWNVOTES, mealName)
-                        addVote(UPVOTES, mealName)
+                        removeVote(UPVOTES, mealName)
+                    } else {
+                        addVote(DOWNVOTES, mealName)
+                        removeVote(UPVOTES, mealName)
                     }
                 }
 
@@ -214,8 +221,14 @@ class FirebaseMeals() {
         }
 
         private fun removeVote(type: String, mealName: String) {
-            mealReference.child(mealName).child(type).child(userId).setValue(true, DatabaseReference.CompletionListener { databaseError, ref ->
-                if (databaseError != null) {
+            mealReference.child(mealName).child(type).child(userId).setValue(null, DatabaseReference.CompletionListener { databaseError, ref ->
+                if (databaseError == null) {
+                    if (type == DOWNVOTES) {
+                        Analytics.mealdownvoteRemoved()
+                    } else if (type == UPVOTES) {
+                        Analytics.mealUpvoteRemoved()
+                    }
+                } else {
                     Timber.e(databaseError.message)
                 }
             })
@@ -225,11 +238,11 @@ class FirebaseMeals() {
             mealReference.child(mealName).child(UPVOTES).child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot?) {
                     if (dataSnapshot != null && dataSnapshot.exists()) {
-                        addVote(DOWNVOTES, mealName)
-                        addVote(UPVOTES, mealName)
-                    } else {
+                        removeVote(DOWNVOTES, mealName)
                         removeVote(UPVOTES, mealName)
-                        addVote(DOWNVOTES, mealName)
+                    } else {
+                        addVote(UPVOTES, mealName)
+                        removeVote(DOWNVOTES, mealName)
                     }
                 }
 

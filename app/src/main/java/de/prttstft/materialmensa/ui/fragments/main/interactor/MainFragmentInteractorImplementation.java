@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Analytics;
 import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.firebase.FirebaseMeals;
@@ -124,8 +125,12 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
                 if (filterMeal(meal) && UserSettings.getHideFiltered()) {
                     listener.filteredMeal();
+
+                    Analytics.mealFiltered();
                 } else if (filterLifestyle(meal)) {
                     listener.filteredMeal();
+
+                    Analytics.mealFiltered();
                 } else {
                     sendMeal(listener, meal);
                 }

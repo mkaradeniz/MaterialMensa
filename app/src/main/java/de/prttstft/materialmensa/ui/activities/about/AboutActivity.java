@@ -19,6 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.BuildConfig;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Analytics;
 import de.prttstft.materialmensa.extras.Utilities;
 
 public class AboutActivity extends AppCompatActivity {
@@ -48,17 +49,25 @@ public class AboutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_about);
         ButterKnife.bind(this);
 
+        setUpToolbar();
+        setUpView();
+        setUpOnClickListeners();
+
+        Analytics.activityAboutViewed();
+    }
+
+
+    private void setUpToolbar() {
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-
-        versionTextView.setText(getString(R.string.activity_about_version, BuildConfig.VERSION_NAME, Utilities.addLeadingZero(BuildConfig.VERSION_CODE, 3)));
-
-        setUpOnClickListeners();
     }
 
+    private void setUpView() {
+        versionTextView.setText(getString(R.string.activity_about_version, BuildConfig.VERSION_NAME, Utilities.addLeadingZero(BuildConfig.VERSION_CODE, 3)));
+    }
 
     private void setUpOnClickListeners() {
         apiTextView.setOnClickListener(new View.OnClickListener() {

@@ -28,6 +28,11 @@ class LaunchActivity : AppCompatActivity() {
                     auth!!.signInAnonymously().addOnCompleteListener(this, { task ->
                         if (!task.isSuccessful) {
                             Timber.e(task.exception?.message)
+
+                            UserSettings.disableSocialFeatures()
+
+                            launchMainActivity()
+                            finish()
                         }
                     })
 

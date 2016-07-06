@@ -27,6 +27,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.MyApplication;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Analytics;
 import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.ui.activities.about.AboutActivity;
@@ -75,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setUpFirstDay(0);
         setUpTabs();
         setUpDrawer();
+
+        Analytics.activityMainViewed();
     }
 
 
@@ -259,34 +262,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
         }
     }
 
-    private void getRestaurantStatus(int restaurant) {
-        currentRestaurant = restaurant;
-
-        hideBottomSheet();
-
-        presenter.getRestaurantStatus();
-    }
-
-    private void setRestaurantClosed(int position) {
-        Drawable tabIcon = ResourcesCompat.getDrawable(getResources(), getRestaurantIcon(position), null);
-        assert tabIcon != null;
-        Drawable wrappedTabIcon = DrawableCompat.wrap(tabIcon);
-        DrawableCompat.setTintList(wrappedTabIcon, ContextCompat.getColorStateList(this, R.color.restaurant_status_closed));
-
-        //noinspection ConstantConditions
-        tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
-    }
-
-    private void setRestaurantOpen(int position) {
-        Drawable tabIcon = ResourcesCompat.getDrawable(getResources(), getRestaurantIcon(position), null);
-        assert tabIcon != null;
-        Drawable wrappedTabIcon = DrawableCompat.wrap(tabIcon);
-        DrawableCompat.setTintList(wrappedTabIcon, ContextCompat.getColorStateList(this, R.color.restaurant_status_open));
-
-        //noinspection ConstantConditions
-        tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
-    }
-
 
     @Override
     protected void onResume() {
@@ -340,9 +315,37 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
 
+    private void getRestaurantStatus(int restaurant) {
+        currentRestaurant = restaurant;
+
+        hideBottomSheet();
+
+        presenter.getRestaurantStatus();
+    }
+
     private void hideBottomSheet() {
         bottomSheetBehavior.setHideable(true);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+    }
+
+    private void setRestaurantClosed(int position) {
+        Drawable tabIcon = ResourcesCompat.getDrawable(getResources(), getRestaurantIcon(position), null);
+        assert tabIcon != null;
+        Drawable wrappedTabIcon = DrawableCompat.wrap(tabIcon);
+        DrawableCompat.setTintList(wrappedTabIcon, ContextCompat.getColorStateList(this, R.color.restaurant_status_closed));
+
+        //noinspection ConstantConditions
+        tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
+    }
+
+    private void setRestaurantOpen(int position) {
+        Drawable tabIcon = ResourcesCompat.getDrawable(getResources(), getRestaurantIcon(position), null);
+        assert tabIcon != null;
+        Drawable wrappedTabIcon = DrawableCompat.wrap(tabIcon);
+        DrawableCompat.setTintList(wrappedTabIcon, ContextCompat.getColorStateList(this, R.color.restaurant_status_open));
+
+        //noinspection ConstantConditions
+        tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
     }
 
     private void showBottomSheet() {

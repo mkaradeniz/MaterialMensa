@@ -20,6 +20,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Analytics;
 import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.Utilities;
 import de.prttstft.materialmensa.model.Meal;
@@ -49,6 +50,8 @@ public class DetailsActivity extends AppCompatActivity {
         getExtras();
         setUpToolbar();
         setUpView();
+
+        Analytics.activityDetailsViewed();
     }
 
 
@@ -211,5 +214,7 @@ public class DetailsActivity extends AppCompatActivity {
                 .setText(buildShareString())
                 .setChooserTitle(R.string.share_chooser_title)
                 .startChooser();
+
+        Analytics.mealShared();
     }
 }

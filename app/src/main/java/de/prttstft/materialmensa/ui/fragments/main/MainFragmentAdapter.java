@@ -35,7 +35,7 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MainFragmentAdapter extends SelectionRecyclerView<Meal, MainFragmentAdapter.MainFragmentViewHolder> {
-    private static final String LOCALE_DE = "Deutsch";
+    public static final String LOCALE_DE = "Deutsch";
 
     public List<Meal> meals = new ArrayList<>();
     private MainFragmentViewHolderListener listener;

@@ -28,14 +28,14 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true">
 
                 <ImageView
                     android:id="@+id/activity_details_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="@string/activity_details_image_description"
-                    android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     android:transitionName="target"
                     app:layout_collapseMode="parallax"

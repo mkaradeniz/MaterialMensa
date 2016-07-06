@@ -1,3 +1,4 @@
+@file:JvmName("Meal")
 package de.prttstft.materialmensa.model
 
 import com.google.gson.annotations.SerializedName

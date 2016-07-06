@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import butterknife.ButterKnife
 import de.prttstft.materialmensa.R
+import de.prttstft.materialmensa.extras.Analytics
 
 class SettingsActivity : AppCompatActivity() {
     var toolbar: Toolbar? = null
@@ -15,7 +16,10 @@ class SettingsActivity : AppCompatActivity() {
         ButterKnife.bind(this)
 
         setUpToolbar()
+
+        Analytics.activitySettingsViewed()
     }
+
 
     private fun setUpToolbar() {
         toolbar = findViewById(R.id.activity_settings_toolbar) as Toolbar

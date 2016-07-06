@@ -9,7 +9,7 @@ android {
         applicationId "de.prttstft.materialmensa"
         minSdkVersion 19
         targetSdkVersion 24
-        versionCode 14
+        versionCode 15
         versionName "2.0.0"
     }
 
@@ -20,6 +20,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
         }
     }
     sourceSets {

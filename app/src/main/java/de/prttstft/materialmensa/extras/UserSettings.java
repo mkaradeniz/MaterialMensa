@@ -12,6 +12,9 @@ import static de.prttstft.materialmensa.MyApplication.getAppContext;
 import static de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.LIFESTYLE_LEVEL_FIVE_VEGAN;
 
 public class UserSettings {
+    public static final String LANGUAGE_PREF = getAppContext().getString(R.string.activity_settings_preferences_language_key);
+    public static final String LIFESTYLE_PREF = getAppContext().getString(R.string.activity_settings_preferences_lifestyle_key);
+    public static final String ROLE_PREF = getAppContext().getString(R.string.activity_settings_preferences_role_key);
     private static final String ADDITIVES_PREF = getAppContext().getString(R.string.activity_settings_preferences_additives_key);
     private static final String ALLERGENS_PREF = getAppContext().getString(R.string.activity_settings_preferences_allergens_key);
     private static final String DEFAULT_RESTAURANT_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_default_restaurant_default);
@@ -24,11 +27,8 @@ public class UserSettings {
     private static final String IMAGES_IN_MAIN_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_images_in_main_default);
     private static final String IMAGES_IN_MAIN_PREF = getAppContext().getString(R.string.activity_settings_preferences_images_in_main_key);
     private static final String LANGUAGE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_language_default);
-    private static final String LANGUAGE_PREF = getAppContext().getString(R.string.activity_settings_preferences_language_key);
     private static final String LIFESTYLE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_lifestyle_default);
-    private static final String LIFESTYLE_PREF = getAppContext().getString(R.string.activity_settings_preferences_lifestyle_key);
     private static final String ROLE_DEFAULT = getAppContext().getString(R.string.activity_settings_preferences_role_default);
-    private static final String ROLE_PREF = getAppContext().getString(R.string.activity_settings_preferences_role_key);
 
     private UserSettings() {
 
