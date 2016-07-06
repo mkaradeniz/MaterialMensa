@@ -1,116 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
-    tools:context=".ui.activities.about.AboutActivity"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_about">
 
-    <ImageView
-        android:id="@+id/activity_about_logo"
-        android:layout_width="@dimen/activity_about_logo"
-        android:layout_height="@dimen/activity_about_logo"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:contentDescription="@string/app_name"
-        android:src="@mipmap/ic_launcher"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/activity_about_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/activity_about_logo"
-        android:layout_centerHorizontal="true"
-        android:text="@string/app_name"
-        android:textAppearance="?android:textAppearanceLarge"
-        android:textColor="@color/colorAccent"/>
+        <RelativeLayout
+            android:id="@+id/activity_about_joust_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/activity_about_version"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/activity_about_name"
-        android:layout_centerHorizontal="true"
-        android:text="@string/activity_about_version"
-        android:textAppearance="?android:textAppearanceSmall"/>
+            <ImageView
+                android:id="@+id/activity_about_general_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:contentDescription="@string/placeholder"
+                android:src="@drawable/splash_logo"
+                android:tint="@color/textPrimary"/>
 
-    <TextView
-        android:id="@+id/activity_about_credits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/activity_about_version"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:gravity="center"
-        android:text="@string/activity_about_credits"
-        android:textAppearance="?android:textAppearanceSmall"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignBaseline="@+id/activity_about_general_icon"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@+id/activity_about_general_icon"
+                android:orientation="vertical">
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/activity_about_button_rate"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/activity_about_credits"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/activity_about_button_rate"/>
+                <TextView
+                    android:id="@+id/activity_about_general_git_hub"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:text="@string/activity_about_general_git_hub"
+                    android:textColor="@color/textPrimary"/>
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/activity_about_button_wish_list"
-        android:layout_width="@dimen/activity_about_button_width"
-        android:layout_height="@dimen/activity_about_button_height"
-        android:layout_below="@+id/activity_about_button_rate"
-        android:layout_centerInParent="true"
-        android:text="@string/activity_about_button_wish_list"/>
+                <TextView
+                    android:id="@+id/activity_about_general_mail_me"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:text="@string/activity_about_general_mail_me"
+                    android:textColor="@color/textPrimary"/>
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/activity_about_button_api"
-        android:layout_width="@dimen/activity_about_button_width"
-        android:layout_height="@dimen/activity_about_button_height"
-        android:layout_below="@id/activity_about_button_wish_list"
-        android:layout_centerInParent="true"
-        android:text="@string/activity_about_button_api"/>
+                <TextView
+                    android:id="@+id/activity_about_general_rate"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:text="@string/activity_about_general_rate"
+                    android:textColor="@color/textPrimary"/>
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/activity_about_button_emojis"
-        android:layout_width="@dimen/activity_about_button_width"
-        android:layout_height="@dimen/activity_about_button_height"
-        android:layout_below="@id/activity_about_button_api"
-        android:layout_centerInParent="true"
-        android:text="@string/activity_about_button_emojis"/>
+                <TextView
+                    android:id="@+id/activity_about_general_wish_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:text="@string/activity_about_general_wish_list"
+                    android:textColor="@color/textPrimary"/>
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/activity_about_button_git_hub"
-        android:layout_width="130dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/activity_about_button_emojis"
-        android:layout_centerInParent="true"
-        android:text="@string/activity_about_button_git_hub"/>
+            </LinearLayout>
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/activity_about_button_icons"
-        android:layout_width="@dimen/activity_about_button_width"
-        android:layout_height="@dimen/activity_about_button_height"
-        android:layout_below="@id/activity_about_button_git_hub"
-        android:layout_centerInParent="true"
-        android:text="@string/activity_about_button_icons"/>
+        </RelativeLayout>
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/activity_about_button_libraries"
-        android:layout_width="@dimen/activity_about_button_width"
-        android:layout_height="@dimen/activity_about_button_height"
-        android:layout_below="@+id/activity_about_button_icons"
-        android:layout_centerInParent="true"
-        android:text="@string/activity_about_button_libraries"/>
+        <View
+            android:id="@+id/activity_about_separator1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/activity_about_joust_container"
+            android:layout_marginBottom="@dimen/list_separator_vertical_margin"
+            android:layout_marginEnd="@dimen/list_separator_horizontal_margin"
+            android:layout_marginStart="@dimen/list_separator_horizontal_margin"
+            android:layout_marginTop="@dimen/list_separator_vertical_margin"
+            android:background="@color/materialGrey500"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/activity_about_button_libraries"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:gravity="center"
-        android:text="@string/activity_about_one_day"/>
+        <RelativeLayout
+            android:id="@+id/activity_about_attributions_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/activity_about_separator1">
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/activity_about_attributions_icon"
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:contentDescription="@string/placeholder"
+                android:src="@drawable/ic_list_black"
+                android:tint="@color/textPrimary"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignBaseline="@+id/activity_about_attributions_icon"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="-10dp"
+                android:layout_toEndOf="@+id/activity_about_attributions_icon"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activity_about_attributions_api"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:text="@string/activity_about_attribution_api"
+                    android:textColor="@color/textPrimary"/>
+
+                <TextView
+                    android:id="@+id/activity_about_attributions_emoji"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:text="@string/activity_about_attribution_emoji"
+                    android:textColor="@color/textPrimary"/>
+
+                <TextView
+                    android:id="@+id/activity_about_attributions_icons"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:text="@string/activity_about_attribution_icons"
+                    android:textColor="@color/textPrimary"/>
+
+                <TextView
+                    android:id="@+id/activity_about_attributions_libraries"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:text="@string/activity_about_attribution_libraries"
+                    android:textColor="@color/textPrimary"/>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/activity_about_separator2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/activity_about_attributions_container"
+            android:layout_marginBottom="@dimen/list_separator_vertical_margin"
+            android:layout_marginEnd="@dimen/list_separator_horizontal_margin"
+            android:layout_marginStart="@dimen/list_separator_horizontal_margin"
+            android:layout_marginTop="@dimen/list_separator_vertical_margin"
+            android:background="@color/materialGrey400"/>
+
+        <TextView
+            android:id="@+id/activity_about_version"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_below="@id/activity_about_separator2"
+            android:gravity="center"
+            android:text="@string/placeholder"
+            android:textColor="@color/textPrimary"/>
+
+    </RelativeLayout>
+
+
+</android.support.v4.widget.NestedScrollView>

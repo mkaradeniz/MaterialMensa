@@ -1,139 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.activities.details.DetailsActivity"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_details">
 
     <RelativeLayout
-        android:id="@+id/activity_details_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/activity_details_image_container"
+        <TextView
+            android:id="@+id/activity_details_additives_allergens"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:visibility="gone">
-
-            <ImageView
-                android:id="@+id/activity_details_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:alpha="1"
-                android:contentDescription="@string/activity_details_image_description"
-                android:scaleType="centerCrop"/>
-
-            <ProgressBar
-                android:id="@+id/activity_details_image_progress_bar"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:indeterminate="true"
-                android:visibility="gone"/>
-
-            <RelativeLayout
-                android:id="@+id/item_meal_name_container"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_gravity="bottom"
-                android:background="@drawable/background_transparent_details"
-                android:gravity="bottom">
-
-                <TextView
-                    android:id="@+id/item_meal_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_above="@+id/activity_details_name"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="@string/item_meal_description_placeholder"
-                    android:textAppearance="?android:textAppearanceSmall"
-                    android:textColor="@color/textPrimary"/>
-
-                <TextView
-                    android:id="@+id/activity_details_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="bottom"
-                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                    android:layout_marginStart="@dimen/activity_horizontal_margin"
-                    android:ellipsize="end"
-                    android:gravity="bottom"
-                    android:maxLines="2"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/textPrimaryLight"/>
-
-            </RelativeLayout>
-
-        </FrameLayout>
-
-        <RelativeLayout
-            android:id="@+id/activity_details_no_image_container"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone">
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="16dp"
+            android:text="@string/placeholder"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/colorAccent"
+            android:textIsSelectable="true"/>
 
-            <TextView
-                android:id="@+id/activity_details_description_no_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="?actionBarSize"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:paddingTop="6dp"
-                android:text="@string/item_meal_description_placeholder"
-                android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="@color/textSecondary"/>
-
-            <TextView
-                android:id="@+id/activity_details_name_no_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/activity_details_description_no_image"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                android:layout_marginEnd="@dimen/activity_horizontal_margin"
-                android:layout_marginStart="@dimen/activity_horizontal_margin"
-                android:ellipsize="end"
-                android:gravity="bottom"
-                android:maxLines="2"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="@color/colorAccent"/>
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/activity_details_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_details_additives_allergens"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:text="@string/activity_details_information"
+            android:textColor="@color/textSecondary"
+            android:textIsSelectable="true"/>
 
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/activity_details_additives_allergens"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/activity_details_container"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="@color/colorAccent"/>
 
-    <TextView
-        android:id="@+id/activity_details_information"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/activity_details_additives_allergens"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/activity_details_information"
-        android:textAppearance="?android:textAppearanceSmall"
-        android:textColor="@color/textSecondary"/>
-
-</RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

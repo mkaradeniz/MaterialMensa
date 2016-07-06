@@ -11,6 +11,7 @@
     <color name="textSecondary">#8C000000</color>
     <color name="textSecondaryLight">#8CFFFFFF</color>
     <color name="blackAlpha40">#66000000</color>
+    <color name="whiteAlpha40">#66FFFFFF</color>
 
     <!-- Material Colors -->
     <color name="materialAmber500" tools:ignore="UnusedResources">#FFC107</color>

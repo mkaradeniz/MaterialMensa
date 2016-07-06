@@ -8,6 +8,7 @@ import java.util.Set;
 import de.prttstft.materialmensa.R;
 import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.UserSettings;
+import de.prttstft.materialmensa.firebase.FirebaseMeals;
 import de.prttstft.materialmensa.model.Meal;
 import de.prttstft.materialmensa.network.MensaAPI;
 import de.prttstft.materialmensa.ui.fragments.main.listener.MainFragmentListener;
@@ -16,6 +17,7 @@ import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
 
 import static de.prttstft.materialmensa.MyApplication.getAppContext;
 import static de.prttstft.materialmensa.constants.APIConstants.API_RESTAURANT_ACADEMICA;
@@ -42,7 +44,6 @@ import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_HOTSPOT;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_MENSULA;
 import static de.prttstft.materialmensa.constants.RestaurantConstants.RESTAURANT_ID_ONE_WAY_SNACK;
-import static de.prttstft.materialmensa.extras.Utilities.L;
 
 public class MainFragmentInteractorImplementation implements MainFragmentInteractor {
     public static final String LIFESTYLE_LEVEL_FIVE_VEGAN = "level_five_vegan";
@@ -79,6 +80,12 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
     private static final String OTHER_WRAP = "wrap";
     private static final String PRICE_TYPE_WEIGHTED = "weighted";
 
+
+    @Override
+    public void downvoteMeal(Meal meal) {
+        FirebaseMeals.downvoteMeal(meal.getNameEn());
+    }
+
     @Override
     public void getMeals(final MainFragmentListener listener, final int day, final int restaurant) {
         Observable<Meal> observable = MensaAPI.mensaAPI.getMeals(DateTimeUtilities.getDateString(day), getRestaurantString(restaurant)).flatMap(new Func1<List<Meal>, Observable<Meal>>() {
@@ -86,19 +93,24 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
             public Observable<Meal> call(List<Meal> iterable) {
                 return Observable.from(iterable);
             }
-        }).subscribeOn(Schedulers.newThread())
+        })
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
 
         observable.subscribe(new Observer<Meal>() {
             @Override
             public void onCompleted() {
-                listener.onComplete();
+                listener.onCompleted();
+
+                if (UserSettings.getSocialFeatures()) {
+                    FirebaseMeals.setUpSocialListener(listener);
+                }
             }
 
             @Override
             public void onError(Throwable e) {
-                L("Error adding meal: " + e.toString());
-                //L(e.getClass().getName());
+                Timber.e(e, e.getMessage());
+
                 if (e instanceof UnknownHostException) {
                     listener.connectionError();
                 }
@@ -106,21 +118,48 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
 
             @Override
             public void onNext(Meal meal) {
+                meal = prepareMeal(meal);
+
+                addMealToDatabase(meal);
+
                 if (filterMeal(meal) && UserSettings.getHideFiltered()) {
                     listener.filteredMeal();
                 } else if (filterLifestyle(meal)) {
                     listener.filteredMeal();
                 } else {
-                    listener.addMeal(prepareMeal(meal));
+                    sendMeal(listener, meal);
                 }
             }
         });
     }
 
+    @Override
+    public void upvoteMeal(Meal meal) {
+        FirebaseMeals.upvoteMeal(meal.getNameEn());
+    }
+
 
     // Private Methods
 
+    private void sendMeal(MainFragmentListener listener, Meal meal) {
+        listener.addMeal(meal);
+
+        if (UserSettings.getSocialFeatures()) {
+            FirebaseMeals.getSocialDataMeal(listener, meal);
+        }
+    }
+
+    private void addMealToDatabase(Meal meal) {
+        if (UserSettings.getSocialFeatures()) {
+            FirebaseMeals.addMealToDatabase(meal);
+        }
+    }
+
     private Meal prepareMeal(Meal meal) {
+        meal.setNameEn(meal.getNameEn().replaceAll("/", "-"));
+
+        meal.setNameDe(meal.getNameDe().replaceAll("/", "-"));
+
         meal.setPriceString(getPriceString(meal));
         meal.setOrderNumber(getOrderNumber(meal));
         meal.setCustomDescription(getDescription(meal));

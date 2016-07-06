@@ -1,9 +1,11 @@
 *.iml
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
+.gradle
+/.idea/libraries
+/.idea/workspace.xml
 /build
 /captures
+/local.properties
+app/google-services.json
+app/libs/
 secrets.properties

@@ -4,14 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.util.Log;
 import android.util.TypedValue;
 
 import java.util.Locale;
 
 import de.prttstft.materialmensa.MyApplication;
-
-import static de.prttstft.materialmensa.constants.GeneralConstants.LOGTAG;
 
 public class Utilities {
     private static final String LANGUAGE_DE = "Deutsch";
@@ -24,16 +21,12 @@ public class Utilities {
     }
 
 
-    public static void L(String input) {
-        Log.d(LOGTAG, input);
-    }
-
     public static String addLeadingZero(int n, int places) {
         String placesPattern = "%0" + places + "d";
         return String.format(Locale.GERMAN, placesPattern, n);
     }
 
-    public static int convertToPx(int dp) {
+    public static int convertDpToPx(int dp) {
         Resources resources = MyApplication.getAppContext().getResources();
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.getDisplayMetrics());
     }
@@ -53,6 +46,7 @@ public class Utilities {
     public static boolean onWifi() {
         ConnectivityManager cm = (ConnectivityManager) MyApplication.getAppContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
         if (activeNetwork != null) {
             if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI) {
                 return true;

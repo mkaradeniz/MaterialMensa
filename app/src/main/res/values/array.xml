@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- General -->
-    <string-array name="empty_array" translatable="false"/>
+    <string-array name="empty_array" translatable="false" tools:keep="@array/empty_array"/>
 
 
     <!-- Activities -->

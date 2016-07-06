@@ -3,6 +3,7 @@ package de.prttstft.materialmensa.ui.fragments.main;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ShareCompat;
 import android.support.v4.content.ContextCompat;
@@ -76,9 +77,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
 
         setUpRecyclerView(recyclerView);
         setUpActionMode();
-
-        emptyEmoji.setImageResource(getRandomEmoji());
-        filteredEmoji.setImageResource(getRandomEmoji());
+        setUpErrorViews();
 
         presenter.getMeals(getArguments().getInt(ARG_DAY), getArguments().getInt(ARG_RESTAURANT));
 
@@ -132,20 +131,40 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         };
     }
 
+    private void setUpErrorViews() {
+        connectionErrorEmoji.setImageResource(getRandomEmoji());
+        emptyEmoji.setImageResource(getRandomEmoji());
+        filteredEmoji.setImageResource(getRandomEmoji());
+    }
+
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
 
+
+    // View Holder Listener
     @Override
-    public void onClick(int position) {
+    public void downvoteMeal(int position) {
+        presenter.downvoteMeal(adapter.meals.get(position));
+    }
+
+    @Override
+    public void onClick(int position, ImageView image) {
         if (actionMode != null) {
             toggleSelection(position);
         } else {
-            Intent startDetailsActivityIntent = new Intent(getActivity(), DetailsActivity.class);
-            startDetailsActivityIntent.putExtra(MEAL, new Gson().toJson(adapter.meals.get(position)));
-            startActivity(startDetailsActivityIntent);
+            if (adapter.meals.get(position).getImage().isEmpty()) {
+                Intent startDetailsActivityIntent = new Intent(getActivity(), DetailsActivity.class);
+                startDetailsActivityIntent.putExtra(MEAL, new Gson().toJson(adapter.meals.get(position)));
+                startActivity(startDetailsActivityIntent);
+            } else {
+                Intent startDetailsActivityIntent = new Intent(getActivity(), DetailsActivity.class);
+                startDetailsActivityIntent.putExtra(MEAL, new Gson().toJson(adapter.meals.get(position)));
+                startActivity(startDetailsActivityIntent, ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), image, "target").toBundle());
+            }
         }
     }
 
@@ -158,6 +177,13 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
     @Override
+    public void upvoteMeal(int position) {
+        presenter.upvoteMeal(adapter.meals.get(position));
+    }
+
+
+    // View Listener
+    @Override
     public void addMeal(Meal meal) {
         if (adapter != null) {
             adapter.addMeal(meal);
@@ -165,7 +191,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
     @Override
-    public void onComplete() {
+    public void onCompleted() {
         if (adapter.getItemCount() == 0) {
             showEmpty();
         } else {
@@ -173,6 +199,7 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
             hideFiltered();
             hideConnectionError();
         }
+
         hideProgress();
     }
 
@@ -205,10 +232,18 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
     }
 
     @Override
+    public void sendSocialData(Meal meal) {
+        if (adapter != null) {
+            adapter.setSocialData(meal);
+        }
+    }
+
+    @Override
     public void showConnectionError() {
         if (connectionError != null) {
             connectionError.setVisibility(VISIBLE);
         }
+
         hideEmpty();
         hideFiltered();
         hideProgress();
@@ -233,6 +268,31 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
         if (progressBar != null) {
             progressBar.setVisibility(VISIBLE);
         }
+    }
+
+
+    private String buildShareString() {
+        String shareString = getActivity().getString(R.string.share_string_prefix, DateTimeUtilities.getShareDayString(getArguments().getInt(ARG_DAY)));
+
+        if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+            shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameDe();
+        } else {
+            shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameEn();
+        }
+
+        if (adapter.getSelectedItemCount() > 1) {
+            for (int i = 1; i < adapter.getSelectedItemsPositions().size(); i++) {
+                if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
+                    shareString = shareString + ",\n" + adapter.meals.get(adapter.getSelectedItemsPositions().get(i)).getNameDe();
+                } else {
+                    shareString = shareString + ",\n" + adapter.meals.get(adapter.getSelectedItemsPositions().get(i)).getNameEn();
+                }
+            }
+        }
+
+        shareString = shareString + getActivity().getString(R.string.share_string_suffix, PLAY_STORE_URL);
+
+        return shareString;
     }
 
     private void toggleSelection(int position) {
@@ -260,29 +320,5 @@ public class MainFragment extends Fragment implements MainFragmentView, MainFrag
                 .setText(buildShareString())
                 .setChooserTitle(R.string.share_chooser_title)
                 .startChooser();
-    }
-
-    private String buildShareString() {
-        String shareString = getActivity().getString(R.string.share_string_prefix, DateTimeUtilities.getShareDayString(getArguments().getInt(ARG_DAY)));
-
-        if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
-            shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameDe();
-        } else {
-            shareString = shareString + adapter.meals.get(adapter.getSelectedItemsPositions().get(0)).getNameEn();
-        }
-
-        if (adapter.getSelectedItemCount() > 1) {
-            for (int i = 1; i < adapter.getSelectedItemsPositions().size(); i++) {
-                if (Utilities.getSystemLanguage().equals(LOCALE_DE)) {
-                    shareString = shareString + ",\n" + adapter.meals.get(adapter.getSelectedItemsPositions().get(i)).getNameDe();
-                } else {
-                    shareString = shareString + ",\n" + adapter.meals.get(adapter.getSelectedItemsPositions().get(i)).getNameEn();
-                }
-            }
-        }
-
-        shareString = shareString + getActivity().getString(R.string.share_string_suffix, PLAY_STORE_URL);
-
-        return shareString;
     }
 }
