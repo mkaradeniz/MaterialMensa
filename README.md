@@ -1,7 +1,5 @@
-# MaterialMensa
-MaterialMensa is a cafeteria app for the Paderborn University.
-
-Get it on the [Play Store](https://play.google.com/store/apps/details?id=de.prttstft.materialmensa).
+# MaterialMensa.Legacy
+This is the legacy, no longer maintained, version of [MaterialMensa](/github.com/prttstft/MaterialMensa) without any social features or Google Play Services dependencies.
 
 ## Development Requirements
 You need a personal API-Key issued by the [Studentenwerk Paderborn](http://www.studentenwerk-pb.de).

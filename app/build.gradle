@@ -9,7 +9,7 @@ android {
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 13
-        versionName "1.1.2"
+        versionName "1.1.2.legacy"
     }
 
     buildTypes {
@@ -17,6 +17,7 @@ android {
             variant.buildConfigField "String", "API_KEY", "\""+getApiKey()+"\""
         }
         release {
+            applicationIdSuffix ".legacy"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
