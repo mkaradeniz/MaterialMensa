@@ -13,6 +13,12 @@
     <color name="blackAlpha40">#66000000</color>
     <color name="whiteAlpha40" tools:ignore="UnusedResources">#66FFFFFF</color>
 
+    <!-- Scrimm Colors -->
+    <color name="translucent_scrim_top">#26000000</color>
+    <color name="translucent_scrim_top_center">#0C000000</color>
+    <color name="translucent_scrim_bottom">#D0FFFFFF</color>
+    <color name="translucent_scrim_bottom_center">#33FFFFFF</color>
+
     <!-- Material Colors -->
     <color name="materialAmber500" tools:ignore="UnusedResources">#FFC107</color>
     <color name="materialBlue500" tools:ignore="UnusedResources">#2196F3</color>
@@ -33,10 +39,4 @@
     <color name="materialRed900" tools:ignore="UnusedResources">#B71C1C</color>
     <color name="materialTeal500" tools:ignore="UnusedResources">#009688</color>
     <color name="materialYellow500" tools:ignore="UnusedResources">#FFEB3B</color>
-
-    <color name="translucent_scrim_top">#26000000</color>
-    <color name="translucent_scrim_top_center">#0C000000</color>
-    <!--<color name="translucent_scrim_bottom">#2A000000</color>-->
-    <color name="translucent_scrim_bottom">#D0FFFFFF</color>
-    <color name="translucent_scrim_bottom_center">#33FFFFFF</color>
 </resources>
