@@ -55,19 +55,19 @@ class Meal : Comparable<Meal> {
 
     private fun customSort(): Int {
         if (isUpvoted) {
-            return -10000000 - score
+            return -1000000000 - score
         }
 
         if (isDownvoted) {
-            return +10000000 - score
+            return +1000000000 - score
         }
 
         if (score > 0) {
-            return score * (-1)
+            return score * 10000 * (-1)
         }
 
         if (score < 0) {
-            return score * (-1)
+            return score * 10000 * (-1)
         }
 
         return orderNumber

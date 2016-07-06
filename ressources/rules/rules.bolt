@@ -1,0 +1,77 @@
+/*
+ * Paths
+ */
+
+path / {
+	read() { isSignedIn() }
+	write() { false }
+}
+
+path /meals {
+	read() { isSignedIn() }
+	write() { false }
+}
+
+path /meals/{meal_name} is Meal {
+	read() { isSignedIn() }
+	write() { createOnly() }
+}
+
+path /meals/{meal_name}/downvotes/{user_id} is Boolean{
+	read() { isSignedIn() }
+	write() { isCurrentUser(user_id) }
+}
+
+path /meals/{meal_name}/upvotes/{user_id} is Boolean{
+	read() { isSignedIn() }
+	write() { isCurrentUser(user_id) }
+}
+
+
+/*
+ * Types
+ */
+
+type Meal {
+	allergens: ArrayList | Null,
+	badges: ArrayList | Null,
+	category: String | Null,
+	categoryDe: String | Null,
+	categoryEn: String | Null,
+	date: String,
+	descriptionDe: String | Null,
+	descriptionEn: String | Null
+	image: String | Null,
+	nameDe: String,
+	nameEn: String,
+	orderInfo: Number | Null,
+	priceGuests: Number,
+	priceStudents: Number,
+	priceWorkers: Number,
+	pricetype: String
+	restaurant: String | Null,
+	subcategory: String | Null,
+	subcategoryEn: String | Null,
+	thumbnail: String | Null
+}
+
+type ArrayList {
+	$id: String
+}
+
+
+/*
+ * Functions
+ */
+
+function createOnly() {
+	return (newData.val() != null) && (data.val() == null);
+}
+
+function isCurrentUser(uid) {
+	return isSignedIn() && auth.uid == uid;
+}
+
+function isSignedIn() {
+	return auth != null;
+}

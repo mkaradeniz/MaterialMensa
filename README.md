@@ -3,12 +3,20 @@ MaterialMensa is a cafeteria app for the Paderborn University.
 
 Get it on the [Play Store](https://play.google.com/store/apps/details?id=de.prttstft.materialmensa).
 
-## Development Requirements
-* You need a personal API-Key issued by the [Studentenwerk Paderborn](http://www.studentenwerk-pb.de).
-* To install [Firebase](https://firebase.google.com) please follow the [docs](https://firebase.google.com/docs/android/setup) and add your ``google-services.json`` into the [app](app) folder.
+## Development
 
-## Kotlin
-I'm testing out [Kotlin](https://kotlinlang.org/), so some activites and classes will be written in Kotlin, while others are not.
+### API
+* You need a personal API-Key issued by the [Studentenwerk Paderborn](http://www.studentenwerk-pb.de).
+
+### Firebase
+* MaterialMensa uses two [Firebase](https://firebase.google.com) projects, one for debug and one for release builds.
+* Set up your Firebase projects according to the [docs](https://firebase.google.com/docs/android/setup).
+* In the debug project add an Android app with the package name ``de.prttstft.materialmensa.debug`` and in the release project``de.prttstft.materialmensa``.
+ Create two folders "debug" and "release" inside [app/src](app/src) and add your ``google-services.json`` into the respective folders.
+* See [ressources/rules](ressources/rules) on how to compile and deploy database rules.
+
+### Kotlin
+MaterialMensas code is party written in [Kotlin](https://kotlinlang.org/). New code should be written in Kotlin directly while old code may be converted in the future.
 
 ## Legacy Version
 The legacy version without Firebase or Google Play Services dependencies can be found [here](https://github.com/prttstft/MaterialMensa/tree/legacy).

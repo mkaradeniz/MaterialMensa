@@ -32,7 +32,7 @@ class FirebaseMeals() {
                                 if (databaseError == null) {
                                     Analytics.mealAddedToDatabase()
                                 } else {
-                                    Timber.e(databaseError.message)
+                                    Timber.e(databaseError.message + "(" + meal.nameEn + ")")
                                 }
                             })
                         }
