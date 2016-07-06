@@ -8,7 +8,10 @@ Get it on the [Play Store](https://play.google.com/store/apps/details?id=de.prtt
 * To install [Firebase](https://firebase.google.com) please follow the [docs](https://firebase.google.com/docs/android/setup) and add your ``google-services.json`` into the [app](app) folder.
 
 ## Kotlin
-* I'm testing out [Kotlin](https://kotlinlang.org/), so some activites and classes will be written in Kotlin, while others are not.
+I'm testing out [Kotlin](https://kotlinlang.org/), so some activites and classes will be written in Kotlin, while others are not.
+
+## Legacy Version
+The legacy version without Firebase or Google Play Services dependencies can be found [here](https://github.com/prttstft/MaterialMensa/tree/legacy).
 
 ## Acknowledgements
 - [AboutLibraries](https://github.com/mikepenz/AboutLibraries)
