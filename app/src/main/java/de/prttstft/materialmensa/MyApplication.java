@@ -33,6 +33,7 @@ public class MyApplication extends Application {
         setUpFirebase();
     }
 
+
     // Need a new way of doing this in API >= 24.
     private void setLanguage() {
         Locale locale = new Locale(UserSettings.getLanguage());
