@@ -23,8 +23,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.MyApplication;
@@ -39,7 +37,6 @@ import de.prttstft.materialmensa.ui.activities.main.view.MainView;
 import de.prttstft.materialmensa.ui.activities.settings.SettingsActivity;
 import de.prttstft.materialmensa.ui.fragments.main.MainFragment;
 import de.prttstft.materialmensa.ui.fragments.main.MainFragmentPagerAdapter;
-import timber.log.Timber;
 
 import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRestaurantIcon;
 import static de.prttstft.materialmensa.extras.RestaurantUtilites.getRestaurantName;
@@ -81,10 +78,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
         setUpDrawer();
 
         Analytics.activityMainViewed();
-
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            Timber.d(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        }
     }
 
 
