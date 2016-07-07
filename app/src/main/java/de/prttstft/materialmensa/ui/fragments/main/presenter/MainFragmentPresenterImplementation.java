@@ -37,17 +37,35 @@ public class MainFragmentPresenterImplementation implements MainFragmentPresente
     }
 
     @Override
+    public void downvoteMeal(Meal meal) {
+        interactor.downvoteMeal(meal);
+    }
+
+    @Override
     public void getMeals(int day, int restaurant) {
         if (view != null) {
             view.showProgress();
         }
+
         interactor.getMeals(this, day, restaurant);
     }
 
     @Override
-    public void onComplete() {
+    public void upvoteMeal(Meal meal) {
+        interactor.upvoteMeal(meal);
+    }
+
+    @Override
+    public void onCompleted() {
         if (view != null) {
-            view.onComplete();
+            view.onCompleted();
+        }
+    }
+
+    @Override
+    public void sendSocialData(Meal meal) {
+        if (view != null) {
+            view.sendSocialData(meal);
         }
     }
 }

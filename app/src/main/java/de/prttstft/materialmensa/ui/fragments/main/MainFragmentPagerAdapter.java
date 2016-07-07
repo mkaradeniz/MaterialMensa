@@ -12,6 +12,7 @@ public class MainFragmentPagerAdapter extends FragmentStatePagerAdapter {
         this.day = day;
     }
 
+
     @Override
     public int getCount() {
         return 7;

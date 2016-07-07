@@ -5,7 +5,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
@@ -27,6 +27,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import de.prttstft.materialmensa.MyApplication;
 import de.prttstft.materialmensa.R;
+import de.prttstft.materialmensa.extras.Analytics;
 import de.prttstft.materialmensa.extras.DateTimeUtilities;
 import de.prttstft.materialmensa.extras.UserSettings;
 import de.prttstft.materialmensa.ui.activities.about.AboutActivity;
@@ -51,13 +52,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private static final Drawable DRAWER_HEADER_AVATAR_GUEST = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_guest_black);
     private static final Drawable DRAWER_HEADER_AVATAR_STAFF = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_staff_black);
     private static final Drawable DRAWER_HEADER_AVATAR_STUDENT = ContextCompat.getDrawable(MyApplication.getAppContext(), R.drawable.ic_school_black);
-    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_collapsing_toolbar) CollapsingToolbarLayout collapsingToolbarLayout;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_bottom_sheet) View bottomSheet;
+    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_bottom_sheet_restaurant_status) TextView statusText;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_drawer_layout) DrawerLayout drawerLayout;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_navigation_view) NavigationView navigationView;
-    @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_restaurant_status_text) TextView statusText;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_tab_layout) TabLayout tabLayout;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_toolbar) Toolbar toolbar;
     @SuppressWarnings("WeakerAccess") @Bind(R.id.activity_main_view_pager) ViewPager viewPager;
+    private BottomSheetBehavior bottomSheetBehavior;
     private MainPresenter presenter;
     private int currentRestaurant = -1;
 
@@ -70,17 +72,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
         presenter = new MainPresenterImplementation(this);
 
         setUpToolbar();
+        setUpBottomSheet();
         setUpFirstDay(0);
         setUpTabs();
         setUpDrawer();
+
+        Analytics.activityMainViewed();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        presenter.getRestaurantStatus();
-    }
 
     private void setUpToolbar() {
         setSupportActionBar(toolbar);
@@ -89,6 +88,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_menu_black);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    private void setUpBottomSheet() {
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
     }
 
     private void setUpFirstDay(int day) {
@@ -118,7 +121,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 if (MainFragment.actionMode != null) {
                     MainFragment.actionMode.finish();
                 }
-                statusText.setVisibility(View.GONE);
+
+                hideBottomSheet();
+
                 setCurrentTab(position);
             }
 
@@ -143,7 +148,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     private void setCurrentTab(int position) {
-        collapsingToolbarLayout.setTitle(getRestaurantName(position));
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(getRestaurantName(position));
+        }
+
         getRestaurantStatus(position);
     }
 
@@ -254,10 +262,70 @@ public class MainActivity extends AppCompatActivity implements MainView {
         }
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        presenter.getRestaurantStatus();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                drawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void restaurantClosed(int restaurant, String openingTime) {
+        setRestaurantClosed(restaurant);
+
+        if (restaurant == currentRestaurant) {
+            if (openingTime != null) {
+                statusText.setText(openingTime);
+
+                showBottomSheet();
+            } else {
+                statusText.setText(getResources().getString(R.string.drawer_main_restaurant_status_closed));
+
+                showBottomSheet();
+            }
+        }
+    }
+
+    @Override
+    public void restaurantOpen(int restaurant, String closingTime) {
+        setRestaurantOpen(restaurant);
+
+        if (restaurant == currentRestaurant) {
+            if (closingTime != null) {
+                statusText.setText(closingTime);
+
+                showBottomSheet();
+            } else {
+                hideBottomSheet();
+            }
+        }
+    }
+
+
     private void getRestaurantStatus(int restaurant) {
         currentRestaurant = restaurant;
-        statusText.setVisibility(View.GONE);
+
+        hideBottomSheet();
+
         presenter.getRestaurantStatus();
+    }
+
+    private void hideBottomSheet() {
+        bottomSheetBehavior.setHideable(true);
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
 
     private void setRestaurantClosed(int position) {
@@ -280,42 +348,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
         tabLayout.getTabAt(position).setIcon(wrappedTabIcon);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void restaurantClosed(int restaurant, String openingTime) {
-        setRestaurantClosed(restaurant);
-
-        if (restaurant == currentRestaurant) {
-            if (openingTime != null) {
-                statusText.setText(openingTime);
-                statusText.setVisibility(View.VISIBLE);
-            } else {
-                statusText.setText(getResources().getString(R.string.drawer_main_restaurant_status_closed));
-                statusText.setVisibility(View.VISIBLE);
-            }
-        }
-    }
-
-    @Override
-    public void restaurantOpen(int restaurant, String closingTime) {
-        setRestaurantOpen(restaurant);
-
-        if (restaurant == currentRestaurant) {
-            if (closingTime != null) {
-                statusText.setText(closingTime);
-                statusText.setVisibility(View.VISIBLE);
-            } else {
-                statusText.setVisibility(View.GONE);
-            }
-        }
+    private void showBottomSheet() {
+        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        bottomSheetBehavior.setHideable(false);
     }
 }

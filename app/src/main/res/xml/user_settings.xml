@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@xml/user_settings">
 
     <PreferenceCategory
+        android:key="@string/activity_settings_preference_category_general_key"
         android:title="@string/activity_settings_preference_category_general">
 
         <ListPreference
@@ -20,6 +23,12 @@
             android:key="@string/activity_settings_preferences_lifestyle_key"
             android:summary="@string/activity_settings_preferences_lifestyle_summary"
             android:title="@string/activity_settings_preferences_lifestyle"/>
+
+        <SwitchPreference
+            android:defaultValue="@string/activity_settings_preferences_show_social_default"
+            android:key="@string/activity_settings_preferences_show_social_key"
+            android:summary="@string/activity_settings_preferences_show_social_summary"
+            android:title="@string/activity_settings_preferences_show_social"/>
 
     </PreferenceCategory>
 
@@ -45,8 +54,8 @@
         <SwitchPreference
             android:defaultValue="@string/activity_settings_preferences_hide_filtered_default"
             android:key="@string/activity_settings_preferences_hide_filtered_key"
-            android:summary="@string/activity_settings_preferences_filter_summary"
-            android:title="@string/activity_settings_preferences_filter"/>
+            android:summary="@string/activity_settings_preferences_hide_filtered_summary"
+            android:title="@string/activity_settings_preferences_hide_filtered"/>
 
     </PreferenceCategory>
 
@@ -61,6 +70,12 @@
             android:summary="@string/activity_settings_preferences_language_summary"
             android:title="@string/activity_settings_preferences_language"/>
 
+        <SwitchPreference
+            android:defaultValue="@string/activity_settings_preferences_images_in_main_default"
+            android:key="@string/activity_settings_preferences_images_in_main_key"
+            android:summary="@string/activity_settings_preferences_images_in_main_summary"
+            android:title="@string/activity_settings_preferences_images_in_main"/>
+
         <ListPreference
             android:defaultValue="@string/activity_settings_preferences_default_restaurant_default"
             android:entries="@array/activity_settings_preferences_default_restaurant_array"
@@ -69,12 +84,6 @@
             android:summary="@string/activity_settings_preferences_default_restaurant_summary"
             android:title="@string/activity_settings_preferences_default_restaurant"/>
 
-        <SwitchPreference
-            android:defaultValue="@string/activity_settings_preferences_images_in_main_default"
-            android:key="@string/activity_settings_preferences_images_in_main_key"
-            android:summary="@string/activity_settings_preferences_images_in_main_summary"
-            android:title="@string/activity_settings_preferences_images_in_main"/>
-
         <MultiSelectListPreference
             android:defaultValue="@array/empty_array"
             android:entries="@array/activity_settings_preferences_hide_days_array"
@@ -82,6 +91,7 @@
             android:key="@string/activity_settings_preferences_hide_days_key"
             android:summary="@string/activity_settings_preferences_hide_days_summary"
             android:title="@string/activity_settings_preferences_hide_days"/>
+
     </PreferenceCategory>
 
 </PreferenceScreen>

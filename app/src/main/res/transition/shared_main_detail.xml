@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:targetApi="lollipop">
+    <transitionSet>
+        <arcMotion/>
+        <changeBounds/>
+        <changeTransform/>
+        <changeClipBounds/>
+        <changeImageTransform/>
+    </transitionSet>
+
+    <transitionSet>
+        <slide android:slideEdge="bottom">
+            <targets>
+                <target android:excludeId="@android:id/statusBarBackground"/>
+                <target android:excludeId="@android:id/navigationBarBackground"/>
+                <target android:targetId="@+id/activity_details_image"/>
+            </targets>
+        </slide>
+    </transitionSet>
+</transitionSet>

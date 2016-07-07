@@ -9,5 +9,7 @@ public interface MainFragmentListener {
 
     void filteredMeal();
 
-    void onComplete();
+    void onCompleted();
+
+    void sendSocialData(Meal meal);
 }

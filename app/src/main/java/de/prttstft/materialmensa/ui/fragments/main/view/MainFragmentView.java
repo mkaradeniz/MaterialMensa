@@ -5,7 +5,7 @@ import de.prttstft.materialmensa.model.Meal;
 public interface MainFragmentView {
     void addMeal(Meal meal);
 
-    void onComplete();
+    void onCompleted();
 
     void hideConnectionError();
 
@@ -14,6 +14,8 @@ public interface MainFragmentView {
     void hideFiltered();
 
     void hideProgress();
+
+    void sendSocialData(Meal meal);
 
     void showConnectionError();
 
