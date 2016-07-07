@@ -13,7 +13,7 @@ Get it on the [Play Store](https://play.google.com/store/apps/details?id=de.prtt
 * Set up your Firebase projects according to the [docs](https://firebase.google.com/docs/android/setup).
 * In the debug project add an Android app with the package name ``de.prttstft.materialmensa.debug`` and in the release project``de.prttstft.materialmensa``.
  Create two folders "debug" and "release" inside [app/src](app/src) and add your ``google-services.json`` into the respective folders.
-* See [ressources/rules](ressources/rules) on how to compile and deploy database rules.
+* See [resources/rules](resources/rules) on how to compile and deploy database rules.
 
 ### Kotlin
 MaterialMensas code is party written in [Kotlin](https://kotlinlang.org/). New code should be written in Kotlin directly while old code may be converted in the future.
