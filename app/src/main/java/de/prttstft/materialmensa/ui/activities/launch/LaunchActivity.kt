@@ -4,9 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import de.prttstft.materialmensa.extras.Analytics
 import de.prttstft.materialmensa.extras.UserSettings
+import de.prttstft.materialmensa.extras.Utilities
 import de.prttstft.materialmensa.extras.UtilitiesKt
 import de.prttstft.materialmensa.ui.activities.main.MainActivity
+import de.prttstft.materialmensa.ui.fragments.main.interactor.MainFragmentInteractorImplementation.*
 import timber.log.Timber
 
 class LaunchActivity : AppCompatActivity() {
@@ -16,6 +19,12 @@ class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setUpFirebase()
+        setUpUserProperties()
+    }
+
+
+    private fun setUpFirebase() {
         if (UtilitiesKt.arePlayServicesInstalled(this)) {
             auth = FirebaseAuth.getInstance()
 
@@ -43,6 +52,59 @@ class LaunchActivity : AppCompatActivity() {
 
             launchMainActivity()
             finish()
+        }
+    }
+
+    private fun setUpUserProperties() {
+        if (auth?.currentUser != null) {
+            when (UserSettings.getDefaultRestaurant()) {
+                0 -> Analytics.setUserPropertyDefaultRestaurantAcademica()
+                1 -> Analytics.setUserPropertyDefaultRestaurantForum()
+                2 -> Analytics.setUserPropertyDefaultRestaurantCafete()
+                3 -> Analytics.setUserPropertyDefaultRestaurantGrillCafe()
+                4 -> Analytics.setUserPropertyDefaultRestaurantOneWaySnack()
+                5 -> Analytics.setUserPropertyDefaultRestaurantBistroHotspot()
+                6 -> Analytics.setUserPropertyDefaultRestaurantMensula()
+            }
+
+            when (UserSettings.getHideFiltered()) {
+                true -> Analytics.setUserPropertyHideFilteredTrue()
+                false -> Analytics.setUserPropertyHideFilteredFalse()
+            }
+
+            when (UserSettings.getImagesInMainView()) {
+                true -> Analytics.setUserPropertyImagesInMainViewTrue()
+                false -> Analytics.setUserPropertyImagesInMainViewFalse()
+            }
+
+            when (UserSettings.getLanguageExact()) {
+                "de" -> Analytics.setUserPropertyLanguageGerman()
+                "en" -> Analytics.setUserPropertyLanguageEnglish()
+                "not_set" ->
+                    when (Utilities.getSystemLanguageShort()) {
+                        "de" -> {
+                            Analytics.setUserPropertyLanguageSystemGerman()
+                        }
+                        else -> {
+                            Analytics.setUserPropertyLanguageSystemEnglishOrOther()
+                        }
+                    }
+
+            }
+
+            when (UserSettings.getLifestyle()) {
+                LIFESTYLE_NOT_SET -> Analytics.setUserPropertyLifestyleMeat()
+                LIFESTYLE_VEGETARIAN -> Analytics.setUserPropertyLifestyleVegetarian()
+                LIFESTYLE_VEGAN -> Analytics.setUserPropertyLifestyleVegan()
+                LIFESTYLE_LEVEL_FIVE_VEGAN -> Analytics.setUserPropertyLifestyleLevelFiveVegan()
+            }
+
+            when (UserSettings.getRole()) {
+                ROLE_GUEST -> Analytics.setUserPropertyRoleGuest()
+                ROLE_STAFF -> Analytics.setUserPropertyRoleStaff()
+                ROLE_STUDENT -> Analytics.setUserPropertyRoleStudent()
+            }
+
         }
     }
 

@@ -90,7 +90,7 @@ class FirebaseMeals() {
 
                             listener.addMeal(socialMeal)
 
-                            Analytics.socialMealServed()
+                            Analytics.mealServedSocial()
                         }
                     }
 

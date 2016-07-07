@@ -97,6 +97,11 @@ public class UserSettings {
         }
     }
 
+    public static String getLanguageExact() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
+        return sharedPreferences.getString(LANGUAGE_PREF, LANGUAGE_DEFAULT);
+    }
+
     public static String getLifestyle() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getAppContext());
         return sharedPreferences.getString(LIFESTYLE_PREF, LIFESTYLE_DEFAULT);

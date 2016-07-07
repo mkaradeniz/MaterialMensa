@@ -4,25 +4,17 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.preference.PreferenceCategory
 import android.preference.PreferenceFragment
-import android.preference.PreferenceManager
 import android.preference.SwitchPreference
 import de.prttstft.materialmensa.R
 import de.prttstft.materialmensa.extras.UtilitiesKt
-import de.prttstft.materialmensa.ui.fragments.settings.presenter.SettingsFragmentPresenter
-import de.prttstft.materialmensa.ui.fragments.settings.presenter.SettingsFragmentPresenterImplementation
 
 class SettingsFragment : PreferenceFragment() {
     lateinit var listener: SharedPreferences.OnSharedPreferenceChangeListener
-    lateinit var presenter: SettingsFragmentPresenter
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        presenter = SettingsFragmentPresenterImplementation()
-
         setUpPreferences()
-        setUpPreferencesListener()
     }
 
 
@@ -36,16 +28,4 @@ class SettingsFragment : PreferenceFragment() {
             generalPreferenceCategory.removePreference(socialFeaturesSwitchPreference)
         }
     }
-
-    private fun setUpPreferencesListener() {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(activity)
-
-        listener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
-            presenter.onSharedPreferenceChange(sharedPreferences, key)
-        }
-
-        prefs.registerOnSharedPreferenceChangeListener(listener)
-    }
-
-
 }

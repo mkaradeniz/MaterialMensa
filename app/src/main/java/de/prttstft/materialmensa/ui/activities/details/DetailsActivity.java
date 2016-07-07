@@ -202,7 +202,7 @@ public class DetailsActivity extends AppCompatActivity {
             case "A14":
                 return allergens[13];
             default:
-                Timber.d("Default AdditiveAllergene called: $additiveAllergen");
+                Timber.w("Default AdditiveAllergene called: $additiveAllergen");
                 return "";
         }
     }

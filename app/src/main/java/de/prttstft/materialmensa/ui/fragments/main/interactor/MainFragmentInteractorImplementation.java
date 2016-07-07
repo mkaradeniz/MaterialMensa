@@ -152,6 +152,8 @@ public class MainFragmentInteractorImplementation implements MainFragmentInterac
         if (UserSettings.getSocialFeatures()) {
             FirebaseMeals.getSocialDataMeal(listener, meal);
         }
+
+        Analytics.mealServed();
     }
 
     private void addMealToDatabase(Meal meal) {
